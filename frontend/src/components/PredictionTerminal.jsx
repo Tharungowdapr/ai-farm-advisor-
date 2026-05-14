@@ -467,8 +467,31 @@ const PredictionTerminal = () => {
                         <span className={item.type === 'positive' ? 'text-green-300' : 'text-yellow-300'}>{item.text}</span>
                       </motion.div>
                     ))}
-                  </div>
-                </div>
+                 {/* Expert Scientific Advisory (RAG) */}
+                 {result.expert_advisory && (
+                   <div className="bg-gradient-to-br from-blue-500/10 to-[#0c0a09] border border-blue-500/20 rounded-2xl p-6">
+                     <h3 className="font-serif text-lg font-black text-white mb-4 flex items-center gap-2">
+                       <Globe size={16} className="text-blue-400" /> Scientific Expert Advisory
+                     </h3>
+                     <div className="space-y-4">
+                       {result.expert_advisory.split('\n\n').map((block, i) => (
+                         <div key={i} className="text-sm text-stone-300 leading-relaxed">
+                           {block.startsWith('---') ? (
+                             <div className="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-1">{block.replace(/---/g, '').trim()}</div>
+                           ) : (
+                             <p>{block}</p>
+                           )}
+                         </div>
+                       ))}
+                     </div>
+                     <button 
+                       onClick={() => navigate('/vaniai', { state: { initialMessage: `Tell me more about the scientific advice for ${result.selected_crop} in ${result.city}.` } })}
+                       className="mt-4 flex items-center gap-2 text-[#84cc16] font-bold text-[10px] uppercase tracking-wider hover:underline"
+                     >
+                       Ask Vani AI for more details <ChevronRight size={14} />
+                     </button>
+                   </div>
+                 )}
 
                  {/* Expert Scientific Advisory (RAG) */}
                  {result.expert_advisory && (

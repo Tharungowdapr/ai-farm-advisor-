@@ -565,7 +565,6 @@ def detect_and_log_disease():
         return jsonify({"error": str(e)}), 500
 
 
-TOKENS = {}
 
 @app.route("/api/auth/signup", methods=["POST"])
 def signup():

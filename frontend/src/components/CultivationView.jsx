@@ -49,8 +49,8 @@ const CultivationView = ({ crop, onClose }) => {
         const fetchData = async () => {
             try {
                 const [knowRes, dashRes] = await Promise.all([
-                    axios.get(`http://localhost:5000/api/knowledge/${crop.name}/lifecycle`),
-                    axios.get('http://localhost:5000/api/cultivation/dashboard')
+                    axios.get(`/api/knowledge/${crop.name}/lifecycle`),
+                    axios.get('/api/cultivation/dashboard')
                 ]);
 
                 setKnowledge(knowRes.data);
@@ -76,7 +76,7 @@ const CultivationView = ({ crop, onClose }) => {
     // --- Handlers ---
     const handleStartCultivation = async () => {
         try {
-            const res = await axios.post('http://localhost:5000/api/cultivation/start', {
+            const res = await axios.post('/api/cultivation/start', {
                 start_date: new Date().toISOString().split('T')[0],
                 crop_name: crop.name // Pass dynamic crop name
             });
@@ -89,7 +89,7 @@ const CultivationView = ({ crop, onClose }) => {
 
     const handleUpdatePhase = async (idx) => {
         try {
-            const res = await axios.post('http://localhost:5000/api/cultivation/update', {
+            const res = await axios.post('/api/cultivation/update', {
                 action: idx
             });
             setUserState(res.data.state);
@@ -111,7 +111,7 @@ const CultivationView = ({ crop, onClose }) => {
 
         try {
             // Updated Endpoint: Analyzes AND Logs to History
-            const res = await axios.post('http://localhost:5000/api/cultivation/detect', formData);
+            const res = await axios.post('/api/cultivation/detect', formData);
 
             // Backend now returns { analysis: {...}, protocol_match: {...}, newly_learned: boolean }
             if (res.data.analysis) {
@@ -324,7 +324,7 @@ const CultivationView = ({ crop, onClose }) => {
                                             <h3 className="text-4xl font-black text-white mb-1">{scanResult.analysis?.disease_name || "Unknown"}</h3>
                                             <p className="text-[#84cc16] font-serif italic text-lg">{scanResult.analysis?.scientific_name}</p>
                                             <div className="mt-4 flex gap-3">
-                                                <span className="px-3 py-1 bg-white/10 rounded-full text-xs font-bold text-stone-300 border border-white/10">{Math.round((scanResult.analysis?.confidence_score || 0) * 100)}% Match Confidence</span>
+                                                <span className="px-3 py-1 bg-white/10 rounded-full text-xs font-bold text-stone-300 border border-white/10">{Math.round(scanResult.analysis?.confidence_score || 0)}% Match Confidence</span>
                                             </div>
                                         </div>
 

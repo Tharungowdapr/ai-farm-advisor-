@@ -467,6 +467,9 @@ const PredictionTerminal = () => {
                         <span className={item.type === 'positive' ? 'text-green-300' : 'text-yellow-300'}>{item.text}</span>
                       </motion.div>
                     ))}
+                  </div>
+                </div>
+
                  {/* Expert Scientific Advisory (RAG) */}
                  {result.expert_advisory && (
                    <div className="bg-gradient-to-br from-blue-500/10 to-[#0c0a09] border border-blue-500/20 rounded-2xl p-6">

@@ -158,7 +158,7 @@ export default function MarketHub() {
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
               <div className="bg-stone-900 border border-stone-700 rounded-2xl p-5">
                 <p className="text-[8px] font-black uppercase text-stone-500 mb-1">MSP Floor</p>
-                <p className="text-white text-2xl font-black">₹{k.msp || '—'}/q</p>
+                <p className="text-white text-2xl font-black">{k.msp || '—'}/q</p>
                 <p className={`text-xs font-bold mt-1 ${trend25 ? 'text-green-400' : 'text-red-400'}`}>{k.trend_percent || '0%'}</p>
               </div>
               <div className="bg-stone-900 border border-stone-700 rounded-2xl p-5">

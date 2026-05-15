@@ -131,8 +131,9 @@ def synthesis(state):
     rag_context = ""
     try:
         rag_context = rag.augment_prompt(f"{query} " + " ".join(r.get('summary','') for r in results.values()))
-    except:
-        pass
+    except Exception as e:
+        logger.warning(f"RAG augment failed in synthesis: {e}")
+        rag_context = ""
 
     location = ctx.get("city") or f"{ctx.get('lat','?')},{ctx.get('lon','?')}"
     crop = ctx.get("crop") or "general"

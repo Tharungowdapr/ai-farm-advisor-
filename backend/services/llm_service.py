@@ -10,6 +10,11 @@ load_dotenv()
 
 logger = logging.getLogger(__name__)
 
+try:
+    from monitoring import metrics
+except ImportError:
+    metrics = None
+
 SETTINGS_DIR = Path(__file__).parent.parent / "settings"
 SETTINGS_FILE = SETTINGS_DIR / "user_settings.json"
 
@@ -88,15 +93,22 @@ class LLMService:
             payload["response_format"] = {"type": "json_object"}
 
         try:
+            import time
+            _start = time.time()
             resp = http_requests.post(
                 "https://openrouter.ai/api/v1/chat/completions",
                 headers=headers,
                 json=payload,
                 timeout=60
             )
+            _duration = (time.time() - _start) * 1000
             if not resp.ok:
                 logger.error(f"OpenRouter HTTP {resp.status_code}: {resp.text[:300]}")
+                if metrics:
+                    metrics.record_llm_call(_duration, success=False, model=model)
                 raise Exception(f"OpenRouter API Error {resp.status_code}: {resp.text[:200]}")
+            if metrics:
+                metrics.record_llm_call(_duration, success=True, model=model)
             return resp.json()["choices"][0]["message"]["content"]
         except Exception as e:
             logger.error(f"OpenRouter API error: {e}")

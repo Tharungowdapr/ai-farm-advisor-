@@ -17,7 +17,11 @@ from pathlib import Path
 from datetime import datetime
 
 load_dotenv()
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s [%(levelname)s] %(name)s: %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
 logger = logging.getLogger(__name__)
 
 from msp_fetcher import MSPFetcher, get_msp_for_crop
@@ -65,6 +69,11 @@ TOKENS = {}
 
 app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": "*"}})
+
+# ── MLOps Monitoring ─────────────────────────────────────────
+from monitoring import setup_monitoring, metrics, track_llm_call
+setup_monitoring(app)
+logger.info("MLOps monitoring initialized")
 
 UPLOAD_FOLDER = os.path.join(os.getcwd(), 'uploads')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -810,7 +819,8 @@ def _load_cities():
                     _KARNATAKA_CITIES = json.load(f)
             else:
                 _KARNATAKA_CITIES = []
-        except:
+        except Exception as e:
+            logger.warning(f"Failed to load cities: {e}")
             _KARNATAKA_CITIES = []
     return _KARNATAKA_CITIES
 
@@ -990,8 +1000,8 @@ def location_diagnostics():
                     K = soil_summary.get("k", 45)
                     ph = soil_summary.get("ph", 6.5)
                     soil_source = soil_summary.get("source", "ISRIC SoilGrids")
-            except:
-                pass
+            except Exception as e:
+                logger.warning(f"Soil fetch for diagnostics failed: {e}")
 
         weather_data = WeatherDiseaseRiskCalculator.get_simulated_weather()
         open_meteo_raw = _fetch_open_meteo_raw(lat, lon)
@@ -1025,8 +1035,8 @@ def _fetch_open_meteo_raw(lat, lon):
         resp = requests.get(url, timeout=10)
         if resp.status_code == 200:
             return resp.json()
-    except:
-        pass
+    except Exception as e:
+        logger.warning(f"Open-Meteo fetch failed: {e}")
     return None
 
 def _reverse_geocode(lat, lon):
@@ -1041,8 +1051,8 @@ def _reverse_geocode(lat, lon):
                 admin = r.get("admin1", "")
                 if name:
                     return f"{name}, {admin}" if admin else name
-    except:
-        pass
+    except Exception as e:
+        logger.warning(f"Reverse geocode failed: {e}")
     return f"GPS: {lat:.4f}°N, {lon:.4f}°E"
     
 @app.route("/api/env/geocode", methods=["GET"])
@@ -1122,4 +1132,7 @@ app.register_blueprint(admin_bp, url_prefix="/api/admin")
 app.register_blueprint(vendor_bp, url_prefix="/api/vendors")
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5001)
+    port = int(os.environ.get("PORT", 5001))
+    debug = os.environ.get("FLASK_DEBUG", "true").lower() == "true"
+    logger.info(f"Starting KrishiVigyan backend on port {port} (debug={debug})")
+    app.run(debug=debug, port=port)

@@ -5,7 +5,7 @@ help:
 	@echo ""
 	@echo "Commands:"
 	@echo "  make setup         Full setup (backend + frontend)"
-	@echo "  make run-backend   Start Flask backend (port 5000)"
+	@echo "  make run-backend   Start Flask backend (port 5001)"
 	@echo "  make run-frontend  Start Vite frontend (port 5173)"
 	@echo "  make run           Start both backend and frontend"
 	@echo "  make clean         Remove venv and node_modules"

@@ -63,3 +63,14 @@ sub/
 # Scratch and analysis files
 backend/scratch/
 *.resolved
+
+# macOS
+.DS_Store
+*/.DS_Store
+
+# Uploads
+uploads/
+
+# Root-level package files (frontend has its own)
+/package.json
+/package-lock.json

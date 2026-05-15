@@ -8,6 +8,11 @@ os.environ["OMP_NUM_THREADS"] = "1"
 
 logger = logging.getLogger(__name__)
 
+try:
+    from monitoring import metrics as _metrics
+except ImportError:
+    _metrics = None
+
 DATA_DIR = Path(__file__).parent.parent / "data"
 CHROMA_DIR = DATA_DIR / "chromadb"
 
@@ -49,7 +54,7 @@ class RAGService:
         if name not in self.collections:
             try:
                 self.collections[name] = self.chroma_client.get_collection(name)
-            except:
+            except Exception:
                 self.collections[name] = self.chroma_client.create_collection(name)
         return self.collections[name]
 
@@ -74,7 +79,8 @@ class RAGService:
             try:
                 with open(fpath) as f:
                     data = json.load(f)
-            except:
+            except Exception as e:
+                logger.warning(f"Failed to load knowledge core {fpath}: {e}")
                 continue
             crop = data.get("crop_info", {}).get("name", fpath.stem.replace("knowledge_core_", "").title())
             for phase in data.get("lifecycle_phases", []):
@@ -100,8 +106,8 @@ class RAGService:
             try:
                 embeddings = self.model.encode(chunks).tolist()
                 collection.add(embeddings=embeddings, documents=chunks, metadatas=metadatas, ids=ids)
-            except:
-                pass
+            except Exception as e:
+                logger.warning(f"Failed to index crop knowledge: {e}")
 
     def _index_icar_data(self):
         collection = self._get_collection("icar")
@@ -129,8 +135,8 @@ class RAGService:
             try:
                 embeddings = self.model.encode(chunks).tolist()
                 collection.add(embeddings=embeddings, documents=chunks, metadatas=metadatas, ids=ids)
-            except:
-                pass
+            except Exception as e:
+                logger.warning(f"Failed to index ICAR data: {e}")
 
     def _index_economics(self):
         collection = self._get_collection("market")
@@ -142,7 +148,8 @@ class RAGService:
         try:
             with open(econ_path) as f:
                 data = json.load(f)
-        except:
+        except Exception as e:
+            logger.warning(f"Failed to load economics data: {e}")
             return
         chunks, metadatas, ids = [], [], []
         for crop_name, info in data.get("crops", {}).items():
@@ -158,8 +165,8 @@ class RAGService:
             try:
                 embeddings = self.model.encode(chunks).tolist()
                 collection.add(embeddings=embeddings, documents=chunks, metadatas=metadatas, ids=ids)
-            except:
-                pass
+            except Exception as e:
+                logger.warning(f"Failed to index economics: {e}")
 
     def _index_schemes(self):
         collection = self._get_collection("schemes")
@@ -171,7 +178,8 @@ class RAGService:
         try:
             with open(spath) as f:
                 entries = json.load(f)
-        except:
+        except Exception as e:
+            logger.warning(f"Failed to load schemes data: {e}")
             return
         chunks, metadatas, ids = [], [], []
         for s in entries:
@@ -188,8 +196,8 @@ class RAGService:
             try:
                 embeddings = self.model.encode(chunks).tolist()
                 collection.add(embeddings=embeddings, documents=chunks, metadatas=metadatas, ids=ids)
-            except:
-                pass
+            except Exception as e:
+                logger.warning(f"Failed to index schemes: {e}")
 
     def semantic_search(self, query, collections=None, top_k=5):
         self._lazy_init()
@@ -200,7 +208,8 @@ class RAGService:
             collections = ["crops", "icar", "market", "schemes"]
         try:
             query_emb = self.model.encode(query).tolist()
-        except:
+        except Exception as e:
+            logger.warning(f"Failed to encode RAG query: {e}")
             return []
         results = []
         for coll_name in collections:
@@ -214,7 +223,8 @@ class RAGService:
                         "score": res["distances"][0][i] if res.get("distances") else 0,
                         "collection": coll_name
                     })
-            except:
+            except Exception as e:
+                logger.debug(f"RAG collection {coll_name} query failed: {e}")
                 continue
         results.sort(key=lambda x: x["score"])
         return results[:top_k]
@@ -222,14 +232,21 @@ class RAGService:
     def augment_prompt(self, query, top_k=5):
         self._lazy_init()
         if not self.ready:
-            return ""
+            if _metrics:
+                _metrics.record_rag_query(hit=False)
+            return query  # Return original query instead of empty string
         results = self.semantic_search(query, top_k=top_k)
         if not results:
-            return ""
+            if _metrics:
+                _metrics.record_rag_query(hit=False)
+            return query  # Return original query instead of empty string
+        if _metrics:
+            _metrics.record_rag_query(hit=True)
         context_parts = []
         for r in results:
             meta = r["metadata"]
             source = meta.get('crop') or meta.get('name') or "General Knowledge"
             topic = meta.get('topic') or meta.get('type') or "Guide"
             context_parts.append(f"--- DATA FROM {source.upper()} ({topic.upper()}) ---\n{r['document']}")
-        return "\n\n".join(context_parts)
+        augmented = "\n\n".join(context_parts)
+        return f"{augmented}\n\n--- USER QUESTION ---\n{query}"

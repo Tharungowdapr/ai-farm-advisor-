@@ -1,23 +1,34 @@
-flask
-flask-cors
-python-dotenv
-requests
-python-dateutil
-cachetools
-lxml
+# KrishiVigyan Backend Dependencies
+# Core
+flask>=3.0.0
+flask-cors>=4.0.0
+python-dotenv>=1.0.0
+requests>=2.31.0
+gunicorn>=21.2.0
 
-# ML Dependencies
-torch
-torchvision
-timm
-albumentations
-opencv-python
-scikit-learn
+# Database
+# sqlite3 is built-in
 
-# RAG & LLM
-chromadb
-sentence-transformers
-openai
+# ML / AI
+numpy>=1.26.0
+pandas>=2.1.0
+joblib>=1.3.0
+scikit-learn>=1.3.0
 
-# LLM Client
-google-genai
+# RAG (optional - degrades gracefully if missing)
+chromadb>=0.4.0
+sentence-transformers>=2.2.0
+
+# Caching
+cachetools>=5.3.0
+
+# Image processing (optional - for disease detection)
+# opencv-python-headless>=4.8.0
+# albumentations>=1.3.0
+# timm>=0.9.0
+# torch (install separately: pip install torch --index-url https://download.pytorch.org/whl/cpu)
+
+# MLOps & Monitoring
+prometheus-flask-instrumentator>=6.1.0
+structlog>=23.1.0
+python-json-logger>=2.0.0

@@ -734,8 +734,8 @@ const SettingsTerminal = () => {
             <div className="bg-white border-2 border-stone-200 rounded-[3rem] p-10 shadow-xl">
               <div className="mb-8">
                 <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-stone-400 mb-2">AI Provider</h3>
-                <h2 className="font-serif text-4xl font-black text-[#0c0a09]">Groq API Key</h2>
-                <p className="text-stone-500 text-sm mt-2 font-medium">Enter your Groq API key to enable AI features. Get a free key at <span className="text-[#84cc16]">console.groq.com</span></p>
+                <h2 className="font-serif text-4xl font-black text-[#0c0a09]">OpenRouter API Key</h2>
+                <p className="text-stone-500 text-sm mt-2 font-medium">Enter your OpenRouter API key to enable AI features. Get a free key at <span className="text-[#84cc16]">openrouter.ai/keys</span></p>
               </div>
               <div className="space-y-4">
                 <div>
@@ -745,7 +745,7 @@ const SettingsTerminal = () => {
                       type="password"
                       value={apiKey === '••••••••' ? '' : apiKey}
                       onChange={(e) => setApiKey(e.target.value)}
-                      placeholder={apiKey === '••••••••' ? 'API key is set (enter new one to change)' : 'gsk_...'}
+                      placeholder={apiKey === '••••••••' ? 'API key is set (enter new one to change)' : 'sk-or-...'}
                       className="flex-1 bg-stone-50 border-2 border-stone-200 rounded-2xl p-5 font-bold text-stone-700 outline-none focus:ring-4 focus:ring-[#84cc16]/10 focus:border-[#84cc16] transition-all"
                     />
                     <button

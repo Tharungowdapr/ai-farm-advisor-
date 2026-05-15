@@ -1,0 +1,990 @@
+{
+  "crop_info": {
+    "name": "Maize",
+    "scientific_name": "Zea mays L.",
+    "family": "Poaceae",
+    "origin": "Mesoamerica",
+    "varieties": [
+      "Ganga Kaveri",
+      "Bioseed (e.g., BSH-1, BHR-334)",
+      "Deccan-103",
+      "Pusa Hybrid 1",
+      "DKC 9105",
+      "NAC 602",
+      "Bio 9681",
+      "Phule Milk"
+    ],
+    "total_duration_days": {
+      "short_duration_hybrids": "80-90",
+      "medium_duration_hybrids": "90-110",
+      "long_duration_hybrids": "110-130"
+    },
+    "ideal_climate": {
+      "temperature": {
+        "germination": "20-25\u00b0C",
+        "vegetative_growth": "25-30\u00b0C",
+        "flowering_pollination": "20-25\u00b0C",
+        "grain_filling": "20-28\u00b0C",
+        "optimal_average": "21-30\u00b0C"
+      },
+      "rainfall": "500-750 mm (well-distributed)",
+      "soil_type": "Well-drained loamy to clayey loam soils with pH 6.0-7.5",
+      "light_requirement": "Full sunlight"
+    },
+    "botanical_description": {
+      "plant_habit": "Erect, single stemmed, tillering may occur in some varieties.",
+      "root_system": "Fibrous, extensive, with prop roots developing from lower nodes.",
+      "stem": "Thick, segmented, hollow pith.",
+      "leaves": "Long, linear, lanceolate, arranged alternately on the stem.",
+      "inflorescence": {
+        "male": "Terminal tassel, composed of spikelets with staminate flowers.",
+        "female": "Axillary ear (cob), enclosed by husks, bearing rows of kernels."
+      },
+      "flower": "Monoecious, wind-pollinated.",
+      "fruit": "Caryopsis (kernel), a grain.",
+      "seed": "Single seeded fruit, kernel type varies (dent, flint, popcorn, sweet)."
+    }
+  },
+  "lifecycle_phases": [
+    {
+      "phase_id": "maize_1_nursery_sowing",
+      "phase_name": "Nursery Raising & Sowing",
+      "duration_days": {
+        "min": 7,
+        "max": 15
+      },
+      "description": "From seed sowing in nursery beds or directly in the field until the seedling emerges and reaches the 3-4 leaf stage.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Field Preparation",
+          "details": "Plough the field 2-3 times to achieve a fine tilth. Incorporate well-decomposed FYM (Farm Yard Manure) @ 20-25 tonnes/ha or compost. Level the field for uniform irrigation and drainage. For raised beds, construct them of appropriate width (e.g., 1.2m) and height (15-20cm).",
+          "fertilizer_npk": "Basal application: 80-120 kg N, 40-60 kg P2O5, 40-60 kg K2O per hectare, depending on soil test recommendations. P2O5 and K2O should be applied basally.",
+          "irrigation": "Pre-sowing irrigation if soil is dry. Light irrigation after sowing if moisture is inadequate.",
+          "pest_management": "Soil application of neem cake @ 250 kg/ha during the last ploughing helps in suppressing soil-borne pests and nematodes."
+        },
+        {
+          "step": 2,
+          "operation": "Seed Selection & Treatment",
+          "details": "Select healthy, bold, and uniform seeds of the chosen variety. Treat seeds with a fungicide (e.g., Carbendazim 2g/kg or Trichoderma viride 4g/kg) and an insecticide (e.g., Imidacloprid 3ml/kg or Chlorpyriphos 5ml/kg) to protect against seed and soil-borne diseases and early insect pests.",
+          "fertilizer_npk": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Seed treatment with fungicides and insecticides is crucial for early protection."
+        },
+        {
+          "step": 3,
+          "operation": "Sowing",
+          "details": "Sow seeds at a spacing of 60-75 cm between rows and 20-25 cm between plants. Depth of sowing should be 4-5 cm. Use 15-20 kg of seeds per hectare for hybrids. If sowing in nursery beds, sow in lines at 10 cm spacing and transplant seedlings at 3-4 leaf stage.",
+          "fertilizer_npk": "N/A (basal applied during field prep)",
+          "irrigation": "Light irrigation immediately after sowing if soil is dry.",
+          "pest_management": "N/A"
+        },
+        {
+          "step": 4,
+          "operation": "Early Weeding",
+          "details": "Remove weeds manually or mechanically within the first 20-25 days after sowing. Light hoeing can be done.",
+          "fertilizer_npk": "N/A",
+          "irrigation": "Light irrigation may be needed after weeding if soil moisture is low.",
+          "pest_management": "Monitor for early incidence of stem borer."
+        },
+        {
+          "step": 5,
+          "operation": "First Top Dressing (if N split applied)",
+          "details": "Apply half of the recommended Nitrogen (N) dose (approx. 40-60 kg N/ha) at 20-25 days after sowing, coinciding with the 4-5 leaf stage.",
+          "fertilizer_npk": "40-60 kg N per hectare.",
+          "irrigation": "Irrigate after top dressing to facilitate nutrient absorption.",
+          "pest_management": "Monitor for Spodoptera frugiperda (Fall Armyworm) and stem borer."
+        },
+        {
+          "step": 6,
+          "operation": "Blanket the missing seeds",
+          "details": "After 10-15 days of sowing, identify gaps and replant healthy seedlings raised in nursery or sow seeds directly to maintain the desired plant population.",
+          "fertilizer_npk": "N/A",
+          "irrigation": "Ensure adequate moisture for transplanted seedlings.",
+          "pest_management": "N/A"
+        }
+      ],
+      "common_diseases": [
+        "seedling_blight",
+        "damping_off",
+        "anthracnose_of_seedling"
+      ],
+      "preventive_tips": [
+        "Use disease-free seeds.",
+        "Proper seed treatment.",
+        "Ensure good drainage.",
+        "Maintain optimal sowing depth and time.",
+        "Avoid water logging."
+      ]
+    },
+    {
+      "phase_id": "maize_2_vegetative",
+      "phase_name": "Vegetative Growth & Knee-High Stage",
+      "duration_days": {
+        "min": 35,
+        "max": 50
+      },
+      "description": "From the 4-leaf stage until the plant reaches approximately knee-high stage (around 1/3rd of its final height). Rapid vegetative development occurs.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Second Top Dressing (if N split applied)",
+          "details": "Apply the remaining Nitrogen (N) dose (approx. 40-60 kg N/ha) at 40-45 days after sowing, coinciding with the knee-high stage. Apply Urea around the base of the plants and incorporate lightly.",
+          "fertilizer_npk": "40-60 kg N per hectare.",
+          "irrigation": "Irrigate immediately after top dressing to maximize nutrient uptake.",
+          "pest_management": "Monitor closely for Fall Armyworm (Spodoptera frugiperda) and stem borers. Early detection is key."
+        },
+        {
+          "step": 2,
+          "operation": "Earthing Up",
+          "details": "Perform earthing up at the time of second top dressing. This helps in supporting the plant, preventing lodging, and encouraging the development of prop roots.",
+          "fertilizer_npk": "N/A",
+          "irrigation": "Integrated with irrigation after top dressing.",
+          "pest_management": "Helps in burying larvae of stem borers, reducing their damage."
+        },
+        {
+          "step": 3,
+          "operation": "Weed Management",
+          "details": "Continue inter-cultivation and hand weeding to keep the field free from weeds, especially during the initial stages of rapid growth. Two to three inter-cultivations may be required.",
+          "fertilizer_npk": "N/A",
+          "irrigation": "Avoid excessive soil disturbance during irrigation.",
+          "pest_management": "Weeds act as alternative hosts for pests and diseases, so their removal is critical."
+        },
+        {
+          "step": 4,
+          "operation": "Critical Irrigation - I",
+          "details": "Ensure adequate soil moisture, especially during dry spells. The period from 20-25 days after sowing up to tasseling is critical for moisture and nutrient uptake. If rainfall is insufficient, provide irrigation.",
+          "fertilizer_npk": "N/A",
+          "irrigation": "Apply irrigation at intervals of 10-15 days depending on soil type and weather conditions, ensuring the soil remains moist.",
+          "pest_management": "Healthy plants are less susceptible to pests and diseases. Monitor for foliar diseases."
+        },
+        {
+          "step": 5,
+          "operation": "Pest Monitoring - Fall Armyworm (FAW)",
+          "details": "Regularly scout fields for the presence of FAW larvae, especially in the whorls of leaves. Look for characteristic 'shot-hole' damage and frass.",
+          "fertilizer_npk": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Spot application of insecticides or biological control agents. For detailed management, refer to disease/pest protocols."
+        },
+        {
+          "step": 6,
+          "operation": "Pest Monitoring - Stem Borers",
+          "details": "Check for dead hearts (the central shoot dries up and can be pulled out easily) caused by the first generation of stem borers (e.g., Chilo partellus).",
+          "fertilizer_npk": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Application of granular insecticides in the whorls or spray application. Refer to pest protocols."
+        },
+        {
+          "step": 7,
+          "operation": "Disease Monitoring - Leaf Blights",
+          "details": "Observe leaves for early symptoms of leaf blights (e.g., Turcicum leaf blight, Gray leaf spot).",
+          "fertilizer_npk": "N/A",
+          "irrigation": "Avoid overhead irrigation during periods conducive to disease development if possible.",
+          "pest_management": "Foliar sprays as per disease management protocols."
+        }
+      ],
+      "common_diseases": [
+        "leaf_blight",
+        "rust",
+        "downy_mildew",
+        "stem_borer",
+        "fall_armyworm"
+      ],
+      "preventive_tips": [
+        "Maintain optimal plant population.",
+        "Balanced fertilization.",
+        "Clean cultivation - remove weeds and crop residues.",
+        "Crop rotation with non-host crops.",
+        "Resistant varieties if available."
+      ]
+    },
+    {
+      "phase_id": "maize_3_flowering_pollination",
+      "phase_name": "Tasseling, Silking & Pollination",
+      "duration_days": {
+        "min": 15,
+        "max": 25
+      },
+      "description": "From the emergence of the tassel to the completion of silking and pollination. This is a critical phase for grain yield formation.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Critical Irrigation - II",
+          "details": "This is the most critical period for water requirement. Ensure consistent soil moisture. Water stress during tasseling, silking, and pollination can severely reduce grain yield and quality.",
+          "fertilizer_npk": "N/A",
+          "irrigation": "Apply irrigation at the onset of flowering (tasseling/silking) and if necessary, again after 7-10 days, especially in dry conditions. Drip irrigation is highly recommended.",
+          "pest_management": "Avoid any stress that weakens the plant."
+        },
+        {
+          "step": 2,
+          "operation": "Pollination Management",
+          "details": "Ensure good pollination by maintaining adequate plant population and avoiding herbicide application on silks. Wind is the primary pollinator.",
+          "fertilizer_npk": "N/A",
+          "irrigation": "Ensure adequate moisture to keep silks receptive.",
+          "pest_management": "Minimize disturbance during pollination. Avoid application of insecticides directly on silks as it can kill pollen. Insecticides applied in whorls can be safer."
+        },
+        {
+          "step": 3,
+          "operation": "Disease Monitoring - Stalk Rots",
+          "details": "Closely monitor plants for signs of stalk rots (e.g., Charcoal rot, Diplodia stalk rot, Fusarium stalk rot), especially if there were periods of water stress or high humidity.",
+          "fertilizer_npk": "N/A",
+          "irrigation": "Maintain consistent soil moisture to reduce stress that favors stalk rots.",
+          "pest_management": "Apply appropriate fungicides if disease pressure is high. Refer to stalk rot protocols."
+        },
+        {
+          "step": 4,
+          "operation": "Pest Monitoring - Earworm & Fall Armyworm",
+          "details": "Monitor for earworms (e.g., Helicoverpa armigera) that bore into developing ears and for Fall Armyworm larvae feeding on developing kernels.",
+          "fertilizer_npk": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Targeted application of insecticides on ears or using biological agents like NPV (Nuclear Polyhedrosis Virus). Refer to pest protocols."
+        },
+        {
+          "step": 5,
+          "operation": "Leaf Diseases",
+          "details": "Continue monitoring for leaf blights and rusts. The stress of flowering can make plants more susceptible.",
+          "fertilizer_npk": "N/A",
+          "irrigation": "Avoid prolonged leaf wetness.",
+          "pest_management": "Foliar fungicide application might be necessary if symptoms appear and conditions are favorable for spread. Refer to disease protocols."
+        },
+        {
+          "step": 6,
+          "operation": "Canopy Management (if necessary)",
+          "details": "In dense stands, some manual defoliation might be considered in extreme cases to improve air circulation and light penetration, but this is generally not recommended unless under severe disease pressure.",
+          "fertilizer_npk": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "N/A"
+        }
+      ],
+      "common_diseases": [
+        "stalk_rot",
+        "ear_rot",
+        "rust",
+        "leaf_blight",
+        "earworm",
+        "fall_armyworm"
+      ],
+      "preventive_tips": [
+        "Ensure timely and adequate irrigation.",
+        "Avoid mechanical injury to silks.",
+        "Promote good air circulation.",
+        "Use resistant varieties if susceptible to common diseases."
+      ]
+    },
+    {
+      "phase_id": "maize_4_grain_initiation_filling",
+      "phase_name": "Grain Initiation & Filling",
+      "duration_days": {
+        "min": 30,
+        "max": 40
+      },
+      "description": "From fertilization of silks to the point where kernels reach physiological maturity and moisture content starts to decline.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Sustained Irrigation",
+          "details": "Maintain adequate soil moisture throughout this phase. Though requirements may slightly decrease from peak pollination, consistent moisture is crucial for starch accumulation and kernel development.",
+          "fertilizer_npk": "N/A",
+          "irrigation": "Irrigate every 10-15 days, depending on soil type and weather. Reduce frequency towards the end of the phase.",
+          "pest_management": "Healthy plants continue to accumulate dry matter."
+        },
+        {
+          "step": 2,
+          "operation": "Disease Monitoring - Ear Rots",
+          "details": "Continue to monitor ears for symptoms of ear rots (e.g., Gibberella ear rot, Diplodia ear rot, Aspergillus ear rot). Look for discolored kernels, mold growth, and fungal structures.",
+          "fertilizer_npk": "N/A",
+          "irrigation": "Avoid overhead irrigation that can wet ears and promote disease spread.",
+          "pest_management": "Harvesting promptly at maturity can minimize damage. Refer to ear rot protocols."
+        },
+        {
+          "step": 3,
+          "operation": "Pest Monitoring - Kernel Feeders",
+          "details": "Watch for late-season insect pests that can feed on developing kernels, such as earworms and armyworms. Birds can also become a problem at this stage.",
+          "fertilizer_npk": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Bird deterrents (e.g., scarecrows, reflective tapes). Insecticide application might be needed if pest infestation is severe and economically damaging."
+        },
+        {
+          "step": 4,
+          "operation": "Nutrient Deficiency Monitoring",
+          "details": "Observe plants for signs of nutrient deficiencies, particularly Potassium (K) and Phosphorus (P) which are crucial during grain filling. Deficiency may manifest as yellowing or premature senescence.",
+          "fertilizer_npk": "N/A (unless specific deficiency identified for a foliar spray)",
+          "irrigation": "Ensure adequate water to facilitate nutrient uptake.",
+          "pest_management": "Healthy nutrition supports robust grain filling."
+        },
+        {
+          "step": 5,
+          "operation": "Early Stalk Rot Detection",
+          "details": "Continue monitoring for stalk strength. Some stalk rots might progress during grain filling, leading to premature lodging.",
+          "fertilizer_npk": "N/A",
+          "irrigation": "Avoid water stress.",
+          "pest_management": "Timely harvest is the best defense against lodging due to stalk rot."
+        },
+        {
+          "step": 6,
+          "operation": "Final Growth Assessment",
+          "details": "Assess kernel development. Kernels should be plump and milky. The black layer formation at the base of the kernel indicates physiological maturity.",
+          "fertilizer_npk": "N/A",
+          "irrigation": "Gradually reduce irrigation as maturity approaches.",
+          "pest_management": "N/A"
+        }
+      ],
+      "common_diseases": [
+        "ear_rot",
+        "stalk_rot",
+        "kernel_spot",
+        "bird_damage",
+        "insect_damage"
+      ],
+      "preventive_tips": [
+        "Ensure consistent moisture supply.",
+        "Protect ears from insect and bird damage.",
+        "Timely identification and management of stalk rots."
+      ]
+    },
+    {
+      "phase_id": "maize_5_maturity",
+      "phase_name": "Physiological Maturity & Drying",
+      "duration_days": {
+        "min": 10,
+        "max": 20
+      },
+      "description": "From the point where kernels reach maximum dry weight (physiological maturity) until they reach the desired moisture content for harvest.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Moisture Monitoring",
+          "details": "Monitor kernel moisture content regularly. Optimal harvest moisture for storage is typically 20-25% for grain maize. Higher moisture requires artificial drying.",
+          "fertilizer_npk": "N/A",
+          "irrigation": "Stop irrigation once physiological maturity is reached.",
+          "pest_management": "N/A"
+        },
+        {
+          "step": 2,
+          "operation": "Harvest Planning",
+          "details": "Plan for harvest based on weather forecasts and kernel moisture content. Harvesting at the right time prevents yield loss due to lodging or pest damage.",
+          "fertilizer_npk": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "N/A"
+        },
+        {
+          "step": 3,
+          "operation": "Harvesting",
+          "details": "Harvest using a combine harvester equipped with a maize header. Alternatively, manual harvesting of cobs can be done.",
+          "fertilizer_npk": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "N/A"
+        },
+        {
+          "step": 4,
+          "operation": "Field Cleaning",
+          "details": "After harvest, clear crop residues if necessary, especially if there is a history of disease. Residues can harbor pathogens and pests.",
+          "fertilizer_npk": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Removal of residues can reduce carry-over of certain pests and diseases."
+        },
+        {
+          "step": 5,
+          "operation": "Post-harvest Residue Management",
+          "details": "Chop and incorporate crop residues into the soil, or use them for fodder or bio-energy, depending on local practices and disease levels.",
+          "fertilizer_npk": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Reducing inoculum for next season."
+        },
+        {
+          "step": 6,
+          "operation": "Initial Drying (Field Drying)",
+          "details": "If harvested at higher moisture levels (>25%), allow grain to dry in the field if weather permits before shelling or on tarpaulins.",
+          "fertilizer_npk": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "N/A"
+        }
+      ],
+      "common_diseases": [
+        "lodging",
+        "grain_deterioration_due_to_moisture",
+        "post_harvest_rots"
+      ],
+      "preventive_tips": [
+        "Harvest at optimal moisture content.",
+        "Monitor weather conditions closely.",
+        "Protect harvested grain from moisture and pests."
+      ]
+    },
+    {
+      "phase_id": "maize_6_post_harvest",
+      "phase_name": "Post-Harvest Handling & Storage",
+      "duration_days": "Ongoing",
+      "description": "Activities after harvest, including shelling, drying, cleaning, grading, and storage of grain.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Shelling",
+          "details": "Remove kernels from the cobs using a maize sheller. Ensure the sheller is clean and adjusted to minimize kernel damage.",
+          "fertilizer_npk": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "N/A"
+        },
+        {
+          "step": 2,
+          "operation": "Cleaning & Grading",
+          "details": "Clean the shelled grain to remove chaff, foreign matter, and broken kernels. Grade the grain based on size and quality if required for specific markets.",
+          "fertilizer_npk": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Removal of impurities reduces pest infestation potential."
+        },
+        {
+          "step": 3,
+          "operation": "Drying",
+          "details": "If the moisture content is above 13-14%, artificial drying is essential for safe storage. Use a grain dryer or spread grain thinly on a clean, dry surface in a well-ventilated area. Avoid direct sunlight for prolonged periods for high-quality seed.",
+          "fertilizer_npk": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Proper drying prevents fungal growth and mycotoxin development."
+        },
+        {
+          "step": 4,
+          "operation": "Storage Preparation",
+          "details": "Ensure storage structures (e.g., silos, godowns, gunny bags) are clean, dry, and free from insect infestations. Fumigate if necessary.",
+          "fertilizer_npk": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Pre-storage sanitation is vital."
+        },
+        {
+          "step": 5,
+          "operation": "Storage",
+          "details": "Store the dried and cleaned grain in appropriate containers or structures, ensuring protection from moisture, pests, and rodents.",
+          "fertilizer_npk": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Regular monitoring of stored grain for pest activity (e.g., weevils, moths). Use approved protectants like Malathion dust @ 10 ppm for surface application if needed, or fumigation with Aluminium phosphide."
+        },
+        {
+          "step": 6,
+          "operation": "Quality Control",
+          "details": "Periodically check the stored grain for any signs of spoilage, insect infestation, or moisture reabsorption.",
+          "fertilizer_npk": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Prompt action if any infestation is detected."
+        },
+        {
+          "step": 7,
+          "operation": "Seed Storage Specifics",
+          "details": "For seed, maintain moisture content below 12% and store in cool, dry conditions, often in airtight containers or bags, to preserve viability.",
+          "fertilizer_npk": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Prevent insect damage that affects germination."
+        }
+      ],
+      "common_diseases": [
+        "storage_pests",
+        "fungal_deterioration",
+        "mycotoxin_contamination"
+      ],
+      "preventive_tips": [
+        "Maintain low moisture content (13-14% for grain, below 12% for seed).",
+        "Ensure proper aeration.",
+        "Use clean and pest-free storage facilities.",
+        "Regular monitoring of stored grain."
+      ]
+    }
+  ],
+  "disease_protocols": {
+    "turcicum_leaf_blight": {
+      "scientific_name": "Exserohilum turcicum (syn. Helminthosporium turcicum)",
+      "common_name": "Turcicum Leaf Blight",
+      "symptoms": [
+        "Long, elliptical, water-soaked lesions, initially olive-green, turning tan to brown.",
+        "Lesions often have ragged, necrotic margins.",
+        "Concentric zonation may be visible within larger lesions.",
+        "Severe infection leads to blighting of entire leaves, resembling frost damage.",
+        "Dark, fuzzy spore masses may form on lesions under humid conditions."
+      ],
+      "favorable_conditions": "Cool to moderate temperatures (15-25\u00b0C) with high humidity (above 90%) and prolonged leaf wetness. Frequent rainfall or dew favors rapid spread. Inoculum can survive on crop residues.",
+      "preventive_measures": [
+        "Use resistant or tolerant varieties.",
+        "Crop rotation with non-cereal crops.",
+        "Plow down infected crop residues.",
+        "Maintain optimal plant population and spacing for good air circulation.",
+        "Balanced fertilization, especially adequate potassium levels.",
+        "Avoid overhead irrigation late in the evening.",
+        "Early sowing to escape peak disease incidence."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Application of Trichoderma viride based bio-fungicides @ 5g/L of water at 15-day intervals from first appearance of symptoms.",
+          "Spraying of cow urine (diluted 1:10 with water) may have some repellent effect."
+        ],
+        "chemical": [
+          "Mancozeb 75% WP @ 2.0-2.5 g/L of water.",
+          "Chlorothalonil 75% WP @ 2.0 g/L of water.",
+          "Propiconazole 25% EC @ 1 ml/L of water.",
+          "Azoxystrobin 23% SC @ 1 ml/L of water.",
+          "Application should start at the first appearance of symptoms and repeat at 10-15 day intervals, depending on disease severity and weather conditions. Ensure thorough coverage of foliage."
+        ]
+      }
+    },
+    "common_rust": {
+      "scientific_name": "Puccinia sorghi",
+      "common_name": "Common Rust",
+      "symptoms": [
+        "Small, circular to elongated pustules (uredinia) on both sides of leaves, varying in color from pale orange to reddish-brown.",
+        "Pustules rupture to reveal powdery masses of spores.",
+        "Older lesions can become dark brown to black (telia).",
+        "In severe cases, leaves may yellow, dry up, and prematurely die.",
+        "Stalks and tassels can also be affected."
+      ],
+      "favorable_conditions": "Cool, humid conditions, particularly with morning dew and overcast skies. Susceptible varieties are most affected. The pathogen has an alternating host (Oxalis spp.) which aids its overwintering in some regions.",
+      "preventive_measures": [
+        "Plant resistant or tolerant varieties.",
+        "Crop rotation with non-host crops.",
+        "Maintain good soil fertility.",
+        "Ensure proper spacing for air circulation.",
+        "Destroy volunteer maize plants and infected stubble."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Spraying of neem oil (1%) combined with a spreader-sticker.",
+          "Application of aqueous extracts of certain plant materials like garlic or ginger."
+        ],
+        "chemical": [
+          "Propiconazole 25% EC @ 1 ml/L of water.",
+          "Hexaconazole 5% EC @ 2 ml/L of water.",
+          "Tebuconazole 25.9% EC @ 1 ml/L of water.",
+          "Application should commence at the first sign of disease, repeating every 10-14 days if conditions remain favorable. Spraying should be thorough, covering the entire foliage."
+        ]
+      }
+    },
+    "downy_mildew": {
+      "scientific_name": "Sclerophthora rayssiae var. zeae or Peronosclerospora sorghi",
+      "common_name": "Downy Mildew",
+      "symptoms": [
+        "Pale green to yellowish streaks on leaves, often parallel to leaf veins.",
+        "Under humid conditions, a white to purplish downy growth of sporangia may appear on the underside of infected leaves, especially in the morning.",
+        "Infected plants may be stunted, with shortened internodes (corky or crazy top symptoms) or deformed tassels.",
+        "Infection in young seedlings can lead to complete plant death."
+      ],
+      "favorable_conditions": "High humidity, prolonged leaf wetness, moderate temperatures (20-28\u00b0C), and rainfall. Oospores in soil and infected plant debris are primary inoculum.",
+      "preventive_measures": [
+        "Use resistant or tolerant hybrids.",
+        "Seed treatment with systemic fungicides (e.g., Metalaxyl).",
+        "Crop rotation with non-graminaceous crops.",
+        "Avoid planting susceptible varieties in areas with a history of the disease.",
+        "Proper drainage to avoid waterlogging.",
+        "Control of volunteer maize plants."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Regular application of copper-based fungicides (e.g., Copper oxychloride) at recommended intervals. Note: efficacy might be lower compared to systemic fungicides."
+        ],
+        "chemical": [
+          "Metalaxyl-M 4% FS for seed treatment @ 3-4 ml/kg seed.",
+          "Systemic fungicides like Metalaxyl-M 4% SL @ 1-1.5 ml/L of water or Fosetyl-Al 80% WP @ 2.5 g/L of water.",
+          "Application timing is critical; first spray at 20-25 days after sowing, followed by 2-3 sprays at 15-20 day intervals, depending on disease severity and weather. Ensure thorough coverage."
+        ]
+      }
+    },
+    "stalk_rot": {
+      "scientific_name": "Multiple species including Gibberella zeae (Fusarium graminearum), Diplodia maydis, Colletotrichum graminicola, Macrophomina phaseolina",
+      "common_name": "Stalk Rot",
+      "symptoms": [
+        "Premature drying and wilting of the plant, starting from upper leaves.",
+        "Lodging (breaking or leaning) of stalks, often above a node.",
+        "Cutting the stalk reveals discoloration of the pith (white, pink, brown, or black) and vascular bundles.",
+        "Rotten tissues may become hollow or brittle.",
+        "Small black pycnidia (Diplodia) or sclerotia (charcoal rot) may be visible on the internal tissues or external surface of the stalk.",
+        "Pinkish to reddish mold is typical of Gibberella/Fusarium."
+      ],
+      "favorable_conditions": "Periods of stress, such as drought followed by heavy rains, high humidity, waterlogging, lodging, hail damage, and insect injury to stalks create entry points for pathogens. High nitrogen fertilization can sometimes increase susceptibility if not balanced with potassium.",
+      "preventive_measures": [
+        "Plant resistant or tolerant hybrids.",
+        "Maintain balanced nutrition, especially adequate potassium levels.",
+        "Avoid excessive plant population and lodging.",
+        "Ensure good drainage and avoid water stress.",
+        "Control insect pests that damage stalks.",
+        "Plow down infected plant residues.",
+        "Crop rotation with non-host crops."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Application of Trichoderma harzianum based bio-agents around the base of plants during earthing up.",
+          "Compost application in soil."
+        ],
+        "chemical": [
+          "Fungicidal sprays are generally less effective once the disease is established inside the stalk.",
+          "However, some foliar sprays like Carbendazim 50% WP @ 1g/L or Mancozeb 75% WP @ 2.5g/L applied early during the susceptible period (tasseling to grain filling) might offer some protection against certain pathogens.",
+          "Application of Carbendazim @ 0.5% as a drench at the base of affected plants (if feasible) can help reduce spread."
+        ]
+      }
+    },
+    "gray_leaf_spot": {
+      "scientific_name": "Cercospora zeae-maydis",
+      "common_name": "Gray Leaf Spot",
+      "symptoms": [
+        "Small, rectangular, dark brown to black lesions that are limited by leaf veins.",
+        "Lesions may enlarge and become tan to grayish-brown with a dark border.",
+        "Under humid conditions, tiny black fruiting structures (conidiophores) may be visible within the lesions.",
+        "Severe infection causes leaves to wither and die."
+      ],
+      "favorable_conditions": "Warm and humid weather, typically found in mid to late season. High humidity and prolonged leaf wetness are conducive for spore germination and infection. Crop residues are a source of inoculum.",
+      "preventive_measures": [
+        "Plant resistant or tolerant hybrids.",
+        "Crop rotation with non-cereal crops.",
+        "Plow down crop residues.",
+        "Maintain optimal plant spacing for air circulation.",
+        "Balanced fertilization."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Application of neem oil (1-2%) or neem seed kernel extract.",
+          "Application of Bacillus subtilis based bio-fungicides."
+        ],
+        "chemical": [
+          "Chlorothalonil 75% WP @ 2.0 g/L of water.",
+          "Mancozeb 75% WP @ 2.0 g/L of water.",
+          "Azoxystrobin 23% SC @ 1 ml/L of water.",
+          "Pyraclostrobin 20% SC @ 1 ml/L of water.",
+          "First application at the onset of symptoms or when disease is predicted, followed by repeat sprays at 10-15 day intervals."
+        ]
+      }
+    },
+    "anthracnose": {
+      "scientific_name": "Colletotrichum graminicola",
+      "common_name": "Anthracnose (Leaf Blight and Stalk Rot)",
+      "symptoms": [
+        "Leaf Blight Phase: Oval to elongated necrotic lesions on leaves, often starting as yellow spots that turn brown to reddish-brown. Lesions may have dark borders and tan centers with small black dots (acervuli).",
+        "Stalk Rot Phase: Dark brown to black lesions on the stalk, particularly at the nodes. May cause premature wilting, lodging, and shredded pith.",
+        "Sometimes observed as a seedling blight phase."
+      ],
+      "favorable_conditions": "Warm and humid weather, frequent rainfall. High moisture and temperatures between 20-30\u00b0C favor rapid development. Crop debris and infected seeds are sources of inoculum.",
+      "preventive_measures": [
+        "Use resistant or tolerant hybrids.",
+        "Seed treatment with appropriate fungicides.",
+        "Crop rotation with non-host crops.",
+        "Plow down infected plant debris.",
+        "Maintain balanced fertility.",
+        "Avoid excessive lodging."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Application of Trichoderma based bio-agents.",
+          "Copper-based sprays (e.g., Copper oxychloride @ 2.5g/L) can offer some protection.",
+          "Neem oil applications."
+        ],
+        "chemical": [
+          "For leaf blight: Mancozeb 75% WP @ 2.0 g/L, Chlorothalonil 75% WP @ 2.0 g/L, Propiconazole 25% EC @ 1 ml/L.",
+          "For stalk rot: Less effective once inside stalk. Preventive foliar sprays on susceptible stages are advised.",
+          "Repeat sprays at 10-15 day intervals as needed."
+        ]
+      }
+    },
+    "common_smut": {
+      "scientific_name": "Ustilago maydis",
+      "common_name": "Common Smut",
+      "symptoms": [
+        "Gall-like swellings (tumors) of various sizes on leaves, stems, tassels, ears, and silks.",
+        "Young galls are firm and white or greenish-white.",
+        "As they mature, galls rupture to release masses of black, powdery spores.",
+        "Tassels may be completely replaced by galls.",
+        "Infected ears may have fewer kernels or kernels replaced by galls."
+      ],
+      "favorable_conditions": "Warm temperatures (20-30\u00b0C) with moderate to high humidity. Wounding of plant tissues, such as from hail, insect damage, or mechanical injury, facilitates infection. Spores can survive in soil and on crop residues.",
+      "preventive_measures": [
+        "Plant resistant or less susceptible hybrids.",
+        "Avoid plant injury through careful cultivation and pest management.",
+        "Crop rotation.",
+        "Plow down infected plant residues.",
+        "Remove and destroy galls before they sporulate, if feasible and practical, especially on ears.",
+        "Balanced fertilization."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Removal and destruction of infected plant parts (galls) before they sporulate.",
+          "Application of beneficial microorganisms like Trichoderma."
+        ],
+        "chemical": [
+          "Chemical control is generally not economically feasible for large-scale field applications once the disease is present. Preventive seed treatments with systemic fungicides can help reduce early seedling infection but do not prevent later systemic infections.",
+          "No effective chemical sprays are recommended for established galls."
+        ]
+      }
+    },
+    "northern_leaf_blight": {
+      "scientific_name": "Setosphaeria turcica (anamorph: Exserohilum turcicum)",
+      "common_name": "Northern Leaf Blight",
+      "symptoms": [
+        "Long (up to 15 cm), cigar-shaped, gray to tan lesions with a dark brown border.",
+        "Lesions appear on leaves, leaf sheaths, and husks.",
+        "Concentric rings (target-like appearance) may be visible within lesions.",
+        "In severe cases, extensive blighting and premature death of leaves occur.",
+        "Black, filamentous conidia may be produced on the surface of lesions in humid conditions."
+      ],
+      "favorable_conditions": "Cool (15-25\u00b0C) and humid weather, prolonged leaf wetness, and moderate temperatures. Inoculum survives on overwintered crop debris.",
+      "preventive_measures": [
+        "Plant resistant or tolerant hybrids (widely available).",
+        "Crop rotation with non-host crops.",
+        "Thorough plowing of infected crop residues into the soil.",
+        "Maintain proper plant spacing for good air circulation.",
+        "Balanced fertilization, with adequate potassium.",
+        "Avoid late planting if possible."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Application of Trichoderma based bio-fungicides @ 5g/L at 15-20 day intervals.",
+          "Neem oil or neem seed kernel extract sprays."
+        ],
+        "chemical": [
+          "Mancozeb 75% WP @ 2.0-2.5 g/L.",
+          "Chlorothalonil 75% WP @ 2.0 g/L.",
+          "Propiconazole 25% EC @ 1 ml/L.",
+          "Azoxystrobin 23% SC @ 1 ml/L.",
+          "First spray at the first appearance of lesions, followed by repeat applications at 10-15 day intervals based on disease progression and weather. Ensure thorough coverage of foliage."
+        ]
+      }
+    },
+    "charcoal_rot": {
+      "scientific_name": "Macrophomina phaseolina",
+      "common_name": "Charcoal Rot",
+      "symptoms": [
+        "Sudden wilting and premature death of plants, especially under drought stress.",
+        "Stalks become brittle and lodge, often appearing dry and bleached.",
+        "Cutting open the stalk reveals small, black, irregular spots or streaks within the pith and vascular tissues, resembling charcoal dust.",
+        "Small, black, microsclerotia are present within the infected tissues.",
+        "Can also cause seedling blight and ear rot."
+      ],
+      "favorable_conditions": "Hot and dry weather, particularly during the grain-filling stage, combined with soil moisture deficit. The fungus is soil-borne and produces highly resistant microsclerotia.",
+      "preventive_measures": [
+        "Plant resistant or tolerant hybrids.",
+        "Ensure adequate soil moisture through irrigation, especially during critical stages.",
+        "Maintain balanced nutrition, particularly sufficient potassium.",
+        "Avoid plant stress.",
+        "Crop rotation with non-host crops.",
+        "Plow down crop residues."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Application of Bacillus subtilis based bio-agents or Trichoderma harzianum.",
+          "Incorporation of organic matter into the soil."
+        ],
+        "chemical": [
+          "Chemical control of charcoal rot in the field is challenging and often not economically viable.",
+          "Seed treatment with fungicides like Carbendazim can help protect seedlings.",
+          "No effective post-infection foliar sprays are recommended."
+        ]
+      }
+    }
+  },
+  "pest_protocols": {
+    "fall_armyworm": {
+      "scientific_name": "Spodoptera frugiperda",
+      "common_name": "Fall Armyworm (FAW)",
+      "symptoms": [
+        "Larvae feed voraciously on leaves, creating 'shot-hole' or window-pane appearance.",
+        "Characteristic feeding damage in the whorl of young plants, leading to 'dead hearts'.",
+        "Larvae may bore into developing ears and feed on kernels.",
+        "Presence of larval frass (excrement) in the whorls or on damaged plant parts."
+      ],
+      "favorable_conditions": "Warm temperatures, moderate humidity. FAW can reproduce rapidly. Early detection is crucial due to its destructive nature and high mobility.",
+      "preventive_measures": [
+        "Regular scouting and early detection (weekly scouting is recommended).",
+        "Use of pheromone traps to monitor adult moth populations.",
+        "Planting of trap crops around the main field.",
+        "Maintaining field sanitation.",
+        "Encouraging natural predators and parasitoids.",
+        "Resistant varieties (research ongoing).",
+        "Timely sowing to avoid peak infestation periods if predictable."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Release of parasitoids like Trichogramma spp. or Chelonus spp.",
+          "Application of Nuclear Polyhedrosis Virus (NPV) of Spodoptera frugiperda @ 250 LE/ha.",
+          "Spraying of neem-based formulations like Azadirachtin 1500 ppm @ 3-5 ml/L of water.",
+          "Application of microbial pesticides like Bacillus thuringiensis (Bt) formulations.",
+          "Application of Emamectin benzoate 5% SG @ 0.4 g/L of water (often considered semi-biological/biological with low impact on beneficials)."
+        ],
+        "chemical": [
+          "Chlorantraniliprole 18.5% SC @ 0.4 ml/L of water.",
+          "Lambda-cyhalothrin 5% EC @ 1 ml/L of water.",
+          "Thiamethoxam 12.6% + Lambda-cyhalothrin 9.5% ZC @ 0.5 ml/L of water.",
+          "Emamectin benzoate 5% SG @ 0.4 g/L of water.",
+          "Application should be directed into the whorls of plants. First application at the onset of infestation, repeat at 10-15 day intervals. Rotate insecticides with different modes of action to prevent resistance."
+        ]
+      }
+    },
+    "maize_stem_borer": {
+      "scientific_name": "Chilo partellus (Spotted stalk borer is more common in India)",
+      "common_name": "Maize Stem Borer",
+      "symptoms": [
+        "Characteristic 'dead heart' symptom in young plants (central shoot dries up and can be easily pulled out).",
+        "Entry and exit holes on the stem.",
+        "Presence of borer tunnels within the stem.",
+        "In later stages, girdling of stem leading to lodging.",
+        "Presence of frass near entry holes."
+      ],
+      "favorable_conditions": "Warm temperatures and moderate humidity. Overwinters in crop residues. Multiple generations per year.",
+      "preventive_measures": [
+        "Plowing down crop residues to destroy overwintering larvae.",
+        "Crop rotation with non-host crops.",
+        "Timely sowing.",
+        "Intercropping with leguminous crops or other deterrent plants.",
+        "Application of neem cake @ 250 kg/ha at the time of last ploughing.",
+        "Use of pheromone traps to monitor moth activity."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Release of parasitoids like Trichogramma chilonis.",
+          "Application of NPV of Chilo partellus.",
+          "Spraying of neem oil (5ml/L) or neem seed kernel extract (50g/L).",
+          "Application of Bt formulations."
+        ],
+        "chemical": [
+          "Application of granular insecticides like Carbofuran 3% G @ 15 kg/ha or Phorate 10% G @ 10 kg/ha applied in the whorls at 20-25 days after sowing.",
+          "Spray application of Chlorpyriphos 20% EC @ 2.5 ml/L or Quinalphos 25% EC @ 2 ml/L when dead hearts are observed.",
+          "For later stages, application of Cypermethrin 10% EC @ 1 ml/L or Emamectin benzoate 5% SG @ 0.4 g/L."
+        ]
+      }
+    },
+    "maize_earworm": {
+      "scientific_name": "Helicoverpa armigera",
+      "common_name": "Maize Earworm",
+      "symptoms": [
+        "Larvae bore into developing ears and feed on kernels, especially near the tip.",
+        "Webbing and frass are often found within the ears.",
+        "Damage starts at the tip of the ear and progresses downwards.",
+        "Damaged kernels provide entry for secondary fungal infections (e.g., ear rots)."
+      ],
+      "favorable_conditions": "Warm and dry conditions during the silking and grain-filling stages. Adult moths are active and lay eggs on silks.",
+      "preventive_measures": [
+        "Ear-breaking or ear-tipping can sometimes dislodge larvae and expose them.",
+        "Timely harvest to reduce exposure time.",
+        "Encourage natural enemies.",
+        "Pheromone traps for monitoring adult population."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Application of NPV of Helicoverpa armigera.",
+          "Spraying of neem-based insecticides (Azadirachtin 1500 ppm @ 3-5 ml/L).",
+          "Application of Emamectin benzoate 5% SG @ 0.4 g/L (can be considered in IPM programs)."
+        ],
+        "chemical": [
+          "Chlorantraniliprole 18.5% SC @ 0.4 ml/L of water.",
+          "Lambda-cyhalothrin 5% EC @ 1 ml/L of water.",
+          "Cypermethrin 10% EC @ 1 ml/L of water.",
+          "Application should be directed towards the ears during silking and early grain development. Repeat applications may be needed based on pest pressure."
+        ]
+      }
+    },
+    "aphids": {
+      "scientific_name": "Rhopalosiphum maidis (Corn leaf aphid)",
+      "common_name": "Aphids",
+      "symptoms": [
+        "Small, pear-shaped insects, typically green or bluish-green, found clustered in leaf whorls, on silks, and undersides of leaves.",
+        "Suck sap, causing yellowing, stunting, and reduced vigor.",
+        "Excrete honeydew, which promotes the growth of sooty mold, impairing photosynthesis.",
+        "Can transmit viral diseases (though less significant in maize compared to other crops)."
+      ],
+      "favorable_conditions": "Mild winters and early springs. Rapid reproduction through parthenogenesis. Can build up large populations quickly.",
+      "preventive_measures": [
+        "Maintain plant vigor through balanced nutrition and adequate irrigation.",
+        "Encourage natural enemies like lady beetles, lacewings, and hoverflies.",
+        "Avoid excessive use of broad-spectrum insecticides that kill beneficial insects."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Spraying of neem oil (5 ml/L) or neem seed kernel extract (50 g/L).",
+          "Application of soap solution (10g/L of mild soap).",
+          "Release of natural enemies."
+        ],
+        "chemical": [
+          "Imidacloprid 17.7% SL @ 0.3 ml/L of water.",
+          "Acetamiprid 20% SP @ 0.5 g/L of water.",
+          "Thiamethoxam 25% WG @ 0.25 g/L of water.",
+          "Application when aphid population reaches economic threshold levels. Ensure thorough coverage, especially in whorls and leaf axils."
+        ]
+      }
+    },
+    "white_grubs": {
+      "scientific_name": "Various Scarabaeidae larvae (e.g., Holotrichia spp.)",
+      "common_name": "White Grubs",
+      "symptoms": [
+        "Damage to roots and underground stem portions, leading to wilting and stunting of plants.",
+        "In severe cases, plants may die or lodge easily due to root damage.",
+        "Yellowing of leaves, similar to drought stress.",
+        "Presence of C-shaped, pale larvae with brown heads in the soil.",
+        "Adult beetles emerge at dusk and feed on foliage."
+      ],
+      "favorable_conditions": "Soil moisture is crucial for grub survival. Adults are attracted to light. Overwinter in soil.",
+      "preventive_measures": [
+        "Deep summer plowing to expose grubs and pupae to sun and predators.",
+        "Crop rotation, avoiding susceptible crops.",
+        "Collecting and destroying adult beetles attracted to light traps.",
+        "Soil application of neem cake during land preparation."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Application of Beauveria bassiana or Metarhizium anisopliae based microbial insecticides.",
+          "Soil application of neem cake @ 250 kg/ha."
+        ],
+        "chemical": [
+          "Soil application of granular insecticides like Chlorpyriphos 20% EC @ 20 kg/ha or Phorate 10% G @ 10 kg/ha at the time of sowing or during field preparation.",
+          "Application of Imidacloprid 48% FS as seed treatment (for very early stages)."
+        ]
+      }
+    },
+    "armyworm_(general)": {
+      "scientific_name": "Mythimna separata",
+      "common_name": "Armyworm",
+      "symptoms": [
+        "Larvae feed gregariously on leaves, defoliating plants from the tip downwards.",
+        "Can cause complete defoliation in severe infestations, leading to significant yield loss.",
+        "Damaged leaves appear ragged and eaten away, leaving only midribs.",
+        "Larvae are nocturnal and hide in the soil or leaf litter during the day."
+      ],
+      "favorable_conditions": "Periods of high humidity and rainfall, often following dry spells. Can migrate long distances.",
+      "preventive_measures": [
+        "Regular scouting of fields, especially in the early morning or late evening.",
+        "Plow down crop residues.",
+        "Maintain field sanitation.",
+        "Encourage natural enemies.",
+        "Use pheromone traps to monitor adult moth populations."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Application of NPV (Nuclear Polyhedrosis Virus) of Mythimna separata.",
+          "Spraying of neem-based formulations (Azadirachtin 1500 ppm @ 3-5 ml/L).",
+          "Application of Bacillus thuringiensis (Bt) formulations."
+        ],
+        "chemical": [
+          "Chlorpyriphos 20% EC @ 2.5 ml/L of water.",
+          "Quinalphos 25% EC @ 2 ml/L of water.",
+          "Lambda-cyhalothrin 5% EC @ 1 ml/L of water.",
+          "Application when larvae are young and feeding gregariously. Direct sprays to foliage. Repeat if necessary."
+        ]
+      }
+    },
+    "maize_thrips": {
+      "scientific_name": "Frankliniella williamsi",
+      "common_name": "Maize Thrips",
+      "symptoms": [
+        "Tiny, slender insects, often found on silks, tassels, and undersides of leaves.",
+        "Cause silvery streaks or blotches on leaves due to rasping and sucking plant sap.",
+        "Damage to silks can impair pollination, leading to poorly filled ears.",
+        "Can transmit viruses (less common in maize)."
+      ],
+      "favorable_conditions": "Warm and dry conditions. Population build-up can be rapid.",
+      "preventive_measures": [
+        "Maintain plant health with adequate nutrition and irrigation.",
+        "Encourage natural enemies (e.g., predatory mites, lady beetles).",
+        "Avoid excessive nitrogen fertilization, which can attract thrips."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Spraying of neem oil (5 ml/L) or soap solution (10 g/L).",
+          "Application of botanical insecticides like pyrethrum extracts."
+        ],
+        "chemical": [
+          "Imidacloprid 17.7% SL @ 0.3 ml/L of water.",
+          "Acetamiprid 20% SP @ 0.5 g/L of water.",
+          "Application when thrips are observed, especially on silks and tassels. Repeat if necessary."
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "icar_paddy_001",
+    "crop": "Paddy",
+    "topic": "Nutrient Management",
+    "stage": "Tillering",
+    "dap_start": 20,
+    "dap_end": 35,
+    "content": "Apply first top dressing of Nitrogen. Apply 50% of recommended Nitrogen (approx 20-25 kg/ha) at active tillering stage, 25-30 days after transplanting. Maintain shallow water depth of 2-3 cm during application.",
+    "source": "ICAR Rice Package of Practices 2023"
+  },
+  {
+    "id": "icar_paddy_002",
+    "crop": "Paddy",
+    "topic": "Disease Management",
+    "stage": "Vegetative",
+    "dap_start": 15,
+    "dap_end": 45,
+    "content": "Blast disease risk is high under high humidity (>85%) and cool temperatures. Symptoms: Spindle shaped spots with grey centre and brown margin. Spray Tricyclazole 75 WP @ 0.6 g/l or Propiconazole 25 EC @ 1 ml/l as preventive measure if weather is cloudy.",
+    "source": "ICAR Pest & Disease Guidelines"
+  },
+  {
+    "id": "icar_paddy_003",
+    "crop": "Paddy",
+    "topic": "Water Management",
+    "stage": "Panicle Initiation",
+    "dap_start": 45,
+    "dap_end": 60,
+    "content": "Critical stage for moisture. Maintain 5 cm standing water. Water stress at this stage leads to severe reduction in grain yield.",
+    "source": "ICAR Rice Package of Practices 2023"
+  },
+  {
+    "id": "icar_paddy_004",
+    "crop": "Paddy",
+    "topic": "Weed Management",
+    "stage": "Early Vegetative",
+    "dap_start": 3,
+    "dap_end": 15,
+    "content": "Apply pre-emergence herbicide like Pretilachlor 50 EC @ 1.25 kg/ha within 3-5 days after transplanting. Keep a thin film of water.",
+    "source": "ICAR Rice Package of Practices 2023"
+  },
+  {
+    "id": "icar_ragi_001",
+    "crop": "Ragi",
+    "topic": "Nutrient Management",
+    "stage": "Vegetative",
+    "dap_start": 25,
+    "dap_end": 30,
+    "content": "Top dress with 25 kg N/ha at 25-30 days after sowing when moisture is available in the soil.",
+    "source": "ICAR Millets Guidelines"
+  }
+]

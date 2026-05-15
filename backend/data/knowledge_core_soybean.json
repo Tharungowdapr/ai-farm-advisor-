@@ -1,0 +1,646 @@
+{
+  "crop_info": {
+    "name": "Soybean",
+    "scientific_name": "Glycine max",
+    "family": "Fabaceae",
+    "origin": "East Asia",
+    "botanical_description": "Annual herbaceous legume, typically erect and bushy, with trifoliate leaves. Flowers are usually white or purple, and pods are hairy, containing 1-5 seeds. Seeds are globular to oval and vary in color from yellow to black.",
+    "economic_importance": "Major source of edible oil and protein for humans and livestock. Also used in industrial applications (e.g., plastics, paints, biodiesel).",
+    "varieties": [
+      "JS 335",
+      "JS 93-05",
+      "PK 472",
+      "VLS 47",
+      "NRC 12",
+      "NRC 7"
+    ],
+    "total_duration_days": "90-140 days (depending on variety and agro-climatic conditions)",
+    "ideal_climate": {
+      "temperature": "20-30\u00b0C (optimal for vegetative and reproductive growth)",
+      "rainfall": "600-800mm (well-distributed throughout the growing season)",
+      "humidity": "Moderate to high (favors disease development in some cases)",
+      "soil_type": "Well-drained loamy to clay-loam soils with pH 6.0-7.5",
+      "light_requirement": "Full sunlight"
+    }
+  },
+  "lifecycle_phases": [
+    {
+      "phase_id": "soybean_1_nursery_sowing",
+      "phase_name": "Nursery & Sowing",
+      "duration_days": "7-10 days (pre-sowing activities)",
+      "description": "Preparation of the field and sowing of seeds, ensuring optimal germination and early establishment of seedlings. This phase includes seed treatment and proper planting techniques.",
+      "procedures": [
+        {
+          "step": 1,
+          "name": "Field Preparation",
+          "description": "Ploughing to a depth of 15-20 cm, followed by harrowing to achieve a fine tilth. Incorporate well-decomposed farmyard manure (FYM) at 10-15 tons/ha or compost at 5-7 tons/ha. Create broadbeds or ridges and furrows if drainage is a concern.",
+          "npk_dose": {
+            "basal": "40 kg N, 80 kg P2O5, 60 kg K2O per hectare"
+          },
+          "irrigation_schedule": "N.A. (pre-sowing preparation)",
+          "pest_management": []
+        },
+        {
+          "step": 2,
+          "name": "Seed Selection & Treatment",
+          "description": "Select healthy, bold, and viable seeds. Treat seeds with appropriate fungicides to protect against soil-borne diseases and insecticides against early insect pests.",
+          "npk_dose": null,
+          "irrigation_schedule": "N.A.",
+          "pest_management": [
+            "Fungicide: Thiram (2g/kg seed) or Carbendazim (1g/kg seed) or Captan (2.5g/kg seed).",
+            "Insecticide: Imidacloprid (3ml/kg seed) or Thiamethoxam (2g/kg seed) for sucking pests."
+          ]
+        },
+        {
+          "step": 3,
+          "name": "Rhizobium Inoculation",
+          "description": "Inoculate seeds with specific soybean Rhizobium culture (e.g., R. japonicum) before sowing. This enhances nitrogen fixation, reducing the need for N fertilizers. Use 10g sticker (jaggery solution or starch paste) per kg of seed to bind the inoculum.",
+          "npk_dose": null,
+          "irrigation_schedule": "N.A.",
+          "pest_management": []
+        },
+        {
+          "step": 4,
+          "name": "Sowing",
+          "description": "Sow treated and inoculated seeds at a uniform depth of 3-5 cm. Maintain a spacing of 30-45 cm between rows and 10-15 cm between plants, depending on the variety and soil fertility. For kharif sowing, optimum time is usually July-August.",
+          "npk_dose": null,
+          "irrigation_schedule": "N.A.",
+          "pest_management": []
+        },
+        {
+          "step": 5,
+          "name": "Phosphorus Solubilizing Bacteria (PSB) Inoculation",
+          "description": "Optional but recommended for improved phosphorus availability. Inoculate seeds with PSB culture (e.g., Bacillus megaterium var. phosphaticum) along with Rhizobium inoculum.",
+          "npk_dose": null,
+          "irrigation_schedule": "N.A.",
+          "pest_management": []
+        },
+        {
+          "step": 6,
+          "name": "Post-Sowing Irrigation",
+          "description": "Apply a light irrigation immediately after sowing to ensure good seed-soil contact and facilitate germination.",
+          "npk_dose": null,
+          "irrigation_schedule": "Immediately after sowing.",
+          "pest_management": []
+        }
+      ]
+    },
+    {
+      "phase_id": "soybean_2_vegetative",
+      "phase_name": "Vegetative Stage (Seedling to Vegetative Growth)",
+      "duration_days": "25-35 days",
+      "description": "Period from seedling emergence to the initiation of flowering. Characterized by rapid leaf and stem development, formation of trifoliate leaves, and establishment of a robust root system. Critical for plant architecture and future yield potential.",
+      "procedures": [
+        {
+          "step": 1,
+          "name": "Weed Management",
+          "description": "Timely and effective weed control is crucial as weeds compete for nutrients, water, and sunlight. Manual weeding or intercultural operations like hoeing are recommended within 20-30 days after sowing.",
+          "npk_dose": null,
+          "irrigation_schedule": "As needed based on soil moisture.",
+          "pest_management": [
+            "Herbicides: Pre-emergence application of Pendimethalin (0.75-1.0 kg a.i./ha) or Oxyfluorfen (0.25 kg a.i./ha) followed by one or two manual weeding/hoeing operations."
+          ]
+        },
+        {
+          "step": 2,
+          "name": "Top Dressing Fertilizer",
+          "description": "Apply a top dressing of nitrogen and phosphorus fertilizer at the time of first hoeing (around 20-25 days after sowing) to support vigorous vegetative growth.",
+          "npk_dose": {
+            "top_dressing": "20 kg N per hectare"
+          },
+          "irrigation_schedule": "After fertilizer application.",
+          "pest_management": []
+        },
+        {
+          "step": 3,
+          "name": "Irrigation",
+          "description": "Maintain adequate soil moisture. Avoid waterlogging, which can lead to root rot. Irrigate if rainfall is insufficient, especially during dry spells.",
+          "npk_dose": null,
+          "irrigation_schedule": "Irrigate at 7-10 days interval based on soil moisture and weather conditions. Critical stages for water are branching, flowering, and pod development.",
+          "pest_management": []
+        },
+        {
+          "step": 4,
+          "name": "Pest Monitoring (Early Season)",
+          "description": "Regularly scout fields for early season pests like leaf miner, stem fly, and girdle beetle.",
+          "npk_dose": null,
+          "irrigation_schedule": "N.A.",
+          "pest_management": [
+            "Leaf Miner: Spray Emamectin Benzoate (0.5 ml/l) or Chlorantraniliprole (0.4 ml/l) if infestation exceeds ETL.",
+            "Stem Fly: Seed treatment usually provides control. If severe, application of Phorate (10 G) granules in soil at the time of sowing or spray of systemic insecticides.",
+            "Girdle Beetle: Removal and destruction of infested stems. In severe cases, spray Lambda-cyhalothrin (0.5 ml/l)."
+          ]
+        },
+        {
+          "step": 5,
+          "name": "Disease Monitoring (Early Season)",
+          "description": "Observe seedlings for signs of damping off and other early season diseases.",
+          "npk_dose": null,
+          "irrigation_schedule": "N.A.",
+          "pest_management": [
+            "Damping off: Ensure good drainage, avoid over-irrigation, and use treated seeds."
+          ]
+        },
+        {
+          "step": 6,
+          "name": "Plant Population Adjustment",
+          "description": "If necessary, thin out excess seedlings to maintain the optimal plant population and ensure uniform growth.",
+          "npk_dose": null,
+          "irrigation_schedule": "N.A.",
+          "pest_management": []
+        }
+      ]
+    },
+    {
+      "phase_id": "soybean_3_flowering",
+      "phase_name": "Flowering Stage",
+      "duration_days": "20-25 days",
+      "description": "Initiation of flower buds followed by blooming. This is a highly sensitive stage, and stress from drought, nutrient deficiency, or pest/disease attack can significantly reduce the number of flowers and subsequent pod set.",
+      "procedures": [
+        {
+          "step": 1,
+          "name": "Critical Irrigation",
+          "description": "Ensure adequate soil moisture. This is a critical stage for water requirement. Avoid water stress.",
+          "npk_dose": null,
+          "irrigation_schedule": "Irrigate every 7-10 days if rainfall is inadequate. Maintain soil moisture at 60% DAS (Dry Soil Moisture)",
+          "pest_management": []
+        },
+        {
+          "step": 2,
+          "name": "Nutrient Management (Optional Foliar Application)",
+          "description": "If visual deficiency symptoms appear or under stress conditions, a foliar application of micronutrients might be beneficial.",
+          "npk_dose": {
+            "foliar": "Potassium nitrate (1%) or Boron (0.1%) or Zinc Sulphate (0.2%) can be applied, if deficiency is observed."
+          },
+          "irrigation_schedule": "Avoid spraying during peak sunlight hours.",
+          "pest_management": []
+        },
+        {
+          "step": 3,
+          "name": "Pest Monitoring (Flowering Stage)",
+          "description": "Vigilant monitoring for major pests like Helicoverpa (pod borer), Spodoptera (cutworm/armyworm), whiteflies, and aphids.",
+          "npk_dose": null,
+          "irrigation_schedule": "N.A.",
+          "pest_management": [
+            "Helicoverpa armigera: Install pheromone traps (5-10/ha). If infestation exceeds ETL, spray Chlorantraniliprole (0.4 ml/l) or Spinosad (0.25 ml/l) or Emamectin Benzoate (0.5 ml/l).",
+            "Whitefly: Monitor for population. Spray Imidacloprid (0.3 ml/l) or Acetamiprid (0.3 g/l) or Thiamethoxam (0.25 g/l).",
+            "Aphids: Spray Dimethoate (0.3 ml/l) or Malathion (1 ml/l)."
+          ]
+        },
+        {
+          "step": 4,
+          "name": "Disease Monitoring (Flowering Stage)",
+          "description": "Watch for early signs of major diseases like Yellow Mosaic Virus, Rust, and Bacterial Pustule.",
+          "npk_dose": null,
+          "irrigation_schedule": "N.A.",
+          "pest_management": [
+            "Yellow Mosaic Virus: Control of whitefly vector is paramount. Eradication of infected plants."
+          ]
+        },
+        {
+          "step": 5,
+          "name": "Pollination Support",
+          "description": "Encourage natural pollinators like bees by avoiding broad-spectrum insecticide application during peak flowering hours.",
+          "npk_dose": null,
+          "irrigation_schedule": "N.A.",
+          "pest_management": []
+        },
+        {
+          "step": 6,
+          "name": "Intercultural Operations",
+          "description": "Light hoeing may be required if weeds emerge, but avoid root damage.",
+          "npk_dose": null,
+          "irrigation_schedule": "N.A.",
+          "pest_management": []
+        }
+      ]
+    },
+    {
+      "phase_id": "soybean_4_pod_grain_initiation",
+      "phase_name": "Pod & Grain Initiation",
+      "duration_days": "25-30 days",
+      "description": "After fertilization, pods start to develop, and seeds begin to form within the pods. This stage requires significant nutrient and water supply. Pod setting and early seed development are critical for final yield.",
+      "procedures": [
+        {
+          "step": 1,
+          "name": "Sustained Irrigation",
+          "description": "Maintain consistent soil moisture. This is the most critical period for water requirement. Reduced water availability leads to reduced pod setting and smaller seed size.",
+          "npk_dose": null,
+          "irrigation_schedule": "Irrigate at 7-10 day intervals, ensuring the soil is moist up to 30-45 cm depth. Avoid water stress at all costs.",
+          "pest_management": []
+        },
+        {
+          "step": 2,
+          "name": "Pest Management (Pod Borer Focus)",
+          "description": "Pod borers are a major threat during this phase. Intensive monitoring and timely intervention are crucial.",
+          "npk_dose": null,
+          "irrigation_schedule": "N.A.",
+          "pest_management": [
+            "Helicoverpa armigera: Continue monitoring with pheromone traps. Apply insecticides like Chlorantraniliprole (0.4 ml/l), Spinosad (0.25 ml/l), or Emamectin Benzoate (0.5 ml/l) based on ETL. Neem oil (5 ml/l) can be used as an organic option for early stages.",
+            "Whitefly: Continue monitoring and control as recommended in the flowering stage to prevent Yellow Mosaic Virus spread."
+          ]
+        },
+        {
+          "step": 3,
+          "name": "Disease Management",
+          "description": "Monitor for diseases like Rust, Bacterial Blight, and late-season Yellow Mosaic Virus.",
+          "npk_dose": null,
+          "irrigation_schedule": "N.A.",
+          "pest_management": [
+            "Soybean Rust: Prophylactic spray of Hexaconazole (1 ml/l) or Propiconazole (1 ml/l) if conditions are favorable (high humidity, moderate temperature).",
+            "Bacterial Blight: Copper Oxychloride (2.5 g/l) or Streptocycline (0.5 g/l) if symptoms appear."
+          ]
+        },
+        {
+          "step": 4,
+          "name": "Nutrient Support (If Deficiencies Observed)",
+          "description": "Foliar application of Potassium and Boron can improve pod set and seed development. Ensure adequate Phosphorus and Potassium through basal application.",
+          "npk_dose": {
+            "foliar": "Potassium sulphate (1%) or Borax (0.1%)"
+          },
+          "irrigation_schedule": "Apply when stomata are open (early morning or late evening).",
+          "pest_management": []
+        },
+        {
+          "step": 5,
+          "name": "Crop Stand Maintenance",
+          "description": "Ensure a healthy crop stand. Remove severely affected plants by diseases or pests.",
+          "npk_dose": null,
+          "irrigation_schedule": "N.A.",
+          "pest_management": []
+        },
+        {
+          "step": 6,
+          "name": "Lodging Prevention",
+          "description": "Avoid excessive nitrogen application to prevent lodging, which can hinder harvesting and increase disease incidence.",
+          "npk_dose": null,
+          "irrigation_schedule": "N.A.",
+          "pest_management": []
+        }
+      ]
+    },
+    {
+      "phase_id": "soybean_5_maturity",
+      "phase_name": "Maturity",
+      "duration_days": "20-25 days",
+      "description": "Characterized by senescence, where leaves turn yellow and begin to drop. Pods mature and dry, and seeds fill out. This phase leads to physiological maturity.",
+      "procedures": [
+        {
+          "step": 1,
+          "name": "Controlled Irrigation",
+          "description": "Gradually reduce irrigation as the crop approaches maturity to facilitate drying and prevent shattering.",
+          "npk_dose": null,
+          "irrigation_schedule": "Reduce irrigation frequency. Stop irrigation when leaves start yellowing and dropping significantly.",
+          "pest_management": []
+        },
+        {
+          "step": 2,
+          "name": "Disease Monitoring (Pod Blight Focus)",
+          "description": "Monitor for diseases affecting pods and seeds like pod blight and seed decay.",
+          "npk_dose": null,
+          "irrigation_schedule": "N.A.",
+          "pest_management": [
+            "Pod Blight: Remove infected pods. In severe cases, spray Mancozeb (2.5 g/l) or Copper Oxychloride (2.5 g/l)."
+          ]
+        },
+        {
+          "step": 3,
+          "name": "Pest Monitoring (Late Season Pests)",
+          "description": "Monitor for late-season pests, especially those that can damage mature pods and seeds.",
+          "npk_dose": null,
+          "irrigation_schedule": "N.A.",
+          "pest_management": [
+            "Helicoverpa armigera: Continue monitoring for late-season damage to pods."
+          ]
+        },
+        {
+          "step": 4,
+          "name": "Weed Management (Final)",
+          "description": "Remove any late-season weeds that might hinder harvesting or reduce seed quality.",
+          "npk_dose": null,
+          "irrigation_schedule": "N.A.",
+          "pest_management": [
+            "Manual weeding if necessary."
+          ]
+        },
+        {
+          "step": 5,
+          "name": "Harvest Readiness Assessment",
+          "description": "The crop is ready for harvest when 90-95% of the leaves have dropped and the pods have dried to a moisture content of about 13-15%. Seeds should rattle in the pods.",
+          "npk_dose": null,
+          "irrigation_schedule": "N.A.",
+          "pest_management": []
+        },
+        {
+          "step": 6,
+          "name": "Harvesting",
+          "description": "Harvest the crop using a combine harvester or sickles. Harvesting should be done preferably in the morning hours after the dew has dried.",
+          "npk_dose": null,
+          "irrigation_schedule": "N.A.",
+          "pest_management": []
+        }
+      ]
+    },
+    {
+      "phase_id": "soybean_6_post_harvest",
+      "phase_name": "Post-Harvest",
+      "duration_days": "Variable",
+      "description": "Activities after harvesting, including threshing, drying, cleaning, grading, storage, and marketing. Proper post-harvest handling is essential to maintain seed quality and prevent losses.",
+      "procedures": [
+        {
+          "step": 1,
+          "name": "Threshing",
+          "description": "Separate seeds from the pods. This can be done using a mechanical thresher or by beating the pods manually on a clean surface. Ensure minimum damage to seeds.",
+          "npk_dose": null,
+          "irrigation_schedule": "N.A.",
+          "pest_management": []
+        },
+        {
+          "step": 2,
+          "name": "Drying",
+          "description": "Dry the threshed seeds to a uniform moisture content of 10-12% for storage. This can be done by spreading seeds thinly on a clean drying floor under sunlight, with frequent stirring.",
+          "npk_dose": null,
+          "irrigation_schedule": "Sun drying.",
+          "pest_management": []
+        },
+        {
+          "step": 3,
+          "name": "Cleaning and Grading",
+          "description": "Remove chaff, broken seeds, foreign matter, and diseased seeds. Grading can be done using sieves to obtain uniform seed size, which is important for seed multiplication and market value.",
+          "npk_dose": null,
+          "irrigation_schedule": "N.A.",
+          "pest_management": []
+        },
+        {
+          "step": 4,
+          "name": "Seed Treatment (for Seed Purposes)",
+          "description": "If the harvested soybeans are intended for seed purposes in the next season, treat them with appropriate fungicides and insecticides before storage.",
+          "npk_dose": null,
+          "irrigation_schedule": "N.A.",
+          "pest_management": [
+            "Fungicide: Captan (2.5 g/kg) or Thiram (2 g/kg).",
+            "Insecticide: Lambda-cyhalothrin (0.4 ml/kg) or Imidacloprid (3 ml/kg)."
+          ]
+        },
+        {
+          "step": 5,
+          "name": "Storage",
+          "description": "Store seeds in clean, dry, and well-ventilated conditions. Use moisture-proof containers like gunny bags lined with polyethylene, or metallic bins. Keep storage areas free from rodents and insects.",
+          "npk_dose": null,
+          "irrigation_schedule": "N.A.",
+          "pest_management": [
+            "For storage pest control, use Neem leaf extract (1:10 ratio) or approved insecticides if necessary.",
+            "Maintain ambient temperature and humidity in storage."
+          ]
+        },
+        {
+          "step": 6,
+          "name": "Marketing",
+          "description": "Market the produce in grades as per the market requirements. Ensure timely sale to avoid storage losses and obtain remunerative prices.",
+          "npk_dose": null,
+          "irrigation_schedule": "N.A.",
+          "pest_management": []
+        }
+      ]
+    }
+  ],
+  "disease_protocols": {
+    "root_rot": {
+      "name": "Soybean Root Rot",
+      "scientific_name": "Caused by multiple soil-borne fungi like Phytophthora sojae, Pythium spp., Rhizoctonia solani, Fusarium spp.",
+      "symptoms": [
+        "Wilting of plants, often starting from one side.",
+        "Yellowing of leaves.",
+        "Stunted growth.",
+        "Dark brown to black discoloration of roots and lower stem.",
+        "Rotten and mushy roots, leading to plant death."
+      ],
+      "favorable_conditions": "Waterlogged conditions, poorly drained soils, high soil moisture, moderate to warm temperatures (20-30\u00b0C). Infection often occurs through wounds or natural openings in the roots.",
+      "preventive_measures": [
+        "Use well-drained soils and avoid water stagnation.",
+        "Crop rotation with non-host crops (e.g., cereals).",
+        "Seed treatment with appropriate fungicides.",
+        "Use resistant varieties where available.",
+        "Avoid excessive soil disturbance around the root zone.",
+        "Sanitation of fields by removing infected plant debris."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Soil application of Trichoderma viride (2.5 kg/ha mixed with 100 kg FYM) before sowing.",
+          "Drenching with Pseudomonas fluorescens (10 g/l) around the base of infected plants."
+        ],
+        "chemical": [
+          "Seed treatment: Metalaxyl (2-4 g/kg seed) or Carbendazim + Mancozeb (2.5 g/kg seed).",
+          "Soil application: Carbofuran 3G @ 1 kg a.i./ha at sowing (if registered and necessary).",
+          "Drenching: Metalaxyl (0.25%) or Fosetyl-Al (0.3%) around the base of infected plants."
+        ]
+      }
+    },
+    "rust": {
+      "name": "Soybean Rust",
+      "scientific_name": "Phakopsora pachyrhizi",
+      "symptoms": [
+        "Small, light brown to reddish-brown pustules (uredinia) on the upper and lower leaf surfaces.",
+        "Pustules are typically surrounded by a yellow halo.",
+        "As the disease progresses, leaves turn yellow, then brown, and may fall prematurely.",
+        "In severe cases, stems and petioles can also be affected.",
+        "Defoliation leads to reduced photosynthesis and yield loss."
+      ],
+      "favorable_conditions": "High humidity (above 90%), prolonged leaf wetness, and moderate temperatures (20-28\u00b0C). The pathogen can be spread by wind over long distances.",
+      "preventive_measures": [
+        "Use rust-resistant or tolerant varieties.",
+        "Ensure good air circulation through proper plant spacing.",
+        "Destroy volunteer soybean plants and alternative hosts.",
+        "Remove infected plant debris after harvest.",
+        "Monitor weather forecasts for disease prediction."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Foliar spray of Neem oil (5 ml/l) or Karanjin (2 ml/l) at the initial stage of infection.",
+          "Application of Copper oxychloride (2.5 g/l) has some effect."
+        ],
+        "chemical": [
+          "Preventive spray: Propiconazole (1 ml/l) or Hexaconazole (1 ml/l) or Tebuconazole (1 ml/l) as soon as the first symptoms appear or when conditions are highly favorable.",
+          "Follow up sprays at 15-20 day intervals depending on disease severity and weather conditions.",
+          "Systemic fungicides like Pyraclostrobin + Epoxiconazole (1 ml/l) are also effective."
+        ]
+      }
+    },
+    "y_mosaic": {
+      "name": "Soybean Yellow Mosaic Virus (SYMV)",
+      "scientific_name": "Genus Begomovirus, Family Geminiviridae",
+      "symptoms": [
+        "Yellowing of leaves, initially as irregular patches or streaks, which can spread to the entire leaf.",
+        "Stunted growth and reduced plant size.",
+        "Malformation of leaves, becoming curled or puckered.",
+        "Reduced flowering and pod formation.",
+        "In severe cases, plants may become completely stunted and unproductive."
+      ],
+      "favorable_conditions": "High population of the whitefly vector (Bemisia tabaci) under warm and humid conditions. The virus is transmitted by the whitefly in a persistent manner. Spread is also facilitated by infected planting material.",
+      "preventive_measures": [
+        "Use virus-free seeds from certified sources.",
+        "Eradicate weed hosts and volunteer soybean plants that can harbor the virus and vector.",
+        "Plant soybean varieties that are resistant or tolerant to SYMV.",
+        "Control whitefly populations effectively.",
+        "Intercropping with repellent plants (e.g., marigold, chili) can help deter whiteflies."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Regular removal and destruction of infected plants (roguing).",
+          "Application of Neem Seed Kernel Extract (NSKE) (50 ml/l) or Karanjin oil (2 ml/l) to repel whiteflies.",
+          "Attract natural enemies of whiteflies (e.g., lady beetles, lacewings)."
+        ],
+        "chemical": [
+          "Control of whitefly vector: Spray systemic insecticides like Imidacloprid (0.3 ml/l) or Acetamiprid (0.3 g/l) or Thiamethoxam (0.25 g/l) regularly, especially during the seedling and vegetative stages.",
+          "Seed treatment with Imidacloprid or Thiamethoxam for early protection against vector.",
+          "Avoid spraying broad-spectrum insecticides that kill natural enemies."
+        ]
+      }
+    },
+    "bacterial_blight": {
+      "name": "Bacterial Blight of Soybean",
+      "scientific_name": "Pseudomonas savastanoi pv. glycinea",
+      "symptoms": [
+        "Small, angular, water-soaked spots on leaves, often surrounded by a yellow halo.",
+        "Spots enlarge and turn reddish-brown to black.",
+        "In severe cases, spots may coalesce, leading to blighting of the leaf margin or entire leaf.",
+        "Affected leaves may drop prematurely.",
+        "Lesions can also appear on stems, petioles, and pods."
+      ],
+      "favorable_conditions": "Cool and wet weather, with frequent rainfall and high humidity (above 85%). The bacterium survives in infected plant debris and seeds. Spread by wind and rain splash.",
+      "preventive_measures": [
+        "Use disease-free seeds or treat seeds with appropriate bactericides.",
+        "Crop rotation with non-leguminous crops.",
+        "Maintain proper plant spacing for good air circulation.",
+        "Avoid working in the field when plants are wet.",
+        "Destroy infected plant debris after harvest.",
+        "Select resistant or tolerant varieties if available."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Foliar spray of Copper Oxychloride (2.5 g/l) combined with Streptomycin Sulphate (0.5 g/l) has some efficacy.",
+          "Application of Pseudomonas fluorescens (10 g/l) might offer some protection."
+        ],
+        "chemical": [
+          "Seed treatment: Streptomycin Sulphate (0.5 g/kg seed) or Copper Oxychloride (2.5 g/kg seed).",
+          "Foliar spray: Copper Oxychloride (2.5 g/l) or Streptomycin Sulphate (0.5 g/l) or combinations thereof at 10-15 day intervals if symptoms appear."
+        ]
+      }
+    },
+    "anthracnose": {
+      "name": "Soybean Anthracnose",
+      "scientific_name": "Colletotrichum truncatum",
+      "symptoms": [
+        "Lesions on stems, petioles, pods, and leaves.",
+        "Stem lesions are elongated, dark brown to black, and may girdle the stem.",
+        "Pod lesions are dark brown to black, often sunken, and may cause shriveling of seeds.",
+        "Seed discoloration and internal browning.",
+        "Plants may become weak and stunted."
+      ],
+      "favorable_conditions": "Warm and humid weather, especially during flowering and pod development. High rainfall and prolonged leaf wetness favor infection. The fungus survives in infected seeds and crop debris.",
+      "preventive_measures": [
+        "Use disease-free seeds and seed treatment.",
+        "Crop rotation with non-host crops.",
+        "Maintain proper plant spacing and field sanitation.",
+        "Destroy infected crop residues.",
+        "Harvest promptly to avoid prolonged exposure to favorable conditions."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Foliar spray of Neem oil (5 ml/l) can provide some protection.",
+          "Application of bio-fungicides containing Trichoderma."
+        ],
+        "chemical": [
+          "Seed treatment: Carbendazim (1 g/kg seed) or Thiram (2 g/kg seed).",
+          "Foliar spray: Mancozeb (2.5 g/l) or Carbendazim (1 g/l) or Propiconazole (1 ml/l) at the onset of symptoms and repeated if necessary."
+        ]
+      }
+    },
+    "frogeye_leaf_spot": {
+      "name": "Frogeye Leaf Spot of Soybean",
+      "scientific_name": "Cercospora sojina",
+      "symptoms": [
+        "Small, circular to irregular, tan to light brown spots on leaves.",
+        "Spots are typically bordered by a dark reddish-brown margin.",
+        "Centers of older spots may become grayish and may fall out, giving a shot-hole appearance.",
+        "In severe infections, leaves may become chlorotic and drop prematurely.",
+        "Lesions can also appear on stems and pods."
+      ],
+      "favorable_conditions": "Warm and humid weather, with frequent rain and high humidity (above 85%). The pathogen survives in infected seeds and crop debris. Spread by wind and rain splash.",
+      "preventive_measures": [
+        "Use disease-free seeds and seed treatment.",
+        "Crop rotation with non-host crops.",
+        "Maintain proper plant spacing and field sanitation.",
+        "Destroy infected crop residues after harvest.",
+        "Plant resistant or tolerant varieties."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Application of Neem derivatives (2-5 ml/l) can help in disease management.",
+          "Use of bio-fungicides containing beneficial microbes."
+        ],
+        "chemical": [
+          "Seed treatment: Carbendazim (1 g/kg seed) or Thiram (2 g/kg seed).",
+          "Foliar spray: Propiconazole (1 ml/l) or Hexaconazole (1 ml/l) or Mancozeb (2.5 g/l) at the first appearance of symptoms. Repeat at 15-20 day intervals if necessary."
+        ]
+      }
+    },
+    "septoria_leaf_blight": {
+      "name": "Septoria Leaf Blight of Soybean",
+      "scientific_name": "Septoria glycines",
+      "symptoms": [
+        "Small, irregular, dark brown to black spots on leaves, often starting on lower leaves.",
+        "Spots may have a greasy appearance and are often surrounded by a yellow halo.",
+        "Many spots can coalesce, leading to blighting of larger areas of the leaf.",
+        "Severe infection causes premature defoliation.",
+        "Tiny black pycnidia (fruiting bodies) may be visible within the spots."
+      ],
+      "favorable_conditions": "Cool and wet weather, prolonged periods of leaf wetness, and high humidity. The fungus survives in infected seeds and crop residues. Spread by wind and rain splash.",
+      "preventive_measures": [
+        "Use disease-free seeds and seed treatment.",
+        "Crop rotation with non-host crops.",
+        "Maintain proper plant spacing and field sanitation.",
+        "Destroy infected crop residues after harvest.",
+        "Avoid planting soybeans too early in cool conditions."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Application of Neem oil (5 ml/l) can have some suppressive effect.",
+          "Use of bio-fungicides as a preventative measure."
+        ],
+        "chemical": [
+          "Seed treatment: Carbendazim (1 g/kg seed) or Thiram (2 g/kg seed).",
+          "Foliar spray: Mancozeb (2.5 g/l) or Carbendazim (1 g/l) or Chlorothalonil (2 g/l) at the first sign of disease. Repeat application as needed at 10-15 day intervals."
+        ]
+      }
+    },
+    "pod_blight": {
+      "name": "Soybean Pod Blight",
+      "scientific_name": "Caused by various fungi, including Colletotrichum truncatum, Phomopsis spp., Alternaria spp.",
+      "symptoms": [
+        "Lesions on pods, which can be sunken, discolored (brown to black), and may be covered with fungal growth.",
+        "Affected seeds within the pod may be discolored, shriveled, or reduced in size.",
+        "Severe infection can lead to pod abortion or shattering.",
+        "Stem and leaf infections can also be present."
+      ],
+      "favorable_conditions": "Warm and humid conditions, particularly during the pod development stage. High rainfall, dew, and prolonged leaf wetness favor fungal growth and infection. Fungi survive in seeds and crop debris.",
+      "preventive_measures": [
+        "Use disease-free seeds and seed treatment.",
+        "Crop rotation with non-leguminous crops.",
+        "Maintain proper plant spacing and good field sanitation.",
+        "Destroy infected crop residues after harvest.",
+        "Harvest the crop promptly when mature to minimize exposure to favorable conditions."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Foliar application of Neem oil (5 ml/l) or other botanical extracts.",
+          "Use of bio-fungicides like Trichoderma."
+        ],
+        "chemical": [
+          "Seed treatment: Carbendazim (1 g/kg seed) or Thiram (2 g/kg seed).",
+          "Foliar spray: Mancozeb (2.5 g/l) or Carbendazim (1 g/l) or Propiconazole (1 ml/l) applied at the late flowering and pod development stages, especially if weather conditions are favorable for disease development."
+        ]
+      }
+    }
+  }
+}

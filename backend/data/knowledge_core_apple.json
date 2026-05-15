@@ -1,0 +1,732 @@
+{
+  "crop_info": {
+    "name": "Apple",
+    "scientific_name": "Malus domestica",
+    "varieties": [
+      "Royal Delicious",
+      "Red Delicious",
+      "Golden Delicious",
+      "Fuji",
+      "Gala",
+      "Granny Smith",
+      "Honeycrisp",
+      "McIntosh",
+      "Pink Lady"
+    ],
+    "total_duration_days": 180,
+    "ideal_climate": {
+      "temperature": "Requires significant chilling hours (typically 700-1000 hours below 7\u00b0C for optimal fruit set and quality). Optimal growing temperatures range from 15-25\u00b0C during the growing season. Frost protection is crucial during bloom.",
+      "rainfall": "1000-1200mm annually, well-distributed. Irrigation is essential in drier regions, especially during fruit development.",
+      "humidity": "Moderate to high humidity can increase disease pressure, especially for fungal diseases. Good air circulation is important.",
+      "soil": "Well-drained, loamy or sandy-loam soils with a pH of 6.0-7.0. Avoid waterlogged conditions."
+    },
+    "propagation": "Grafting onto dwarfing or semi-dwarfing rootstocks is common.",
+    "planting_system": "High-density planting systems (e.g., central leader, slender spindle) are widely adopted for efficient light interception and management."
+  },
+  "lifecycle_phases": [
+    {
+      "phase_id": "apple_1_nursery_sowing",
+      "phase_name": "Nursery & Grafting/Planting",
+      "duration_days": 60,
+      "description": "This phase covers the establishment of nursery stock, grafting of scions onto rootstocks, and the initial planting of grafted trees in the orchard. Focus is on root development and early scion growth.",
+      "procedures": [
+        {
+          "step_id": "np_1",
+          "operation": "Rootstock preparation and grafting",
+          "details": "Select disease-free rootstocks. Graft desired scion varieties using compatible methods like whip and tongue grafting or bud grafting. Ensure sterile conditions.",
+          "npk_dose": "N: 5-10 g/m\u00b2, P: 10-15 g/m\u00b2, K: 10-15 g/m\u00b2 (applied to nursery beds)",
+          "irrigation": "Maintain consistent moisture; water thoroughly after grafting and then as needed to keep soil moist but not waterlogged. Drip irrigation is recommended.",
+          "pest_management": "Monitor for aphid infestations. Apply neem oil (5ml/L water) or insecticidal soap (10ml/L water) if population exceeds threshold."
+        },
+        {
+          "step_id": "np_2",
+          "operation": "Orchard site preparation",
+          "details": "Deep plowing, soil amendment with organic matter (compost/manure at 20-30 tonnes/ha), and levelling. Planting holes should be adequately sized (e.g., 60x60x60 cm).",
+          "npk_dose": "Incorporation of well-rotted farmyard manure (FYM) or compost at 20-30 tonnes/ha. Basal application of NPK (10:26:26) at 50-75g per plant hole.",
+          "irrigation": "Initial watering immediately after planting to settle soil around roots.",
+          "pest_management": "Soil solarization if nematode issues are suspected. Apply bio-fumigant crops like marigolds before planting."
+        },
+        {
+          "step_id": "np_3",
+          "operation": "Planting grafted trees",
+          "details": "Plant trees at recommended spacing (e.g., 4x2m for high density). Ensure the graft union is well above the soil line. Stake young trees for support.",
+          "npk_dose": "No immediate fertilizer application. Wait for bud break and initial growth.",
+          "irrigation": "Thorough watering after planting. Establish a regular irrigation schedule based on soil moisture and weather conditions.",
+          "pest_management": "Monitor for cutworms and apply granular insecticide around the base of the stem if necessary."
+        },
+        {
+          "step_id": "np_4",
+          "operation": "Initial training (leader formation)",
+          "details": "Select a strong central leader and remove competing branches. Aim for a scaffold structure that will support future fruit load.",
+          "npk_dose": "Post bud break, light application of urea (10-20g/plant) for vegetative growth.",
+          "irrigation": "Maintain consistent soil moisture, especially during dry spells. Avoid over-watering.",
+          "pest_management": "Watch for early aphid and mite activity. Use sticky traps to monitor insect populations."
+        },
+        {
+          "step_id": "np_5",
+          "operation": "Weed management",
+          "details": "Keep the area around young trees free from weeds which compete for water and nutrients. Mulching with organic materials or using ground covers can be effective.",
+          "npk_dose": "N/A",
+          "irrigation": "Mulching helps conserve soil moisture, reducing irrigation frequency.",
+          "pest_management": "Hand weeding or mechanical cultivation. Selective herbicide application may be considered in established orchards but with caution around young trees."
+        },
+        {
+          "step_id": "np_6",
+          "operation": "Fertigation planning",
+          "details": "Design a fertigation system to deliver precise nutrients and water directly to the root zone, promoting efficient uptake and growth.",
+          "npk_dose": "Initial fertigation can start with dilute solutions of NPK (e.g., 10-10-10) once growth is established.",
+          "irrigation": "Integrated with fertigation schedule.",
+          "pest_management": "N/A"
+        }
+      ],
+      "common_diseases": [
+        "crown_rot",
+        "verticillium_wilt",
+        "root_rot",
+        "apple_replant_disease",
+        "powdery_mildew"
+      ],
+      "preventive_tips": [
+        "Use certified disease-free planting material.",
+        "Ensure proper drainage in the nursery and orchard.",
+        "Practice crop rotation if replanting an apple orchard.",
+        "Sanitize grafting tools regularly.",
+        "Maintain optimal soil pH.",
+        "Promote vigorous growth to increase resistance."
+      ]
+    },
+    {
+      "phase_id": "apple_2_vegetative",
+      "phase_name": "Vegetative Growth & Pruning",
+      "duration_days": 90,
+      "description": "Period of rapid vegetative growth, development of shoot and leaf structure, and initial canopy formation. Dormant season pruning is critical during this phase.",
+      "procedures": [
+        {
+          "step_id": "vg_1",
+          "operation": "Dormant pruning",
+          "details": "Remove dead, diseased, and crossing branches. Open the canopy to improve light penetration and air circulation. Shape the tree to desired structure (e.g., central leader).",
+          "npk_dose": "N/A (during dormancy)",
+          "irrigation": "No irrigation required during dormancy.",
+          "pest_management": "Apply dormant oil spray (e.g., 2-4% concentration) to control overwintering insects and mites."
+        },
+        {
+          "step_id": "vg_2",
+          "operation": "Summer pruning/training",
+          "details": "Remove vigorous water sprouts and shoots that shade developing fruit. Pinch back excessive shoot growth to redirect energy.",
+          "npk_dose": "N: 100-150 kg/ha/year (split application, typically early spring and post-bloom)",
+          "irrigation": "Regular irrigation, especially during dry periods. Aim for soil moisture depletion of 50% in the root zone.",
+          "pest_management": "Monitor for aphid and leafhopper infestations. Treat with appropriate insecticides if populations are high."
+        },
+        {
+          "step_id": "vg_3",
+          "operation": "Fertilization",
+          "details": "Apply nitrogen and potassium fertilizers based on soil and leaf analysis to support vigorous growth. Split application is recommended.",
+          "npk_dose": "Spring application: NPK 200-300 kg/ha (e.g., 15:15:15). Split application of Urea (46-0-0) at 100-150 kg/ha in spring and post-bloom.",
+          "irrigation": "Fertilizers should be incorporated into the soil and irrigated to ensure uptake.",
+          "pest_management": "N/A"
+        },
+        {
+          "step_id": "vg_4",
+          "operation": "Irrigation management",
+          "details": "Maintain consistent soil moisture, avoiding both drought stress and over-watering, which can lead to root diseases.",
+          "npk_dose": "N/A",
+          "irrigation": "Irrigate deeply but less frequently. Drip irrigation systems are most efficient, delivering 40-60 liters per tree per day during peak growth.",
+          "pest_management": "Monitor for root weevil larvae in the soil, which can damage roots. Improve drainage if waterlogging is observed."
+        },
+        {
+          "step_id": "vg_5",
+          "operation": "Pest monitoring",
+          "details": "Regular scouting for key pests like aphids, leaf miners, spider mites, and borers. Early detection is crucial for effective management.",
+          "npk_dose": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Scout weekly. Use pheromone traps for codling moth. Implement integrated pest management (IPM) strategies including biological control agents."
+        },
+        {
+          "step_id": "vg_6",
+          "operation": "Disease prevention",
+          "details": "Implement proactive measures against common diseases like apple scab and powdery mildew, especially if conditions are favorable.",
+          "npk_dose": "N/A",
+          "irrigation": "Avoid overhead irrigation which can promote fungal diseases.",
+          "pest_management": "Fungicide applications may be necessary based on disease pressure and weather forecasts."
+        },
+        {
+          "step_id": "vg_7",
+          "operation": "Weed control",
+          "details": "Maintain a weed-free zone around the base of trees to prevent competition for resources.",
+          "npk_dose": "N/A",
+          "irrigation": "Mulching can help suppress weeds and conserve moisture.",
+          "pest_management": "Mechanical weeding, herbicides (applied carefully), or cover cropping."
+        }
+      ],
+      "common_diseases": [
+        "powdery_mildew",
+        "apple_scab",
+        "fire_blight",
+        "aphids",
+        "leaf_miners",
+        "spider_mites"
+      ],
+      "preventive_tips": [
+        "Proper pruning for good air circulation.",
+        "Adequate nutrition to promote tree vigor.",
+        "Timely irrigation to avoid stress.",
+        "Scout regularly for pests and diseases.",
+        "Use resistant rootstocks and cultivars where possible.",
+        "Maintain orchard sanitation, removing fallen leaves and debris."
+      ]
+    },
+    {
+      "phase_id": "apple_3_flowering",
+      "phase_name": "Flowering and Pollination",
+      "duration_days": 45,
+      "description": "This phase is critical for fruit set and involves bloom development, flowering, pollination, and fertilization.",
+      "procedures": [
+        {
+          "step_id": "fl_1",
+          "operation": "Pollinator management",
+          "details": "Ensure adequate numbers of compatible pollinizer varieties are present and flowering concurrently. Introduce or conserve honeybee colonies for effective pollination.",
+          "npk_dose": "N: 50-75 kg/ha (applied post-bloom for fruit development support)",
+          "irrigation": "Maintain consistent soil moisture. Avoid water stress during bloom as it can negatively impact pollen viability and fruit set.",
+          "pest_management": "AVOID insecticidal sprays during bloom, especially broad-spectrum ones, to protect pollinators. Use bee-friendly insecticides if absolutely necessary for critical pest issues."
+        },
+        {
+          "step_id": "fl_2",
+          "operation": "Frost protection",
+          "details": "Implement frost protection measures if temperatures drop below critical levels during bloom (e.g., 0\u00b0C to -2\u00b0C).",
+          "npk_dose": "N/A",
+          "irrigation": "Overhead irrigation can provide some protection through latent heat release.",
+          "pest_management": "N/A"
+        },
+        {
+          "step_id": "fl_3",
+          "operation": "Disease control during bloom",
+          "details": "Proactive fungicide application against diseases like apple scab and fire blight, which are active during this period.",
+          "npk_dose": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Apply protective fungicides like Captan (2 g/L) or Mancozeb (2.5 g/L) at tight cluster or pink bud stage, and repeat at 7-10 day intervals as needed. For fire blight, streptomycin (200 ppm) can be applied during bloom if conditions are highly favorable."
+        },
+        {
+          "step_id": "fl_4",
+          "operation": "Pest monitoring during bloom",
+          "details": "Monitor for pests that can damage flowers or developing fruitlets, but prioritize pollinator safety.",
+          "npk_dose": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Use selective insecticides like spinosad for specific pests if unavoidable. Avoid pyrethroids and neonicotinoids which are highly toxic to bees."
+        },
+        {
+          "step_id": "fl_5",
+          "operation": "Canopy management",
+          "details": "Ensure the canopy is well-pruned to allow light penetration to flowers and improve air circulation, which reduces disease risk.",
+          "npk_dose": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "N/A"
+        },
+        {
+          "step_id": "fl_6",
+          "operation": "Nutrient support for flowering",
+          "details": "Foliar application of micronutrients like Boron and Zinc can enhance pollen viability and fruit set.",
+          "npk_dose": "Foliar spray: Boron (0.1-0.2%), Zinc (0.2-0.4%)",
+          "irrigation": "N/A",
+          "pest_management": "N/A"
+        }
+      ],
+      "common_diseases": [
+        "apple_scab",
+        "fire_blight",
+        "powdery_mildew",
+        "blossom_end_rot"
+      ],
+      "preventive_tips": [
+        "Ensure adequate pollination by planting compatible varieties and using bee hives.",
+        "Protect pollinators by avoiding sprays during bloom.",
+        "Implement frost protection measures.",
+        "Maintain healthy canopy structure.",
+        "Monitor for early signs of disease and pests."
+      ]
+    },
+    {
+      "phase_id": "apple_4_fruit_initiation",
+      "phase_name": "Fruit Initiation and Development",
+      "duration_days": 120,
+      "description": "This crucial phase involves fruit set, rapid cell division and expansion, leading to fruit sizing and initial development.",
+      "procedures": [
+        {
+          "step_id": "fi_1",
+          "operation": "Fruit thinning",
+          "details": "Remove excess fruitlets to ensure optimal fruit size, quality, and to prevent biennial bearing. Typically done 3-5 weeks after bloom.",
+          "npk_dose": "N: 50-75 kg/ha (applied early in the phase)",
+          "irrigation": "Maintain consistent, adequate irrigation. Water stress during this period can lead to premature fruit drop and reduced size.",
+          "pest_management": "Monitor for aphids and spider mites. Apply appropriate control measures if thresholds are exceeded."
+        },
+        {
+          "step_id": "fi_2",
+          "operation": "Calcium sprays",
+          "details": "Apply foliar calcium sprays to improve fruit firmness and reduce disorders like bitter pit.",
+          "npk_dose": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Foliar spray: Calcium Chloride (0.5-1%) or Calcium Nitrate (0.5-1%) applied every 10-14 days, starting after thinning."
+        },
+        {
+          "step_id": "fi_3",
+          "operation": "Pest management",
+          "details": "Intensive monitoring for key pests like codling moth, oriental fruit moth, leafrollers, and mites. Implement IPM strategies.",
+          "npk_dose": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Use pheromone traps for monitoring. Apply specific insecticides (e.g., based on insect growth regulators, carbaryl) targeting larval stages as per IPM recommendations. For mites, use miticides like Spirodiclofen or Abamectin."
+        },
+        {
+          "step_id": "fi_4",
+          "operation": "Disease control",
+          "details": "Continue monitoring and managing diseases such as apple scab, sooty blotch, and flyspeck.",
+          "npk_dose": "N/A",
+          "irrigation": "Avoid wetting foliage during irrigation if possible.",
+          "pest_management": "Fungicide applications may be necessary depending on weather and disease pressure. Examples include Captan, Mancozeb, or Fenpiclonil for sooty blotch and flyspeck."
+        },
+        {
+          "step_id": "fi_5",
+          "operation": "Irrigation optimization",
+          "details": "Ensure sufficient water is available, especially during periods of rapid fruit expansion. Adjust irrigation based on evapotranspiration rates and soil moisture monitoring.",
+          "npk_dose": "N/A",
+          "irrigation": "Drip irrigation providing 50-70 liters per tree per day during peak demand.",
+          "pest_management": "N/A"
+        },
+        {
+          "step_id": "fi_6",
+          "operation": "Micronutrient application",
+          "details": "Foliar application of micronutrients like Boron and Zinc can further enhance fruit quality and size.",
+          "npk_dose": "Foliar spray: Boron (0.1%), Zinc (0.2%)",
+          "irrigation": "N/A",
+          "pest_management": "N/A"
+        },
+        {
+          "step_id": "fi_7",
+          "operation": "Canopy management",
+          "details": "Continue training young shoots to allow maximum light penetration to developing fruits for better color and sugar development.",
+          "npk_dose": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "N/A"
+        }
+      ],
+      "common_diseases": [
+        "apple_scab",
+        "sooty_blotch",
+        "flyspeck",
+        "bitter_pit",
+        "codling_moth",
+        "spider_mites"
+      ],
+      "preventive_tips": [
+        "Accurate fruit thinning is crucial for size and quality.",
+        "Regular foliar calcium application.",
+        "Intensive pest and disease monitoring.",
+        "Consistent and adequate irrigation.",
+        "Maintain open canopy for light penetration.",
+        "Monitor for signs of biennial bearing and adjust thinning accordingly."
+      ]
+    },
+    {
+      "phase_id": "apple_5_maturity",
+      "phase_name": "Fruit Maturation and Ripening",
+      "duration_days": 60,
+      "description": "This phase focuses on fruit color development, sugar accumulation, and reaching optimal maturity for harvest.",
+      "procedures": [
+        {
+          "step_id": "ma_1",
+          "operation": "Maturity assessment",
+          "details": "Monitor fruit maturity using indicators like starch-iodine test, soluble solids concentration (SSC), firmness, and color development.",
+          "npk_dose": "K: 50-75 kg/ha (applied early in the phase for fruit quality)",
+          "irrigation": "Reduce irrigation slightly as harvest approaches to encourage sugar accumulation and firm fruit, but avoid severe drought stress.",
+          "pest_management": "N/A"
+        },
+        {
+          "step_id": "ma_2",
+          "operation": "Color development enhancement",
+          "details": "Maximize sunlight exposure to the fruit by continuing canopy management. Cool nights and sunny days promote red color development.",
+          "npk_dose": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "N/A"
+        },
+        {
+          "step_id": "ma_3",
+          "operation": "Pest and disease control",
+          "details": "Last-minute pest and disease control may be necessary, focusing on pre-harvest intervals (PHI) of approved chemicals.",
+          "npk_dose": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Continue monitoring. If late-season diseases like botrytis are a concern, apply approved fungicides with short PHI. For insects, ensure control products have adequate PHI before harvest."
+        },
+        {
+          "step_id": "ma_4",
+          "operation": "Harvest planning",
+          "details": "Plan harvest logistics, including labor, packaging materials, and transportation, based on maturity assessment and market demand.",
+          "npk_dose": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "N/A"
+        },
+        {
+          "step_id": "ma_5",
+          "operation": "Final irrigation adjustments",
+          "details": "Adjust irrigation to ensure fruits do not split due to excessive water uptake before harvest.",
+          "npk_dose": "N/A",
+          "irrigation": "Maintain moderate soil moisture; avoid saturating the soil.",
+          "pest_management": "N/A"
+        },
+        {
+          "step_id": "ma_6",
+          "operation": "Pre-harvest fruit drop control",
+          "details": "Apply plant growth regulators (PGRs) if pre-harvest fruit drop is a significant issue.",
+          "npk_dose": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Application of Ethrel (Ethephon) at recommended concentrations, ensuring to adhere to strict PHI guidelines."
+        }
+      ],
+      "common_diseases": [
+        "bitter_rot",
+        "sooty_blotch",
+        "flyspeck",
+        "pre-harvest fruit drop"
+      ],
+      "preventive_tips": [
+        "Monitor maturity closely using appropriate indicators.",
+        "Optimize light exposure for color development.",
+        "Manage irrigation carefully to promote sugar accumulation and prevent fruit splitting.",
+        "Plan harvest operations well in advance.",
+        "Use pre-harvest sprays judiciously, respecting PHI.",
+        "Ensure fruit is handled gently during harvest to minimize bruising."
+      ]
+    },
+    {
+      "phase_id": "apple_6_post_harvest",
+      "phase_name": "Harvest and Post-Harvest Handling",
+      "duration_days": 30,
+      "description": "This phase encompasses harvesting, sorting, grading, packing, storage, and initial marketing of the apple crop.",
+      "procedures": [
+        {
+          "step_id": "ph_1",
+          "operation": "Harvesting",
+          "details": "Harvest apples at their optimal maturity stage. Handle fruits carefully to avoid bruising and damage. Pickers should be trained to identify maturity cues.",
+          "npk_dose": "N/A",
+          "irrigation": "No irrigation required for harvested fruits.",
+          "pest_management": "N/A"
+        },
+        {
+          "step_id": "ph_2",
+          "operation": "Sorting and Grading",
+          "details": "Sort fruits based on size, color, shape, and freedom from defects. Grade into different quality classes (e.g., Fancy, Extra Fancy).",
+          "npk_dose": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Remove any damaged or diseased fruits to prevent spread."
+        },
+        {
+          "step_id": "ph_3",
+          "operation": "Packing",
+          "details": "Pack fruits in appropriate containers (crates, boxes) using cushioning materials to prevent damage during transport and storage.",
+          "npk_dose": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Ensure packing materials are clean and free from pests."
+        },
+        {
+          "step_id": "ph_4",
+          "operation": "Pre-storage treatment",
+          "details": "Apply post-harvest treatments such as fungicides for disease control and anti-scald agents if required.",
+          "npk_dose": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Apply food-grade fungicides (e.g., thiabendazole, imazalil) and anti-scald agents (e.g., ethoxyquin, diphenylamine) as per regulations and commodity type."
+        },
+        {
+          "step_id": "ph_5",
+          "operation": "Cold Storage",
+          "details": "Store fruits in controlled atmosphere (CA) or regular cold storage at recommended temperatures and humidity levels for extended shelf life.",
+          "npk_dose": "N/A",
+          "irrigation": "Maintain high humidity (90-95%) in storage rooms.",
+          "pest_management": "Regular monitoring of storage conditions and pest presence."
+        },
+        {
+          "step_id": "ph_6",
+          "operation": "Market Access",
+          "details": "Transport fruits to market or distribution centers. Manage inventory and sales to meet market demand.",
+          "npk_dose": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "N/A"
+        },
+        {
+          "step_id": "ph_7",
+          "operation": "Quality control",
+          "details": "Implement ongoing quality control checks throughout the post-harvest process, from receiving to dispatch.",
+          "npk_dose": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "N/A"
+        }
+      ],
+      "common_diseases": [
+        "storage_rots",
+        "bitter_pit",
+        "soft_scald",
+        "superficial scald"
+      ],
+      "preventive_tips": [
+        "Harvest fruits at the correct maturity.",
+        "Handle fruits gently to minimize physical damage.",
+        "Use appropriate post-harvest treatments.",
+        "Store in controlled atmosphere (CA) or regular cold storage with optimal temperature and humidity.",
+        "Regularly monitor storage conditions.",
+        "Maintain hygiene in packing and storage facilities."
+      ]
+    }
+  ],
+  "disease_protocols": {
+    "scab": {
+      "name": "Apple Scab",
+      "scientific_name": "Venturia inaequalis",
+      "symptoms": [
+        "Velvety, olive-green to brown spots on leaves, which enlarge and turn darker, often with a velvety texture in humid conditions.",
+        "Spots may coalesce, leading to leaf distortion, premature defoliation, and reduced photosynthesis.",
+        "On fruits, spots appear as small, olive-green to brown blemishes that enlarge and become scabby or corky, often cracking as the fruit grows.",
+        "Severe infections can lead to fruit deformation and drop.",
+        "Cankers may form on twigs, especially on young trees."
+      ],
+      "favorable_conditions": "Cool and wet conditions. Spore release is triggered by rain. Temperatures between 10-25\u00b0C with high humidity (above 95%) and prolonged leaf wetness (9-18 hours) are ideal for infection.",
+      "preventive_measures": [
+        "Plant resistant cultivars where available.",
+        "Prune trees to ensure good air circulation and light penetration.",
+        "Sanitation: Remove and destroy infected fallen leaves in autumn or early spring.",
+        "Adequate spacing between trees.",
+        "Avoid overhead irrigation.",
+        "Consider planting on sites with good air drainage."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Application of wettable sulfur (3-5 g/L) or copper-based fungicides (e.g., Bordeaux mixture 1%) at specific growth stages (e.g., green tip, 10-14 days later) can provide some control.",
+          "Use of bio-fungicides containing Bacillus subtilis or Trichoderma species.",
+          "Lime sulfur sprays during dormancy can reduce overwintering inoculum."
+        ],
+        "chemical": [
+          "Captan (2 g/L) or Mancozeb (2.5 g/L) applied preventatively from green tip stage at 7-10 day intervals.",
+          "Difenoconazole (0.05%) or Tebuconazole (0.05%) can be used as curative sprays during early infection stages.",
+          "Dodine (0.5 g/L) for post-infection treatment.",
+          "Myclobutanil or Fenarimol can be used in rotation."
+        ]
+      }
+    },
+    "powdery_mildew": {
+      "name": "Apple Powdery Mildew",
+      "scientific_name": "Podosphaera leucotricha",
+      "symptoms": [
+        "White to grayish-white, powdery or felt-like growth on young shoots, leaves, flower buds, and fruitlets.",
+        "Affected leaves become distorted, stunted, and may wither and drop.",
+        "Infected shoots appear stunted and may exhibit a 'witch's broom' appearance.",
+        "Flower buds and young fruits can be covered by the mycelial growth, leading to malformation and reduced fruit set.",
+        "Fruit infections may appear as russeted areas or 'netted' patterns."
+      ],
+      "favorable_conditions": "Cool temperatures (15-25\u00b0C) with high humidity. Shady, humid conditions within dense canopies are particularly conducive. Young, actively growing tissues are most susceptible.",
+      "preventive_measures": [
+        "Prune trees to ensure good air circulation and light penetration.",
+        "Select less susceptible cultivars if possible.",
+        "Control vigor; excessive nitrogen fertilization can promote succulent growth.",
+        "Remove infected shoots during pruning (dormant and summer).",
+        "Adequate spacing between trees."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Application of horticultural oils (e.g., neem oil 5ml/L, mineral oil 10-20ml/L) can smother the fungus.",
+          "Baking soda (sodium bicarbonate) solution (5 g/L) with a spreader-sticker.",
+          "Potassium bicarbonate (5-10 g/L) sprays.",
+          "Sulfur sprays (3-5 g/L) are effective but can cause phytotoxicity at high temperatures or on sensitive cultivars."
+        ],
+        "chemical": [
+          "Myclobutanil (0.05%), Tebuconazole (0.05%), or Triforine (0.05%) applied preventatively or at the first sign of infection.",
+          "Wettable sulfur (3-5 g/L) can be used early in the season.",
+          "Quinoxyfen or Kresoxim-methyl provide good control.",
+          "Resistance management is crucial; rotate fungicides with different modes of action."
+        ]
+      }
+    },
+    "fire_blight": {
+      "name": "Fire Blight",
+      "scientific_name": "Erwinia amylovora",
+      "symptoms": [
+        "Sudden wilting and browning of blossoms, shoots, and twigs, resembling a 'scorched' or 'burnt' appearance.",
+        "Characteristic 'shepherd's crook' symptom where infected shoots bend over.",
+        "Affected tissues exude a sticky, amber-colored ooze (bacterial slime) during warm, humid weather, which is spread by insects and rain.",
+        "Lesions can extend into older branches, forming cankers.",
+        "Cankers may contain the bacteria and serve as a source of infection in subsequent seasons.",
+        "Severe infections can kill entire trees."
+      ],
+      "favorable_conditions": "Warm temperatures (20-30\u00b0C) coupled with high humidity and rainfall. Bacteria are spread by insects (e.g., bees, flies) and splashing rain. Wounds (e.g., from hail, insects, pruning) facilitate infection.",
+      "preventive_measures": [
+        "Plant resistant or tolerant cultivars and rootstocks.",
+        "Avoid excessive nitrogen fertilization, which promotes succulent, susceptible growth.",
+        "Promptly remove and destroy infected tissues during pruning (disinfect tools between cuts).",
+        "Control insects that vector the bacteria.",
+        "Manage other diseases that cause wounds.",
+        "Ensure good drainage."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Application of copper-based bactericides (e.g., Bordeaux mixture 1% or Copper Hydroxide 3 g/L) during bloom if risk is high.",
+          "Streptomycin sulfate (e.g., 200 ppm) can be used as a bactericide during bloom, but resistance is a concern.",
+          "Pruning out infected wood during the growing season (at least 30-50 cm below visible symptoms), and burning it immediately.",
+          "Applying a lime-sulfur spray during dormancy can help reduce overwintering inoculum."
+        ],
+        "chemical": [
+          "Antibiotics like Streptomycin sulfate (e.g., 200 ppm) or Oxytetracycline applied preventatively during bloom in high-risk periods (e.g., warm, rainy weather).",
+          "Copper-based bactericides can also be used.",
+          "It is crucial to rotate bactericides and follow label instructions carefully to prevent resistance development.",
+          "Post-bloom sprays are generally less effective."
+        ]
+      }
+    },
+    "bitter_rot": {
+      "name": "Bitter Rot",
+      "scientific_name": "Colletotrichum spp. (e.g., Colletotrichum gloeosporioides, Colletotrichum acutatum)",
+      "symptoms": [
+        "Starts as small, circular, sunken spots on the fruit surface, often appearing dark brown.",
+        "As lesions enlarge, they develop concentric rings of salmon-pink to reddish-brown spore masses, especially in humid conditions.",
+        "The flesh beneath the lesion becomes bitter and develops a leathery texture.",
+        "Affected areas may become dry and brittle, eventually leading to the 'mummification' of the fruit.",
+        "Can also infect leaves and twigs, causing lesions and dieback, but fruit symptoms are most prominent."
+      ],
+      "favorable_conditions": "Warm and humid weather, particularly during summer months. High temperatures (20-30\u00b0C) and rainfall or heavy dew promote spore germination and infection. Infected fruit can be a primary source of inoculum.",
+      "preventive_measures": [
+        "Maintain good orchard sanitation by removing and destroying infected fruits (fallen and on trees) throughout the season.",
+        "Prune trees for adequate air circulation.",
+        "Avoid wounding fruits.",
+        "Proper storage to prevent post-harvest infection."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Application of copper-based fungicides (e.g., Bordeaux mixture 1%) during the growing season.",
+          "Use of bio-fungicides containing Bacillus subtilis or beneficial yeasts.",
+          "Lime sulfur sprays during dormancy can help reduce overwintering inoculum."
+        ],
+        "chemical": [
+          "Protective fungicide sprays are crucial, starting before infection periods. Chlorothalonil (0.2%) or Mancozeb (2.5 g/L) can be effective.",
+          "Strobilurins (e.g., Azoxystrobin, Pyraclostrobin) provide good control.",
+          "Triazoles (e.g., Tebuconazole, Difenoconazole) are also effective.",
+          "Apply fungicides at 10-14 day intervals during periods of high risk (warm, wet weather). Rotate fungicides to prevent resistance."
+        ]
+      }
+    },
+    "alternaria": {
+      "name": "Alternaria Leaf Spot/Blotch",
+      "scientific_name": "Alternaria spp. (e.g., Alternaria mali)",
+      "symptoms": [
+        "Small, circular to irregular spots on leaves, typically starting as yellowish-green and turning brown to dark brown or black.",
+        "Spots may have a target-like appearance with concentric rings of fungal growth.",
+        "Severe infections can lead to premature leaf drop, reducing photosynthetic capacity.",
+        "On fruits, can cause small, superficial, dark, necrotic spots, sometimes referred to as 'fruit blotch'."
+      ],
+      "favorable_conditions": "Warm and humid conditions, especially during prolonged periods of leaf wetness. Usually appears later in the growing season.",
+      "preventive_measures": [
+        "Maintain good orchard sanitation.",
+        "Prune trees for good air circulation.",
+        "Avoid prolonged leaf wetness.",
+        "Proper nutrition to maintain tree vigor."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Application of copper-based fungicides (e.g., Bordeaux mixture 1%) when disease is observed.",
+          "Use of bio-fungicides containing Bacillus subtilis."
+        ],
+        "chemical": [
+          "Mancozeb (2.5 g/L) or Chlorothalonil (0.2%) sprays are effective.",
+          "Fungicides like Tebuconazole (0.05%) or Difenoconazole (0.05%) can also be used.",
+          "Apply as needed, especially if symptoms are observed and conditions are favorable for spread."
+        ]
+      }
+    },
+    "crown_rot": {
+      "name": "Crown and Root Rot",
+      "scientific_name": "Phytophthora spp. and other soil-borne fungi",
+      "symptoms": [
+        "Yellowing and wilting of leaves, reduced vigor, stunted growth.",
+        "Dieback of branches, starting from the top.",
+        "Bark at the crown and upper root area may be discolored, soft, or rotten.",
+        "Girdling of the crown can lead to rapid decline and tree death.",
+        "Fruiting bodies or mycelial mats may be visible on infected tissue in very humid conditions."
+      ],
+      "favorable_conditions": "Poorly drained soils, waterlogging, and high soil moisture. Pathogens are often present in the soil and infect through wounds or directly through roots when conditions are favorable.",
+      "preventive_measures": [
+        "Planting in well-drained soils is paramount.",
+        "Avoid planting at excessive depths; ensure the graft union is above soil level.",
+        "Improve drainage by using raised beds or drainage tiles if necessary.",
+        "Avoid over-irrigation.",
+        "Sanitize pruning tools when working with potentially infected trees.",
+        "Use disease-resistant rootstocks where available."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Drenching the soil around the base of the tree with beneficial microbes like Trichoderma spp. or Bacillus subtilis.",
+          "Applying organic mulches that improve soil structure and drainage over time.",
+          "Avoid using high nitrogen fertilizers which can increase susceptibility."
+        ],
+        "chemical": [
+          "Fungicidal drenches with metalaxyl or fosetyl-aluminium applied to the soil around the trunk can help manage Phytophthora infections.",
+          "Injection of fungicides into the trunk can be an option for valuable trees.",
+          "Chemical control is often less effective once the disease is established, making prevention critical."
+        ]
+      }
+    },
+    "verticillium_wilt": {
+      "name": "Verticillium Wilt",
+      "scientific_name": "Verticillium dahliae, Verticillium albo-atrum",
+      "symptoms": [
+        "Sudden wilting of leaves on one or more branches, often starting on one side of the tree.",
+        "The wilting may progress rapidly, leading to browning and death of shoots and leaves.",
+        "Discoloration (streaking) of the vascular tissue (xylem) under the bark, visible when a branch is cut.",
+        "Affected branches may eventually die back.",
+        "The disease can predispose trees to other problems like cankers."
+      ],
+      "favorable_conditions": "Moist soils and moderate temperatures (15-25\u00b0C). Pathogens are soil-borne and can survive in the soil for many years.",
+      "preventive_measures": [
+        "Planting in well-drained soils.",
+        "Avoid excessive nitrogen fertilization.",
+        "Remove and destroy severely infected trees and root systems.",
+        "Use disease-free planting material.",
+        "Rotation with non-host crops if established in nursery beds.",
+        "Minimize wounding of roots."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Improving soil health with organic matter can suppress pathogens.",
+          "Using bio-fumigant cover crops like mustards before planting.",
+          "Introducing beneficial soil microbes (e.g., Trichoderma)."
+        ],
+        "chemical": [
+          "There are no highly effective chemical treatments for established Verticillium wilt.",
+          "Fungicidal drenches are generally not recommended.",
+          "Focus is on cultural practices to minimize stress and improve tree health."
+        ]
+      }
+    },
+    "apple_replant_disease": {
+      "name": "Apple Replant Disease",
+      "scientific_name": "Complex of soil-borne pathogens and environmental factors",
+      "symptoms": [
+        "Poor growth, stunting, and reduced vigor of young apple trees planted in soil where apple trees have previously grown.",
+        "Symptoms can include poor root development, yellowing leaves, and reduced fruit yield.",
+        "Often associated with an imbalance of soil microbial populations, which can include beneficial fungi like Trichoderma spp., mycorrhizal fungi, and antagonistic bacteria.",
+        "Can involve pathogens like Pythium, Rhizoctonia, and nematodes."
+      ],
+      "favorable_conditions": "Soils that have previously grown apple trees, leading to an accumulation of specific soil pathogens and a depletion of beneficial soil microflora.",
+      "preventive_measures": [
+        "Crop rotation: Avoid replanting apples in the same spot for at least 5-7 years. Use non-host crops.",
+        "Soil solarization: High temperatures achieved by covering moist soil with clear plastic can kill soil-borne pathogens.",
+        "Soil amendment: Incorporate large amounts of organic matter (compost, manure) to improve soil health and microbial activity.",
+        "Use of beneficial microbial inoculants (e.g., mycorrhizae, Trichoderma, Bacillus spp.) at planting.",
+        "Use of resistant rootstocks (e.g., some M.9 strains, Geneva rootstocks).",
+        "Chemical fumigation of the soil before planting (if feasible and regulated)."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Application of mycorrhizal fungi inoculants at planting.",
+          "Drenching with compost teas or beneficial microbial solutions.",
+          "Cover cropping with suppressive species."
+        ],
+        "chemical": [
+          "Soil fumigation with nematicides and fungicides (e.g., metam sodium, chloropicrin) before planting.",
+          "Application of specific soil fungicides can provide temporary control but is often not a long-term solution without addressing soil health."
+        ]
+      }
+    }
+  }
+}

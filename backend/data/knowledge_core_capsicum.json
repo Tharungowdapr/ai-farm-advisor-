@@ -1,0 +1,817 @@
+{
+  "crop_info": {
+    "name": "Capsicum",
+    "scientific_name": "Capsicum annuum",
+    "common_names": [
+      "Bell Pepper",
+      "Sweet Pepper",
+      "Chilli Pepper (Sweet varieties)"
+    ],
+    "family": "Solanaceae",
+    "origin": "Mexico and Central America",
+    "crop_type": "Fruiting vegetable",
+    "total_duration_days": 150,
+    "ideal_climate": {
+      "temperature": "Optimal vegetative: 20-25\u00b0C, Optimal fruiting: 23-28\u00b0C. Minimum: 10\u00b0C, Maximum: 35\u00b0C",
+      "rainfall": "Requires well-distributed rainfall of 750-1500 mm annually. Primarily grown under irrigation, especially in drier regions. Consistent moisture is crucial.",
+      "humidity": "Moderate humidity (50-70%) is ideal. High humidity can increase disease incidence, while very low humidity can lead to blossom drop.",
+      "soil": "Well-drained, fertile loamy to sandy-loam soils with a pH of 6.0-7.0 are best. Good organic matter content is essential.",
+      "sunlight": "Requires full sunlight (6-8 hours per day) for optimal growth and fruit development."
+    },
+    "varieties": [
+      {
+        "name": "Indra",
+        "description": "Hybrid variety known for high yield and good fruit quality."
+      },
+      {
+        "name": "Bomby",
+        "description": "Hybrid variety with early maturity and resistance to certain diseases."
+      },
+      {
+        "name": "Orobelle",
+        "description": "Attractive yellow bell pepper variety with good taste."
+      },
+      {
+        "name": "California Wonder",
+        "description": "Classic green bell pepper variety, widely adaptable."
+      },
+      {
+        "name": "Yolo Wonder",
+        "description": "Prolific producer of large, blocky green peppers."
+      },
+      {
+        "name": "Green Emerald",
+        "description": "Hybrid green bell pepper with excellent firmness."
+      },
+      {
+        "name": "Tops Green",
+        "description": "High-yielding hybrid with good disease tolerance."
+      },
+      {
+        "name": "Polo",
+        "description": "Red bell pepper hybrid with a sweet flavor."
+      }
+    ]
+  },
+  "lifecycle_phases": [
+    {
+      "phase_id": "capsicum_1_nursery_sowing",
+      "phase_name": "Nursery/Seedling Establishment",
+      "duration_days": 35,
+      "description": "This phase involves raising healthy seedlings from seeds until they are ready for transplanting. It requires careful management of seed quality, sowing media, temperature, humidity, and light to ensure vigorous root and shoot development.",
+      "procedures": [
+        {
+          "step_number": 1,
+          "operation": "Seed Selection and Treatment",
+          "details": "Select certified, disease-free seeds of the chosen variety. Treat seeds with a suitable fungicide (e.g., Captan or Thirum @ 3g/kg seed) and a systemic insecticide (e.g., Imidacloprid @ 2ml/kg seed) to prevent early seedling diseases and insect pests.",
+          "fertilization": "No direct fertilization, but enriched sowing media is used.",
+          "irrigation": "Maintain consistent moisture in the sowing medium. Water gently after sowing and as needed to keep the medium moist but not waterlogged. Mist or fine spray is recommended.",
+          "pest_management": "Seed treatment is the primary pest management. Monitor for soil-borne insects in the nursery bed/trays."
+        },
+        {
+          "step_number": 2,
+          "operation": "Sowing",
+          "details": "Sow seeds in raised nursery beds or seed trays filled with a sterile, well-draining germination mix (e.g., cocopeat, vermicompost, and sand in 1:1:1 ratio). Sow seeds at a depth of 0.5-1 cm, spaced 2-3 cm apart.",
+          "fertilization": "Use a well-composted germination mix. No additional fertilizer required at this stage.",
+          "irrigation": "Water lightly after sowing. Keep the medium consistently moist using a fine spray or misting.",
+          "pest_management": "Ensure good ventilation to prevent damping-off. Monitor for early signs of fungal diseases."
+        },
+        {
+          "step_number": 3,
+          "operation": "Temperature and Humidity Control",
+          "details": "Maintain an optimal germination temperature of 25-30\u00b0C. For retaining moisture and humidity, cover the beds/trays with plastic film or a shade net. Ensure adequate ventilation once germination starts.",
+          "fertilization": "N/A",
+          "irrigation": "Maintain consistent moisture levels. Avoid overwatering.",
+          "pest_management": "Monitor humidity to prevent fungal diseases. Good airflow is crucial."
+        },
+        {
+          "step_number": 4,
+          "operation": "Germination and Early Seedling Care",
+          "details": "Germination usually occurs within 7-14 days. Once seedlings emerge, remove the plastic cover and provide ample light (preferably indirect sunlight). Thin overcrowded seedlings to ensure adequate space for growth.",
+          "fertilization": "N/A",
+          "irrigation": "Continue to maintain moist conditions. Avoid water stress.",
+          "pest_management": "Watch for damping-off and other seedling diseases. Ensure good aeration."
+        },
+        {
+          "step_number": 5,
+          "operation": "Watering and Light Management",
+          "details": "Provide adequate sunlight for about 4-6 hours daily. Water the seedlings as needed, ensuring the soil remains moist but not saturated. Avoid wetting the foliage excessively, especially in the evening, to reduce disease risk.",
+          "fertilization": "N/A",
+          "irrigation": "Water in the morning hours.",
+          "pest_management": "Good airflow and proper watering are key preventative measures."
+        },
+        {
+          "step_number": 6,
+          "operation": "Fertigation/Foliar Feeding",
+          "details": "Once seedlings develop their first true leaves, begin light fertigation. Apply a balanced liquid fertilizer like 19:19:19 NPK or a specialized seedling starter solution at a low concentration (e.g., 0.5-1 g/liter) once a week.",
+          "fertilization": "NPK (19:19:19) @ 0.5-1 g/L",
+          "irrigation": "Incorporate with irrigation.",
+          "pest_management": "Healthy seedlings are more resistant to pests."
+        },
+        {
+          "step_number": 7,
+          "operation": "Hardening Off",
+          "details": "About 7-10 days before transplanting, gradually expose seedlings to field conditions. Reduce watering slightly, expose them to direct sunlight for longer periods, and allow them to experience wind. This process prepares them for transplant shock.",
+          "fertilization": "N/A",
+          "irrigation": "Reduce frequency slightly.",
+          "pest_management": "N/A"
+        },
+        {
+          "step_number": 8,
+          "operation": "Transplanting Preparation",
+          "details": "Select healthy, uniform seedlings with 4-6 true leaves and a well-developed root system for transplanting. Ensure transplanting is done during cooler parts of the day (morning or late afternoon) to minimize stress.",
+          "fertilization": "N/A",
+          "irrigation": "Ensure seedlings are well-watered before uprooting.",
+          "pest_management": "Inspect seedlings for any signs of pests or diseases before transplanting."
+        }
+      ],
+      "common_diseases": [
+        "damping_off",
+        "seedling_blight",
+        "root_rot"
+      ],
+      "preventive_tips": [
+        "Use sterile sowing media.",
+        "Seed treatment with fungicides and insecticides.",
+        "Ensure good drainage and ventilation.",
+        "Avoid overwatering.",
+        "Harden off seedlings before transplanting.",
+        "Use disease-free seeds from reputable sources.",
+        "Maintain nursery sanitation."
+      ]
+    },
+    {
+      "phase_id": "capsicum_2_vegetative",
+      "phase_name": "Vegetative Growth & Establishment",
+      "duration_days": 40,
+      "description": "Following transplanting, seedlings establish themselves in the field, developing a robust root system and vegetative structure. This phase is critical for building a strong plant framework that will support future flowering and fruiting. Nutrient uptake and water management are paramount.",
+      "procedures": [
+        {
+          "step_number": 1,
+          "operation": "Transplanting",
+          "details": "Transplant seedlings into the prepared field at a spacing of 60-75 cm between plants and 90-120 cm between rows. Plant seedlings at the same depth as they were in the nursery. Water immediately after transplanting to settle the soil around the roots.",
+          "fertilization": "Apply basal dose of FYM/compost (25-30 t/ha) at the time of field preparation. Mix 150:100:150 kg NPK/ha as basal dose.",
+          "irrigation": "Provide light irrigation immediately after transplanting. Subsequent irrigations based on soil moisture, typically every 3-5 days initially.",
+          "pest_management": "Monitor for cutworms, aphids, and whiteflies. Apply granular insecticides in the soil if necessary."
+        },
+        {
+          "step_number": 2,
+          "operation": "Initial Fertilization and Top Dressing",
+          "details": "Apply the first top dressing of nitrogen (e.g., Urea) about 15-20 days after transplanting, coinciding with active vegetative growth. Follow with subsequent top dressings as per plant needs.",
+          "fertilization": "NPK: 1st Top Dressing (20-25 DAS) - Urea: 65 kg/ha, SSP: 75 kg/ha, MOP: 50 kg/ha. Followed by 2nd Top Dressing (40-45 DAS) - Urea: 65 kg/ha, MOP: 50 kg/ha.",
+          "irrigation": "Irrigate after each top dressing application.",
+          "pest_management": "Monitor for sucking pests. Use targeted sprays if infestation is high."
+        },
+        {
+          "step_number": 3,
+          "operation": "Weed Management",
+          "details": "Keep the field free from weeds through regular inter-cultivation and hand weeding. Mulching with organic matter (straw, plastic mulch) can suppress weeds and conserve soil moisture.",
+          "fertilization": "N/A",
+          "irrigation": "Maintain consistent soil moisture.",
+          "pest_management": "Weeds harbor pests and diseases. Their removal is crucial for plant health."
+        },
+        {
+          "step_number": 4,
+          "operation": "Training and Staking",
+          "details": "As plants grow, provide support using stakes, cages, or trellises. This promotes upright growth, improves air circulation, reduces fruit contact with soil, and facilitates harvesting. Pinching the growing tip can encourage branching.",
+          "fertilization": "N/A",
+          "irrigation": "Ensure adequate moisture availability to support vegetative growth.",
+          "pest_management": "Staking can reduce incidence of soil-borne diseases."
+        },
+        {
+          "step_number": 5,
+          "operation": "Irrigation Schedule",
+          "details": "Maintain consistent soil moisture, especially during dry spells. Drip irrigation is highly recommended for efficient water use and nutrient delivery. Avoid water stress, which can lead to stunted growth and flower drop.",
+          "fertilization": "Fertigation can be initiated during this phase, applying water-soluble fertilizers (e.g., 19:19:19 NPK) as per plant requirement.",
+          "irrigation": "Drip irrigation at 2-3 days interval, applying 8-10 mm water per day depending on weather. Adjust based on soil moisture.",
+          "pest_management": "Proper irrigation reduces stress, making plants more resistant."
+        },
+        {
+          "step_number": 6,
+          "operation": "Pest Monitoring and Control",
+          "details": "Regularly scout for common pests like thrips, aphids, whiteflies, and mites. Use sticky traps (yellow for whiteflies and thrips, blue for thrips) for early detection. Initiate control measures at the first sign of infestation.",
+          "fertilization": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Pest Management: For Thrips: Spray Spinosad (45 SC) @ 0.5 ml/L or Imidacloprid (17.8 SL) @ 0.3 ml/L. For Aphids/Whiteflies: Spray Dimethoate (30 EC) @ 1 ml/L or Chlorpyriphos (20 EC) @ 2.5 ml/L."
+        },
+        {
+          "step_number": 7,
+          "operation": "Disease Monitoring and Prevention",
+          "details": "Monitor plants for early signs of fungal diseases like leaf spots and powdery mildew. Ensure good air circulation and avoid overhead irrigation, especially in the evening, to minimize disease development.",
+          "fertilization": "N/A",
+          "irrigation": "Avoid wetting foliage.",
+          "pest_management": "Disease Prevention: Ensure good air circulation through proper plant spacing and pruning. Avoid waterlogging. Remove affected leaves promptly."
+        },
+        {
+          "step_number": 8,
+          "operation": "Micronutrient Application",
+          "details": "If deficiency symptoms are observed (e.g., interveinal chlorosis indicating micronutrient deficiency), apply a foliar spray of micronutrient mixtures containing Zinc, Boron, Iron, and Manganese.",
+          "fertilization": "Foliar spray of micronutrient mixture (Zn, B, Fe, Mn) @ 2 g/L once in 15-20 days.",
+          "irrigation": "Can be applied along with irrigation water if using fertigation.",
+          "pest_management": "Healthy plants with balanced nutrition are less susceptible to pests and diseases."
+        }
+      ],
+      "common_diseases": [
+        "leaf_spot",
+        "powdery_mildew",
+        "bacterial_leaf_spot",
+        "early_blight"
+      ],
+      "preventive_tips": [
+        "Use disease-resistant varieties.",
+        "Maintain optimal plant spacing for good air circulation.",
+        "Practice crop rotation.",
+        "Sanitize tools and equipment.",
+        "Promptly remove and destroy affected plant parts.",
+        "Avoid overhead irrigation.",
+        "Monitor regularly for pests and diseases."
+      ]
+    },
+    {
+      "phase_id": "capsicum_3_flowering",
+      "phase_name": "Flowering and Fruit Set",
+      "duration_days": 30,
+      "description": "This crucial phase involves the development of flowers and their subsequent pollination and fruit set. Maintaining optimal environmental conditions, adequate nutrition, and managing flower thrips are key to maximizing fruit production.",
+      "procedures": [
+        {
+          "step_number": 1,
+          "operation": "Flower Initiation and Development",
+          "details": "Plants begin to produce flowers. The number and quality of flowers are directly influenced by the health and vigor of the plant established during the vegetative phase.",
+          "fertilization": "Continue with balanced NPK fertilization, slightly increasing the proportion of Phosphorus (P) and Potassium (K) to support flowering. NPK: 65 kg Urea + 50 kg MOP/ha.",
+          "irrigation": "Maintain consistent soil moisture. Avoid water stress which can cause flower drop. Drip irrigation is preferred.",
+          "pest_management": "Monitor for thrips and other flower-feeding insects."
+        },
+        {
+          "step_number": 2,
+          "operation": "Pollination Management",
+          "details": "Capsicum is primarily self-pollinated, but cross-pollination can occur. In controlled environments (greenhouses), artificial pollination methods like gentle shaking of plants or using fans can improve fruit set. Flower thrips, while pests, can sometimes act as minor pollinators.",
+          "fertilization": "N/A",
+          "irrigation": "Ensure optimal humidity levels for pollen viability.",
+          "pest_management": "Control flower thrips which can damage flowers and prevent fruit set."
+        },
+        {
+          "step_number": 3,
+          "operation": "Pest Management: Flower Thrips",
+          "details": "Thrips are a major pest that feeds on pollen and flower parts, causing malformation of flowers and preventing fruit set. Early detection and control are vital.",
+          "fertilization": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Pest Management: Apply Spinetoram (0.5 ml/L) or Emamectin Benzoate (1 g/L) at the first sign of infestation. Repeat every 10-15 days. Yellow sticky traps for monitoring."
+        },
+        {
+          "step_number": 4,
+          "operation": "Nutrient Management for Flowering",
+          "details": "Provide adequate levels of Phosphorus and Potassium, which are essential for flower development and fruit set. Calcium and Boron are also important for pollen tube growth and fertilization.",
+          "fertilization": "NPK: 65 kg Urea + 50 kg MOP/ha. Foliar application of Calcium Nitrate (1 g/L) and Boron (0.5 g/L) can be beneficial.",
+          "irrigation": "Apply fertilizers along with irrigation water (fertigation) for efficient uptake.",
+          "pest_management": "Balanced nutrition enhances plant's ability to withstand stress and pests."
+        },
+        {
+          "step_number": 5,
+          "operation": "Irrigation and Temperature Control",
+          "details": "Maintain consistent soil moisture. Avoid fluctuations in temperature, as extremes can lead to flower drop. Optimal temperature range is 23-28\u00b0C.",
+          "fertilization": "N/A",
+          "irrigation": "Drip irrigation providing 8-10 mm per day. Adjust based on weather conditions.",
+          "pest_management": "Stress from improper irrigation or temperature can predispose plants to problems."
+        },
+        {
+          "step_number": 6,
+          "operation": "Disease Monitoring: Blossom End Rot",
+          "details": "While not a disease, Blossom End Rot (BER) is a physiological disorder often mistaken for one. It's caused by calcium deficiency and irregular watering. Ensure adequate calcium and consistent moisture.",
+          "fertilization": "Ensure sufficient Calcium supply. Foliar spray of Calcium Nitrate.",
+          "irrigation": "Maintain uniform soil moisture. Avoid wilting and overwatering cycles.",
+          "pest_management": "N/A"
+        },
+        {
+          "step_number": 7,
+          "operation": "Pruning for Air Circulation",
+          "details": "Light pruning of dense foliage around flowering zones can improve air circulation, reduce humidity, and help prevent fungal diseases.",
+          "fertilization": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Improved air circulation reduces fungal disease risk."
+        },
+        {
+          "step_number": 8,
+          "operation": "Removal of Deformed Flowers/Fruits",
+          "details": "Promptly remove any deformed flowers or very early-formed fruits to channel plant energy towards producing healthy, marketable fruits.",
+          "fertilization": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "N/A"
+        }
+      ],
+      "common_diseases": [
+        "blossom_end_rot_(physiological)",
+        "flower_thrips_damage",
+        "anthracnose_(early_stage)"
+      ],
+      "preventive_tips": [
+        "Ensure adequate calcium supply.",
+        "Maintain uniform soil moisture.",
+        "Control thrips diligently.",
+        "Provide optimal temperature range.",
+        "Improve air circulation through pruning.",
+        "Avoid water stress."
+      ]
+    },
+    {
+      "phase_id": "capsicum_4_fruit_development",
+      "phase_name": "Fruit Development and Growth",
+      "duration_days": 45,
+      "description": "In this phase, initiated fruits grow rapidly in size, develop their characteristic color (if applicable), and accumulate dry matter. Continuous supply of water and nutrients is essential for proper fruit development and quality.",
+      "procedures": [
+        {
+          "step_number": 1,
+          "operation": "Fruit Growth and Expansion",
+          "details": "The fertilized ovary develops into a fruit. Fruits enlarge rapidly, requiring significant amounts of water and nutrients.",
+          "fertilization": "Continue balanced NPK fertilization. Focus on Potash (K) for fruit quality and size. NPK: 65 kg Urea + 50 kg MOP/ha.",
+          "irrigation": "Maintain consistent soil moisture. Drip irrigation is ideal, delivering 10-12 mm per day. Avoid waterlogging.",
+          "pest_management": "Monitor for fruit-boring insects and diseases affecting fruits."
+        },
+        {
+          "step_number": 2,
+          "operation": "Nutrient Supply for Fruit Quality",
+          "details": "Potassium is crucial for fruit firmness, size, and flavor. Calcium is important for preventing physiological disorders like Blossom End Rot. Boron aids in fruit development and preventing cracking.",
+          "fertilization": "Top dressing: Urea 65 kg/ha, MOP 50 kg/ha. Foliar application of Calcium Nitrate (1 g/L) and Boron (0.5 g/L) every 15-20 days.",
+          "irrigation": "Ensure efficient nutrient uptake through proper watering.",
+          "pest_management": "Balanced nutrition improves resistance to pest and disease attacks."
+        },
+        {
+          "step_number": 3,
+          "operation": "Irrigation Management",
+          "details": "Consistent irrigation is critical. Avoid water stress, which can lead to reduced fruit size, cracking, and increased susceptibility to diseases. However, excessive watering can lead to root rot and fruit splitting.",
+          "fertilization": "N/A",
+          "irrigation": "Drip irrigation: 10-12 mm per day. Adjust based on soil moisture, weather, and plant stage. Aim for uniform moisture levels.",
+          "pest_management": "Water stress weakens plants."
+        },
+        {
+          "step_number": 4,
+          "operation": "Pest Management: Fruit Borers",
+          "details": "Fruit borers (e.g., Helicoverpa armigera) can cause significant damage by feeding on developing fruits. Monitor regularly and initiate control measures promptly.",
+          "fertilization": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Pest Management: For Helicoverpa: Spray Emamectin Benzoate (5 SG) @ 0.4 g/L or Chlorantraniliprole (18.5 SC) @ 0.4 ml/L. Use pheromone traps for monitoring."
+        },
+        {
+          "step_number": 5,
+          "operation": "Disease Management: Fruit Rot",
+          "details": "Fungal diseases like Anthracnose can affect developing fruits, causing sunken lesions and rot.",
+          "fertilization": "N/A",
+          "irrigation": "Avoid water splashing on fruits. Improve drainage.",
+          "pest_management": "Disease Management: Spray Mancozeb (2.5 g/L) or Carbendazim (1 g/L) at intervals of 10-15 days if symptoms appear. Ensure proper sanitation."
+        },
+        {
+          "step_number": 6,
+          "operation": "Fruit Thinning/Pruning (if necessary)",
+          "details": "In some cases, thinning out small or malformed fruits might be beneficial to encourage the development of larger, higher-quality fruits. Pruning of overcrowded foliage can improve light penetration and air circulation.",
+          "fertilization": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "N/A"
+        },
+        {
+          "step_number": 7,
+          "operation": "Environmental Control (Greenhouse)",
+          "details": "In greenhouse cultivation, monitor and control temperature and humidity to optimize fruit development and prevent physiological disorders.",
+          "fertilization": "N/A",
+          "irrigation": "Regulate irrigation to maintain optimal humidity levels.",
+          "pest_management": "Controlled environments reduce pest and disease pressure."
+        },
+        {
+          "step_number": 8,
+          "operation": "Monitoring for Fruit Cracking",
+          "details": "Fruit cracking can occur due to sudden changes in moisture availability or rapid growth. Ensure uniform irrigation and balanced nutrition.",
+          "fertilization": "Adequate Calcium and Potassium supply helps in strengthening fruit skin.",
+          "irrigation": "Maintain consistent watering schedule.",
+          "pest_management": "Cracked fruits are entry points for pathogens."
+        }
+      ],
+      "common_diseases": [
+        "anthracnose_(fruit_rot)",
+        "alternaria_leaf_spot",
+        "bacterial_spot",
+        "fruit_cracking_(physiological)"
+      ],
+      "preventive_tips": [
+        "Maintain consistent irrigation.",
+        "Ensure adequate Calcium and Potassium supply.",
+        "Control fruit borers and fruit rot pathogens.",
+        "Provide good ventilation.",
+        "Avoid sudden fluctuations in soil moisture.",
+        "Use mulching to conserve moisture."
+      ]
+    },
+    {
+      "phase_id": "capsicum_5_maturity",
+      "phase_name": "Fruit Ripening and Harvest",
+      "duration_days": 30,
+      "description": "This phase marks the culmination of the crop's development, where fruits reach marketable maturity and begin to ripen. Harvesting is a continuous process, with fruits picked at their prime for optimal quality and yield. Color development is a key indicator.",
+      "procedures": [
+        {
+          "step_number": 1,
+          "operation": "Maturity Indicators",
+          "details": "Maturity is indicated by fruit size, firmness, and development of characteristic color (green, red, yellow, orange). For green harvesting, fruits are picked when fully enlarged and firm but before the onset of ripening color. For colored fruits, harvest when the desired color intensity is achieved.",
+          "fertilization": "Reduce Nitrogen application. Focus on Potassium for final fruit development and quality.",
+          "irrigation": "Reduce watering slightly as fruits approach harvest to improve shelf life, but avoid severe water stress.",
+          "pest_management": "Continue monitoring for pests and diseases."
+        },
+        {
+          "step_number": 2,
+          "operation": "Harvesting Strategy",
+          "details": "Harvesting is typically done by hand. Fruits should be cut with a sharp knife or secateurs, leaving a small portion of the stem attached. Avoid bruising or damaging the fruits.",
+          "fertilization": "N/A",
+          "irrigation": "Harvest during cooler parts of the day (early morning or late afternoon).",
+          "pest_management": "N/A"
+        },
+        {
+          "step_number": 3,
+          "operation": "Frequency of Harvesting",
+          "details": "Capsicum fruits are usually harvested multiple times over the harvesting period. For green peppers, harvests may be every 3-5 days. For ripe colored peppers, harvest frequency might be slightly longer depending on ripening rate.",
+          "fertilization": "N/A",
+          "irrigation": "Maintain consistent, moderate watering to encourage continued fruit production.",
+          "pest_management": "N/A"
+        },
+        {
+          "step_number": 4,
+          "operation": "Post-Harvest Handling",
+          "details": "Handle harvested fruits carefully to minimize bruising and physical damage. Sort fruits based on size, color, and quality. Remove any damaged or diseased fruits.",
+          "fertilization": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Remove any fruits showing signs of rot or insect damage immediately."
+        },
+        {
+          "step_number": 5,
+          "operation": "Grading and Packaging",
+          "details": "Grade fruits according to established standards (e.g., size, shape, color, absence of defects). Pack fruits in appropriate containers that provide protection during transport and storage.",
+          "fertilization": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Clean packaging materials are essential to prevent contamination."
+        },
+        {
+          "step_number": 6,
+          "operation": "Disease Control during Harvest",
+          "details": "Ensure harvesting tools are clean to prevent disease spread. Promptly remove and discard any diseased fruits from the field.",
+          "fertilization": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Disease Management: Prevent spread of anthracnose and bacterial spot by removing infected fruits."
+        },
+        {
+          "step_number": 7,
+          "operation": "Color Development Management (for colored varieties)",
+          "details": "For red or yellow varieties, ensure sufficient sunlight and optimal temperatures for proper pigment development. Nutrient balance, particularly potassium, plays a role.",
+          "fertilization": "Ensure adequate Potassium supply.",
+          "irrigation": "Consistent watering aids in uniform color development.",
+          "pest_management": "N/A"
+        },
+        {
+          "step_number": 8,
+          "operation": "Field Sanitation",
+          "details": "After harvesting, remove any remaining plant debris and diseased fruits to reduce inoculum for future crops.",
+          "fertilization": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Good field sanitation prevents carry-over of diseases and pests."
+        }
+      ],
+      "common_diseases": [
+        "anthracnose_(ripe_fruit)",
+        "bacterial_spot_(on_fruit)",
+        "post_harvest_rot"
+      ],
+      "preventive_tips": [
+        "Harvest at the correct stage of maturity.",
+        "Handle fruits carefully to avoid bruising.",
+        "Use clean harvesting tools.",
+        "Promptly remove and destroy diseased fruits.",
+        "Maintain good field sanitation.",
+        "Proper grading and packaging."
+      ]
+    },
+    {
+      "phase_id": "capsicum_6_post_harvest",
+      "phase_name": "Post-Harvest and Storage",
+      "duration_days": 10,
+      "description": "This phase deals with the handling, storage, and potential processing of harvested capsicum fruits to maintain their quality and extend shelf life.",
+      "procedures": [
+        {
+          "step_number": 1,
+          "operation": "Cooling",
+          "details": "Rapidly cool harvested fruits to their ideal storage temperature (7-10\u00b0C for bell peppers, slightly higher for hotter varieties) to slow down respiration and metabolic processes, thus preserving quality and extending shelf life.",
+          "fertilization": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "N/A"
+        },
+        {
+          "step_number": 2,
+          "operation": "Sorting and Grading",
+          "details": "Re-sort and grade fruits after cooling. Remove any fruits showing signs of spoilage, damage, or disease that may have become apparent after harvest.",
+          "fertilization": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Remove any infected fruits to prevent spread to healthy ones."
+        },
+        {
+          "step_number": 3,
+          "operation": "Packaging",
+          "details": "Package capsicum in perforated plastic bags or containers that allow for some air circulation while reducing moisture loss. Avoid over-packing.",
+          "fertilization": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Ensure packaging materials are clean and food-grade."
+        },
+        {
+          "step_number": 4,
+          "operation": "Storage Conditions",
+          "details": "Store at the optimal temperature (7-10\u00b0C) and relative humidity (90-95%). Avoid storing with ethylene-producing fruits like apples and tomatoes, as ethylene can accelerate ripening and spoilage.",
+          "fertilization": "N/A",
+          "irrigation": "Maintain high humidity in storage.",
+          "pest_management": "N/A"
+        },
+        {
+          "step_number": 5,
+          "operation": "Shelf Life",
+          "details": "Under optimal conditions, bell peppers can be stored for 2-3 weeks. Hotter varieties may have a longer shelf life.",
+          "fertilization": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "N/A"
+        },
+        {
+          "step_number": 6,
+          "operation": "Disease Control in Storage",
+          "details": "Monitor for post-harvest rots (e.g., Botrytis, Rhizopus) which can spread rapidly in storage. Ensure harvested fruits are free from injuries.",
+          "fertilization": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "Disease Management: If Botrytis is a concern, maintain low temperatures and adequate ventilation. Remove any infected fruits immediately. Fungicidal dips can be used if permitted and registered."
+        },
+        {
+          "step_number": 7,
+          "operation": "Preparation for Market",
+          "details": "Fruits are transported from storage to markets. Ensure proper handling during loading and unloading to maintain fruit integrity.",
+          "fertilization": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "N/A"
+        },
+        {
+          "step_number": 8,
+          "operation": "Processing Options",
+          "details": "Capsicum can be used fresh, dried, frozen, pickled, or processed into sauces and powders. Processing requires specific conditions depending on the method.",
+          "fertilization": "N/A",
+          "irrigation": "N/A",
+          "pest_management": "N/A"
+        }
+      ],
+      "common_diseases": [
+        "botrytis_rot",
+        "rhizopus_rot",
+        "penicillium_rot",
+        "bacterial_soft_rot"
+      ],
+      "preventive_tips": [
+        "Cool fruits rapidly after harvest.",
+        "Handle with care to prevent bruising.",
+        "Store at optimal temperature and humidity.",
+        "Avoid ethylene exposure.",
+        "Ensure good ventilation in storage.",
+        "Sort and grade carefully."
+      ]
+    }
+  ],
+  "disease_protocols": {
+    "damping_off": {
+      "name": "Damping-off",
+      "scientific_name": "Caused by various soil-borne fungi like Pythium spp., Rhizoctonia solani, Fusarium spp.",
+      "symptoms": [
+        "Seedlings rot at the soil line.",
+        "Stems become water-soaked and collapse.",
+        "Seedlings wilt and die suddenly.",
+        "In pre-emergence damping-off, seedlings fail to emerge from the soil."
+      ],
+      "favorable_conditions": "High soil moisture, poor drainage, cool to moderate temperatures (15-25\u00b0C), and high humidity. Overcrowding of seedlings.",
+      "preventive_measures": [
+        "Use of sterile, well-drained sowing media.",
+        "Seed treatment with fungicides (e.g., Captan, Thirum).",
+        "Ensuring good aeration and avoiding overwatering in the nursery.",
+        "Proper spacing of seedlings.",
+        "Destroying infected plant debris.",
+        "Crop rotation in the field."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Drenching with Trichoderma viride formulated products @ 5 g/L of water around the base of seedlings.",
+          "Application of neem cake in nursery beds."
+        ],
+        "chemical": [
+          "Soil drenching with Captan (50 WP) @ 2.5 g/L or Metalaxyl (35 % SL) @ 1 ml/L.",
+          "Seed treatment with Thiram (75 WP) @ 3g/kg seed."
+        ]
+      }
+    },
+    "powdery_mildew": {
+      "name": "Powdery Mildew",
+      "scientific_name": "Oidium neolycopersici (formerly Leveillula taurica)",
+      "symptoms": [
+        "White, powdery patches on the upper and lower leaf surfaces.",
+        "Affected leaves may turn yellow and drop prematurely.",
+        "Growth on stems and fruits can also occur, leading to malformation."
+      ],
+      "favorable_conditions": "High humidity (above 70%), moderate temperatures (20-28\u00b0C), and low light intensity. Occurs commonly during cloudy weather and in dense canopies.",
+      "preventive_measures": [
+        "Planting resistant or tolerant varieties.",
+        "Ensuring adequate plant spacing for good air circulation.",
+        "Pruning dense foliage.",
+        "Avoiding overhead irrigation, especially in the evening.",
+        "Removing infected plant parts.",
+        "Crop rotation."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Foliar spray of Sulphur (wettable Sulphur 80% WP) @ 2.5 g/L of water.",
+          "Application of potassium bicarbonate @ 5 g/L of water.",
+          "Spraying with neem oil @ 5 ml/L of water."
+        ],
+        "chemical": [
+          "Spray Wettable Sulphur (80% WP) @ 2.5 g/L of water.",
+          "Application of Triforine (20% EC) @ 1 ml/L of water.",
+          "Spraying with Carbendazim (50 WP) @ 1 g/L of water."
+        ]
+      }
+    },
+    "anthracnose": {
+      "name": "Anthracnose / Fruit Rot",
+      "scientific_name": "Colletotrichum spp.",
+      "symptoms": [
+        "Dark, sunken lesions on fruits, often circular.",
+        "Lesions may develop concentric rings or salmon-colored spores within them.",
+        "Can also cause leaf spots and stem lesions in severe cases."
+      ],
+      "favorable_conditions": "Warm and humid conditions (25-30\u00b0C), especially following periods of rain or heavy dew. Wounds on fruits provide entry points.",
+      "preventive_measures": [
+        "Use of disease-free seeds and planting material.",
+        "Crop rotation.",
+        "Maintaining good field sanitation, removing infected debris.",
+        "Avoiding injury to fruits during cultivation and harvesting.",
+        "Mulching to prevent soil splash.",
+        "Proper spacing for air circulation.",
+        "Harvesting fruits at the right stage and handling them carefully."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Spraying with copper-based fungicides like Copper Oxychloride (50% WP) @ 2.5 g/L of water.",
+          "Application of Bacillus subtilis based bio-fungicides."
+        ],
+        "chemical": [
+          "Spray Mancozeb (75 WP) @ 2.5 g/L of water.",
+          "Application of Carbendazim (50 WP) @ 1 g/L of water.",
+          "Spraying with Chlorothalonil (75 WP) @ 2 g/L of water.",
+          "Repeat sprays at 10-15 day intervals depending on disease severity."
+        ]
+      }
+    },
+    "viral_complex": {
+      "name": "Viral Complex / Murda Complex / Leaf Curl",
+      "scientific_name": "Caused by various viruses like Pepper Yellow Leaf Curl Virus (PYLCV), Tobacco Mosaic Virus (TMV), Potato Virus Y (PVY), often vectored by insects.",
+      "symptoms": [
+        "Stunted plant growth.",
+        "Yellowing and curling of leaves (upward or downward).",
+        "Leaf distortion, blistering, and mosaic patterns.",
+        "Reduced flowering and fruit set.",
+        "Malformed and reduced size fruits."
+      ],
+      "favorable_conditions": "Presence of insect vectors (e.g., whiteflies for PYLCV, aphids for PVY, thrips for some viruses). High humidity can facilitate rapid spread of some insect vectors. Warm temperatures support vector activity.",
+      "preventive_measures": [
+        "Use of virus-free certified seeds/seedlings.",
+        "Planting resistant or tolerant varieties.",
+        "Strict control of insect vectors.",
+        "Removal and destruction of infected plants to prevent further spread.",
+        "Crop rotation.",
+        "Maintaining field sanitation.",
+        "Using reflective mulches to deter insect vectors."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Application of neem oil @ 5 ml/L of water to repel insect vectors.",
+          "Use of Bacillus thuringiensis (Bt) for specific caterpillar pests.",
+          "Encouraging natural enemies of insect vectors."
+        ],
+        "chemical": [
+          "Control of vectors: Spray Imidacloprid (17.8 SL) @ 0.3 ml/L or Thiamethoxam (25 % WG) @ 0.5 g/L for whiteflies and aphids.",
+          "Spray Fipronil (5 SC) @ 1 ml/L for thrips.",
+          "Repeat vector control measures at regular intervals, especially during early stages."
+        ]
+      }
+    },
+    "bacterial_leaf_spot": {
+      "name": "Bacterial Leaf Spot",
+      "scientific_name": "Xanthomonas campestris pv. vesicatoria",
+      "symptoms": [
+        "Small, water-soaked spots on leaves, which enlarge and turn brown to black.",
+        "Spots may be surrounded by a yellow halo.",
+        "Severe infection can lead to leaf defoliation.",
+        "Small, raised, dark spots on fruits, often developing into a scabby appearance."
+      ],
+      "favorable_conditions": "Warm and wet conditions, high humidity, and rain or overhead irrigation. Mechanical injury to leaves and fruits.",
+      "preventive_measures": [
+        "Use of disease-free seeds and transplants.",
+        "Crop rotation.",
+        "Maintaining good field sanitation.",
+        "Avoiding overhead irrigation.",
+        "Pruning to improve air circulation.",
+        "Destroying infected plant debris.",
+        "Using resistant varieties if available."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Spraying with Copper Oxychloride (50% WP) @ 2.5 g/L of water.",
+          "Application of bio-fungicides containing Bacillus subtilis."
+        ],
+        "chemical": [
+          "Spray Copper Oxychloride (50% WP) @ 2.5 g/L of water.",
+          "Application of Streptocycline @ 1 g per 10 L of water.",
+          "Repeat sprays at 7-10 day intervals, especially during rainy periods."
+        ]
+      }
+    },
+    "early_blight": {
+      "name": "Early Blight",
+      "scientific_name": "Alternaria solani",
+      "symptoms": [
+        "Small, dark brown spots on lower leaves, often with concentric rings (target-spot appearance).",
+        "Spots enlarge and may coalesce, causing leaf yellowing and premature defoliation.",
+        "Can also affect stems and fruits, causing dark, sunken lesions."
+      ],
+      "favorable_conditions": "Warm and humid conditions, especially during periods of leaf wetness. Weakened plants due to stress (e.g., nutrient deficiency, water stress) are more susceptible.",
+      "preventive_measures": [
+        "Use of disease-free seeds.",
+        "Crop rotation.",
+        "Maintaining field sanitation.",
+        "Adequate fertilization and irrigation to keep plants healthy.",
+        "Avoiding dense planting.",
+        "Removal of infected lower leaves."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Foliar spray of Copper Oxychloride (50% WP) @ 2.5 g/L.",
+          "Application of neem oil @ 5 ml/L."
+        ],
+        "chemical": [
+          "Spray Mancozeb (75 WP) @ 2.5 g/L of water.",
+          "Application of Chlorothalonil (75 WP) @ 2 g/L of water.",
+          "Spraying with Propiconazole (25 EC) @ 0.5 ml/L.",
+          "Repeat sprays at 10-15 day intervals."
+        ]
+      }
+    },
+    "blossom_end_rot_(physiological)": {
+      "name": "Blossom End Rot (Physiological Disorder)",
+      "scientific_name": "Not caused by a pathogen; a physiological disorder related to calcium deficiency and water management.",
+      "symptoms": [
+        "Dark, sunken, leathery lesions developing at the blossom end (bottom) of the fruit.",
+        "Lesions can enlarge and affect a significant portion of the fruit.",
+        "Tissue is dry and leathery."
+      ],
+      "favorable_conditions": "Inconsistent watering, low soil calcium levels, rapid plant growth coupled with insufficient calcium uptake, high soil salinity, and rapid temperature fluctuations.",
+      "preventive_measures": [
+        "Maintaining uniform soil moisture through consistent irrigation (drip irrigation is ideal).",
+        "Ensuring adequate calcium levels in the soil (lime application if soil is acidic).",
+        "Avoiding water stress and waterlogging.",
+        "Using mulches to conserve soil moisture.",
+        "Avoiding excessive nitrogen fertilization."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Foliar application of Calcium Nitrate (10-20% solution) @ 1-2 g/L of water, applied weekly during flowering and fruit development.",
+          "Ensuring adequate compost or organic matter in the soil."
+        ],
+        "chemical": [
+          "Foliar spray of Calcium Nitrate (10-20%) @ 1-2 g/L.",
+          "Application of soluble Calcium fertilizers through drip irrigation."
+        ]
+      }
+    },
+    "root_rot": {
+      "name": "Root Rot",
+      "scientific_name": "Caused by soil-borne pathogens like Phytophthora spp., Pythium spp., Fusarium spp.",
+      "symptoms": [
+        "Yellowing of leaves, often starting from lower ones.",
+        "Stunted plant growth.",
+        "Wilting, especially during hot parts of the day.",
+        "Roots become brown, soft, and decayed.",
+        "Reduced or absent root hairs."
+      ],
+      "favorable_conditions": "Poorly drained soils, waterlogging, high soil moisture, moderate to warm temperatures. Heavy rainfall or over-irrigation.",
+      "preventive_measures": [
+        "Improving soil drainage through raised beds, organic matter incorporation, and proper land leveling.",
+        "Avoiding over-irrigation.",
+        "Using disease-free planting material.",
+        "Crop rotation with non-host crops.",
+        "Soil solarization before planting.",
+        "Treating seeds and soil with beneficial microbes."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Drenching the soil with Trichoderma viride or Pseudomonas fluorescens formulations @ 5 g/L of water.",
+          "Application of neem cake in soil."
+        ],
+        "chemical": [
+          "Soil drenching with Metalaxyl (35 % SL) @ 1 ml/L or Fosetyl-Al (80 WP) @ 3 g/L.",
+          "Application of Captan (50 WP) @ 2.5 g/L.",
+          "Repeat applications may be necessary depending on disease severity."
+        ]
+      }
+    }
+  }
+}

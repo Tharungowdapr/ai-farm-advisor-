@@ -1,0 +1,65 @@
+# Node
+node_modules/
+dist/
+build/
+npm-debug.log*
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[codz]
+*$py.class
+*.so
+
+# Environments
+.env
+.env.*
+.envrc
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Misc
+*.log
+.DS_Store
+Thumbs.db
+tempCodeRunnerFile.py
+.idea/
+.vscode/
+.abstra/
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.pytest_cache/
+
+# Databases
+db.sqlite3
+*.db
+
+# Large ML model/data files (tracked via Git LFS or excluded)
+*.pkl
+*.h5
+*.pt
+*.pth
+*.onnx
+
+# Generated runtime directories
+backend/settings/
+backend/uploads/
+backend/data/chromadb/
+
+# Large raw datasets
+sub/Yield prediction/APY.csv
+sub/*/APY.csv
+
+# Ignore the entire old workspace backup directory
+sub/
+
+# Scratch and analysis files
+backend/scratch/
+*.resolved

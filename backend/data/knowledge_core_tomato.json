@@ -1,0 +1,363 @@
+{
+  "crop_info": {
+    "name": "Tomato",
+    "scientific_name": "Solanum lycopersicum",
+    "varieties": [
+      "Arka Rakshak",
+      "Arka Samrat",
+      "PKM 1",
+      "Anagha (Hyb)",
+      "US 618"
+    ],
+    "total_duration_days": "135-150 days (depending on variety, climate, and management practices)",
+    "ideal_climate": {
+      "temperature": "Optimum day 20-25\u00b0C, night 15-20\u00b0C. Temperatures above 30\u00b0C or below 10\u00b0C can severely impact flower drop and fruit set.",
+      "rainfall": "600-1500mm annually, but commercial cultivation often relies on controlled irrigation (drip) to manage soil moisture and reduce foliar diseases.",
+      "soil_type": "Prefers well-drained sandy loam to clay loam soils, rich in organic matter. Avoid heavy clay soils prone to waterlogging.",
+      "soil_pH": "Optimal pH range is 6.0-7.0 (slightly acidic to neutral). pH outside this range can affect nutrient availability.",
+      "sunlight": "Requires full sun, ideally 6-8 hours of direct sunlight daily for robust growth and fruit development."
+    }
+  },
+  "lifecycle_phases": [
+    {
+      "phase_id": "tomato_1_nursery_establishment",
+      "phase_name": "Nursery & Seedling Establishment",
+      "duration_days": 20,
+      "description": "Scientific raising of healthy, vigorous seedlings in pro-trays or sterilized raised beds for optimal germination and early growth.",
+      "procedures": [
+        "Seed Treatment: Pre-treat seeds with biological agents like Trichoderma viride (4g/kg seed) or Pseudomonas fluorescens (10g/kg seed) for fungal disease protection. For early sucking pest control, especially whitefly, use Imidacloprid 70 WS (7g/kg seed).",
+        "Sowing Medium Preparation: Use a sterile, well-aerated medium. For pro-trays, a cocopeat:vermiculite:perlite mix (3:1:1 ratio) is ideal. For raised beds, solarize the soil, mix with well-decomposed FYM/compost (1kg/sqm) and sand for improved drainage.",
+        "Sowing: Sow seeds 0.5-1 cm deep, individually in pro-tray cells or 1 cm apart in rows on raised beds. Cover lightly with medium and gently press.",
+        "Irrigation: Light watering immediately after sowing using a fine rose can. Maintain consistent moisture, avoiding waterlogging. Drench with a preventive fungicide like Captan 50 WP (2g/L water) or Propamocarb Hydrochloride 72.2 SL (2.5 ml/L water) 3-5 days after sowing to prevent damping-off.",
+        "Nutrient Management: If using inert medium, apply water-soluble fertilizer (19:19:19 NPK) at 0.5g/L water, once a week after true leaf emergence.",
+        "Hardening: Gradually expose seedlings to increasing sunlight and reduce watering frequency 7-10 days before transplanting to acclimate them to field conditions. Stop fertigation 3-4 days prior to transplant."
+      ],
+      "common_diseases": [
+        "damping_off",
+        "cercospora_leaf_spot_nursery"
+      ],
+      "preventive_tips": [
+        "Ensure proper seed treatment before sowing.",
+        "Use only sterile potting media and clean pro-trays.",
+        "Avoid overwatering and maintain good air circulation to prevent high humidity.",
+        "Provide adequate spacing between trays for ventilation."
+      ]
+    },
+    {
+      "phase_id": "tomato_2_transplanting_initial_veg",
+      "phase_name": "Transplanting & Initial Vegetative Growth",
+      "duration_days": 25,
+      "description": "Careful transfer of 20-25 day old seedlings to the main field, focusing on establishment of root system and initial growth.",
+      "procedures": [
+        "Land Preparation: Plough land to a fine tilth, incorporate 25-30 tons/ha of well-decomposed FYM/compost and bio-fertilizers (e.g., Azospirillum, PSB @ 2kg/ha each). Form raised beds (1.0-1.2m wide) with drip irrigation lines. Apply basal dose of NPK: 100 kg P2O5 and 50 kg K2O per hectare. Incorporate Neem cake (250 kg/ha) for nematode control.",
+        "Transplanting: Transplant 20-25 day old seedlings (4-5 leaves, 10-15cm tall) late in the evening or on cloudy days to reduce transplant shock. Spacing: 60 cm between rows and 45 cm between plants on single row beds, or 90 cm between paired rows and 45 cm between plants in double row beds. Irrigate immediately after transplanting.",
+        "Gap Filling: Replant dead or weak seedlings within 5-7 days of transplanting to ensure uniform crop stand.",
+        "Weed Management: First weeding and earthing up 15-20 days after transplanting. Apply pre-emergent herbicide like Pendimethalin 30 EC (1.0 L/acre in 200L water) within 3 days of transplanting to control broadleaf and grassy weeds.",
+        "Initial Fertigation: Start fertigation 7 days after transplanting with 19:19:19 NPK at 2-3 kg/acre/week through drip for balanced nutrient supply."
+      ],
+      "common_diseases": [
+        "damping_off",
+        "early_blight",
+        "bacterial_wilt"
+      ],
+      "preventive_tips": [
+        "Select only healthy, vigorous seedlings for transplanting.",
+        "Ensure sufficient irrigation immediately after transplanting.",
+        "Maintain field hygiene by removing weeds and plant debris.",
+        "Install yellow sticky traps (15-20/acre) to monitor and control initial whitefly populations."
+      ]
+    },
+    {
+      "phase_id": "tomato_3_intensive_veg_pre_flower",
+      "phase_name": "Intensive Vegetative Growth & Pre-Flowering",
+      "duration_days": 20,
+      "description": "Period of rapid vegetative growth, development of strong stem and branches, and initiation of flower buds.",
+      "procedures": [
+        "Fertigation: Continue fertigation with NPK. Gradually shift from 19:19:19 to higher N and P for robust growth. Example weekly dose: Urea (30 kg/acre) + MAP (Monoammonium Phosphate, 20 kg/acre) + SOP (Sulphate of Potash, 15 kg/acre) split over the crop cycle. Total NPK recommendation: 120 kg N, 100 kg P2O5, 150 kg K2O per hectare, applied through fertigation.",
+        "Staking/Training: Install stakes (bamboo or sturdy wire support system) when plants reach 30-45 cm height. Tie plants loosely to stakes to support growth, prevent lodging, and improve air circulation. Continue training by guiding main stems as they grow.",
+        "Pruning: Remove basal suckers (side shoots developing from leaf axils) regularly, typically weekly, to promote main stem growth and better air circulation. For indeterminate varieties, single or double stem pruning is common, removing all other suckers. Remove any diseased or yellowing lower leaves.",
+        "Weed Management: Second weeding and light earthing up (if not done previously) 35-40 days after transplanting. Hand weeding is crucial around the plant base.",
+        "Pest Scouting: Regular scouting (every 2-3 days) for early signs of pests like leaf miners, whiteflies, aphids, and fungal diseases. Proactive management is essential."
+      ],
+      "common_diseases": [
+        "early_blight",
+        "fusarium_wilt",
+        "bacterial_wilt",
+        "tomato_leaf_curl_virus"
+      ],
+      "preventive_tips": [
+        "Ensure balanced nutrition, avoiding excessive nitrogen that promotes lush growth susceptible to disease.",
+        "Maintain good air circulation through proper spacing and regular pruning.",
+        "Implement regular pest and disease monitoring protocols.",
+        "Scout for vector pests (whiteflies, thrips) and manage them proactively to prevent viral spread."
+      ]
+    },
+    {
+      "phase_id": "tomato_4_flowering_fruit_setting",
+      "phase_name": "Flowering & Fruit Setting",
+      "duration_days": 30,
+      "description": "Period of peak flowering, pollination, fertilization, and initial development of small green fruits. This phase is crucial for yield determination.",
+      "procedures": [
+        "Fertigation: Adjust NPK ratio to support flowering and fruit set. Increase Phosphorus and Potassium. Example weekly dose: 13:0:45 (Potassium Nitrate) at 5-7 kg/acre/week and MAP (Monoammonium Phosphate) at 3-4 kg/acre/week. Include micronutrients: Foliar spray of Boron (20% concentration, 1g/L water) and Zinc (EDTA 12%, 0.5g/L water) every 10-15 days to improve fruit set, reduce blossom drop, and prevent physiological disorders.",
+        "Water Management: Maintain consistent soil moisture. Avoid water stress during flowering as it can lead to flower drop, poor fruit set, and increased susceptibility to blossom end rot. Drip irrigation to deliver 8-10 mm water equivalent daily.",
+        "Pest Management: Increased vigilance for flower-eating pests (e.g., fruit borer larvae) and vectors of viral diseases. Install pheromone traps for Tomato Fruit Borer (Helicoverpa armigera) (4-5 traps/acre) for monitoring and mass trapping.",
+        "Pruning: Continue removing suckers and any diseased or senescent leaves. Lower leaf removal (up to the first fruit cluster) can significantly improve air circulation, reduce disease incidence, and promote energy diversion to fruits, especially in high-density plantings."
+      ],
+      "common_diseases": [
+        "late_blight",
+        "blossom_end_rot",
+        "tomato_spotted_wilt_virus",
+        "fruit_borer"
+      ],
+      "preventive_tips": [
+        "Ensure adequate pollination (e.g., gentle tapping of stakes in the morning for pollen release).",
+        "Maintain consistent soil moisture and moderate humidity levels to prevent flower drop.",
+        "Apply calcium and boron as foliar sprays or through fertigation to prevent physiological disorders like blossom end rot.",
+        "Intensively monitor for fruit borer and vector pests, initiating control measures at first sign of infestation."
+      ]
+    },
+    {
+      "phase_id": "tomato_5_fruit_development_maturity",
+      "phase_name": "Fruit Development & Early Maturity",
+      "duration_days": 20,
+      "description": "Period of rapid increase in fruit size, initiation of the ripening process, and fruits starting to show color (breaker stage).",
+      "procedures": [
+        "Fertigation: Focus on Potassium for fruit sizing, color, and quality. Example weekly dose: 0:0:50 (Sulphate of Potash) at 5-8 kg/acre/week. Reduce Nitrogen inputs slightly to prevent excessive vegetative growth. Continue with Calcium Nitrate (3-5 kg/acre/week) via drip to prevent Blossom End Rot and improve fruit firmness.",
+        "Water Management: Critical to maintain uniform soil moisture to prevent fruit cracking and blossom end rot. Avoid sudden fluctuations in water availability. Gradually reduce irrigation quantity as fruits approach maturity but maintain frequency.",
+        "Pest & Disease Management: Intensive scouting for fruit borers, fruit flies, and late-stage fungal diseases like Anthracnose or Alternaria Fruit Rot. Hand-pick fruit borers if infestation is low. Apply Spinosad 45 SC (0.3 ml/L water) for fruit borers if biological control is preferred, or Chlorantraniliprole 18.5 SC (0.2 ml/L water) if chemical intervention is necessary.",
+        "Pruning: Removal of old, yellowing, or excessively shaded leaves that are no longer productive, to redirect energy to developing fruits and improve air circulation around fruits."
+      ],
+      "common_diseases": [
+        "late_blight",
+        "anthracnose",
+        "blossom_end_rot",
+        "fruit_cracking"
+      ],
+      "preventive_tips": [
+        "Maintain optimal potassium and calcium levels in the plant.",
+        "Prevent water stress and sudden changes in soil moisture.",
+        "Protect fruits from sun scald by ensuring adequate foliage cover or providing shade net if extremely hot.",
+        "Implement integrated pest management for fruit borers and fruit flies."
+      ]
+    },
+    {
+      "phase_id": "tomato_6_harvesting_post_harvest",
+      "phase_name": "Harvesting & Post-Harvest Management",
+      "duration_days": "30-45 days (from 115 days after sowing onwards, depending on variety and market)",
+      "description": "Continuous picking of mature fruits and preparing them for market, followed by field sanitation and crop termination.",
+      "procedures": [
+        "Harvesting: Pick fruits at the appropriate maturity stage for the intended market: 'Green Mature' (breaker stage - first blush of color) for distant markets and longer shelf life; 'Pink/Red Ripe' for local markets or processing. Harvest early in the morning or late in the afternoon to avoid heat stress on harvested fruits. Use clean hands or clippers and handle gently to avoid bruising. Frequency: Every 2-3 days during peak harvest season.",
+        "Post-Harvest Handling: Sort fruits to separate healthy ones from diseased, damaged, or immature ones. Grade fruits by size and color as per market requirements (e.g., A, B, C grades). Pack in clean, well-ventilated crates or baskets, avoiding over-packing. If possible, pre-cool fruits to 12-15\u00b0C to extend shelf life before transport.",
+        "Field Sanitation: After the final harvest, remove all plant debris (diseased plants, fruit remnants, fallen leaves) from the field and destroy them (bury or burn) to reduce inoculum for future crops. Remove stakes and drip lines if applicable. Plough and solarize the soil if feasible, or leave it fallow for a period.",
+        "Crop Termination: Once the crop cycle is complete, or plant productivity declines significantly, terminate the crop. This involves cutting down plants, removing them from the field, and preparing the soil for the next cropping cycle."
+      ],
+      "common_diseases": [
+        "anthracnose_post_harvest",
+        "soft_rot_post_harvest",
+        "fruit_cracking"
+      ],
+      "preventive_tips": [
+        "Harvest at the appropriate maturity stage to maximize shelf life and market value.",
+        "Handle fruits gently at all stages to prevent physical damage, which can lead to post-harvest rot.",
+        "Maintain proper sanitation in the field, during harvest, and in packing areas.",
+        "Rapid cooling after harvest can significantly extend the shelf life of tomatoes."
+      ]
+    }
+  ],
+  "disease_protocols": {
+    "damping_off": {
+      "name": "Damping Off",
+      "causal_agent": "Pythium spp., Phytophthora spp., Rhizoctonia solani",
+      "type": "Fungal",
+      "symptoms": "Pre-emergence damping-off: Seeds rot before emergence. Post-emergence damping-off: Seedlings emerge but collapse at the soil line, stems appear water-soaked and constricted, leading to rapid wilting and death. Favored by cool, wet, and poorly drained conditions.",
+      "management_procedures": {
+        "organic": [
+          "Seed treatment with Trichoderma viride (4g/kg seed) or Pseudomonas fluorescens (10g/kg seed).",
+          "Drench seedbeds with Trichoderma harzianum or Pseudomonas fluorescens suspension (5g/L water) after sowing and again 7 days later."
+        ],
+        "chemical": [
+          "Seed treatment with Thiram 75 WS (2g/kg seed) or Carbendazim 50 WP (1g/kg seed).",
+          "Drench affected nursery beds with Propamocarb Hydrochloride 72.2 SL (2.5 ml/L water) or Copper Oxychloride 50 WP (2g/L water) immediately upon symptom appearance, applying 1 L solution per square meter."
+        ]
+      },
+      "preventive_tips": [
+        "Use certified disease-free seeds.",
+        "Ensure well-drained, sterile soil/media.",
+        "Maintain optimum moisture, avoid overwatering.",
+        "Provide good ventilation in nurseries.",
+        "Solarize nursery beds before sowing (4-6 weeks in summer)."
+      ]
+    },
+    "early_blight": {
+      "name": "Early Blight",
+      "causal_agent": "Alternaria solani",
+      "type": "Fungal",
+      "symptoms": "Characterized by dark brown to black spots with distinct concentric rings (bull's-eye pattern) on older, lower leaves. These spots enlarge, coalesce, and cause premature defoliation. Can also affect stems (collar rot near soil line) and fruits (dark, leathery, sunken spots with concentric rings, often near the stem end).",
+      "management_procedures": {
+        "organic": [
+          "Regular removal and destruction of infected leaves and plant debris. Deep ploughing to bury crop residues.",
+          "Foliar spray of Neem oil (3-5 ml/L water) mixed with a sticker, as a preventative measure every 7-10 days.",
+          "Foliar spray of Bacillus subtilis (5g/L water) biopesticide at regular intervals (7-10 days) to colonize leaf surfaces."
+        ],
+        "chemical": [
+          "Foliar spray with Mancozeb 75 WP (2.5g/L water) or Chlorothalonil 75 WP (2g/L water) at 10-14 day intervals from disease onset.",
+          "For severe cases, use systemic fungicides like Azoxystrobin 23 SC (1 ml/L water) or Difenoconazole 25 EC (0.5 ml/L water), ensuring thorough coverage."
+        ]
+      },
+      "preventive_tips": [
+        "Use resistant or tolerant varieties if available.",
+        "Maintain good field sanitation, remove all plant debris post-harvest.",
+        "Avoid overhead irrigation, prefer drip irrigation to keep foliage dry.",
+        "Ensure adequate plant spacing for good air circulation.",
+        "Maintain balanced nutrition, avoid excessive nitrogen which can promote succulent growth."
+      ]
+    },
+    "late_blight": {
+      "name": "Late Blight",
+      "causal_agent": "Phytophthora infestans",
+      "type": "Fungal (Oomycete)",
+      "symptoms": "Begins as irregular, water-soaked spots on leaves, often starting at the tips or margins. Lesions rapidly enlarge, turn brown to black, and may be surrounded by a pale green halo. During cool, humid conditions, a fuzzy white fungal growth (sporangia) can be seen on the underside of leaves. Stems develop dark lesions. Fruits show large, irregular, dark brown to olive-green, firm, greasy lesions, leading to fruit rot.",
+      "management_procedures": {
+        "organic": [
+          "Cultural practices are key: remove infected plant parts immediately and destroy them.",
+          "Apply Trichoderma viride (5g/L water) as a soil drench around plants.",
+          "Foliar spray of Potassium Bicarbonate (5-10g/L water) or Copper Soap (as per label) as a preventative during high-risk periods."
+        ],
+        "chemical": [
+          "As a preventative, spray Mancozeb 75 WP (2.5g/L water) or Chlorothalonil 75 WP (2g/L water) before disease onset in favorable conditions.",
+          "For active infection, systemic fungicides are crucial: Metalaxyl + Mancozeb (e.g., Ridomil Gold, 2.5g/L water) or Cymoxanil + Mancozeb (e.g., Curzate M8, 2g/L water) at 7-10 day intervals. Propamocarb Hydrochloride 72.2 SL (2.5 ml/L water) can also be used, especially as a drench or foliar spray."
+        ]
+      },
+      "preventive_tips": [
+        "Plant resistant varieties when possible.",
+        "Ensure good air circulation with wider plant spacing and proper pruning.",
+        "Avoid planting in low-lying, poorly drained areas where humidity is high.",
+        "Avoid overhead irrigation, especially in the evening, to minimize leaf wetness.",
+        "Monitor weather forecasts for prolonged cool, wet periods and apply fungicides preventatively."
+      ]
+    },
+    "tomato_leaf_curl_virus": {
+      "name": "Tomato Leaf Curl Virus (ToLCV)",
+      "causal_agent": "Begomovirus (genus Begomovirus, family Geminiviridae)",
+      "type": "Viral",
+      "symptoms": "Characterized by severe upward or downward curling and puckering of young leaves. Leaves become thick, leathery, and brittle with yellowing (chlorotic) margins or interveinal areas. Stunted plant growth due to shortened internodes. Significant reduction in flower and fruit production, or malformed, small fruits. Transmitted exclusively by the whitefly (Bemisia tabaci).",
+      "management_procedures": {
+        "organic": [
+          "Install yellow sticky traps (20-25/acre) to monitor and trap whiteflies, especially at crop borders.",
+          "Spray Neem oil (5 ml/L water) or bio-pesticides like Verticillium lecanii (5g/L water) or Beauveria bassiana (5g/L water) to control whitefly populations.",
+          "Remove and destroy (bury or burn) infected plants immediately upon detection to prevent further spread.",
+          "Use reflective mulches (silver-black plastic mulch) to deter whiteflies."
+        ],
+        "chemical": [
+          "Control the whitefly vector: Spray Imidacloprid 17.8 SL (0.3 ml/L water) or Thiamethoxam 25 WG (0.2g/L water) or Acetamiprid 20 SP (0.2g/L water) at 7-10 day intervals, particularly during early stages of crop growth. Rotate insecticides to prevent resistance development."
+        ]
+      },
+      "preventive_tips": [
+        "Use resistant or tolerant varieties if available.",
+        "Treat seedlings with Imidacloprid (as mentioned in nursery phase).",
+        "Raise nurseries under insect-proof nets (40-50 mesh).",
+        "Remove weed hosts from around the field that may harbor whiteflies and the virus.",
+        "Early detection and removal of infected plants are critical."
+      ]
+    },
+    "bacterial_wilt": {
+      "name": "Bacterial Wilt",
+      "causal_agent": "Ralstonia solanacearum",
+      "type": "Bacterial",
+      "symptoms": "Sudden wilting of entire plant or individual branches, even when soil moisture is adequate. Young leaves may remain green initially. If affected stem is cut near the soil line and placed in clean water, a milky white bacterial ooze can be observed streaming from the cut end within minutes (bacterial streaming test). Vascular tissues turn dark brown. Plants often die rapidly without showing much foliar yellowing.",
+      "management_procedures": {
+        "organic": [
+          "Deep ploughing and solarization of infected fields for 4-6 weeks during summer.",
+          "Drenching soil with antagonistic bacteria like Pseudomonas fluorescens (10g/L water) or Bacillus subtilis (5g/L water) at transplanting and repeated every 15 days.",
+          "Use resistant rootstocks (grafting on resistant wild tomato rootstocks like Solanum torvum or certain S. lycopersicum lines) is highly effective.",
+          "Practicing crop rotation with non-solanaceous crops (e.g., maize, beans, marigold) for at least 3-5 years."
+        ],
+        "chemical": [
+          "No effective chemical cure once established. Preventative measures are critical.",
+          "Drenching with Streptomycin Sulphate + Tetracycline Hydrochloride (1g/L water) in combination with Copper Oxychloride 50 WP (2g/L water) can reduce incidence if applied early and repeatedly in known infested soils.",
+          "Soil drench with Paecilomyces lilacinus (5g/L water) for nematode control can indirectly help as nematodes create entry points for bacteria."
+        ]
+      },
+      "preventive_tips": [
+        "Use resistant varieties or grafted seedlings on resistant rootstocks.",
+        "Avoid planting in historically infected fields.",
+        "Ensure good drainage and avoid waterlogging conditions.",
+        "Sanitize tools and equipment (e.g., with 10% bleach solution) and prevent soil movement from infected areas.",
+        "Control root-knot nematodes which can predispose plants to bacterial wilt."
+      ]
+    },
+    "fusarium_wilt": {
+      "name": "Fusarium Wilt",
+      "causal_agent": "Fusarium oxysporum f. sp. lycopersici",
+      "type": "Fungal",
+      "symptoms": "Initially, yellowing of leaves on one side of the plant (unilateral chlorosis), often starting from lower leaves and progressing upwards. Leaves eventually wilt, turn brown, and die. Vascular tissues in the stem (when cut lengthwise) show distinct brown discoloration, especially near the soil line. Plants become stunted and may die prematurely. Symptoms often worsen during warm weather (28-32\u00b0C).",
+      "management_procedures": {
+        "organic": [
+          "Use resistant varieties (indicated by 'F' in seed catalogs).",
+          "Soil application of Trichoderma viride (5 kg/ha mixed with 500 kg well-decomposed FYM) at land preparation or drenching plants with Trichoderma suspension (5g/L water) at transplanting and subsequent intervals.",
+          "Solarization of soil during the hot season.",
+          "Deep ploughing to bury infected residues."
+        ],
+        "chemical": [
+          "No direct chemical cure for wilted plants. Preventative soil drenching is recommended.",
+          "Drenching with Carbendazim 50 WP (1g/L water) or Benomyl 50 WP (1g/L water) around the base of plants in infested areas, especially at transplanting and 20-30 days later, can offer some protection."
+        ]
+      },
+      "preventive_tips": [
+        "Plant resistant varieties (e.g., Arka Rakshak, Arka Samrat).",
+        "Practice long-term crop rotation (3-5 years) with non-host crops like cereals or cabbage.",
+        "Maintain good field sanitation, remove and destroy infected plant debris promptly.",
+        "Avoid excessive nitrogen fertilization, maintain balanced NPK to promote plant vigor.",
+        "Keep soil pH between 6.5-7.0 (alkaline conditions tend to suppress Fusarium wilt)."
+      ]
+    },
+    "tomato_spotted_wilt_virus": {
+      "name": "Tomato Spotted Wilt Virus (TSWV)",
+      "causal_agent": "Tospovirus (genus Tospovirus, family Bunyaviridae)",
+      "type": "Viral",
+      "symptoms": "Symptoms vary widely. Young leaves may show bronze spots, dark brown streaks on stems and petioles, and necrotic lesions. Terminal shoots may exhibit purpling and stunting, often leading to dieback. Fruits develop characteristic concentric rings of red, yellow, or green, often giving a 'target spot' appearance, making them unmarketable. Transmitted by thrips, primarily Frankliniella occidentalis and Thrips tabaci.",
+      "management_procedures": {
+        "organic": [
+          "Install blue sticky traps (20-25/acre) to monitor and trap thrips, which are the primary vectors.",
+          "Spray Neem oil (5 ml/L water) or bio-pesticides like Verticillium lecanii (5g/L water) or Beauveria bassiana (5g/L water) for thrips control.",
+          "Remove and destroy infected plants promptly to reduce inoculum sources.",
+          "Use reflective mulches (silver or aluminum foil) in the nursery and field to deter thrips."
+        ],
+        "chemical": [
+          "Control thrips vector: Spray systemic insecticides like Spinosad 45 SC (0.3 ml/L water) or Fipronil 5 SC (1.5 ml/L water) or Imidacloprid 17.8 SL (0.3 ml/L water) at 7-10 day intervals during susceptible stages. Rotate insecticides to prevent resistance."
+        ]
+      },
+      "preventive_tips": [
+        "Use resistant or tolerant varieties if available.",
+        "Manage thrips populations effectively in and around the field.",
+        "Remove weed hosts (e.g., Bidens pilosa, Amaranthus spp.) that may harbor thrips and the virus.",
+        "Plant healthy, virus-free seedlings.",
+        "Maintain good field hygiene and dispose of infected plant material properly."
+      ]
+    },
+    "blossom_end_rot": {
+      "name": "Blossom End Rot (BER)",
+      "causal_agent": "Physiological disorder caused by localized calcium deficiency in developing fruit, often linked to inconsistent water supply, rapid growth, or impaired calcium transport.",
+      "type": "Physiological Disorder",
+      "symptoms": "A water-soaked spot appears on the blossom end (bottom) of the fruit, typically when fruits are green. The spot enlarges, turns dark brown or black, becomes leathery and sunken. This primary damage can be followed by secondary fungal or bacterial infections, causing soft rot. Affects the first fruits on a cluster more commonly and can occur on subsequent fruits.",
+      "management_procedures": {
+        "organic": [
+          "Maintain consistent soil moisture through regular, even irrigation (drip irrigation is ideal). Avoid dry spells followed by heavy watering.",
+          "Incorporate sufficient organic matter (compost, well-decomposed FYM) into soil to improve water retention and soil structure.",
+          "Use Calcium-rich organic amendments like bone meal or gypsum (applied to soil at 100-200 kg/acre) at the pre-planting stage."
+        ],
+        "chemical": [
+          "Foliar spray of Calcium Chloride (2g/L water) or Chelated Calcium (1g/L water) weekly once symptoms appear on early fruits, or as a preventative measure during flowering and early fruit set (3-4 sprays).",
+          "Ensure adequate soil calcium by supplementing with Calcium Nitrate (3-5 kg/acre/week) through fertigation during fruit development stage."
+        ]
+      },
+      "preventive_tips": [
+        "Maintain uniform and adequate soil moisture, avoiding extreme fluctuations (too wet or too dry).",
+        "Ensure proper soil calcium levels and balanced nutrition; avoid excessive nitrogen fertilization, which can inhibit calcium uptake.",
+        "Maintain soil pH in the optimal range (6.0-7.0) for calcium availability.",
+        "Mulch beds (e.g., with straw or plastic mulch) to conserve soil moisture and regulate soil temperature.",
+        "Select varieties less prone to BER, as some are genetically more susceptible."
+      ]
+    }
+  }
+}

@@ -1,0 +1,496 @@
+{
+  "crop_info": {
+    "name": "Ragi",
+    "scientific_name": "Eleusine coracana (L.) Gaertn.",
+    "common_names": [
+      "Finger Millet",
+      "African Millet",
+      "Bappu"
+    ],
+    "family": "Poaceae",
+    "origin": "Africa",
+    "crop_type": "Cereal",
+    "uses": [
+      "Food (flour for Roti, Dosa, Idli, Porridge)",
+      "Fermented beverages",
+      "Animal feed",
+      "Stover for fodder"
+    ],
+    "varieties": [
+      "GPU-28",
+      "Indaf-7",
+      "ML-365",
+      "H22",
+      "SR-26",
+      "Godavari",
+      "Vridhi",
+      "AKP-1",
+      "AKP-2",
+      "MR-1",
+      "MR-6",
+      "Raasi",
+      "Nager-1",
+      "RSR-533",
+      "Dharwad Ragi-1",
+      "KMR-300",
+      "HR-911"
+    ],
+    "total_duration_days": 110,
+    "ideal_climate": {
+      "temperature": "20-30\u00b0C (optimal for germination and growth), can tolerate up to 35\u00b0C",
+      "rainfall": "500-1000mm (well-distributed is crucial, drought tolerant to some extent)",
+      "altitude": "Up to 2000m",
+      "soil_ph": "5.0-7.0",
+      "soil_type": "Sandy loams to clay loams, well-drained soils are preferred. Can grow in poor soils with amendments."
+    }
+  },
+  "lifecycle_phases": [
+    {
+      "phase_id": "ragi_1_sowing",
+      "phase_name": "Nursery/Seedling Establishment & Sowing",
+      "duration_days": 20,
+      "description": "This crucial phase involves preparing the nursery bed or main field for sowing and ensuring successful germination. Ragi can be sown directly or transplanted. Seed treatments are vital for preventing early-season diseases and enhancing germination.",
+      "procedures": [
+        "Land Preparation (Main Field/Nursery): Plough the land 2-3 times to achieve a fine tilth. Incorporate 10-12 tonnes of well-decomposed Farm Yard Manure (FYM) or compost per hectare during the last ploughing. Ensure good drainage.",
+        "Seed Treatment: Treat 1 kg of Ragi seeds with 25g of *Azospirillum* (for nitrogen fixation) and 25g of *Aspergillus awamori* (for phosphate solubilization). Alternatively, use a seed dresser like *Carbendazim* (2g/kg of seed) or *Thiram* (2.5g/kg of seed) for fungal disease control, followed by *Azospirillum* (25g/kg) if not using a combined biofertilizer.",
+        "Sowing Method (Direct): Broadcast the treated seeds uniformly at a seed rate of 7-10 kg/ha for rainfed conditions and 5-7 kg/ha for irrigated conditions. In irrigated areas, sowing in lines at a spacing of 22.5 cm x 10 cm is recommended. Adjust seed rate based on seed size and germination percentage.",
+        "Sowing Method (Transplanting): Prepare a nursery bed of 10m x 1m per hectare of main field. Sow seeds thinly in rows at a depth of 1-2 cm. Lightly cover with soil and mulch. Irrigate gently.",
+        "Fertilizer Application (Basal): Apply basal dose of NPK at 50:25:25 kg/ha (or 40:20:20 kg/ha for rainfed conditions). Use Urea, Single Super Phosphate (SSP), and Muriate of Potash (MOP) as sources. Incorporate fertilizers into the soil before sowing or at the time of sowing.",
+        "Irrigation (Nursery): Maintain adequate moisture in the nursery bed. Light irrigation using a rose can or sprinkler is recommended to avoid disturbing seedlings.",
+        "Thinning/Transplanting: If direct sown, thin the seedlings to a spacing of 10 cm between plants when they are 10-15 days old. If transplanted, select healthy seedlings with 2-3 leaves and transplant them at 15-20 days after sowing, maintaining a spacing of 10 cm between plants and 22.5 cm between rows.",
+        "Weeding (Nursery/Initial): Remove weeds carefully from the nursery bed and around transplanted seedlings to prevent competition."
+      ],
+      "common_diseases": [
+        "ragi_blast_seedling",
+        "damping_off",
+        "seed_borne_mildew"
+      ],
+      "preventive_tips": [
+        "Use certified, high-quality seeds from reputable sources.",
+        "Always treat seeds with appropriate fungicides and biofertilizers.",
+        "Ensure good drainage in both nursery and main fields to prevent waterlogging and fungal diseases.",
+        "Select varieties known for resistance to prevalent diseases (e.g., GPU-28 for blast resistance).",
+        "Avoid sowing in waterlogged areas or at excessively high densities."
+      ]
+    },
+    {
+      "phase_id": "ragi_2_vegetative",
+      "phase_name": "Vegetative Growth & Tillering",
+      "duration_days": 40,
+      "description": "This phase is characterized by rapid plant growth, development of leaves, and initiation of tillers. It is critical for establishing a good plant population and maximizing photosynthetic potential. Adequate nutrient and moisture availability are key.",
+      "procedures": [
+        "Inter-cultivation: Perform inter-cultivation (hoeing and weeding) twice. First at 20-25 days after sowing (DAS) and the second at 40-45 DAS. This helps in soil aeration, weed control, and moisture conservation.",
+        "Top Dressing of Nitrogen: Apply the first split dose of Nitrogen (50% of the recommended dose, e.g., 25 kg N/ha) at 25-30 DAS, around the base of the plants, followed by light earthing up.",
+        "Irrigation: Provide irrigation at critical stages, especially if rainfall is insufficient. Maintain soil moisture, but avoid waterlogging. Irrigations at 30-40 DAS can boost tillering and overall growth.",
+        "Pest Monitoring: Regularly scout the field for common pests like Aphids (*Hysteroneura setaria*) and Stem Borer (*Chilo partellus*). Look for characteristic damage symptoms.",
+        "Disease Monitoring: Observe plants for early signs of leaf spots or blights. Early detection allows for timely intervention.",
+        "Weed Management: Continue to keep the field weed-free, especially during the initial stages of tillering, as weeds compete heavily for resources.",
+        "Application of Micronutrients: If deficiency symptoms are observed (e.g., chlorosis due to Zn deficiency), a foliar spray of Zinc Sulphate (0.2%) along with lime (0.1%) can be applied.",
+        "Foliar Application (Preventive): If weather conditions are favorable for fungal diseases, a prophylactic foliar spray of *Mancozeb* (2g/L) or *Copper Oxychloride* (2.5g/L) can be considered."
+      ],
+      "common_diseases": [
+        "ragi_blast_leaf",
+        "cercospora_leaf_spot",
+        "rust_ragi",
+        "downy_mildew"
+      ],
+      "preventive_tips": [
+        "Maintain optimal plant population density to reduce competition and stress.",
+        "Ensure balanced fertilization, avoiding excessive Nitrogen which can make plants more susceptible to pests and diseases.",
+        "Keep field bunds and surrounding areas clean to reduce pest and disease reservoirs.",
+        "Practice crop rotation with non-cereal crops to break disease cycles.",
+        "Promote good air circulation within the crop canopy by managing plant density."
+      ]
+    },
+    {
+      "phase_id": "ragi_3_flowering",
+      "phase_name": "Earhead Emergence & Flowering",
+      "duration_days": 30,
+      "description": "This is a reproductive phase where earheads emerge from the flag leaf sheath and flowering occurs. It is a highly sensitive stage, particularly to moisture stress and diseases like neck blast, which can cause significant yield loss.",
+      "procedures": [
+        "Critical Moisture Stage: Ensure adequate soil moisture during earhead emergence and flowering. If rainfall is insufficient, provide irrigation at 45-50 DAS and again during the flowering period (around 60-70 DAS).",
+        "Top Dressing of Nitrogen: Apply the second split dose of Nitrogen (remaining 50% of the recommended dose, e.g., 25 kg N/ha) at 40-45 DAS, just before or at earhead emergence. Avoid applying Nitrogen after flowering.",
+        "Pest Monitoring: Intensify monitoring for pests, especially stem borers and earhead bugs. Remove affected earheads promptly.",
+        "Disease Monitoring (Critical): This is the most critical stage for Neck Blast (*Pyricularia grisea*). Monitor closely for any signs of black or brown lesions at the neck region of the earhead. Also, watch for leaf blast symptoms.",
+        "Prophylactic Spray: If weather is cloudy, humid, and there is a history of neck blast, prophylactic spraying of *Tricyclazole* (0.6g/L) or *Isoprothiolane* (1.5ml/L) at the time of earhead emergence is highly recommended.",
+        "Earhead Management: Gently shake the earheads to dislodge any insects or debris. Avoid any physical disturbance that could lead to earhead damage.",
+        "White Earhead Detection: Scout for 'white earheads' which are prematurely mature or non-viable earheads often caused by disease or stress. Rogue and destroy these plants to prevent further spread of diseases like blast.",
+        "Irrigation Management: If irrigating, ensure that the water drains out quickly and the field does not remain saturated, which can favor fungal diseases."
+      ],
+      "common_diseases": [
+        "ragi_blast_neck",
+        "ragi_blast_finger",
+        "white_earhead_complex",
+        "leaf_blight"
+      ],
+      "preventive_tips": [
+        "Avoid excessive nitrogen fertilization, especially during this stage.",
+        "Timely and judicious irrigation is crucial, ensuring good drainage.",
+        "Grow blast-resistant varieties to minimize the risk of neck blast.",
+        "Maintain a clean field environment to reduce disease inoculum.",
+        "Prophylactic fungicide application based on weather forecasts and disease history can be highly effective."
+      ]
+    },
+    {
+      "phase_id": "ragi_4_grain_filling",
+      "phase_name": "Grain Filling & Development",
+      "duration_days": 15,
+      "description": "Following flowering, the ovary develops into a grain. This phase involves the translocation of assimilates from the leaves and stems to the developing grains, leading to their hardening and filling. Maintaining optimal moisture and nutrient levels is vital for achieving good grain yield and quality.",
+      "procedures": [
+        "Moisture Management: Continue to maintain adequate soil moisture, especially if the weather is dry. However, avoid waterlogging. The soil should not be allowed to dry out completely.",
+        "Nutrient Support: While major NPK application is complete, a mild foliar spray of Potassium Nitrate (1%) or a balanced micronutrient mixture can be beneficial if plants show signs of nutrient stress and to improve grain filling.",
+        "Pest and Disease Surveillance: Continue to monitor for any late-season pests and diseases, particularly those that can affect grain quality, such as earhead bugs or fungal infections on the developing grains.",
+        "Protection from Birds/Animals: Take necessary measures to protect the crop from damage by birds and animals, especially as the grains start to mature.",
+        "Weed Control: Ensure that no new weeds emerge and compete for resources during this critical grain-filling period.",
+        "Observation of Grain Hardening: Observe the grains for signs of hardening. They will become less milky and start to develop their characteristic color.",
+        "Avoid Mechanical Damage: Minimize any physical disturbance to the crop, as this can lead to premature shattering of grains or lodging.",
+        "Irrigation Cessation: Gradually reduce irrigation as the crop approaches maturity to allow the grains to dry down naturally."
+      ],
+      "common_diseases": [
+        "grain_discoloration",
+        "secondary_blast_infection",
+        "sheath_blight"
+      ],
+      "preventive_tips": [
+        "Ensure good soil fertility management throughout the crop cycle.",
+        "Proper irrigation scheduling is crucial to prevent stress.",
+        "Timely disease and pest management in earlier stages will reduce carry-over to this phase.",
+        "Protecting the crop from physical damage is important for optimal grain filling."
+      ]
+    },
+    {
+      "phase_id": "ragi_5_maturity",
+      "phase_name": "Maturity & Physiological Dry Down",
+      "duration_days": 15,
+      "description": "The crop reaches physiological maturity when grain development is complete, and the plant parts begin to senesce. Grains harden, and the characteristic brown color develops in the earheads. This phase prepares the crop for harvest.",
+      "procedures": [
+        "Harvesting Stage Determination: Harvest the crop when the earheads turn brown and the grains are hard. Grains should detach easily from the glumes when rubbed, indicating maturity. Typically, leaves will start to yellow and dry.",
+        "Harvesting Method: Harvest the crop by cutting the earheads with sickles, or by cutting the entire plant at the base. Harvesting the earheads first is often preferred to minimize shattering losses.",
+        "Drying of Earheads: Collect the harvested earheads and spread them thinly on a clean threshing floor or tarpaulin for sun drying. Drying for 2-3 days is usually sufficient, depending on weather conditions. This reduces moisture content and makes threshing easier.",
+        "Protection during Drying: Cover the drying earheads with straw or tarpaulin during rainy periods or at night to prevent moisture absorption and damage.",
+        "Monitoring for Shedding: Be vigilant for signs of grain shedding, especially in susceptible varieties or if delayed harvesting occurs. Harvest promptly once maturity is reached.",
+        "Straw Management: The harvested straw can be collected and used as fodder or for other agricultural purposes after drying.",
+        "Threshing Preparation: Ensure the threshing floor is clean and dry before commencing threshing operations.",
+        "Minimize Shattering: Handle the earheads carefully during drying and transportation to the threshing ground to minimize grain shattering losses."
+      ],
+      "common_diseases": [
+        "grain_smut",
+        "seed_discoloration"
+      ],
+      "preventive_tips": [
+        "Harvest at physiological maturity to maximize yield and quality and minimize pre-harvest losses.",
+        "Adequate sun drying is crucial to reduce moisture content below 12% for safe storage.",
+        "Protecting the harvested crop from rain and dew is essential.",
+        "Handle harvested material carefully to prevent shattering."
+      ]
+    },
+    {
+      "phase_id": "ragi_6_post_harvest",
+      "phase_name": "Post-Harvest Operations (Threshing, Cleaning, Storage)",
+      "duration_days": "Ongoing",
+      "description": "This phase includes all operations after harvesting: threshing, winnowing, cleaning, grading, and storing the grain. Proper post-harvest management is critical for maintaining grain quality, preventing losses, and ensuring its suitability for consumption and seed purposes.",
+      "procedures": [
+        "Threshing: Thresh the dried earheads to separate the grains. This can be done manually by beating the earheads against a hard surface or using a mechanical thresher. Ensure the threshing floor is clean and dry.",
+        "Winnowing: Winnow the threshed grains to remove chaff, straw, and other light impurities. This is typically done using a winnowing fan or by allowing the wind to carry away the lighter materials.",
+        "Cleaning and Grading: Further clean the grains to remove any remaining foreign matter, damaged grains, or undersized grains. Sieving with appropriate mesh sizes can be used for grading.",
+        "Moisture Content Check: Ensure the moisture content of the grain is below 12% for safe storage. Use a moisture meter for accurate assessment.",
+        "Seed Treatment (for Seed Storage): If a portion of the grain is to be used as seed for the next season, treat it with appropriate fungicides (e.g., *Carbendazim* 2g/kg) and biofertilizers (*Azospirillum* 25g/kg) before storage.",
+        "Storage: Store the cleaned and dried grains in clean, dry, and rodent-proof containers (e.g., gunny bags, metal bins, hermetic storage bags). Store in a cool, well-ventilated area, away from direct sunlight and moisture.",
+        "Pest Control in Storage: Implement measures to prevent insect infestation in stored grains. This can include using natural repellents like neem leaves or applying approved insecticides for stored grain protection as per recommendations.",
+        "Record Keeping: Maintain records of harvested yield, moisture content, treatments applied, and storage conditions for future reference and planning."
+      ],
+      "common_diseases": [
+        "stored_grain_pests_infestation",
+        "mycotoxin_contamination"
+      ],
+      "preventive_tips": [
+        "Ensure grain is thoroughly dried to below 12% moisture content before storage.",
+        "Use clean and appropriate storage containers.",
+        "Store grains in a cool, dry, and well-ventilated place.",
+        "Regularly inspect stored grains for signs of pest infestation or spoilage.",
+        "Implement integrated pest management (IPM) strategies for stored grains."
+      ]
+    }
+  ],
+  "disease_protocols": {
+    "ragi_blast_seedling": {
+      "name": "Seedling Blight / Seedling Blast",
+      "scientific_name": "*Pyricularia grisea* (Cooke) Sacc.",
+      "symptoms": [
+        "Water-soaked, small, dark brown lesions on cotyledons and young leaves.",
+        "Lesions enlarge, turn greyish-brown with a distinct dark brown margin.",
+        "Affected seedlings become weak, stunt, and may die, leading to poor plant stand."
+      ],
+      "favorable_conditions": "High humidity (>90%), moderate temperatures (20-28\u00b0C), frequent rainfall or dew, excessive moisture in nursery beds, use of infected seeds or soil.",
+      "preventive_measures": [
+        "Seed treatment with systemic fungicides (e.g., Carbendazim, Tricyclazole).",
+        "Use of disease-free certified seeds.",
+        "Maintaining optimal moisture and good drainage in nursery beds.",
+        "Destroying infected seedlings and plant debris."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Seed treatment with *Trichoderma viride* (6g/kg) or *Pseudomonas fluorescens* (10g/kg).",
+          "Foliar spray of *Neem oil* (5ml/L) on young seedlings if initial symptoms appear."
+        ],
+        "chemical": [
+          "Seed treatment: Carbendazim (2g/kg) or Tricyclazole (1g/kg).",
+          "If symptoms appear in the nursery: Foliar spray of Tricyclazole (0.6g/L) or Carbendazim (1g/L) or validamycin (0.3ml/L) at 15-20 days after sowing."
+        ]
+      }
+    },
+    "damping_off": {
+      "name": "Damping-off",
+      "scientific_name": "Caused by *Rhizoctonia solani* K\u00fchn, *Pythium* spp., *Fusarium* spp.",
+      "symptoms": [
+        "Pre-emergence damping-off: Seeds rot in the soil before germination.",
+        "Post-emergence damping-off: Seedlings develop water-soaked lesions at the collar region.",
+        "Lesions girdle the stem, causing seedlings to wilt, collapse, and die.",
+        "Often observed in patches in the nursery or field."
+      ],
+      "favorable_conditions": "Cool, wet soil conditions, poor drainage, high humidity, compacted soil, excessive seed rate, use of infected seed or planting material.",
+      "preventive_measures": [
+        "Use of disease-free seeds and clean soil for nurseries.",
+        "Seed treatment with fungicides (e.g., Captan, Thiram, Carbendazim).",
+        "Improving soil drainage and aeration.",
+        "Avoiding over-watering and over-crowding of seedlings.",
+        "Crop rotation."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Seed treatment with *Trichoderma viride* (6g/kg) or *Pseudomonas fluorescens* (10g/kg).",
+          "Soil drenching with *Trichoderma viride* or *Pseudomonas fluorescens* (10g/L) around affected seedlings."
+        ],
+        "chemical": [
+          "Seed treatment: Thiram (2.5g/kg) or Captan (2.5g/kg) or Carbendazim (2g/kg).",
+          "Soil drenching (if severe): Metalaxyl (0.25%) or Propamocarb hydrochloride (0.2%)."
+        ]
+      }
+    },
+    "ragi_blast_leaf": {
+      "name": "Leaf Blast",
+      "scientific_name": "*Pyricularia grisea* (Cooke) Sacc.",
+      "symptoms": [
+        "Initial small, dark brown, pinpoint spots on leaves.",
+        "Lesions enlarge to become spindle-shaped or elliptical with greyish centres and dark brown, yellowish borders.",
+        "Concentric rings of fungal spores may be visible in the lesions.",
+        "Severe infection leads to drying up of leaves, reducing photosynthetic area and vigour."
+      ],
+      "favorable_conditions": "High relative humidity (>90%), cloudy weather, intermittent rainfall, dense crop stand, excessive nitrogen fertilization, prolonged leaf wetness.",
+      "preventive_measures": [
+        "Growing resistant or moderately resistant varieties (e.g., GPU-28, ML-365).",
+        "Seed treatment with systemic fungicides.",
+        "Balanced fertilization, avoiding excessive nitrogen.",
+        "Maintaining optimal plant population and good field drainage.",
+        "Early sowing in some regions."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Foliar spray of *Pseudomonas fluorescens* (1% solution) or *Trichoderma harzianum* (0.5% solution) at 15-day intervals.",
+          "Foliar spray of *Neem seed kernel extract* (NSKE) at 5% concentration."
+        ],
+        "chemical": [
+          "Prophylactic spray: Tricyclazole (0.6g/L) or Isoprothiolane (1.5ml/L) or Mancozeb (2.5g/L) or Carbendazim (1g/L) at 30-35 DAS and again at 50-55 DAS, or at the first appearance of symptoms.",
+          "Systemic fungicides like Tricyclazole are more effective in preventing spread."
+        ]
+      }
+    },
+    "ragi_blast_neck": {
+      "name": "Neck Blast",
+      "scientific_name": "*Pyricularia grisea* (Cooke) Sacc.",
+      "symptoms": [
+        "Dark brown to black, often sunken lesions develop on the neck (peduncle) of the earhead.",
+        "The infected neck becomes weak and breaks, causing the earhead to droop or hang down.",
+        "Severe infection prevents grain filling, resulting in chaffy or empty earheads.",
+        "This is the most destructive phase of blast disease."
+      ],
+      "favorable_conditions": "High humidity, heavy dew, prolonged leaf wetness, cloudy weather during earhead emergence and flowering, excessive nitrogen fertilization, moisture stress followed by heavy irrigation.",
+      "preventive_measures": [
+        "Growing resistant varieties.",
+        "Timely sowing (avoiding late sowing which coincides with congenial weather).",
+        "Balanced fertilization, especially avoiding late-season nitrogen top dressing.",
+        "Maintaining adequate soil moisture but avoiding waterlogging.",
+        "Prophylactic application of fungicides at the critical stage of earhead emergence."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Foliar spray of *Pseudomonas fluorescens* (1% solution) at earhead emergence can offer some protection."
+        ],
+        "chemical": [
+          "Crucial preventive spray: Tricyclazole (0.6g/L) or Isoprothiolane (1.5ml/L) applied just at the time of earhead emergence. A second spray may be required if conditions persist.",
+          "Avoid spraying during flowering to protect pollinators."
+        ]
+      }
+    },
+    "ragi_blast_finger": {
+      "name": "Finger Blast / Earhead Blast",
+      "scientific_name": "*Pyricularia grisea* (Cooke) Sacc.",
+      "symptoms": [
+        "Dark brown to black lesions on the rachis (axis of the earhead) and individual spikelets.",
+        "Infected spikelets may remain small, shrivelled, or become empty and chaffy.",
+        "The entire earhead may appear discoloured and distorted.",
+        "This is distinct from neck blast as lesions are on the fingers/spikelets themselves."
+      ],
+      "favorable_conditions": "Similar to leaf and neck blast: High humidity, rainfall, cloudy weather, dew, dense canopy.",
+      "preventive_measures": [
+        "Use of resistant varieties.",
+        "Balanced nutrition.",
+        "Optimal plant spacing and drainage.",
+        "Timely application of fungicides."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Foliar sprays of *Pseudomonas fluorescens* or *Neem oil* (as preventive measure)."
+        ],
+        "chemical": [
+          "Sprays of Tricyclazole (0.6g/L), Isoprothiolane (1.5ml/L), or Mancozeb (2.5g/L) when symptoms are first observed on the earheads. Multiple sprays may be needed."
+        ]
+      }
+    },
+    "cercospora_leaf_spot": {
+      "name": "Cercospora Leaf Spot",
+      "scientific_name": "*Cercospora eleusines* Thirum. & Naras.",
+      "symptoms": [
+        "Small, circular to irregular, initially yellowish spots on leaves.",
+        "Spots enlarge, turn light brown to greyish-brown, often with a darker border.",
+        "In severe cases, spots may coalesce, leading to leaf blight and premature senescence.",
+        "Tiny black dots (stromata) may be visible within the lesions."
+      ],
+      "favorable_conditions": "Warm and humid weather, prolonged leaf wetness, moderate temperatures (25-30\u00b0C), dense crop canopy, poor air circulation.",
+      "preventive_measures": [
+        "Field sanitation: Removal and destruction of infected crop residue.",
+        "Crop rotation with non-host crops.",
+        "Maintaining optimal plant spacing and good drainage.",
+        "Avoiding excessive nitrogen fertilization.",
+        "Growing moderately resistant varieties if available."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Foliar spray of *Pseudomonas fluorescens* (1% solution).",
+          "Foliar spray of *Ashwagandha extract* or *Tulsi extract*."
+        ],
+        "chemical": [
+          "Foliar spray of Mancozeb (2.5g/L) or Chlorothalonil (2.5g/L) or Copper Oxychloride (2.5g/L) at the first appearance of symptoms and repeat at 15-day intervals if necessary.",
+          "Systemic fungicides like Propiconazole (1ml/L) can also be used."
+        ]
+      }
+    },
+    "mosaic_virus": {
+      "name": "Ragi Mosaic Virus",
+      "scientific_name": "Ragi Mosaic Virus (RMV)",
+      "symptoms": [
+        "Mosaic pattern of light and dark green patches on leaves.",
+        "Leaves may be distorted, puckered, or reduced in size.",
+        "Stunted plant growth and reduced tillering.",
+        "Yellowish streaks or veins are sometimes visible.",
+        "In severe cases, plants remain stunted with little or no yield."
+      ],
+      "favorable_conditions": "Presence and activity of insect vectors, primarily Aphids (*Hysteroneura setaria*) and Leafhoppers. High population of vectors facilitates rapid spread.",
+      "preventive_measures": [
+        "Use of virus-free seeds.",
+        "Roguing and destruction of infected plants at an early stage.",
+        "Control of aphid and leafhopper vectors.",
+        "Growing resistant varieties if identified and released.",
+        "Maintaining healthy and vigorous crop growth to improve tolerance."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Biological control of vectors using natural predators like ladybird beetles and lacewings.",
+          "Application of *Neem oil* (5ml/L) or *Neem seed kernel extract* (5%) to deter and kill vectors.",
+          "Intercropping with repellent plants."
+        ],
+        "chemical": [
+          "Control of vectors: Spraying with systemic insecticides like Dimethoate (1.7ml/L) or Imidacloprid (0.5ml/L) or Acetamiprid (0.5ml/L) when vectors are observed in significant numbers.",
+          "Application should be done carefully to avoid harming beneficial insects."
+        ]
+      }
+    },
+    "rust_ragi": {
+      "name": "Ragi Rust",
+      "scientific_name": "*Uromyces setariae-italicae* (Aud).*",
+      "symptoms": [
+        "Small, circular to oval pustules on both sides of leaves, more common on the lower surface.",
+        "Pustules are initially yellowish or pale brown, turning rusty brown to dark brown as they mature.",
+        "These pustules contain masses of urediniospores.",
+        "Severe infection can lead to yellowing, drying, and premature senescence of leaves, reducing photosynthetic efficiency."
+      ],
+      "favorable_conditions": "Moderate temperatures (20-25\u00b0C) and high humidity. Periods of prolonged leaf wetness favour infection and spread. Often observed during the later vegetative and reproductive stages.",
+      "preventive_measures": [
+        "Growing resistant varieties.",
+        "Crop rotation with non-cereal crops.",
+        "Maintaining good field sanitation by removing infected plant debris.",
+        "Ensuring adequate drainage and avoiding waterlogged conditions.",
+        "Balanced fertilization to promote plant vigour."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Foliar spray of *Pseudomonas fluorescens* (1% solution).",
+          "Foliar spray of *Neem oil* (5ml/L)."
+        ],
+        "chemical": [
+          "Foliar spray of Mancozeb (2.5g/L) or Chlorothalonil (2.5g/L) or Wettable Sulphur (3g/L) at the first appearance of pustules.",
+          "Systemic fungicides like Propiconazole (1ml/L) or Hexaconazole (1ml/L) can also be effective. Multiple sprays may be needed at 15-20 day intervals."
+        ]
+      }
+    },
+    "grain_smut": {
+      "name": "Grain Smut / Covered Smut",
+      "scientific_name": "*Ustilago crameri* Khol.",
+      "symptoms": [
+        "Replaces individual grains in the earhead with smut sori.",
+        "Smut sori are typically oval to somewhat elongated, dark brown to blackish-brown in colour.",
+        "Each sorus is enclosed by a delicate grayish-white membrane (peridium), which ruptures easily.",
+        "Upon rupture, a mass of black, powdery spores (teliospores) is exposed.",
+        "The earhead axis (rachis) remains intact, giving a distorted appearance.",
+        "Infected plants may be slightly stunted."
+      ],
+      "favorable_conditions": "Infection occurs during germination when soil-borne spores or seed-borne spores germinate in the presence of moisture. Cool, moist soil conditions favour germination. Pathogen survives in soil and on seed surface.",
+      "preventive_measures": [
+        "Seed treatment with systemic fungicides (e.g., Carbendazim, Thiram, Metalaxyl).",
+        "Use of disease-free seeds.",
+        "Crop rotation with non-cereals.",
+        "Practicing deep ploughing to bury smut spores.",
+        "Using certified seeds with low smut incidence."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Seed treatment with *Trichoderma viride* (6g/kg) or *Pseudomonas fluorescens* (10g/kg) can help suppress early infection."
+        ],
+        "chemical": [
+          "Seed treatment: Carbendazim (2g/kg) or Thiram (2.5g/kg) or Metalaxyl (0.6% drench at sowing for soil-borne inoculum).",
+          "Systemic seed dressing fungicides are highly effective."
+        ]
+      }
+    },
+    "downy_mildew": {
+      "name": "Downy Mildew",
+      "scientific_name": "*Sclerospora rayssiae* var. *zeae*",
+      "symptoms": [
+        "Yellow streaks or bands appear on leaves, often parallel to the veins.",
+        "Under humid conditions, a grayish-white downy growth may be visible on the lower surface of the leaves corresponding to the yellow streaks.",
+        "Affected leaves may become brittle, roll upwards, and eventually dry out.",
+        "Stunted growth and reduced tillering are common in severe infections.",
+        "Earheads may be malformed or suppressed."
+      ],
+      "favorable_conditions": "High humidity (near saturation), prolonged leaf wetness, moderate temperatures (20-28\u00b0C), cloudy weather, dense planting, poor drainage.",
+      "preventive_measures": [
+        "Growing resistant or tolerant varieties.",
+        "Seed treatment with systemic fungicides.",
+        "Maintaining good field drainage and aeration.",
+        "Avoiding over-crowding and excessive nitrogen fertilization.",
+        "Crop rotation with non-susceptible crops.",
+        "Early sowing to escape congenial conditions for the pathogen."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Foliar spray of *Pseudomonas fluorescens* (1% solution).",
+          "Application of *Neem cake* in soil can have some suppressive effect."
+        ],
+        "chemical": [
+          "Seed treatment: Metalaxyl (0.6% drench at sowing or seed treatment).",
+          "Foliar spray: Metalaxyl-M (0.25%) or Mancozeb (2.5g/L) or Copper Oxychloride (2.5g/L) or Fosetyl-Al (2g/L) at the first sign of disease and repeat at 10-15 day intervals under favourable conditions."
+        ]
+      }
+    }
+  }
+}

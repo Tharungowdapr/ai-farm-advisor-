@@ -1,0 +1,837 @@
+{
+  "crop_info": {
+    "name": "Grape",
+    "scientific_name": "Vitis vinifera",
+    "varieties": [
+      "Thompson Seedless",
+      "Bangalore Blue",
+      "Sharad Seedless",
+      "Crimson Seedless",
+      "Red Globe",
+      "Jumbo Seedless",
+      "Arka Shyam",
+      "Arka Hans"
+    ],
+    "total_duration_days": "210-240",
+    "ideal_climate": {
+      "temperature": "20-30\u00b0C during vegetative and flowering, 25-35\u00b0C during fruit development and maturity",
+      "rainfall": "Annual rainfall of 700-1000 mm, well-distributed. Low humidity preferred during flowering and fruit development to prevent fungal diseases. Dry and sunny conditions ideal for ripening.",
+      "soil": "Well-drained, deep, sandy loam to clay loam soils with pH 6.0-7.0. Avoid waterlogged or saline soils."
+    },
+    "economic_importance": "One of the most important fruit crops globally, consumed fresh, dried (raisins), and processed into wine, juice, and vinegar. Contributes significantly to agricultural economy and employment.",
+    "propagation_methods": [
+      "Hardwood cuttings (most common)",
+      "Grafting (on resistant rootstocks for soil-borne diseases and drought tolerance)"
+    ],
+    "planting_system": "High-density planting recommended. Various trellis systems used: Overhead Arbor (Pergola), Kniffin system, T-trellis, Gable trellis. Spacing varies with variety and training system, e.g., 2m x 3m, 2.5m x 3m, 3m x 3m."
+  },
+  "lifecycle_phases": [
+    {
+      "phase_id": "grape_1_nursery_sowing",
+      "phase_name": "Nursery/Propagation and Planting",
+      "duration_days": "60-90",
+      "description": "This phase covers the preparation of planting material (cuttings or grafted saplings) and their transplantation into the main field. Cuttings are treated and planted in a nursery bed, while grafted saplings are raised and acclimatized before field planting.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Selection and Preparation of Cuttings (for non-grafted)",
+          "details": "Select disease-free, mature shoots (pencil thickness) from healthy vines. Cut into 15-20 cm pieces with 3-4 buds. Treat base with IBA (Indole-3-butyric acid) at 2000-4000 ppm to promote rooting.",
+          "fertilizer": {
+            "npk_dose": null,
+            "application_method": null
+          },
+          "irrigation": {
+            "schedule": "Maintain consistent moisture in the nursery bed. Water daily or as needed to keep the soil moist but not waterlogged.",
+            "method": "Sprinkler or drip irrigation."
+          },
+          "pest_management": {
+            "common_pests": [
+              "Mealybugs",
+              "Thrips"
+            ],
+            "control_measures": "Soil drench with imidacloprid (0.5 ml/L) for mealybugs. Regular scouting and manual removal. Neem oil (5 ml/L) spray for thrips."
+          }
+        },
+        {
+          "step": 2,
+          "operation": "Planting of Cuttings/Saplings",
+          "details": "Plant cuttings vertically in raised nursery beds filled with a mixture of soil, sand, and compost (1:1:1) or in polybags. For grafted saplings, plant them in pits at the designated spacing in the main field.",
+          "fertilizer": {
+            "npk_dose": "Basal application of FYM (Farm Yard Manure) @ 10-15 tonnes/ha and single super phosphate (SSP) @ 50 kg/ha in the main field pits before planting.",
+            "application_method": "Thoroughly mixed with soil."
+          },
+          "irrigation": {
+            "schedule": "Water immediately after planting. For nursery beds, maintain moisture. For field planted saplings, provide light irrigation every 2-3 days initially.",
+            "method": "Drip irrigation is preferred for efficiency."
+          },
+          "pest_management": {
+            "common_pests": [
+              "Nematodes",
+              "Whiteflies"
+            ],
+            "control_measures": "Apply neem cake @ 100-200 g/pit at planting. For whiteflies, spray neem oil (5 ml/L) or dimethoate (1 ml/L) if infestation is severe."
+          }
+        },
+        {
+          "step": 3,
+          "operation": "Initial Training and Support",
+          "details": "Provide support to young vines using stakes or trellises. Train the main shoot upwards to the desired height (e.g., cordon height).",
+          "fertilizer": null,
+          "irrigation": {
+            "schedule": "Continue regular irrigation to ensure establishment.",
+            "method": "Drip irrigation."
+          },
+          "pest_management": null
+        },
+        {
+          "step": 4,
+          "operation": "Weed Management",
+          "details": "Keep the area around young vines free from weeds, which compete for nutrients and water.",
+          "fertilizer": null,
+          "irrigation": null,
+          "pest_management": {
+            "common_pests": [
+              "Broadleaf weeds",
+              "Grasses"
+            ],
+            "control_measures": "Manual weeding or use of appropriate herbicides like glyphosate (carefully applied to avoid vine contact)."
+          }
+        },
+        {
+          "step": 5,
+          "operation": "Root Development",
+          "details": "Monitor root development. Apply root-promoting hormones if necessary, especially in challenging soil conditions.",
+          "fertilizer": null,
+          "irrigation": {
+            "schedule": "Ensure adequate water availability for root growth.",
+            "method": "Drip irrigation."
+          },
+          "pest_management": null
+        },
+        {
+          "step": 6,
+          "operation": "Pest and Disease Monitoring",
+          "details": "Regularly inspect young vines for any signs of pests or diseases and take timely action.",
+          "fertilizer": null,
+          "irrigation": null,
+          "pest_management": {
+            "common_pests": [
+              "Aphids",
+              "Spider mites"
+            ],
+            "control_measures": "Spray malathion (1 ml/L) or acaricides for mites. Biological control agents can also be used."
+          }
+        }
+      ]
+    },
+    {
+      "phase_id": "grape_2_vegetative",
+      "phase_name": "Vegetative Growth and Training",
+      "duration_days": "60-90",
+      "description": "This phase focuses on vigorous vegetative growth, development of the vine structure, and establishing the desired training system (e.g., cordon, spur). Canopy management is critical during this period.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Canopy Management and Training",
+          "details": "Train the main trunk and cordons. Remove unwanted shoots (suckers) to direct energy towards developing the desired fruiting wood. Prune to establish the trellis system.",
+          "fertilizer": {
+            "npk_dose": "Apply Nitrogen: 50-75 g/vine (split doses), Phosphorus: 25 g/vine, Potassium: 50 g/vine.",
+            "application_method": "Fertilizers applied around the root zone and incorporated into the soil. Nitrogen can be applied in 2-3 split doses."
+          },
+          "irrigation": {
+            "schedule": "Maintain consistent soil moisture, around 60-70% of field capacity. Irrigate every 5-7 days depending on soil type and weather conditions.",
+            "method": "Drip irrigation is highly recommended for uniform water distribution and saving water."
+          },
+          "pest_management": {
+            "common_pests": [
+              "Leafhoppers",
+              "Bud mites"
+            ],
+            "control_measures": "Monitor for leafhopper nymphs and adults. Spray imidacloprid (0.5 ml/L) or acetamiprid (0.5 g/L). For bud mites, spray sulfur (3 g/L) or specific acaricides."
+          }
+        },
+        {
+          "step": 2,
+          "operation": "Shoot Thinning and Positioning",
+          "details": "Remove crowded or weak shoots. Position the remaining shoots horizontally along the cordons to maximize light penetration and air circulation.",
+          "fertilizer": null,
+          "irrigation": {
+            "schedule": "Ensure adequate watering during active growth to prevent stress.",
+            "method": "Drip irrigation."
+          },
+          "pest_management": null
+        },
+        {
+          "step": 3,
+          "operation": "Fertigation",
+          "details": "Supplement nutrient application through irrigation water (fertigation) to provide readily available nutrients during peak growth.",
+          "fertilizer": {
+            "npk_dose": "Water soluble fertilizers like 19:19:19 or 20:20:20 @ 5-10 g/vine/week, followed by Urea @ 2-5 g/vine/week for Nitrogen boost.",
+            "application_method": "Inject into the drip irrigation system."
+          },
+          "irrigation": {
+            "schedule": "Apply fertigation once a week or bi-weekly.",
+            "method": "Drip irrigation."
+          },
+          "pest_management": null
+        },
+        {
+          "step": 4,
+          "operation": "Weed Control",
+          "details": "Continuous weed management through mulching, cover cropping, or herbicides.",
+          "fertilizer": null,
+          "irrigation": null,
+          "pest_management": {
+            "common_pests": [
+              "Various weeds"
+            ],
+            "control_measures": "Mulching with straw or plastic film. Use of pre-emergent herbicides like pendimethalin or post-emergent like paraquat (with caution)."
+          }
+        },
+        {
+          "step": 5,
+          "operation": "Micronutrient Application",
+          "details": "Address potential micronutrient deficiencies (e.g., Boron, Zinc, Iron) through foliar sprays.",
+          "fertilizer": {
+            "npk_dose": "Foliar spray of Boron (0.2%), Zinc Sulphate (0.2%), Iron Chelate (0.1%).",
+            "application_method": "Foliar spray."
+          },
+          "irrigation": null,
+          "pest_management": null
+        },
+        {
+          "step": 6,
+          "operation": "Pest and Disease Surveillance",
+          "details": "Regularly scout for early signs of common pests and diseases like powdery mildew and downy mildew.",
+          "fertilizer": null,
+          "irrigation": null,
+          "pest_management": {
+            "common_pests": [
+              "Spider mites",
+              "Thrips"
+            ],
+            "control_measures": "Proactive sprays of neem oil or suitable acaricides/insecticides based on scouting reports."
+          }
+        }
+      ]
+    },
+    {
+      "phase_id": "grape_3_flowering",
+      "phase_name": "Flowering and Fruit Set",
+      "duration_days": "30-45",
+      "description": "This critical phase involves the development of flower clusters, pollination, and the initiation of fruit set. Maintaining optimal conditions is crucial to maximize yield.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Flower Cluster Management",
+          "details": "Thinning of flower clusters if they are too dense to ensure proper development of individual berries. Removal of secondary and tertiary branches to focus energy on the main cluster.",
+          "fertilizer": {
+            "npk_dose": "Apply Potassium Sulphate @ 50 g/vine to improve fruit set and quality.",
+            "application_method": "Broadcast around the root zone."
+          },
+          "irrigation": {
+            "schedule": "Maintain consistent but moderate moisture levels. Avoid over-irrigation or water stress, as both can negatively impact fruit set.",
+            "method": "Drip irrigation, 2-3 times a week."
+          },
+          "pest_management": {
+            "common_pests": [
+              "Thrips",
+              "Powdery Mildew"
+            ],
+            "control_measures": "Spray wettable sulfur (3 g/L) or neem oil (5 ml/L) to manage thrips. For powdery mildew, apply dinocap (1 ml/L) or hexaconazole (1 ml/L)."
+          }
+        },
+        {
+          "step": 2,
+          "operation": "Hormone Application (GA3)",
+          "details": "Gibberellic Acid (GA3) is applied to increase berry size and looseness of the bunch, especially for seedless varieties.",
+          "fertilizer": null,
+          "irrigation": {
+            "schedule": "Avoid irrigation for 24 hours before and after GA3 application to ensure proper uptake.",
+            "method": null
+          },
+          "pest_management": null
+        },
+        {
+          "step": 3,
+          "operation": "Foliar Nutrition",
+          "details": "Apply foliar sprays of micronutrients like Boron and Zinc to support flower development and fruit set.",
+          "fertilizer": {
+            "npk_dose": "Foliar spray of Boron (0.1%) and Zinc Sulphate (0.15%).",
+            "application_method": "Foliar spray."
+          },
+          "irrigation": null,
+          "pest_management": null
+        },
+        {
+          "step": 4,
+          "operation": "Pest and Disease Control",
+          "details": "Strict monitoring and control of fungal diseases like powdery mildew and downy mildew, and insect pests like thrips.",
+          "fertilizer": null,
+          "irrigation": {
+            "schedule": "Ensure good air circulation by avoiding excessive leaf cover.",
+            "method": null
+          },
+          "pest_management": {
+            "common_pests": [
+              "Aphids",
+              "Mealybugs"
+            ],
+            "control_measures": "Spray dimethoate (1 ml/L) for aphids. For mealybugs, use systemic insecticides like chlorpyrifos (1.5 ml/L) or biological control agents."
+          }
+        },
+        {
+          "step": 5,
+          "operation": "Water Management",
+          "details": "Crucial to avoid water stress which can lead to poor fruit set and berry drop.",
+          "fertilizer": null,
+          "irrigation": {
+            "schedule": "Consistent irrigation, but avoid waterlogging.",
+            "method": "Drip irrigation."
+          },
+          "pest_management": null
+        },
+        {
+          "step": 6,
+          "operation": "Canopy Adjustment",
+          "details": "Remove any secondary or tertiary shoots that emerge to ensure all resources are directed towards the developing fruit clusters.",
+          "fertilizer": null,
+          "irrigation": null,
+          "pest_management": null
+        }
+      ]
+    },
+    {
+      "phase_id": "grape_4_fruit_initiation",
+      "phase_name": "Berry Development and Sizing",
+      "duration_days": "60-70",
+      "description": "This phase is characterized by the rapid increase in berry size and the beginning of veraison (colour change and softening). Balanced nutrition and water management are key.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Berry Thinning",
+          "details": "If berries are too crowded, a second thinning may be required to ensure proper berry development, prevent bunch rot, and improve fruit quality and size.",
+          "fertilizer": {
+            "npk_dose": "Apply Potassium Sulphate @ 75 g/vine to aid in berry development and sugar accumulation.",
+            "application_method": "Broadcast around the root zone."
+          },
+          "irrigation": {
+            "schedule": "Maintain adequate soil moisture. Reduce irrigation slightly as veraison approaches to encourage sugar concentration.",
+            "method": "Drip irrigation, 2-3 times a week, reducing frequency at veraison."
+          },
+          "pest_management": {
+            "common_pests": [
+              "Fruit flies",
+              "Birds"
+            ],
+            "control_measures": "Use pheromone traps for fruit flies. Cover bunches with paper bags or netting to protect from birds."
+          }
+        },
+        {
+          "step": 2,
+          "operation": "Girdling (Optional)",
+          "details": "Girdling (removing a narrow strip of bark from the trunk or cordon) can promote berry sizing and sugar accumulation by impeding phloem transport.",
+          "fertilizer": null,
+          "irrigation": {
+            "schedule": "Monitor vines closely for stress after girdling; ensure adequate watering.",
+            "method": "Drip irrigation."
+          },
+          "pest_management": null
+        },
+        {
+          "step": 3,
+          "operation": "Nutrient Management",
+          "details": "Focus on Potassium and Calcium for berry firmness and quality. Avoid excessive Nitrogen, which can lead to softer berries and increased disease susceptibility.",
+          "fertilizer": {
+            "npk_dose": "Potassium Sulphate @ 75 g/vine, Calcium Nitrate @ 50 g/vine.",
+            "application_method": "Broadcast around the root zone and incorporate."
+          },
+          "irrigation": null,
+          "pest_management": null
+        },
+        {
+          "step": 4,
+          "operation": "Disease and Pest Control",
+          "details": "Vigilant monitoring for bunch rot, anthracnose, and fruit flies.",
+          "fertilizer": null,
+          "irrigation": {
+            "schedule": "Ensure good aeration within the canopy to prevent fungal diseases.",
+            "method": null
+          },
+          "pest_management": {
+            "common_pests": [
+              "Downy Mildew",
+              "Bunch Rot"
+            ],
+            "control_measures": "Preventive sprays of Mancozeb (2.5 g/L) or Copper Oxychloride (2.5 g/L) for downy mildew. For bunch rot, ensure good drainage and air circulation. Sulfur sprays can help manage secondary infections."
+          }
+        },
+        {
+          "step": 5,
+          "operation": "Veraison Management",
+          "details": "As berries start to change colour, reduce irrigation to encourage sugar accumulation and color development. Protect developing berries from sunscald.",
+          "fertilizer": null,
+          "irrigation": {
+            "schedule": "Reduce watering frequency.",
+            "method": "Drip irrigation."
+          },
+          "pest_management": null
+        },
+        {
+          "step": 6,
+          "operation": "Canopy Light Management",
+          "details": "Ensure adequate sunlight penetration to the developing bunches for proper ripening and color development.",
+          "fertilizer": null,
+          "irrigation": null,
+          "pest_management": null
+        }
+      ]
+    },
+    {
+      "phase_id": "grape_5_maturity",
+      "phase_name": "Ripening and Maturity",
+      "duration_days": "30-45",
+      "description": "This phase involves sugar accumulation, colour development, and flavor development in the berries. Harvesting is done when the berries reach the desired maturity levels.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Maturity Assessment",
+          "details": "Regularly check the Total Soluble Solids (TSS) using a refractometer (Brix level). Also, assess berry colour, aroma, and ease of detachment from the stalk.",
+          "fertilizer": {
+            "npk_dose": "Potassium Sulphate @ 50 g/vine, if not applied earlier, to enhance sugar content and quality.",
+            "application_method": "Broadcast around the root zone."
+          },
+          "irrigation": {
+            "schedule": "Withhold irrigation 7-10 days before harvest to concentrate sugars and improve keeping quality. Avoid severe water stress.",
+            "method": null
+          },
+          "pest_management": {
+            "common_pests": [
+              "Fruit flies",
+              "Birds",
+              "Earwigs"
+            ],
+            "control_measures": "Continue use of traps for fruit flies. Netting and paper bagging of bunches are essential. Insecticides should be avoided close to harvest due to residue concerns."
+          }
+        },
+        {
+          "step": 2,
+          "operation": "Harvesting",
+          "details": "Harvest bunches carefully, usually in the cooler parts of the day (early morning or late evening), to maintain freshness. Use sharp secateurs or knives.",
+          "fertilizer": null,
+          "irrigation": null,
+          "pest_management": null
+        },
+        {
+          "step": 3,
+          "operation": "Bunch Selection and Trimming",
+          "details": "Select mature bunches. Trim away any damaged, undersized, or diseased berries and broken stalks to improve marketability.",
+          "fertilizer": null,
+          "irrigation": null,
+          "pest_management": null
+        },
+        {
+          "step": 4,
+          "operation": "Cooling",
+          "details": "Immediately after harvest, cool the grapes to remove field heat. This slows down respiration and maintains quality.",
+          "fertilizer": null,
+          "irrigation": null,
+          "pest_management": null
+        },
+        {
+          "step": 5,
+          "operation": "Packing and Grading",
+          "details": "Grade bunches based on size, shape, colour, and absence of defects. Pack in appropriate containers (crates, boxes) with protective materials.",
+          "fertilizer": null,
+          "irrigation": null,
+          "pest_management": null
+        },
+        {
+          "step": 6,
+          "operation": "Pre-Harvest Sprays (if necessary)",
+          "details": "In some cases, pre-harvest sprays of calcium or specific fungicides might be applied to improve post-harvest quality or shelf life. Ensure these are permitted and within residue limits.",
+          "fertilizer": null,
+          "irrigation": null,
+          "pest_management": {
+            "common_pests": [
+              "Bunch Rot"
+            ],
+            "control_measures": "Copper-based fungicides (e.g., Copper Oxychloride) may be applied at label rates, ensuring pre-harvest interval (PHI) is respected."
+          }
+        }
+      ]
+    },
+    {
+      "phase_id": "grape_6_post_harvest",
+      "phase_name": "Post-Harvest Handling and Dormancy",
+      "duration_days": "Continuous",
+      "description": "This phase includes storage, processing, and preparation for the next growth cycle, including vine dormancy. Proper post-harvest management is crucial for long-term vine health and future yields.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Storage",
+          "details": "Store harvested grapes in controlled atmosphere storage (CAS) at low temperatures (0-2\u00b0C) and high humidity (90-95%) for extended shelf life.",
+          "fertilizer": null,
+          "irrigation": null,
+          "pest_management": null
+        },
+        {
+          "step": 2,
+          "operation": "Processing",
+          "details": "Grapes not sold fresh can be processed into raisins (drying), juice, wine, or vinegar.",
+          "fertilizer": null,
+          "irrigation": null,
+          "pest_management": null
+        },
+        {
+          "step": 3,
+          "operation": "Vine Pruning (for next season)",
+          "details": "Perform pruning after leaf fall, typically during dormancy. This involves removing old spurs, unproductive wood, and training for the next fruiting season. This can be of two types: Bud break pruning (May-June) or Fruit pruning (Oct-Nov) based on climate and variety.",
+          "fertilizer": {
+            "npk_dose": "Apply organic manure @ 10-15 kg/vine and NPK @ 100:100:150 g/vine after pruning, split into two doses.",
+            "application_method": "Broadcast around the root zone and incorporate."
+          },
+          "irrigation": {
+            "schedule": "Water adequately after pruning to encourage bud break and new growth.",
+            "method": "Drip irrigation."
+          },
+          "pest_management": {
+            "common_pests": [
+              "Mealybugs",
+              "Scale insects"
+            ],
+            "control_measures": "Apply dormant oil spray (e.g., petroleum oil) to control overwintering stages of pests. Bordeaux paste on pruning wounds to prevent infection."
+          }
+        },
+        {
+          "step": 4,
+          "operation": "Sanitation",
+          "details": "Remove pruned wood and debris from the vineyard to reduce inoculum of diseases and pest habitats.",
+          "fertilizer": null,
+          "irrigation": null,
+          "pest_management": null
+        },
+        {
+          "step": 5,
+          "operation": "Soil Health Management",
+          "details": "Incorporate organic matter, undertake soil testing, and apply amendments as needed to improve soil structure and fertility for the next season.",
+          "fertilizer": {
+            "npk_dose": "Soil test based nutrient application.",
+            "application_method": "Incorporated into soil."
+          },
+          "irrigation": null,
+          "pest_management": null
+        },
+        {
+          "step": 6,
+          "operation": "Vineyard Floor Management",
+          "details": "Manage vineyard floor by cover cropping, mulching, or tillage to conserve moisture, suppress weeds, and improve soil health during the dormant period.",
+          "fertilizer": null,
+          "irrigation": null,
+          "pest_management": null
+        }
+      ]
+    }
+  ],
+  "disease_protocols": {
+    "downy_mildew": {
+      "name": "Downy Mildew",
+      "scientific_name": "Plasmopara viticola",
+      "symptoms": [
+        "Yellowish, translucent 'oil spots' on the upper surface of leaves.",
+        "White, downy growth on the lower surface of leaves, corresponding to the oil spots.",
+        "Spots on petioles and tendrils leading to drying.",
+        "In severe cases, entire leaves may wither and fall.",
+        "Berries can be infected, appearing brown and shriveled, covered with white downy growth."
+      ],
+      "favorable_conditions": "High humidity (above 90%), prolonged leaf wetness (dew or rain), moderate temperatures (15-25\u00b0C). Spore dispersal by rain splash and wind.",
+      "preventive_measures": [
+        "Choose resistant or less susceptible varieties.",
+        "Improve air circulation within the canopy by proper pruning and shoot thinning.",
+        "Ensure adequate drainage in the vineyard.",
+        "Remove and destroy infected plant debris.",
+        "Sanitation of pruning tools.",
+        "Avoid overhead irrigation, especially during periods of high risk.",
+        "Early detection and monitoring."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Copper Oxychloride (2.5 g/L of water).",
+          "Bordeaux Mixture 1% (1 kg Copper Sulphate + 1 kg Lime in 100 L water).",
+          "Neem oil (5 ml/L) can offer some preventive effect and act as a repellent."
+        ],
+        "chemical": [
+          "Metalaxyl-M or Metalaxyl-MZ (e.g., Ridomil Gold) @ 1-1.5 ml/L.",
+          "Mancozeb (2.5 g/L).",
+          "Propamocarb Hydrochloride (e.g., Previcur N) @ 2 ml/L.",
+          "Fosetyl-Aluminium (e.g., Aliette) @ 2-3 g/L.",
+          "Systemic fungicides like Cymoxanil + Mancozeb combination products.",
+          "Application timing is crucial: start preventive sprays before disease appears, especially during rainy seasons. Repeat sprays at 10-15 day intervals depending on weather and disease pressure. Always follow label recommendations and pre-harvest intervals (PHI)."
+        ]
+      }
+    },
+    "powdery_mildew": {
+      "name": "Powdery Mildew",
+      "scientific_name": "Uncinula necator",
+      "symptoms": [
+        "White, powdery patches on the upper and lower leaf surfaces.",
+        "Patches can also appear on young shoots, tendrils, petioles, and flower clusters.",
+        "Affected leaves may become distorted, curled, and eventually dry out.",
+        "Berries develop grayish-white, powdery coating.",
+        "Infected berries may crack, bleed juice, and become susceptible to secondary infections.",
+        "Severe infections can lead to stunted growth and reduced yield."
+      ],
+      "favorable_conditions": "Moderate temperatures (20-28\u00b0C) with moderate humidity (50-70%). High humidity (>80%) favors sporulation but low humidity and dewless nights favor infection. Shade and poor air circulation increase susceptibility.",
+      "preventive_measures": [
+        "Select resistant varieties.",
+        "Maintain good canopy management for better air circulation and sunlight penetration.",
+        "Proper pruning to remove dense foliage.",
+        "Control of weeds.",
+        "Avoid excessive nitrogen fertilization.",
+        "Regular scouting for early detection.",
+        "Foliar application of sulfur compounds can also act as a preventive measure."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Wettable Sulphur (3 g/L). Apply during cooler parts of the day.",
+          "Potassium bicarbonate @ 5-10 g/L can be effective as a contact fungicide.",
+          "Milk spray (10% solution) has shown some efficacy.",
+          "Neem oil (5 ml/L)."
+        ],
+        "chemical": [
+          "Dinocap (1 ml/L).",
+          "Hexaconazole (1 ml/L).",
+          "Tebuconazole (0.5 ml/L).",
+          "Myclobutanil (0.5 ml/L).",
+          "Penconazole (0.5 ml/L).",
+          "Sulfur-based fungicides (wettable sulfur) are effective but should not be applied at high temperatures (>35\u00b0C) due to phytotoxicity.",
+          "Systemic fungicides like strobilurins (e.g., Azoxystrobin) can be used judiciously. Rotate fungicides to prevent resistance development. Apply at the first sign of disease and repeat every 7-14 days."
+        ]
+      }
+    },
+    "anthracnose": {
+      "name": "Anthracnose / Bird's Eye Spot",
+      "scientific_name": "Colletotrichum gloeosporioides",
+      "symptoms": [
+        "Sunken, circular spots with dark brown margins and lighter centers on berries (often referred to as 'bird's eye spots').",
+        "Spots on leaves are irregular or circular, initially dark brown, later becoming grayish with dark borders.",
+        "Infected shoots develop elongated, dark lesions that can girdle and kill them.",
+        "Lesions on tendrils and petioles.",
+        "In severe cases, berries may shrivel and dry prematurely."
+      ],
+      "favorable_conditions": "Warm and humid conditions, particularly during rainy periods and high temperatures (25-30\u00b0C). Rain splash and wind aid in spore dispersal.",
+      "preventive_measures": [
+        "Pruning out infected shoots and canes during dormancy.",
+        "Good vineyard sanitation, removing fallen leaves and mummified berries.",
+        "Proper pruning to improve air circulation.",
+        "Avoid wounding berries.",
+        "Application of protective fungicides before rainy periods.",
+        "Girdling should be done carefully to minimize wounding."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Bordeaux Mixture 1% (applied before rainy spells).",
+          "Copper Oxychloride (2.5 g/L)."
+        ],
+        "chemical": [
+          "Carbendazim (1 g/L).",
+          "Mancozeb (2.5 g/L).",
+          "Captan (2.5 g/L).",
+          "Propiconazole (0.5 ml/L).",
+          "Difenoconazole (0.5 ml/L).",
+          "Start sprays when new growth appears and repeat at 10-14 day intervals, especially before and after rainy periods. Focus sprays on developing clusters and young shoots."
+        ]
+      }
+    },
+    "bunch_rot": {
+      "name": "Bunch Rot (Grey Mould)",
+      "scientific_name": "Botrytis cinerea",
+      "symptoms": [
+        "Starts as a few rotting berries within the bunch.",
+        "Affected berries become soft, brown, and covered with a fuzzy, grayish sporulation, especially in humid conditions.",
+        "Infected berries can shrivel and become mummified.",
+        "The rot can spread rapidly throughout the entire bunch.",
+        "Young shoots and leaves can also be infected, leading to dieback."
+      ],
+      "favorable_conditions": "High humidity (>90%), cool to moderate temperatures (15-25\u00b0C), and prolonged periods of wetness. Wounds on berries (e.g., from insects, hail, or mechanical damage) predispose them to infection. Dense bunches are more susceptible.",
+      "preventive_measures": [
+        "Improve air circulation through canopy management (pruning, shoot thinning).",
+        "Remove tightly packed berries or small bunches.",
+        "Control insect pests that cause wounds.",
+        "Harvest at the right time and handle bunches carefully to avoid damage.",
+        "Ensure good drainage.",
+        "Use disease-free planting material.",
+        "Apply fungicides preventively, especially during periods of high risk."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Bordeaux Mixture 1% (can help prevent spore germination).",
+          "Potassium bicarbonate (5 g/L)."
+        ],
+        "chemical": [
+          "Iprodione (0.5-1 g/L).",
+          "Procymidone (0.5-1 g/L).",
+          "Cyprodinil + Fludioxonil (e.g., Switch) @ 0.8-1 g/L.",
+          "Fenhexamid (0.5-1 g/L).",
+          "Application should start before the onset of disease symptoms, particularly when berries begin to touch. Repeat applications at 10-14 day intervals. Timing is critical as fungicides are most effective on healthy tissue or at the very early stages of infection. Fungicides are generally applied during berry development and veraison."
+        ]
+      }
+    },
+    "leaf_blight": {
+      "name": "Leaf Blight",
+      "scientific_name": "Guignardia bidwellii (Black rot) or Isariopsis clavispora (Angular leaf spot)",
+      "symptoms": [
+        "For Black Rot: Small, circular, brown spots with dark borders on leaves, often with a 'frogeye' appearance (lighter center). Can also cause fruit rot (mummification) and stem cankers.",
+        "For Angular Leaf Spot: Small, angular, water-soaked spots on leaves, delimited by veins. Underside may show grayish fungal growth. Leaves may turn yellow and drop."
+      ],
+      "favorable_conditions": "Warm and humid weather (20-30\u00b0C). Rainy seasons and high humidity favor infection and spread. Wind and rain are primary agents of dispersal.",
+      "preventive_measures": [
+        "Remove infected leaves, fruits, and canes during pruning and discard them.",
+        "Sanitation of the vineyard floor.",
+        "Improve air circulation within the canopy.",
+        "Avoid overhead irrigation.",
+        "Use disease-free planting material.",
+        "Prompt application of protective fungicides."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Bordeaux Mixture 1%.",
+          "Copper Oxychloride (2.5 g/L)."
+        ],
+        "chemical": [
+          "Mancozeb (2.5 g/L).",
+          "Captan (2.5 g/L).",
+          "Chlorothalonil (2 g/L).",
+          "Difenoconazole (0.5 ml/L).",
+          "Apply sprays starting from early spring growth and repeat every 10-14 days, especially during wet periods. Black rot management requires persistent fungicidal applications throughout the season."
+        ]
+      }
+    },
+    "rust": {
+      "name": "Grape Rust",
+      "scientific_name": "Phakopsora vitis",
+      "symptoms": [
+        "Small, yellowish spots on the upper leaf surface.",
+        "On the lower leaf surface, corresponding to the spots, appear small, raised, circular pustules containing reddish-brown to cinnamon-brown spores.",
+        "Severely infected leaves may turn yellow, wither, and drop prematurely.",
+        "Can affect shoots and tendrils in severe cases."
+      ],
+      "favorable_conditions": "Warm and humid conditions, particularly during the summer months. High temperatures (25-30\u00b0C) and prolonged leaf wetness favor infection and sporulation. Wind disperses urediniospores.",
+      "preventive_measures": [
+        "Choose resistant varieties if available.",
+        "Improve air circulation by pruning and shoot thinning.",
+        "Good vineyard sanitation, removing infected fallen leaves.",
+        "Avoid over-irrigation.",
+        "Early detection and monitoring."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Neem oil (5 ml/L).",
+          "Sulfur-based fungicides (wettable sulfur) at 3 g/L may offer some protection."
+        ],
+        "chemical": [
+          "Mancozeb (2.5 g/L).",
+          "Copper Oxychloride (2.5 g/L).",
+          "Propiconazole (0.5 ml/L).",
+          "Tebuconazole (0.5 ml/L).",
+          "Apply fungicides when the first symptoms are observed and repeat at 10-14 day intervals, especially during periods favorable for disease development. Fungicides are generally applied during the growing season."
+        ]
+      }
+    },
+    "excoriosis": {
+      "name": "Excoriosis / Bacterial Blight",
+      "scientific_name": "Xanthomonas ampelina",
+      "symptoms": [
+        "Small, angular, water-soaked lesions on leaves, delimited by veins.",
+        "Lesions turn brown and necrotic, often with a yellow halo.",
+        "In severe cases, leaves may wither and fall prematurely.",
+        "Cankers on shoots and stems, which can cause dieback.",
+        "Infection can also occur on fruit caps and pedicels, leading to shriveling."
+      ],
+      "favorable_conditions": "Warm and humid weather, especially following rain or hail damage. Wounds on vines provide entry points for the bacteria. Temperatures between 20-30\u00b0C are optimal for bacterial multiplication and spread.",
+      "preventive_measures": [
+        "Use disease-free planting material.",
+        "Sanitation of pruning tools between vines, especially if disease is present.",
+        "Avoid wounding vines as much as possible.",
+        "Improve air circulation through proper pruning.",
+        "Control insect vectors that might spread the bacteria.",
+        "Copper-based bactericides can be used preventively."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Bordeaux Mixture 1% (applied after pruning and during rainy periods).",
+          "Copper Oxychloride (2.5 g/L)."
+        ],
+        "chemical": [
+          "Streptocycline (1 g/L of water with 0.5 ml/L sticker).",
+          "Copper Sulphate (0.5 g/L) in combination with lime.",
+          "Oxytetracycline hydrochloride (can be used as a foliar spray).",
+          "Application is most effective when done preventively or at the very early stages of infection. Sprays are usually recommended after pruning and during periods of high risk (rain, high humidity). Repeat applications may be necessary."
+        ]
+      }
+    },
+    "phomopsis_cane_and_leaf_spot": {
+      "name": "Phomopsis Cane and Leaf Spot",
+      "scientific_name": "Phomopsis viticola",
+      "symptoms": [
+        "Small, black, circular spots on leaves, often surrounded by a yellowish halo.",
+        "Spots may enlarge and coalesce, leading to blighting of leaf margins.",
+        "Lesions on canes are elongated, dark, and often sunken, appearing as 'dieback'.",
+        "Buds infected by Phomopsis may fail to develop or produce weak shoots.",
+        "Young berries can also be infected, leading to shriveling."
+      ],
+      "favorable_conditions": "Cool, wet weather in spring favors primary infection from overwintering inoculum on canes. High humidity and moderate temperatures (15-25\u00b0C) favor disease development throughout the season.",
+      "preventive_measures": [
+        "Prune out and destroy infected canes and spurs during dormancy.",
+        "Ensure good air circulation through proper pruning and canopy management.",
+        "Remove infected plant debris from the vineyard.",
+        "Sanitation of pruning tools.",
+        "Apply fungicides early in the season, especially when new growth emerges."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Bordeaux Mixture 1% (applied after pruning and during early spring).",
+          "Copper Oxychloride (2.5 g/L)."
+        ],
+        "chemical": [
+          "Mancozeb (2.5 g/L).",
+          "Captan (2.5 g/L).",
+          "Propiconazole (0.5 ml/L).",
+          "Difenoconazole (0.5 ml/L).",
+          "Apply fungicides starting at bud break and continue at 10-14 day intervals, especially during rainy periods and when new shoots are developing. The primary focus is on protecting the new growth from infection."
+        ]
+      }
+    },
+    "red_leaf_disease": {
+      "name": "Red Leaf Disease (Grapevine Leafroll Disease Complex)",
+      "scientific_name": "Grapevine leafroll-associated viruses (GLRaVs)",
+      "symptoms": [
+        "Interveinal reddening of leaves in red grape varieties (in green varieties, leaves turn yellow).",
+        "Leaves roll downwards and inwards.",
+        "Affected leaves often thicken and become leathery.",
+        "Delayed bud break and reduced shoot growth.",
+        "Reduced fruit set, smaller berries, and lower sugar content.",
+        "Can lead to significant yield loss and poor wine quality."
+      ],
+      "favorable_conditions": "Spread is primarily by vegetative propagation of infected planting material and by vectors, mainly vine mealybugs (Planococcus ficus and Pseudococcus longispinus).",
+      "preventive_measures": [
+        "Use only certified virus-free planting material.",
+        "Control vine mealybug populations diligently.",
+        "Rogue out and destroy infected vines from the vineyard.",
+        "Ensure isolation from other vineyards that may be infected.",
+        "Regular testing of vines for virus presence.",
+        "Quarantine imported plant material."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Intensive management of mealybug vectors using natural enemies (e.g., ladybugs, parasitic wasps) and appropriate biological control agents.",
+          "Good sanitation practices to remove infected plant parts."
+        ],
+        "chemical": [
+          "Chemical control of mealybugs using systemic insecticides like imidacloprid or acetamiprid, applied as soil drench or foliar spray. However, this is a management strategy for the vector, not a cure for the virus. Cultural practices and vector control are paramount.",
+          "There is no chemical cure for virus diseases. Management focuses on prevention and vector control."
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,227 @@
+{
+    "crop_info": {
+        "name": "Paddy",
+        "scientific_name": "Oryza sativa",
+        "varieties": [
+            "Sona Masuri",
+            "IR-64",
+            "Basmati",
+            "Jyothi"
+        ],
+        "total_duration_days": 120,
+        "ideal_climate": {
+            "temperature": "25-35°C",
+            "rainfall": "100-150cm"
+        }
+    },
+    "lifecycle_phases": [
+        {
+            "phase_id": "phase_1_nursery",
+            "phase_name": "Nursery Preparation",
+            "duration_days": 25,
+            "description": "Preparation of seedlings in a controlled environment before transplanting to the main field.",
+            "procedures": [
+                "Select healthy, certified seeds (approx. 20-25 kg/acre).",
+                "Seed Treatment: Soak seeds in Carbendazim (2g/kg) for 24 hours to prevent seed-borne diseases.",
+                "Prepare raised beds of 1-1.5m width and convenient length.",
+                "Sow seeds uniformly and cover with a thin layer of soil/manure.",
+                "Irrigate gently to maintain saturation but avoid flooding initially.",
+                "Apply Nitrogen (Urea) in small doses if seedlings show yellowing."
+            ],
+            "common_diseases": [
+                "blast_nursery",
+                "brown_spot"
+            ],
+            "preventive_tips": [
+                "Avoid high Nitrogen application in nursery to prevent Blast.",
+                "Keep nursery area weed-free.",
+                "Maintain proper water level (2-3 cm) after seedling establishment.",
+                "PREVENTION: Seed treatment is the most critical step here."
+            ]
+        },
+        {
+            "phase_id": "phase_2_transplanting",
+            "phase_name": "Land Preparation & Transplanting",
+            "duration_days": 10,
+            "description": "Moving seedlings from nursery to the main puddled field.",
+            "procedures": [
+                "Plough the main field 2-3 times to achieve a soft puddled consistency.",
+                "Level the field perfectly to ensure uniform water standing.",
+                "Apply basal fertilizer dose (DAP/Complex) before final levelling.",
+                "Transplant 21-25 day old seedlings.",
+                "Plant 2-3 seedlings per hill at a spacing of 20x10 cm or 20x15 cm.",
+                "Maintain 2-3 cm water level during transplanting."
+            ],
+            "common_diseases": [],
+            "preventive_tips": [
+                "Dip seedling roots in Chloropyriphos solution if stem borer is endemic.",
+                "Ensure field is leveled to prevent water stagnation in pockets (avoids snail damage).",
+                "Proper spacing ensures good aeration and reduces fungal risks."
+            ]
+        },
+        {
+            "phase_id": "phase_3_vegetative",
+            "phase_name": "Vegetative Phase (Tillering)",
+            "duration_days": 45,
+            "description": "Active growth phase where the plant produces tillers (branches). Critical for yield.",
+            "procedures": [
+                "Maintain water level at 5cm.",
+                "Weeding: Apply herbicide or manual weeding at 20 and 40 days after transplanting.",
+                "Top Dressing: Apply 1st dose of Urea (Nitrogen) 30 days after transplanting.",
+                "Monitor for Stem Borer (Dead hearts) and Leaf Folder.",
+                "Scout for Blast spots on leaves."
+            ],
+            "common_diseases": [
+                "rice_blast",
+                "bacterial_leaf_blight",
+                "sheath_blight"
+            ],
+            "preventive_tips": [
+                "Avoid excess Nitrogen fertilizer which promotes Blast and BLB.",
+                "Alternate Wetting and Drying (AWD) saves water and reduces pest incidence.",
+                "Keep bunds clean to remove host weeds."
+            ]
+        },
+        {
+            "phase_id": "phase_4_reproductive",
+            "phase_name": "Reproductive Phase (Panicle Initiation & Flowering)",
+            "duration_days": 30,
+            "description": "Plant stops producing tillers and starts producing grain panicles.",
+            "procedures": [
+                "Apply 2nd dose of Urea and Potash (MOP) at Panicle Initiation stage.",
+                "Maintain steady water level (5cm). Do not allow field to dry.",
+                "Protect from Gundhi Bug during milky stage.",
+                "Fungicide spray (preventive) may be needed if weather is cloudy/humid."
+            ],
+            "common_diseases": [
+                "false_smut",
+                "sheath_rot",
+                "blast_neck"
+            ],
+            "preventive_tips": [
+                "Spray Propiconazole (1ml/L) at booting stage to prevent False Smut.",
+                "Monitor for 'White Heads' (Stem Borer damage).",
+                "PREVENTION: Maintain field sanitation."
+            ]
+        },
+        {
+            "phase_id": "phase_5_ripening",
+            "phase_name": "Ripening & Harvest",
+            "duration_days": 20,
+            "description": "Grains fill, harden, and change color from green to gold.",
+            "procedures": [
+                "Drain water from the field 10-15 days before expected harvest.",
+                "Harvest when 80-85% grains are golden yellow.",
+                "Thresh immediately after harvest.",
+                "Dry grains to 12-14% moisture content for storage."
+            ],
+            "common_diseases": [
+                "grain_discoloration"
+            ],
+            "preventive_tips": [
+                "Harvest at physiological maturity to prevent grain shattering and cracking.",
+                "Protect harvested crop from erratic rains."
+            ]
+        }
+    ],
+    "disease_protocols": {
+        "rice_blast": {
+            "name": "Rice Blast (Pyricularia oryzae)",
+            "symptoms": [
+                "Diamond/spindle-shaped lesions with gray centers and brown margins on leaves.",
+                "Rotting of neck (Neck Blast) causing panicle to fall over.",
+                "Stunted growth in nursery."
+            ],
+            "favorable_conditions": "High humidity (>90%), cloudy weather, low night temperatures, high Nitrogen use.",
+            "preventive_measures": [
+                "Use resistant varieties (e.g., IR-64).",
+                "Avoid excessive Nitrogen fertilizer.",
+                "Treat seeds with Tricyclazole before sowing."
+            ],
+            "management_procedures": {
+                "organic": [
+                    "Spray Pseudomonas fluorescens (10g/L).",
+                    "Apply Neem oil."
+                ],
+                "chemical": [
+                    "Spray Tricyclazole 75% WP (0.6g/L)",
+                    "Isoprothiolane 40% EC (1.5ml/L)"
+                ]
+            }
+        },
+        "bacterial_leaf_blight": {
+            "name": "Bacterial Leaf Blight (Xanthomonas oryzae)",
+            "symptoms": [
+                "Water-soaked streaks on leaf edges starting from tip.",
+                "Leaves turn yellow/straw-colored and dry up.",
+                "Milky ooze (bacterial bead) seen on leaves in early morning."
+            ],
+            "favorable_conditions": "Strong winds, heavy rain, high temperature (25-34°C).",
+            "preventive_measures": [
+                "Balanced fertilization (Split Nitrogen application).",
+                "Ensure good drainage.",
+                "Avoid clipping seedling tips before transplanting."
+            ],
+            "management_procedures": {
+                "organic": [
+                    "Spray fresh cow dung slurry (20%).",
+                    "Spray Streptomycin sulphate."
+                ],
+                "chemical": [
+                    "Spray Streptocycline (0.1g) + Copper Oxychloride (3g) per liter of water."
+                ]
+            }
+        },
+        "brown_spot": {
+            "name": "Brown Spot",
+            "symptoms": [
+                "Oval/circular brown spots with localized yellow halo.",
+                "Seeds may also have spots."
+            ],
+            "favorable_conditions": "Potassium deficiency, poor soil fertility, water stress.",
+            "preventive_measures": [
+                "Apply Potassic fertilizer appropriately.",
+                "Use certified healthy seeds."
+            ],
+            "management_procedures": {
+                "chemical": [
+                    "Spray Mancozeb (2.5g/L)."
+                ]
+            }
+        },
+        "false_smut": {
+            "name": "False Smut",
+            "symptoms": [
+                "Individual grains transform into large velvety orange/green balls.",
+                "Only few grains in a panicle are affected."
+            ],
+            "favorable_conditions": "High humidity, rainfall during flowering, high Nitrogen.",
+            "preventive_measures": [
+                "Correct sowing time to avoid flowering during rain.",
+                "Clean cultivation."
+            ],
+            "management_procedures": {
+                "chemical": [
+                    "Spray Copper Hydroxide or Propiconazole at 50% Panicle emergence."
+                ]
+            }
+        },
+        "sheath_blight": {
+            "name": "Sheath Blight",
+            "symptoms": [
+                "Oval or irregular greenish-grey spots on leaf sheath near water line.",
+                "Spots enlarge and coalesce, causing entire leaves to die."
+            ],
+            "favorable_conditions": "Close planting, high humidity, high Nitrogen.",
+            "preventive_measures": [
+                "Avoid close spacing.",
+                "Clean bunds."
+            ],
+            "management_procedures": {
+                "chemical": [
+                    "Spray Hexaconazole (2ml/L) or Validamycin (2ml/L)."
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,333 @@
+[
+  {
+    "id": "pmkisan",
+    "name": "PM-KISAN Samman Nidhi",
+    "ministry": "Ministry of Agriculture & Farmers Welfare",
+    "type": "income_support",
+    "benefit": "₹6,000 per year in three equal installments of ₹2,000 each",
+    "eligibility": {
+      "land_max_acres": 5,
+      "farmer_type": ["small", "marginal"],
+      "land_ownership": true,
+      "exclusions": ["income_tax_payers", "government_employees", "pensioners_above_10k"]
+    },
+    "documents": ["Aadhaar", "land_records", "bank_account", "farmer_certificate"],
+    "application": "https://pmkisan.gov.in",
+    "state": "central",
+    "description": "Income support scheme for small and marginal farmers. Transfer directly to bank accounts."
+  },
+  {
+    "id": "pmfby",
+    "name": "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+    "ministry": "Ministry of Agriculture & Farmers Welfare",
+    "type": "insurance",
+    "benefit": "Insurance coverage at 2% premium for Kharif, 1.5% for Rabi, 5% for commercial crops",
+    "eligibility": {
+      "farmer_type": ["all"],
+      "land_ownership": true,
+      "loanee": "mandatory_for_loanee_farmers"
+    },
+    "documents": ["loan_details", "land_records", "crop_details", "bank_account"],
+    "application": "Through banks/CSCs",
+    "state": "central",
+    "description": "Crop insurance scheme covering all stages from sowing to harvest. Covers natural calamities, pests, diseases."
+  },
+  {
+    "id": "kcc",
+    "name": "Kisan Credit Card (KCC)",
+    "ministry": "Ministry of Finance",
+    "type": "credit",
+    "benefit": "Short-term crop loans up to ₹3 lakh at 4% effective interest rate (with prompt repayment)",
+    "eligibility": {
+      "farmer_type": ["all"],
+      "land_ownership": true
+    },
+    "documents": ["land_records", "crop_plan", "bank_account", "photographs"],
+    "application": "Through banks/post offices",
+    "state": "central",
+    "description": "Provides affordable credit for cultivation needs. Covers crop production, post-harvest, and consumption needs."
+  },
+  {
+    "id": "pmksy",
+    "name": "Pradhan Mantri Krishi Sinchayee Yojana (PMKSY)",
+    "ministry": "Ministry of Water Resources",
+    "type": "subsidy",
+    "benefit": "55-75% subsidy on drip/sprinkler irrigation systems",
+    "eligibility": {
+      "farmer_type": ["small", "marginal"],
+      "land_min_acres": 0.5
+    },
+    "documents": ["land_records", "Aadhaar", "bank_account", "farm_photo"],
+    "application": "Through state agriculture departments",
+    "state": "central",
+    "description": "Promotes micro-irrigation - drip and sprinkler systems. Goal: 'Har Khet Ko Pani' (water for every farm)."
+  },
+  {
+    "id": "pmfme",
+    "name": "Pradhan Mantri Fasal Bima Yojana - Modified",
+    "ministry": "Ministry of Agriculture",
+    "type": "scheme",
+    "benefit": "Modified crop insurance with faster claim settlement",
+    "eligibility": {"farmer_type": ["all"]},
+    "state": "central"
+  },
+  {
+    "id": "soil_health",
+    "name": "Soil Health Card Scheme",
+    "ministry": "Ministry of Agriculture & Farmers Welfare",
+    "type": "advisory",
+    "benefit": "Free soil testing and personalized fertilizer recommendations every 2 years",
+    "eligibility": {"farmer_type": ["all"]},
+    "documents": ["land_details"],
+    "application": "Through agriculture department/online",
+    "state": "central",
+    "description": "Provides soil health cards with NPK, micronutrient levels, and customized fertilizer recommendations."
+  },
+  {
+    "id": "pmkisan_yojana_karnataka",
+    "name": "Karnataka Raitha Suraksha Poshana Yojane",
+    "ministry": "Government of Karnataka",
+    "type": "income_support",
+    "benefit": "Additional ₹4,000 per year per farmer (state top-up to PM-KISAN)",
+    "eligibility": {
+      "farmer_type": ["small", "marginal"],
+      "land_max_acres": 5,
+      "state": "Karnataka"
+    },
+    "state": "karnataka"
+  },
+  {
+    "id": "karnataka_smartchip",
+    "name": "Karnataka SmartPDS Chip (Ration Card)",
+    "ministry": "Government of Karnataka",
+    "type": "subsidy",
+    "benefit": "Subsidized food grains through PDS",
+    "eligibility": {"state": "Karnataka", "bpl": true},
+    "state": "karnataka"
+  },
+  {
+    "id": "karnataka_irrigation",
+    "name": "Karnataka Micro Irrigation Subsidy",
+    "ministry": "Government of Karnataka",
+    "type": "subsidy",
+    "benefit": "50-75% subsidy on drip and sprinkler systems for Karnataka farmers",
+    "eligibility": {"state": "Karnataka", "farmer_type": ["all"]},
+    "state": "karnataka"
+  },
+  {
+    "id": "karnataka_solar_pump",
+    "name": "Karnataka Surya Raitha Scheme",
+    "ministry": "Government of Karnataka",
+    "type": "subsidy",
+    "benefit": "90% subsidy on solar water pumps for irrigation",
+    "eligibility": {"state": "Karnataka", "land_max_acres": 5},
+    "state": "karnataka"
+  },
+  {
+    "id": "neem_coating",
+    "name": "Neem Coated Urea Scheme",
+    "ministry": "Ministry of Chemicals & Fertilizers",
+    "type": "subsidy",
+    "benefit": "Urea at subsidized MRP (₹266-276 per 45kg bag) - neem coated for slow release",
+    "eligibility": {"farmer_type": ["all"]},
+    "state": "central",
+    "description": "All urea sold in India must be neem-coated to improve soil health and reduce diversion."
+  },
+  {
+    "id": "pkvy",
+    "name": "Paramparagat Krishi Vikas Yojana (PKVY)",
+    "ministry": "Ministry of Agriculture",
+    "type": "subsidy",
+    "benefit": "₹50,000 per hectare over 3 years for organic farming certification",
+    "eligibility": {"farmer_type": ["all"]},
+    "documents": ["land_records", "organic_plan"],
+    "state": "central",
+    "description": "Promotes organic farming through clusters of 50+ farmers. Covers certification, inputs, and training."
+  },
+  {
+    "id": "midh",
+    "name": "Mission for Integrated Development of Horticulture (MIDH)",
+    "ministry": "Ministry of Agriculture",
+    "type": "subsidy",
+    "benefit": "50-60% subsidy on horticulture crops - planting material, irrigation, infrastructure",
+    "eligibility": {"farmer_type": ["all"]},
+    "documents": ["land_records", "farm_plan"],
+    "state": "central",
+    "description": "Supports cultivation of fruits, vegetables, spices, flowers, and medicinal plants."
+  },
+  {
+    "id": "abc",
+    "name": "Agricultural Budget Calculator (KCC Top-up)",
+    "ministry": "NABARD",
+    "type": "credit",
+    "benefit": "Additional KCC limit up to ₹5 lakh for allied activities (dairy, fisheries, poultry)",
+    "eligibility": {"farmer_type": ["small", "marginal"]},
+    "state": "central"
+  },
+  {
+    "id": "shcep",
+    "name": "Solar Charkha and Cluster Development Program",
+    "ministry": "Ministry of MSME",
+    "type": "subsidy",
+    "benefit": "Subsidy on solar charkha machines for rural women farmers",
+    "eligibility": {"gender": "female", "farmer_type": ["marginal"]},
+    "state": "central"
+  },
+  {
+    "id": "sub_missions_agri",
+    "name": "Sub-Mission on Agricultural Mechanization (SMAM)",
+    "ministry": "Ministry of Agriculture",
+    "type": "subsidy",
+    "benefit": "40-50% subsidy on farm machinery - tractors, harvesters, planters",
+    "eligibility": {"farmer_type": ["small", "marginal"]},
+    "documents": ["land_records", "quotation"],
+    "state": "central",
+    "description": "Provides agricultural machinery to small farmers on custom hiring basis or individual ownership."
+  },
+  {
+    "id": "nmoh",
+    "name": "National Mission on Oilseeds and Oil Palm (NMOOP)",
+    "ministry": "Ministry of Agriculture",
+    "type": "subsidy",
+    "benefit": "Subsidy on oil palm planting material, drip irrigation, and intercropping",
+    "eligibility": {"crop_type": "oilseeds"},
+    "state": "central"
+  },
+  {
+    "id": "nda_karnataka",
+    "name": "Karnataka Drought Mitigation Scheme",
+    "ministry": "Government of Karnataka",
+    "type": "relief",
+    "benefit": "Input subsidy, cattle feed, and employment guarantee in drought-affected areas",
+    "eligibility": {"state": "Karnataka", "area": "drought_prone"},
+    "state": "karnataka"
+  },
+  {
+    "id": "yashaswini",
+    "name": "Yashaswini Health Insurance for Farmers",
+    "ministry": "Government of Karnataka",
+    "type": "insurance",
+    "benefit": "Health insurance coverage up to ₹5 lakh for farmers and family at nominal premium of ₹150/year",
+    "eligibility": {"state": "Karnataka", "farmer_type": ["all"]},
+    "state": "karnataka"
+  },
+  {
+    "id": "karnataka_mahila",
+    "name": "Karnataka Mahila Krishi Yojane",
+    "ministry": "Government of Karnataka",
+    "type": "subsidy",
+    "benefit": "Subsidy on agricultural inputs for women farmers - 50% on seeds, fertilizers, equipment",
+    "eligibility": {"state": "Karnataka", "gender": "female"},
+    "state": "karnataka"
+  },
+  {
+    "id": "nfsm",
+    "name": "National Food Security Mission (NFSM)",
+    "ministry": "Ministry of Agriculture",
+    "type": "scheme",
+    "benefit": "Support for increasing production of rice, wheat, pulses, coarse cereals through improved technology",
+    "eligibility": {"farmer_type": ["all"], "crop_type": ["rice", "wheat", "pulses", "coarse_cereals"]},
+    "state": "central",
+    "description": "Aims to increase food grain production through area expansion and productivity enhancement."
+  },
+  {
+    "id": "nfsm_oilseeds",
+    "name": "NFSM - Oilseeds & Pulses",
+    "ministry": "Ministry of Agriculture",
+    "type": "subsidy",
+    "benefit": "Subsidy on certified seeds, micronutrients, plant protection chemicals for oilseeds/pulses",
+    "eligibility": {"crop_type": ["oilseeds", "pulses"]},
+    "state": "central"
+  },
+  {
+    "id": "agsure",
+    "name": "AgriSure - Quality Certification",
+    "ministry": "Ministry of Agriculture",
+    "type": "certification",
+    "benefit": "Quality certification for agricultural produce - enables better market price",
+    "eligibility": {"farmer_type": ["all"]},
+    "state": "central"
+  },
+  {
+    "id": "e_nam",
+    "name": "e-NAM (Electronic National Agricultural Market)",
+    "ministry": "Ministry of Agriculture",
+    "type": "market_access",
+    "benefit": "Online trading platform connecting 1000+ mandis - better price discovery",
+    "eligibility": {"farmer_type": ["all"]},
+    "state": "central",
+    "description": "Pan-India electronic trading portal that unifies APMC mandis for better price discovery for farmers."
+  },
+  {
+    "id": "apmc_karnataka",
+    "name": "Karnataka APMC (Mandi) Access",
+    "ministry": "Government of Karnataka",
+    "type": "market_access",
+    "benefit": "Access to 156 regulated APMC mandis across Karnataka for direct selling",
+    "eligibility": {"state": "Karnataka"},
+    "state": "karnataka"
+  },
+  {
+    "id": "pmkvy",
+    "name": "PM Kaushal Vikas Yojana - Agriculture",
+    "ministry": "Ministry of Skill Development",
+    "type": "training",
+    "benefit": "Free skill training in modern agricultural techniques with certification",
+    "eligibility": {"age_max": 45, "farmer_type": ["all"]},
+    "state": "central"
+  },
+  {
+    "id": "tera_karnataka",
+    "name": "Karnataka TERA (Technology Enhanced Resource Access)",
+    "ministry": "Government of Karnataka",
+    "type": "advisory",
+    "benefit": "AI-based personalized agricultural advisory via mobile app",
+    "eligibility": {"state": "Karnataka"},
+    "state": "karnataka"
+  },
+  {
+    "id": "pmkisan_mandis",
+    "name": "PM-KISAN Mandi Fee Waiver",
+    "ministry": "Ministry of Agriculture",
+    "type": "fee_waiver",
+    "benefit": "Waiver of mandi fees for small farmers selling directly in APMC mandis",
+    "eligibility": {"farmer_type": ["small", "marginal"]},
+    "state": "central"
+  },
+  {
+    "id": "kcc_allied",
+    "name": "KCC for Allied Activities",
+    "ministry": "Ministry of Finance",
+    "type": "credit",
+    "benefit": "KCC facility for animal husbandry, dairy, fisheries with limit up to ₹5 lakh",
+    "eligibility": {"farmer_type": ["all"]},
+    "state": "central"
+  },
+  {
+    "id": "pmksy_ii",
+    "name": "PMKSY 2.0 - Watershed Development",
+    "ministry": "Ministry of Water Resources",
+    "type": "development",
+    "benefit": "Watershed development, rainwater harvesting, and groundwater recharge structures",
+    "eligibility": {"farmer_type": ["all"]},
+    "state": "central"
+  },
+  {
+    "id": "rkv_karnataka",
+    "name": "Karnataka Raitha Krishi Yojane",
+    "ministry": "Government of Karnataka",
+    "type": "input_subsidy",
+    "benefit": "Subsidized seeds, fertilizers, and pesticides from Raitha Samparka Kendras",
+    "eligibility": {"state": "Karnataka"},
+    "state": "karnataka"
+  },
+  {
+    "id": "bfsi_karnataka",
+    "name": "Karnataka Bhoomi Fasal Suraksha Yojane",
+    "ministry": "Government of Karnataka",
+    "type": "insurance",
+    "benefit": "Crop loss compensation for natural calamities up to ₹25,000/acre",
+    "eligibility": {"state": "Karnataka", "land_max_acres": 5},
+    "state": "karnataka"
+  }
+]

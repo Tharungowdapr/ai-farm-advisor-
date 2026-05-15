@@ -1,0 +1,1042 @@
+{
+  "crop_info": {
+    "name": "Coffee",
+    "scientific_name": "Coffea arabica L. / Coffea canephora Pierre ex Froehner",
+    "varieties": [
+      "Chandragiri",
+      "Selection-9",
+      "Robusta CxR",
+      "Catimor",
+      "Hibrido de Timor",
+      "SLN.1, SLN.2, SLN.3 (SLN series)",
+      "Cauvery (Catimor hybrid)"
+    ],
+    "family": "Rubiaceae",
+    "origin": "Ethiopia (Arabica), Tropical Africa (Robusta)",
+    "total_duration_days": 1095,
+    "ideal_climate": {
+      "temperature": {
+        "arabica": "15-24\u00b0C",
+        "robusta": "24-30\u00b0C"
+      },
+      "rainfall": {
+        "arabica": "1500-2000mm",
+        "robusta": "2200-3000mm"
+      },
+      "altitude": {
+        "arabica": "1000-2000 masl",
+        "robusta": "0-800 masl"
+      },
+      "soil": "Deep, well-drained, loamy or sandy loam, rich in organic matter, pH 5.5-6.5",
+      "humidity": "60-70% RH",
+      "shade": "Partial shade is beneficial for Arabica, less critical for Robusta"
+    },
+    "economic_importance": "Major global commodity, provides income and employment, second most traded commodity after oil."
+  },
+  "lifecycle_phases": [
+    {
+      "phase_id": "coffee_1_nursery_sowing",
+      "phase_name": "Nursery and Sowing",
+      "duration_days": 180,
+      "description": "Germination of seeds and initial growth of seedlings in a protected environment. This phase is critical for establishing healthy planting material.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Seed Selection and Preparation",
+          "details": "Select ripe, healthy cherries. Pulp, ferment for 24-36 hours, wash, and dry parchment. Use seeds from selected, high-yielding, disease-resistant mother plants. Seeds should be less than 6 months old for optimal germination.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Maintain optimal moisture in germination beds, avoid waterlogging.",
+          "pest_management": "Monitor for soil-borne pests like root-grubs and nematodes. Use neem cake (200g/m\u00b2) in nursery beds."
+        },
+        {
+          "step": 2,
+          "operation": "Nursery Bed Preparation",
+          "details": "Prepare raised beds (1.2m wide, convenient length) with a well-drained mixture of soil, sand, and compost/farmyard manure in a 2:1:1 ratio. Incorporate soil solarization for 4-6 weeks before sowing to control soil-borne pathogens and pests.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Water beds thoroughly before sowing.",
+          "pest_management": "Soil solarization is a key preventive measure."
+        },
+        {
+          "step": 3,
+          "operation": "Sowing",
+          "details": "Sow seeds evenly spaced (2-3cm apart) at a depth of 1-1.5 cm in germination beds. Sowing is typically done during the onset of the rainy season.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Light watering after sowing.",
+          "pest_management": "Monitor for damping-off disease."
+        },
+        {
+          "step": 4,
+          "operation": "Germination and Initial Care",
+          "details": "Germination takes 4-8 weeks. Cover beds with straw or polythene sheets to maintain humidity until germination. Remove cover gradually once seedlings emerge. Maintain a humid environment but ensure good ventilation.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Sprinkle water gently, twice daily if needed, to keep the topsoil moist.",
+          "pest_management": "Spray Mancozeb (0.2%) or Copper Oxychloride (0.3%) at the first sign of damping-off."
+        },
+        {
+          "step": 5,
+          "operation": "Transplanting to Polythene Bags",
+          "details": "Once seedlings develop 2-4 true leaves (approx. 3-4 months old), transplant them into polythene bags (20x30 cm) filled with a fortified soil mixture (e.g., 3 parts soil, 1 part sand, 2 parts compost/FYM, 100g neem cake, 50g single superphosphate per bag).",
+          "npk_dose": "Base application in bags: DAP @ 10g/bag, Potash @ 5g/bag. Incorporate into soil mixture.",
+          "irrigation": "Water immediately after transplanting. Maintain consistent moisture.",
+          "pest_management": "Monitor for cutworms and white grubs. Apply Chlorpyriphos granules (2-3g/bag) if infestation is observed."
+        },
+        {
+          "step": 6,
+          "operation": "Nursery Shade Management",
+          "details": "Provide adequate shade (50-60%) using shade nets or natural shade. Gradually reduce shade intensity as seedlings mature to acclimatize them.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Water as required to keep bags moist.",
+          "pest_management": "Regularly scout for aphid and mealybug infestations. Use neem oil (1%) or dimethoate (0.05%) for control."
+        },
+        {
+          "step": 7,
+          "operation": "Fertilizer Application (Bags)",
+          "details": "Apply liquid fertilizer (e.g., 19:19:19) at 0.2% concentration every fortnight from the second month after bagging.",
+          "npk_dose": "0.2% NPK (19:19:19) spray",
+          "irrigation": "Apply after a light shower or watering.",
+          "pest_management": "Watch for symptoms of nutrient deficiencies. Apply micronutrient mixtures if needed."
+        },
+        {
+          "step": 8,
+          "operation": "Field Planting Preparation",
+          "details": "Harden seedlings for 3-4 weeks by gradually exposing them to full sunlight and reducing watering before field planting. Select seedlings of uniform size and free from pests and diseases.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Reduce watering frequency to encourage root development.",
+          "pest_management": "Final inspection for any pest/disease issues before dispatch."
+        }
+      ],
+      "common_diseases": [
+        "damping_off",
+        "seedling_blight"
+      ],
+      "preventive_tips": [
+        "Use certified, disease-free seeds.",
+        "Maintain strict nursery hygiene.",
+        "Ensure good drainage in nursery beds and bags.",
+        "Provide optimal shade and ventilation.",
+        "Harden seedlings properly before transplanting."
+      ]
+    },
+    {
+      "phase_id": "coffee_2_vegetative_growth",
+      "phase_name": "Vegetative Growth & Establishment",
+      "duration_days": 545,
+      "description": "Period of active growth, establishment of the root system, and development of new shoots and leaves post-planting. This phase determines the future potential of the plant.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Field Planting",
+          "details": "Plant seedlings at recommended spacing (e.g., 2.5m x 2.5m for Arabica, 2.5m x 3.0m for Robusta) during the onset of monsoon. Dig pits of 45x45x45 cm. Mix topsoil with 10-15 kg FYM/compost, 250g neem cake, and 100g SSP.",
+          "npk_dose": "Base application in pits: DAP @ 100g/pit, Potash @ 50g/pit.",
+          "irrigation": "Water immediately after planting. Provide supplemental irrigation if monsoon is weak.",
+          "pest_management": "Monitor for white ants (termites) and apply Chlorpyriphos (20 ml in 1 L water) around the pit base."
+        },
+        {
+          "step": 2,
+          "operation": "Weed Control",
+          "details": "Maintain a weed-free environment around the plant base during the first 3-4 years. Use manual weeding, mulching with organic matter, or judicious use of herbicides. Inter-cultivation is also beneficial.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Weed control helps conserve soil moisture.",
+          "pest_management": "Watch for specific weeds that might harbor pests or diseases."
+        },
+        {
+          "step": 3,
+          "operation": "Pruning and Handling",
+          "details": "Implement structural pruning for young plants to develop a strong frame. Remove unwanted suckers and epicormic shoots. For established plants, implement handling to regulate growth and airflow.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Proper pruning can improve water and nutrient distribution.",
+          "pest_management": "Pruning wounds can be entry points for diseases. Treat wounds with a fungicide paste (e.g., Copper Oxychloride)."
+        },
+        {
+          "step": 4,
+          "operation": "Manuring and Fertilization (Years 1-3)",
+          "details": "Apply FYM/compost (10-15 kg/plant) annually. Apply NPK (e.g., 40:20:40 g NPK per plant per year for 1st year, increasing gradually) in two splits: pre-monsoon and post-monsoon.",
+          "npk_dose": "Year 1: 40g N, 20g P2O5, 40g K2O per plant. Split application.",
+          "irrigation": "Apply fertilizers before or with irrigation to facilitate uptake.",
+          "pest_management": "Balanced nutrition enhances plant vigor and pest resistance."
+        },
+        {
+          "step": 5,
+          "operation": "Irrigation Management",
+          "details": "Provide supplemental irrigation during dry spells, especially in the first few years. Ensure adequate soil moisture for optimal growth without waterlogging.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Schedule irrigation based on soil moisture status, typically 2-3 times per week during dry periods.",
+          "pest_management": "Over-watering can promote root rot. Ensure good drainage."
+        },
+        {
+          "step": 6,
+          "operation": "Shade Management",
+          "details": "For Arabica, maintain optimal shade levels (30-40% canopy cover) using appropriate shade trees (e.g., Silver Oak, Ficus species). Adjust shade based on the age of the coffee plants and climatic conditions.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Shade trees compete for water; manage irrigation accordingly.",
+          "pest_management": "Certain shade trees can host beneficial insects or pests. Monitor their health."
+        },
+        {
+          "step": 7,
+          "operation": "Pest Monitoring and Control",
+          "details": "Regularly scout for pests like white stem borer, green scale, mealybugs, and leaf miners. Implement integrated pest management (IPM) strategies.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Healthy plants are less susceptible to pests.",
+          "pest_management": "Apply recommended insecticides like Imidacloprid (0.05%) for sucking pests, or systemic insecticides for borers, only when pest levels exceed economic thresholds."
+        },
+        {
+          "step": 8,
+          "operation": "Disease Monitoring and Control",
+          "details": "Monitor for early signs of diseases like coffee leaf rust and bacterial blights. Maintain plant health through proper nutrition and sanitation.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Avoid overhead irrigation, which can favor leaf diseases. Drip irrigation is preferred.",
+          "pest_management": "Prompt removal of infected plant parts. Preventive fungicide sprays as recommended."
+        }
+      ],
+      "common_diseases": [
+        "coffee_leaf_rust",
+        "white_stem_borer",
+        "root_rot",
+        "collar_rot",
+        "brown_root_disease",
+        "leaf_miner",
+        "sucking_pests_(aphids, mealybugs)"
+      ],
+      "preventive_tips": [
+        "Plant disease-resistant varieties.",
+        "Ensure proper spacing and ventilation.",
+        "Maintain soil health and adequate drainage.",
+        "Implement timely pruning and sanitation.",
+        "Practice Integrated Pest Management (IPM).",
+        "Avoid waterlogging.",
+        "Manage shade appropriately for Arabica."
+      ]
+    },
+    {
+      "phase_id": "coffee_3_flowering_pollination",
+      "phase_name": "Flowering and Pollination",
+      "duration_days": 45,
+      "description": "The phase where coffee plants produce fragrant white flowers, which are pollinated, leading to the development of berries. Triggered by blossom showers.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Blossom Shower Management",
+          "details": "Ensure adequate moisture in the soil before the expected flowering period. If natural blossom showers are insufficient, provide irrigation (at least 25mm) to induce flowering.",
+          "npk_dose": "Apply 1/3rd of the NPK dose post-pruning or before expected blossom showers to promote flowering.",
+          "irrigation": "Crucial for inducing flowering. Apply 25-50mm of water if natural rains fail.",
+          "pest_management": "Maintain overall plant health. Avoid pesticide application during flowering to protect pollinators."
+        },
+        {
+          "step": 2,
+          "operation": "Pre-Blossom Manuring",
+          "details": "Apply a portion of the annual NPK fertilizer dose, emphasizing Phosphorus and Potassium, to support flower development and fruit set.",
+          "npk_dose": "Apply 1/3rd of NPK recommendation (e.g., 50g N, 50g P2O5, 75g K2O per plant).",
+          "irrigation": "Incorporate fertilizer and irrigate to facilitate absorption.",
+          "pest_management": "Balanced nutrition supports robust flowering."
+        },
+        {
+          "step": 3,
+          "operation": "Pollination",
+          "details": "Coffee flowers are primarily self-pollinated, but cross-pollination by insects (bees) can enhance fruit set and bean development. Encourage beneficial insect populations.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Maintain plant hydration for optimal flower opening and pollen viability.",
+          "pest_management": "Avoid insecticidal sprays during flowering. Protect bees."
+        },
+        {
+          "step": 4,
+          "operation": "Removal of Water Sprouts and Suckers",
+          "details": "Remove any vegetative growth that emerges from the main stem or root collar, as these divert energy from flowering and fruit development.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Not directly related, but plants should be healthy enough to withstand this operation.",
+          "pest_management": "Ensure pruning tools are clean to prevent disease transmission."
+        },
+        {
+          "step": 5,
+          "operation": "Initial Berry Setting",
+          "details": "Following successful pollination, small green berries begin to form. Monitor for signs of successful fruit set.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Consistent moisture is vital for young berry development.",
+          "pest_management": "Watch for early signs of pests like thrips affecting young berries."
+        },
+        {
+          "step": 6,
+          "operation": "Disease and Pest Watch",
+          "details": "Closely monitor for early symptoms of diseases like coffee leaf rust and pests that can affect flowers and young berries.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Maintain optimal humidity and avoid conditions favoring disease development.",
+          "pest_management": "Early detection and intervention are key. Copper sprays (0.5%) can be initiated as a preventive measure for leaf rust."
+        },
+        {
+          "step": 7,
+          "operation": "Shade Adjustment",
+          "details": "Ensure shade levels are optimal to protect delicate flowers and young berries from excessive sun scorch, especially for Arabica.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Shade helps retain soil moisture, reducing irrigation needs.",
+          "pest_management": "Not directly related."
+        },
+        {
+          "step": 8,
+          "operation": "Nutrient Monitoring",
+          "details": "Observe plant vigor and leaf color for any signs of nutrient deficiencies that might impact berry development.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Nutrients are absorbed with water.",
+          "pest_management": "Deficiency symptoms can mimic pest damage."
+        }
+      ],
+      "common_diseases": [
+        "coffee_leaf_rust",
+        "coffee_berry_disease",
+        "anthracnose",
+        "sucking_pests_(thrips, aphids)"
+      ],
+      "preventive_tips": [
+        "Ensure adequate soil moisture before flowering.",
+        "Apply pre-blossom fertilizers.",
+        "Protect pollinators by avoiding pesticide application during flowering.",
+        "Maintain optimal shade.",
+        "Promptly remove unwanted vegetative growth.",
+        "Monitor for early pest and disease symptoms."
+      ]
+    },
+    {
+      "phase_id": "coffee_4_berry_development",
+      "phase_name": "Berry Development",
+      "duration_days": 180,
+      "description": "The longest phase where green berries enlarge, and the beans inside develop. Requires consistent moisture and nutrient supply.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Mid-Monsoon Manuring",
+          "details": "Apply the second installment of NPK fertilizer to support the rapid growth of berries and bean development. Focus on Nitrogen and Potassium.",
+          "npk_dose": "Apply 1/3rd of NPK recommendation (e.g., 50g N, 25g P2O5, 50g K2O per plant).",
+          "irrigation": "Apply fertilizers with monsoon rains or follow with irrigation.",
+          "pest_management": "Healthy nutrient supply boosts plant resilience."
+        },
+        {
+          "step": 2,
+          "operation": "Weed Control",
+          "details": "Continue rigorous weed control, especially in the vicinity of young coffee plants, to minimize competition for nutrients and water.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Weed-free conditions conserve moisture for coffee plants.",
+          "pest_management": "Certain weeds can act as alternative hosts for pests and diseases."
+        },
+        {
+          "step": 3,
+          "operation": "Irrigation Management",
+          "details": "Provide supplemental irrigation during dry spells, especially if rainfall is erratic. Maintain adequate soil moisture (around 40-50% available soil moisture).",
+          "npk_dose": "Not applicable",
+          "irrigation": "Drip irrigation is highly recommended for efficient water use (e.g., 2-3 times/week, 20-30 minutes per session).",
+          "pest_management": "Avoid waterlogging, which can lead to root rot."
+        },
+        {
+          "step": 4,
+          "operation": "Pest Management (White Stem Borer)",
+          "details": "Monitor closely for White Stem Borer (WSB). Remove and destroy infested plants immediately. Apply trunk wash with systemic insecticides like Monocrotophos (0.05%) or Chlorpyriphos (0.07%) for preventive control, especially on young plants.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Healthy plants are more resistant.",
+          "pest_management": "WSB: Apply systemic insecticide trunk washes (e.g., Chlorpyriphos 0.07%) twice a year, ideally post-monsoon and pre-monsoon."
+        },
+        {
+          "step": 5,
+          "operation": "Disease Management (Leaf Rust, Berry Disease)",
+          "details": "Implement timely prophylactic sprays of fungicides like Copper Oxychloride (0.3%) or Carbendazim (0.5g/L) to manage coffee leaf rust and coffee berry disease.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Avoid overhead irrigation; ensure good air circulation.",
+          "pest_management": "Coffee Leaf Rust: Spray Copper Oxychloride (0.3%) or Hexaconazole (0.05%) at 30-45 day intervals during the monsoon. Coffee Berry Disease: Spray Copper Oxychloride (0.3%) or Carbendazim (0.5g/L) during monsoon."
+        },
+        {
+          "step": 6,
+          "operation": "Pruning and Handling",
+          "details": "Continue pruning to maintain plant structure, remove unproductive wood, and ensure good light penetration and air circulation within the canopy.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Proper pruning can influence water and nutrient distribution.",
+          "pest_management": "Treat pruning wounds with a fungicide paste."
+        },
+        {
+          "step": 7,
+          "operation": "Shade Regulation",
+          "details": "Adjust shade intensity if necessary. Excessive shade can lead to prolonged wetness on leaves and berries, increasing disease risk.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Shade management impacts soil moisture levels.",
+          "pest_management": "Not directly related."
+        },
+        {
+          "step": 8,
+          "operation": "Nutrient Supplementation (Micronutrients)",
+          "details": "If leaf analysis indicates deficiencies, apply micronutrient mixtures (e.g., Zinc, Boron, Magnesium) as foliar sprays.",
+          "npk_dose": "Foliar application of micronutrient mixtures as per recommendations (e.g., Zinc Sulphate 0.2%, Borax 0.1%).",
+          "irrigation": "Apply foliar sprays during cooler parts of the day.",
+          "pest_management": "Nutrient-deficient plants are more susceptible to pests."
+        }
+      ],
+      "common_diseases": [
+        "coffee_leaf_rust",
+        "coffee_berry_disease",
+        "anthracnose",
+        "black_rot",
+        "root_rot",
+        "white_stem_borer",
+        "berry_borer",
+        "sucking_pests_(scale, mealybugs)"
+      ],
+      "preventive_tips": [
+        "Ensure balanced nutrition, especially Potassium.",
+        "Provide consistent supplemental irrigation.",
+        "Maintain effective shade regulation.",
+        "Implement strict hygiene and sanitation practices.",
+        "Timely and repeated fungicide applications.",
+        "Vigilant monitoring for White Stem Borer and Berry Borer.",
+        "Good drainage is paramount."
+      ]
+    },
+    {
+      "phase_id": "coffee_5_fruit_ripening",
+      "phase_name": "Fruit Ripening",
+      "duration_days": 75,
+      "description": "Berries transition from green to yellow, then red or crimson, indicating maturity and readiness for harvest. Sugar content increases, and bean quality develops.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Post-Monsoon Manuring",
+          "details": "Apply the final installment of NPK fertilizer to support bean development and maintain plant vigor during the ripening phase.",
+          "npk_dose": "Apply the remaining 1/3rd of NPK recommendation (e.g., 70g N, 30g P2O5, 50g K2O per plant for mature plants).",
+          "irrigation": "Incorporate fertilizers and irrigate to facilitate uptake.",
+          "pest_management": "Adequate nutrition helps plants withstand the stress of ripening and harvesting."
+        },
+        {
+          "step": 2,
+          "operation": "Monitoring Berry Ripening",
+          "details": "Regularly inspect berries for uniform color change (red/crimson) and firmness, indicating peak ripeness.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Avoid excessive watering during the final ripening stage, as it can lead to over-ripening or spoilage.",
+          "pest_management": "Monitor for coffee berry borer infestation, which is more prevalent in ripening berries."
+        },
+        {
+          "step": 3,
+          "operation": "Preparation for Harvest",
+          "details": "Clean harvesting equipment, pulping machinery (if applicable), and drying yards. Ensure sufficient labor is available.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Not directly related.",
+          "pest_management": "Clean equipment prevents contamination and post-harvest disease spread."
+        },
+        {
+          "step": 4,
+          "operation": "Selective Harvesting (Fly Picking)",
+          "details": "Begin selective picking of fully ripe berries ('fly picking') to ensure the highest quality. This is done before the main harvest.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Not directly related.",
+          "pest_management": "Harvesting ripe berries promptly reduces the risk of pest damage (e.g., berry borer)."
+        },
+        {
+          "step": 5,
+          "operation": "Pest Monitoring (Berry Borer)",
+          "details": "Intensify monitoring for Coffee Berry Borer (CBB). Fallen berries and berries with exit holes are indicators of infestation.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Not directly related.",
+          "pest_management": "CBB: Harvest ripe berries promptly. If infestation is severe, consider post-harvest treatment or timely spraying with approved insecticides like Lambda-cyhalothrin (0.005%) on affected patches, avoiding near-harvest application if possible."
+        },
+        {
+          "step": 6,
+          "operation": "Disease Control",
+          "details": "Avoid chemical sprays close to harvest to prevent residues. Focus on cultural practices and remove any diseased berries or leaves.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Maintain good air circulation.",
+          "pest_management": "Remove any remaining diseased berries/leaves to reduce inoculum for the next season."
+        },
+        {
+          "step": 7,
+          "operation": "Shade Adjustment",
+          "details": "Ensure shade is optimized to prevent over-ripening or sunscald on berries, while still protecting them from extreme heat.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Not directly related.",
+          "pest_management": "Not directly related."
+        },
+        {
+          "step": 8,
+          "operation": "Nutrient Uptake Monitoring",
+          "details": "Ensure plants have adequate nutrient reserves to support berry filling and maintain overall health.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Water is crucial for nutrient translocation to the developing berries.",
+          "pest_management": "Healthy plants resist pest attacks better."
+        }
+      ],
+      "common_diseases": [
+        "coffee_berry_borer",
+        "anthracnose",
+        "coffee_leaf_rust",
+        "sucking_pests"
+      ],
+      "preventive_tips": [
+        "Ensure timely post-monsoon fertilization.",
+        "Monitor berry ripeness closely.",
+        "Prepare harvesting and processing infrastructure in advance.",
+        "Initiate selective harvesting early.",
+        "Vigilantly scout for and manage coffee berry borer.",
+        "Avoid pesticide application close to harvest.",
+        "Optimize shade for ripening conditions.",
+        "Maintain plant health through balanced nutrition."
+      ]
+    },
+    {
+      "phase_id": "coffee_6_harvest_postharvest",
+      "phase_name": "Harvest and Post-Harvest Processing",
+      "duration_days": 120,
+      "description": "The process of picking ripe berries, followed by various methods of processing (wet or dry) to remove pulp and skin, and drying the beans to optimal moisture content.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Main Picking",
+          "details": "Collect all ripe berries once the majority have reached the optimal red/crimson stage. This is usually done by hand picking.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Avoid heavy watering just before harvest.",
+          "pest_management": "Prompt harvesting reduces berry borer damage."
+        },
+        {
+          "step": 2,
+          "operation": "Stripping",
+          "details": "After main picking, strip remaining green and overripe berries from the branches. These are processed separately, often resulting in lower quality coffee.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Not directly related.",
+          "pest_management": "Stripping removes lingering pest hosts."
+        },
+        {
+          "step": 3,
+          "operation": "Pulping (Wet Process)",
+          "details": "For wet processing, remove the outer skin and pulp from ripe cherries using a pulper. This is followed by fermentation to remove the mucilage layer.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Water is extensively used in pulping and washing.",
+          "pest_management": "Clean pulping machinery to prevent microbial contamination."
+        },
+        {
+          "step": 4,
+          "operation": "Fermentation and Washing",
+          "details": "Ferment pulped coffee beans in tanks for 12-36 hours (depending on temperature and mucilage thickness) to break down the mucilage. Wash thoroughly afterwards.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Water is used for washing.",
+          "pest_management": "Monitor fermentation to avoid over-fermentation, which can cause defects."
+        },
+        {
+          "step": 5,
+          "operation": "Drying (Cherry Process)",
+          "details": "For dry processing (natural process), spread harvested cherries in a single layer on drying patios or raised beds and dry them under the sun, raking regularly.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Not applicable.",
+          "pest_management": "Protect drying cherries from rain and dew. Turn regularly to ensure uniform drying and prevent mould growth."
+        },
+        {
+          "step": 6,
+          "operation": "Drying (Parchment/Washed Coffee)",
+          "details": "Dry washed and fermented coffee beans (parchment coffee) on patios or raised beds until they reach the desired moisture content (10-12%).",
+          "npk_dose": "Not applicable",
+          "irrigation": "Not applicable.",
+          "pest_management": "Ensure uniform drying to prevent mould and insect infestation during drying."
+        },
+        {
+          "step": 7,
+          "operation": "Milling and Grading",
+          "details": "Once dried, parchment coffee is hulled to remove the parchment layer (hulling). Dry processed coffee beans are hulled to remove the skin. Beans are then graded by size and density.",
+          "npk_dose": "Not applicable",
+          "irrigation": "Not applicable.",
+          "pest_management": "Clean milling equipment to avoid cross-contamination and maintain quality."
+        },
+        {
+          "step": 8,
+          "operation": "Pruning (Post-Harvest)",
+          "details": "After harvest and drying, undertake pruning (e.g., 'javanica' pruning, single-stem pruning) to shape the bush, remove old wood, and encourage new growth for the next season. This is typically done during the dry season.",
+          "npk_dose": "Apply FYM/compost (10-15 kg/plant) and base dose of NPK after pruning.",
+          "irrigation": "Apply irrigation after pruning and manuring to help plants establish.",
+          "pest_management": "Treat pruning wounds with Bordeaux paste or suitable fungicide to prevent disease entry."
+        }
+      ],
+      "common_diseases": [
+        "post_harvest_moulds",
+        "insect_infestation_during_drying",
+        "fermentation_defects"
+      ],
+      "preventive_tips": [
+        "Harvest only ripe berries.",
+        "Process coffee promptly after harvesting.",
+        "Maintain strict hygiene during pulping, fermentation, and washing.",
+        "Ensure uniform drying to 10-12% moisture content.",
+        "Protect drying beans from rain, dew, and direct intense sun.",
+        "Store dried beans in clean, dry conditions.",
+        "Undertake post-harvest pruning correctly.",
+        "Treat pruning wounds appropriately."
+      ]
+    }
+  ],
+  "disease_protocols": {
+    "coffee_leaf_rust": {
+      "name": "Coffee Leaf Rust",
+      "scientific_name": "Hemileia vastatrix",
+      "symptoms": [
+        "Small, yellowish-orange, powdery spots appear on the underside of leaves, usually starting on older leaves.",
+        "Spots enlarge and coalesce, turning reddish-brown.",
+        "Affected leaves may turn yellow, dry up, and fall prematurely, leading to defoliation.",
+        "In severe cases, twigs and branches may die back.",
+        "Yield reduction is significant due to premature leaf fall."
+      ],
+      "favorable_conditions": "Warm temperatures (20-28\u00b0C), high humidity (above 85%), intermittent rainfall, and prolonged periods of leaf wetness. Cloudy weather also favors its spread.",
+      "preventive_measures": [
+        "Plant resistant varieties (e.g., Catimor, Hibrido de Timor, SLN series).",
+        "Maintain optimal shade levels (around 30-40% canopy cover for Arabica) to reduce leaf wetness duration.",
+        "Ensure proper spacing and canopy management for good air circulation.",
+        "Practice timely pruning and removal of infected leaves.",
+        "Maintain plant vigor through balanced nutrition and adequate irrigation.",
+        "Early detection and eradication of initial infections."
+      ],
+      "management_procedures": {
+        "organic": [
+          {
+            "product": "Copper Oxychloride (e.g., Blitox-50)",
+            "dosage": "0.3% solution (3g/L water)",
+            "application": "Apply preventively before the onset of monsoon and repeat at 30-45 day intervals during the rainy season."
+          },
+          {
+            "product": "Bordeaux Mixture (5:5:50)",
+            "dosage": "1% solution (10g Copper Sulphate + 10g Lime / L water)",
+            "application": "Apply pre-monsoon and during monsoon as needed."
+          },
+          {
+            "product": "Neem Oil Emulsion",
+            "dosage": "2-3% solution",
+            "application": "Can be used as a supplementary measure, but less effective against established rust."
+          }
+        ],
+        "chemical": [
+          {
+            "product": "Hexaconazole (e.g., Contaf Plus)",
+            "dosage": "0.05% solution (0.5 mL/L water)",
+            "application": "Systemic fungicide, effective against rust. Apply during monsoon or when disease appears."
+          },
+          {
+            "product": "Propiconazole (e.g., Tilt)",
+            "dosage": "0.1% solution (1 mL/L water)",
+            "application": "Systemic fungicide with curative and protective action."
+          },
+          {
+            "product": "Triadimefon (e.g., Bayleton)",
+            "dosage": "0.05% solution (0.5 g/L water)",
+            "application": "Effective systemic fungicide, particularly useful during severe outbreaks. Use in rotation with other fungicides."
+          }
+        ]
+      }
+    },
+    "black_rot": {
+      "name": "Black Rot (Koleroga)",
+      "scientific_name": "Colletotrichum gloeosporioides (anamorph: Glomerella cingulata)",
+      "symptoms": [
+        "Affects leaves, twigs, and berries.",
+        "On leaves: Irregular, dark brown to black lesions, often starting at the tip or margin.",
+        "On twigs: Dark, sunken cankers, which can girdle and kill twigs.",
+        "On berries: Dark, sunken, circular spots that enlarge rapidly. Affected berries may shrivel, turn black, and drop.",
+        "In humid conditions, fungal structures may be visible as pinkish masses within lesions.",
+        "Severe infection leads to defoliation and die-back."
+      ],
+      "favorable_conditions": "High humidity, frequent rainfall, misty conditions, overcast skies, and warm temperatures (25-30\u00b0C). Often more severe during monsoon months.",
+      "preventive_measures": [
+        "Proper centering and handling of bushes to allow sunlight penetration and air circulation.",
+        "Prompt removal and destruction of infected twigs, leaves, and berries.",
+        "Avoid overhead irrigation; use drip irrigation where possible.",
+        "Maintain plant vigor through balanced nutrition.",
+        "Prune out diseased branches and sterilize tools.",
+        "Ensure good drainage in the plantation."
+      ],
+      "management_procedures": {
+        "organic": [
+          {
+            "product": "Bordeaux Mixture (5:5:50)",
+            "dosage": "1% solution (10g Copper Sulphate + 10g Lime / L water)",
+            "application": "Apply as a protective spray before the monsoon and repeat at monthly intervals during periods of high rainfall and humidity."
+          },
+          {
+            "product": "Copper Oxychloride",
+            "dosage": "0.3% solution (3g/L water)",
+            "application": "Effective against leaf and berry infections. Apply during monsoon."
+          }
+        ],
+        "chemical": [
+          {
+            "product": "Carbendazim (e.g., Bavistin)",
+            "dosage": "0.5g/L water",
+            "application": "Systemic fungicide. Apply as a foliar spray when disease is noticed and repeat if necessary."
+          },
+          {
+            "product": "Mancozeb (e.g., Dithane M-45)",
+            "dosage": "0.25% solution (2.5g/L water)",
+            "application": "Broad-spectrum protective fungicide. Apply during monsoon."
+          },
+          {
+            "product": "Thiophanate-methyl (e.g., Topsin-M)",
+            "dosage": "0.1% solution (1 mL/L water)",
+            "application": "Systemic fungicide, effective against various Colletotrichum species."
+          }
+        ]
+      }
+    },
+    "coffee_berry_disease": {
+      "name": "Coffee Berry Disease (CBD)",
+      "scientific_name": "Colletotrichum kahawae",
+      "symptoms": [
+        "Primarily affects the berries, especially young, green berries.",
+        "Lesions start as small, dark, sunken spots, which enlarge rapidly.",
+        "Infected berries turn dark brown to black, often remaining firm and mummified on the tree.",
+        "Lesions may extend to cover the entire berry surface.",
+        "Severe infection leads to premature berry drop and significant crop loss.",
+        "Can also cause leaf spots and twig die-back under severe conditions."
+      ],
+      "favorable_conditions": "High humidity, frequent rainfall, cool temperatures (18-22\u00b0C), and prolonged wetness on berries, especially during the period of berry expansion (typically monsoon months).",
+      "preventive_measures": [
+        "Plant resistant varieties (though resistance varies).",
+        "Maintain optimal shade levels to regulate temperature and humidity.",
+        "Ensure good drainage and avoid waterlogging.",
+        "Prune bushes to improve air circulation and light penetration.",
+        "Promptly remove and destroy infected berries and plant debris.",
+        "Synchronize flowering and berry development where possible.",
+        "Apply recommended preventative fungicide sprays before and during the monsoon."
+      ],
+      "management_procedures": {
+        "organic": [
+          {
+            "product": "Copper Oxychloride",
+            "dosage": "0.3% solution (3g/L water)",
+            "application": "Apply preventively at the start of the monsoon and repeat every 4-6 weeks during the high-risk period."
+          },
+          {
+            "product": "Bordeaux Mixture (5:5:50)",
+            "dosage": "1% solution (10g Copper Sulphate + 10g Lime / L water)",
+            "application": "Use as a protective spray, particularly during periods of high rainfall."
+          }
+        ],
+        "chemical": [
+          {
+            "product": "Carbendazim (e.g., Bavistin)",
+            "dosage": "0.5g/L water",
+            "application": "Systemic fungicide. Effective when applied preventively or at the very early stages of infection. Requires careful timing."
+          },
+          {
+            "product": "Thiophanate-methyl (e.g., Topsin-M)",
+            "dosage": "0.1% solution (1 mL/L water)",
+            "application": "Systemic fungicide that can be effective if applied timely."
+          },
+          {
+            "product": "Fenpropimorph",
+            "dosage": "0.05% solution (0.5 mL/L water)",
+            "application": "Applied during critical periods of berry development and monsoon."
+          }
+        ]
+      }
+    },
+    "anthracnose": {
+      "name": "Anthracnose",
+      "scientific_name": "Colletotrichum spp. (primarily C. gloeosporioides)",
+      "symptoms": [
+        "Affects leaves, twigs, and berries.",
+        "On leaves: Small, circular brown spots that enlarge and may develop concentric rings. In humid conditions, pinkish spore masses may appear.",
+        "On twigs: Die-back of young shoots.",
+        "On berries: Dark, sunken lesions on mature green or ripening berries. Can lead to premature drying and dropping of berries.",
+        "May cause 'pinholes' on beans during storage."
+      ],
+      "favorable_conditions": "Warm, humid weather with prolonged leaf wetness and rainfall. Often occurs after periods of stress for the plant.",
+      "preventive_measures": [
+        "Maintain plant vigor through balanced nutrition and adequate water supply.",
+        "Prune out infected twigs and branches.",
+        "Ensure good air circulation within the canopy.",
+        "Practice sanitation by removing fallen infected leaves and berries.",
+        "Avoid excessive damage to berries during handling."
+      ],
+      "management_procedures": {
+        "organic": [
+          {
+            "product": "Copper Oxychloride",
+            "dosage": "0.3% solution (3g/L water)",
+            "application": "Apply preventively, especially during periods of high humidity and rainfall."
+          },
+          {
+            "product": "Bordeaux Mixture (5:5:50)",
+            "dosage": "1% solution (10g Copper Sulphate + 10g Lime / L water)",
+            "application": "Protective spray during monsoon season."
+          }
+        ],
+        "chemical": [
+          {
+            "product": "Mancozeb (e.g., Dithane M-45)",
+            "dosage": "0.25% solution (2.5g/L water)",
+            "application": "Protective fungicide. Apply during monsoon and post-monsoon."
+          },
+          {
+            "product": "Carbendazim (e.g., Bavistin)",
+            "dosage": "0.5g/L water",
+            "application": "Systemic fungicide. Apply when symptoms are observed."
+          },
+          {
+            "product": "Thiophanate-methyl (e.g., Topsin-M)",
+            "dosage": "0.1% solution (1 mL/L water)",
+            "application": "Systemic fungicide."
+          }
+        ]
+      }
+    },
+    "root_rot": {
+      "name": "Root Rot Complex",
+      "scientific_name": "Various fungi including Phytophthora spp., Pythium spp., Fusarium spp., Rhizoctonia solani",
+      "symptoms": [
+        "Wilting of leaves, starting from the edges and progressing inwards.",
+        "Yellowing of leaves and premature defoliation.",
+        "Stunted growth and reduced vigor.",
+        "Poor flowering and fruit set.",
+        "In severe cases, the entire plant may die.",
+        "Affected roots are darkened, soft, and may be covered with fungal mycelia. The collar region may show dark, water-soaked lesions."
+      ],
+      "favorable_conditions": "Poorly drained soils, waterlogging, high soil moisture, compacted soils, excessive rainfall, and injury to roots or collar region. High temperatures can favor some pathogens.",
+      "preventive_measures": [
+        "Ensure excellent drainage in the plantation (raised beds, contour planting).",
+        "Avoid over-irrigation and waterlogging.",
+        "Select planting sites with well-drained soils.",
+        "Use disease-free planting material.",
+        "Avoid mechanical injury to roots and collar during cultivation and manuring.",
+        "Apply Trichoderma viride (1 kg mixed with 50 kg FYM) to the soil annually.",
+        "Maintain balanced soil fertility.",
+        "Use soil solarization in nurseries before planting."
+      ],
+      "management_procedures": {
+        "organic": [
+          {
+            "product": "Trichoderma viride",
+            "dosage": "Apply 1 kg mixed with 50 kg FYM or compost as soil drench around the base of infected plants.",
+            "application": "Primarily a preventive measure. Drenching can help suppress pathogen activity."
+          },
+          {
+            "product": "Copper Oxychloride (for collar rot)",
+            "dosage": "0.3% solution (3g/L water)",
+            "application": "Drench around the collar region of affected plants."
+          }
+        ],
+        "chemical": [
+          {
+            "product": "Metalaxyl (e.g., Ridomil)",
+            "dosage": "0.2% solution (2g/L water)",
+            "application": "Drench the soil around the base of infected plants. Repeat if necessary."
+          },
+          {
+            "product": "Fosetyl-Aluminium",
+            "dosage": "0.3% solution (3g/L water)",
+            "application": "Systemic fungicide effective against Oomycetes. Drench the soil."
+          },
+          {
+            "product": "Propamocarb Hydrochloride",
+            "dosage": "0.1% solution (1 mL/L water)",
+            "application": "Effective soil fungicide. Apply as a drench."
+          }
+        ]
+      }
+    },
+    "white_stem_borer": {
+      "name": "White Stem Borer",
+      "scientific_name": "Xylotrechus quadripes",
+      "symptoms": [
+        "Presence of galleries/tunnels (long, winding) on the bark of the stem and larger branches, often filled with grub excreta (frass).",
+        "Small holes (exit holes) on the bark, especially on the lower part of the stem.",
+        "Yellowing of leaves, starting from the top downwards.",
+        "Drying and wilting of branches or the entire plant.",
+        "In severe infestations, the bark may peel off easily, revealing the galleries.",
+        "Adult beetles are typically seen during the monsoon months."
+      ],
+      "favorable_conditions": "The pest is active during the monsoon season (June-September). Young, vigorous plants are more susceptible. Stress factors like drought or poor nutrition can increase susceptibility.",
+      "preventive_measures": [
+        "Maintain healthy, vigorous plants through proper nutrition, irrigation, and shade management.",
+        "Avoid mechanical injury to the stem and bark.",
+        "Regularly inspect young plants (1-5 years old) for early signs of infestation.",
+        "Remove and destroy infested plants immediately.",
+        "Apply preventive trunk washes with recommended insecticides.",
+        "Timely pruning of dead and weak branches."
+      ],
+      "management_procedures": {
+        "organic": [
+          {
+            "product": "Neem Oil Emulsion",
+            "dosage": "3-5% solution",
+            "application": "Spray on the trunk and branches during the active adult emergence period (monsoon) to deter egg-laying."
+          },
+          {
+            "product": "Banding with coir/hessian",
+            "dosage": "Wrap jute/hessian cloth around the base of the stem.",
+            "application": "Check for and remove larvae and pupae trapped in the banding material during dry periods."
+          }
+        ],
+        "chemical": [
+          {
+            "product": "Chlorpyriphos",
+            "dosage": "0.07% solution (7 mL/L water)",
+            "application": "Apply as a trunk wash covering the entire stem from the ground level up to the main branches. Apply twice a year, pre-monsoon (May-June) and post-monsoon (September-October)."
+          },
+          {
+            "product": "Monocrotophos",
+            "dosage": "0.05% solution (5 mL/L water)",
+            "application": "Similar application as Chlorpyriphos. Use with caution."
+          },
+          {
+            "product": "Imidacloprid",
+            "dosage": "0.05% solution (0.5 mL/L water)",
+            "application": "Systemic insecticide. Can be applied as a trunk drench or spray."
+          }
+        ]
+      }
+    },
+    "coffee_berry_borer": {
+      "name": "Coffee Berry Borer",
+      "scientific_name": "Hypothenemus hampei",
+      "symptoms": [
+        "Tiny exit holes (around 1 mm diameter) on the surface of green, ripening, or dried berries.",
+        "Presence of larvae and adults inside the berries.",
+        "Affected berries may shrivel, drop prematurely, or develop an unpleasant odor.",
+        "Damaged beans may have a 'punched' appearance and contribute to off-flavors in the brewed coffee."
+      ],
+      "favorable_conditions": "Warm temperatures (around 20-30\u00b0C) and high humidity favor rapid reproduction. The pest is active throughout the year, with peak activity during ripening and drying stages.",
+      "preventive_measures": [
+        "Harvest ripe berries promptly to reduce the time they are susceptible on the tree.",
+        "Practice thorough stripping of all remaining berries after the main harvest.",
+        "Ensure efficient drying of harvested cherries/parchment to below 12% moisture content.",
+        "Store dried coffee beans in clean, airtight containers or silos.",
+        "Remove and destroy fallen berries and debris from the plantation.",
+        "Maintain plant health to improve berry resilience.",
+        "Encourage natural enemies like the parasitoid Anagrus spp."
+      ],
+      "management_procedures": {
+        "organic": [
+          {
+            "product": "Neem Oil Emulsion",
+            "dosage": "2-3% solution",
+            "application": "Apply as a foliar spray during periods of high pest activity. May help deter egg-laying."
+          },
+          {
+            "product": "Beauveria bassiana (Entomopathogenic fungus)",
+            "dosage": "As per manufacturer's instructions",
+            "application": "Apply as a foliar spray. The fungus infects the adult borers."
+          }
+        ],
+        "chemical": [
+          {
+            "product": "Lambda-cyhalothrin",
+            "dosage": "0.005% solution (0.5 mL/L water)",
+            "application": "Contact insecticide. Apply carefully, especially during ripening, avoiding direct application close to harvest if possible. Focus on infested patches."
+          },
+          {
+            "product": "Malathion",
+            "dosage": "0.1% solution (1 mL/L water)",
+            "application": "Contact insecticide. Used when infestation is severe."
+          },
+          {
+            "product": "Endosulfan (use restricted/banned in many regions)",
+            "dosage": "0.07% solution",
+            "application": "Historically used, but due to environmental concerns, alternatives are preferred."
+          }
+        ]
+      }
+    },
+    "sucking_pests": {
+      "name": "Sucking Pests (Aphids, Mealybugs, Scales)",
+      "scientific_name": "Various species, e.g., Toxoptera aurantii (black coffee aphid), Planococcus spp. (mealybugs), Pulvinaria spp. (cottony cushion scale)",
+      "symptoms": [
+        "Presence of insects on tender shoots, leaves, and berries.",
+        "Yellowing and distortion of leaves.",
+        "Stunted growth of shoots and berries.",
+        "Production of copious amounts of honeydew, leading to sooty mold growth (black covering on leaves and berries).",
+        "Mealybugs often cluster in leaf axils and on undersides of leaves.",
+        "Scales appear as small bumps attached to stems and leaves."
+      ],
+      "favorable_conditions": "Warm and dry weather often favors rapid multiplication. Mealybugs and scales thrive in sheltered locations. Ants often protect these pests, feeding on honeydew.",
+      "preventive_measures": [
+        "Encourage natural enemies like ladybird beetles, lacewings, and parasitic wasps.",
+        "Maintain plant health through proper nutrition and water management.",
+        "Prune infested shoots and destroy them.",
+        "Control ant populations, as they often protect sucking pests.",
+        "Regularly monitor young plants and new flushes of growth."
+      ],
+      "management_procedures": {
+        "organic": [
+          {
+            "product": "Neem Oil Emulsion",
+            "dosage": "1-2% solution (10-20 mL/L water)",
+            "application": "Spray thoroughly to cover infested parts. Repeat at 10-15 day intervals."
+          },
+          {
+            "product": "Soap Solution (e.g., insecticidal soap)",
+            "dosage": "1% solution (10g soap/L water)",
+            "application": "Direct contact spray. Effective against soft-bodied insects like aphids and mealybugs."
+          },
+          {
+            "product": "Harpin protein-based biostimulants",
+            "dosage": "As per manufacturer's instructions",
+            "application": "Can induce plant defense mechanisms and deter pests."
+          }
+        ],
+        "chemical": [
+          {
+            "product": "Imidacloprid",
+            "dosage": "0.05% solution (0.5 mL/L water)",
+            "application": "Systemic insecticide. Effective against a wide range of sucking pests. Apply as a foliar spray."
+          },
+          {
+            "product": "Dimethoate",
+            "dosage": "0.05% solution (0.5 mL/L water)",
+            "application": "Contact and systemic action. Effective against aphids and scales."
+          },
+          {
+            "product": "Malathion",
+            "dosage": "0.1% solution (1 mL/L water)",
+            "application": "Contact insecticide. Useful for quick knockdown of populations."
+          }
+        ]
+      }
+    },
+    "damping_off": {
+      "name": "Damping-off",
+      "scientific_name": "Pythium spp., Rhizoctonia solani, Fusarium spp.",
+      "symptoms": [
+        "Seedlings collapse at the soil line and die.",
+        "A constricted, water-soaked lesion may be visible at the stem base.",
+        "Affected seedlings are easily pulled from the soil.",
+        "Can occur in pre-emergence (seeds rot before emerging) or post-emergence stages.",
+        "Often appears as patches of dead seedlings in the nursery bed."
+      ],
+      "favorable_conditions": "Cool, wet, and poorly drained soil conditions. High humidity. Overcrowding of seedlings. Use of infested soil or contaminated seed.",
+      "preventive_measures": [
+        "Use sterilized soil and compost for nursery beds and polythene bags.",
+        "Ensure excellent drainage in nursery beds and bags.",
+        "Avoid overwatering and maintain optimal soil moisture.",
+        "Provide good ventilation and adequate sunlight.",
+        "Avoid sowing seeds too deep or too densely.",
+        "Practice crop rotation in nursery areas if possible.",
+        "Use seed treatment with fungicides.",
+        "Soil solarization of nursery beds before sowing."
+      ],
+      "management_procedures": {
+        "organic": [
+          {
+            "product": "Trichoderma viride",
+            "dosage": "Mix thoroughly with soil/compost before filling bags or preparing beds (5-10g per kg of soil).",
+            "application": "Beneficial soil microorganism that antagonizes pathogens. Apply preventively."
+          },
+          {
+            "product": "Copper Oxychloride",
+            "dosage": "0.2% solution (2g/L water)",
+            "application": "Apply as a drench to the soil around seedlings at the first sign of infection."
+          }
+        ],
+        "chemical": [
+          {
+            "product": "Metalaxyl (e.g., Ridomil)",
+            "dosage": "0.2% solution (2g/L water)",
+            "application": "Drench the soil in nursery beds or around seedlings. Repeat if necessary."
+          },
+          {
+            "product": "Mancozeb (e.g., Dithane M-45)",
+            "dosage": "0.25% solution (2.5g/L water)",
+            "application": "Apply as a soil drench or foliar spray at the first sign of disease."
+          },
+          {
+            "product": "Carboxin + Thiram (Seed treatment)",
+            "dosage": "As per manufacturer's recommendation (e.g., 3g/kg seed)",
+            "application": "Treat seeds before sowing to protect against seed-borne pathogens."
+          }
+        ]
+      }
+    }
+  }
+}

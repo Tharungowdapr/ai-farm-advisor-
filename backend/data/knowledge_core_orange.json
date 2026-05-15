@@ -1,0 +1,769 @@
+{
+  "crop_info": {
+    "name": "Orange",
+    "scientific_name": "Citrus x sinensis (Sweet Orange)",
+    "varieties": [
+      "Valencia",
+      "Navel",
+      "Blood Orange",
+      "Jaffa",
+      "Hamlin",
+      "Coorg Mandarin",
+      "Kinnow"
+    ],
+    "total_duration_days": 365,
+    "ideal_climate": {
+      "temperature": "15-30\u00b0C",
+      "rainfall": "800-1200 mm annually, well distributed",
+      "humidity": "Moderate to high (60-80%)",
+      "soil_type": "Deep, well-drained loamy or sandy-loam soils with pH 6.0-7.5"
+    },
+    "propagation": "Grafting on trifoliate orange (Poncirus trifoliata) or sour orange (Citrus aurantium) rootstocks is common.",
+    "plant_spacing": "6m x 6m or 7m x 7m, depending on variety and rootstock."
+  },
+  "lifecycle_phases": [
+    {
+      "phase_id": "orange_nursery_sowing",
+      "phase_name": "Nursery and Sowing/Planting",
+      "duration_days": 180,
+      "description": "This phase involves raising healthy rootstock seedlings and grafting them, or preparing the planting site and transplanting grafted saplings. For direct sowing of seeds (less common for commercial cultivation), this phase includes germination and initial seedling growth.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Rootstock Seed Preparation & Sowing",
+          "details": "Select disease-free trifoliate orange seeds. Soak seeds in water for 24 hours. Sow in raised nursery beds or polybags filled with a sterile, well-draining potting mix (e.g., soil:sand:compost 1:1:1). Maintain adequate moisture and shade.",
+          "npk_dose": "No direct NPK application in nursery beds; focus on good potting mix fertility.",
+          "irrigation_schedule": "Water daily or as needed to keep the medium consistently moist but not waterlogged.",
+          "pest_management": "Monitor for damping-off (Pythium spp.). Use seed treatment with Trichoderma viride (2-5g/kg seed). Control aphids and whiteflies with neem oil (5ml/L) or insecticidal soap."
+        },
+        {
+          "step": 2,
+          "operation": "Grafting",
+          "details": "Once rootstock seedlings reach pencil thickness (approx. 6-8 months old), perform cleft grafting or bud grafting using scions from high-yielding, disease-resistant parent trees of desired varieties. Ensure sterile grafting tools.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "Maintain moderate moisture in nursery bags/beds.",
+          "pest_management": "Protect graft unions from ants and pests. Apply copper oxychloride paste (1%) if fungal infections are suspected at the graft union."
+        },
+        {
+          "step": 3,
+          "operation": "Site Preparation",
+          "details": "Select a site with good sunlight and drainage. Plough the land thoroughly to a depth of 30-45 cm. Incorporate farmyard manure (FYM) at 20-25 tonnes/ha and P (SSP: 500 kg/ha) and K (MOP: 200 kg/ha) before planting.",
+          "npk_dose": "Basal application: SSP 500 kg/ha (approx. 80 kg P/ha), MOP 200 kg/ha (approx. 100 kg K/ha).",
+          "irrigation_schedule": "N/A during site preparation.",
+          "pest_management": "Soil solarization can reduce soil-borne pests and diseases."
+        },
+        {
+          "step": 4,
+          "operation": "Planting of Grafted Saplings",
+          "details": "Dig pits of 60x60x60 cm at the recommended spacing. Fill pits with a mixture of topsoil, FYM, and single superphosphate. Plant healthy, 1-year-old grafted saplings in the center of the pit, ensuring the graft union is well above the soil level.",
+          "npk_dose": "Pit application: FYM 10-15 kg/pit, SSP 250 g/pit.",
+          "irrigation_schedule": "Water immediately after planting to settle the soil. Subsequent irrigation depends on rainfall.",
+          "pest_management": "Drench the soil around the base of the sapling with Mancozeb (0.2%) or Bordeaux mixture (1%) to prevent soil-borne pathogens."
+        },
+        {
+          "step": 5,
+          "operation": "Initial Training and Pruning",
+          "details": "Remove any unwanted root suckers or low-hanging branches to encourage a strong central leader and well-spaced scaffold branches.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "Maintain consistent moisture.",
+          "pest_management": "Sanitize pruning tools between cuts."
+        },
+        {
+          "step": 6,
+          "operation": "Weed Control",
+          "details": "Keep the area around the young trees free from weeds, which compete for nutrients and water.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "Regular irrigation as needed.",
+          "pest_management": "Manual weeding or mulching. Use Glyphosate (0.5-1%) as a directed spray, avoiding contact with tree bark."
+        },
+        {
+          "step": 7,
+          "operation": "Initial Nutrient Supplementation",
+          "details": "Apply nitrogen in split doses to promote vegetative growth after the plant establishes.",
+          "npk_dose": "First year: Urea 50-100 g/plant in 2-3 split doses, starting 2-3 months after planting.",
+          "irrigation_schedule": "Irrigate after each fertilizer application.",
+          "pest_management": "Monitor for early signs of nutrient deficiency (e.g., chlorosis)."
+        },
+        {
+          "step": 8,
+          "operation": "Protection from Pests and Diseases",
+          "details": "Regularly scout for pests like citrus leafminer and diseases like collar rot.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "Adequate moisture for plant health.",
+          "pest_management": "Cypermethrin (0.05%) for leafminer. Soil drench with Carbendazim (0.1%) for collar rot."
+        }
+      ],
+      "common_diseases": [],
+      "preventive_tips": [
+        "Use certified disease-free planting material.",
+        "Ensure proper drainage in the nursery and field.",
+        "Maintain adequate spacing to allow for air circulation.",
+        "Sanitize all tools used for pruning and grafting.",
+        "Control weeds rigorously.",
+        "Protect young trees from mechanical damage."
+      ]
+    },
+    {
+      "phase_id": "orange_vegetative_growth",
+      "phase_name": "Vegetative Growth and Canopy Development",
+      "duration_days": 180,
+      "description": "This phase focuses on establishing a strong vegetative framework with well-developed branches and leaves, crucial for future fruit production. It includes regular feeding, irrigation, and pest/disease management.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Fertilization (Growth Phase)",
+          "details": "Apply nitrogen and potassium fertilizers in split doses to promote vigorous shoot growth. Monitor leaf nutrient status through regular soil and leaf analysis.",
+          "npk_dose": "Second year onwards: NPK (10:10:10) at 200-300 g/plant/year, applied in 3 split doses (pre-monsoon, post-monsoon, post-harvest). Increase dose gradually with tree age.",
+          "irrigation_schedule": "Irrigate thoroughly after each fertilizer application. Maintain soil moisture at 50-60% available water capacity.",
+          "pest_management": "Monitor for sucking pests like aphids, thrips, and citrus psylla. Spray neem oil (5ml/L) or imidacloprid (0.5 ml/L) if infestation is severe."
+        },
+        {
+          "step": 2,
+          "operation": "Irrigation Management",
+          "details": "Provide consistent irrigation, especially during dry spells. Avoid waterlogging. Drip irrigation is highly recommended for efficiency.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "Apply 50-70 liters of water per tree per week, adjusted based on soil type, weather conditions, and tree age. Drip irrigation: 1-2 hours per day.",
+          "pest_management": "Proper irrigation reduces stress, making trees less susceptible to diseases like root rot."
+        },
+        {
+          "step": 3,
+          "operation": "Pruning and Training",
+          "details": "Continue training young trees by removing unwanted water sprouts and crossing branches. For mature trees, light pruning can improve light penetration and air circulation.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "Irrigation is crucial for recovery after pruning.",
+          "pest_management": "Sanitize pruning shears. Apply Bordeaux paste (10%) on pruned wounds to prevent fungal entry."
+        },
+        {
+          "step": 4,
+          "operation": "Weed Management",
+          "details": "Maintain a weed-free basin around the tree. Mulching with organic matter can help conserve moisture and suppress weeds.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "Mulching helps retain soil moisture.",
+          "pest_management": "Regular weeding. Spot application of Paraquat (0.5%) around trees, avoiding foliage."
+        },
+        {
+          "step": 5,
+          "operation": "Pest Control (Leafminer & Psylla)",
+          "details": "Citrus leafminer (Phyllocnistis citrella) and citrus psylla (Diaphorina citri) are major threats. Monitor their populations regularly.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "Healthy plants are more resistant.",
+          "pest_management": "Cypermethrin (0.05%) or Spinosad (0.5 ml/L) for leafminer. Imidacloprid (0.5 ml/L) or Fipronil (1.5 ml/L) for psylla. Release of natural enemies like parasitoids (e.g., Cirrospilus quadristriatus) is encouraged."
+        },
+        {
+          "step": 6,
+          "operation": "Disease Prevention (Early Stages)",
+          "details": "Focus on preventing common nursery and early orchard diseases like damping-off and collar rot.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "Avoid overwatering.",
+          "pest_management": "Soil drench with Metalaxyl (0.2%) or Propiconazole (0.1%) around the base of young trees. Maintain good orchard sanitation."
+        },
+        {
+          "step": 7,
+          "operation": "Micronutrient Application",
+          "details": "Apply micronutrients, especially Zinc and Boron, which are often deficient in citrus soils, through foliar sprays.",
+          "npk_dose": "Foliar spray: Zinc Sulphate (0.5%) + Borax (0.2%) or a proprietary micronutrient mixture (as per label instructions) 2-3 times during the growth phase.",
+          "irrigation_schedule": "N/A",
+          "pest_management": "N/A"
+        },
+        {
+          "step": 8,
+          "operation": "Soil Health Management",
+          "details": "Incorporate organic matter like FYM, compost, or green manure crops periodically to improve soil structure, fertility, and water-holding capacity.",
+          "npk_dose": "FYM/Compost: 10-15 kg/tree annually.",
+          "irrigation_schedule": "Improved soil health leads to better water infiltration.",
+          "pest_management": "Encourages beneficial soil microorganisms."
+        }
+      ],
+      "common_diseases": [],
+      "preventive_tips": [
+        "Ensure consistent and adequate irrigation.",
+        "Maintain a balanced fertilizer program.",
+        "Regularly prune to shape the tree and remove diseased parts.",
+        "Keep the orchard floor clean and free of weeds.",
+        "Scout for pests and diseases regularly and act promptly.",
+        "Promote beneficial insects and natural enemies.",
+        "Improve soil health through organic matter incorporation."
+      ]
+    },
+    {
+      "phase_id": "orange_flowering",
+      "phase_name": "Flowering and Fruit Set",
+      "duration_days": 60,
+      "description": "This critical phase involves flower bud initiation, blooming, and fruitlet development. It requires careful management of nutrients, water, and protection against specific pests and diseases that impact flowering and fruit set.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Nutrient Management for Flowering",
+          "details": "Provide a specific nutrient boost to support flower bud formation and development. Phosphorus and Potassium are crucial during this period.",
+          "npk_dose": "Pre-flowering spray: Potassium Nitrate (1%) + Boron (0.2%) + Zinc Sulphate (0.2%).",
+          "irrigation_schedule": "Maintain moderate soil moisture. Avoid water stress, which can lead to flower drop.",
+          "pest_management": "Avoid spraying insecticides during full bloom to protect pollinators. Use systemic insecticides judiciously if necessary before or after bloom."
+        },
+        {
+          "step": 2,
+          "operation": "Pollination Enhancement",
+          "details": "Ensure good pollination by maintaining a healthy population of pollinators (bees). Avoid broad-spectrum insecticide applications during flowering.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "Adequate soil moisture supports pollen viability.",
+          "pest_management": "Encourage bee activity. If using sprays, apply late in the evening when bees are less active. Consider biological pest control agents."
+        },
+        {
+          "step": 3,
+          "operation": "Irrigation Control",
+          "details": "Maintain consistent soil moisture. Severe water stress can cause flower drop, while overwatering can lead to root diseases.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "Irrigate as needed, aiming for 50-60% soil moisture availability. Drip irrigation is ideal.",
+          "pest_management": "Proper irrigation is a preventive measure against root rot."
+        },
+        {
+          "step": 4,
+          "operation": "Pest Monitoring (Thrips & Mites)",
+          "details": "Thrips and mites can damage flowers and developing fruitlets, leading to reduced yield and quality.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "N/A",
+          "pest_management": "Monitor for thrips (e.g., Frankliniella occidentalis) and mites (e.g., citrus red mite). Spray Spinosad (0.5 ml/L) or Abamectin (0.5 ml/L) if infestation exceeds economic threshold levels. Use acaricides like Dicofol if necessary."
+        },
+        {
+          "step": 5,
+          "operation": "Disease Management (Flower Blight)",
+          "details": "Prevent fungal diseases that can affect flowers and young fruits.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "Ensure good air circulation to reduce humidity around flowers.",
+          "pest_management": "Foliar spray of Propiconazole (0.1%) or Mancozeb (0.2%) as a preventive measure before and after the flowering period."
+        },
+        {
+          "step": 6,
+          "operation": "Fruit Set Enhancement (if needed)",
+          "details": "In cases of poor fruit set, application of plant growth regulators might be considered, but should be done with caution.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "N/A",
+          "pest_management": "N/A"
+        },
+        {
+          "step": 7,
+          "operation": "Weed Control",
+          "details": "Continue weed control to prevent competition for resources.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "N/A",
+          "pest_management": "Manual weeding or spot application of herbicides. Avoid spraying near flowers."
+        },
+        {
+          "step": 8,
+          "operation": "Canopy Management",
+          "details": "Ensure adequate light penetration into the canopy. Remove dense foliage if it hinders pollination or encourages disease.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "N/A",
+          "pest_management": "N/A"
+        }
+      ],
+      "common_diseases": [],
+      "preventive_tips": [
+        "Avoid water stress during flowering.",
+        "Protect pollinators by careful pesticide application.",
+        "Maintain good air circulation within the canopy.",
+        "Ensure adequate levels of Phosphorus and Boron.",
+        "Monitor and manage thrips and mites promptly.",
+        "Prevent fungal diseases affecting flowers."
+      ]
+    },
+    {
+      "phase_id": "orange_fruit_initiation",
+      "phase_name": "Fruit Initiation and Early Development",
+      "duration_days": 90,
+      "description": "This phase covers the transition from fruit set to the development of small, marble-sized fruits. It is crucial for determining the potential yield and fruit quality.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Micronutrient Supplementation",
+          "details": "Apply essential micronutrients like Zinc, Boron, and Magnesium, which are vital for cell division and fruit enlargement.",
+          "npk_dose": "Foliar spray: Zinc Sulphate (0.5%) + Borax (0.2%) + Magnesium Sulphate (0.5%) once a month.",
+          "irrigation_schedule": "Maintain consistent soil moisture. Avoid both water stress and waterlogging.",
+          "pest_management": "N/A"
+        },
+        {
+          "step": 2,
+          "operation": "Balanced Fertilization",
+          "details": "Provide a balanced supply of NPK to support rapid fruit growth. Nitrogen should be applied judiciously to avoid excessive vegetative growth at the expense of fruit development.",
+          "npk_dose": "Apply NPK (10:10:10 or similar) at 250-400 g/tree/year in split doses, depending on tree age and vigor. First split dose can be applied at the start of this phase.",
+          "irrigation_schedule": "Irrigate after fertilizer application.",
+          "pest_management": "N/A"
+        },
+        {
+          "step": 3,
+          "operation": "Fruit Drop Control",
+          "details": "Some natural fruit drop is normal, but excessive drop can be managed through proper nutrition and water management.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "Consistent moisture is key.",
+          "pest_management": "Foliar spray of NAA (Naphthalene Acetic Acid) at 10-20 ppm can help reduce pre-harvest fruit drop in some varieties, but use with caution and only if severe drop is observed."
+        },
+        {
+          "step": 4,
+          "operation": "Pest Management (Fruit Fly & Fruit Borer)",
+          "details": "Protect developing fruits from fruit flies and borers.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "N/A",
+          "pest_management": "Install male fruit fly traps using pheromone lures (e.g., methyl eugenol). Bait sprays containing malathion (0.1%) can be used. For borers, spray Cypermethrin (0.05%) or Chlorpyriphos (0.05%) if infestation is high."
+        },
+        {
+          "step": 5,
+          "operation": "Disease Management (Citrus Canker & Greening)",
+          "details": "Prevent and manage critical diseases that manifest during fruit development.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "N/A",
+          "pest_management": "Foliar spray with Copper Oxychloride (0.3%) + Streptocycline (0.02%) for citrus canker. Strict vector control (psylla) is essential for managing citrus greening."
+        },
+        {
+          "step": 6,
+          "operation": "Irrigation",
+          "details": "Consistent and adequate watering is crucial for fruit size development.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "Maintain 50-70% available soil moisture. Drip irrigation is preferred. Avoid drought stress.",
+          "pest_management": "N/A"
+        },
+        {
+          "step": 7,
+          "operation": "Canopy Management",
+          "details": "Prune to remove dense foliage that can harbor pests and diseases and hinder fruit development.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "N/A",
+          "pest_management": "Remove water sprouts and shade-producing branches."
+        },
+        {
+          "step": 8,
+          "operation": "Soil Health",
+          "details": "Continue to improve soil structure and fertility through organic amendments.",
+          "npk_dose": "Apply FYM/Compost (10-15 kg/tree) annually.",
+          "irrigation_schedule": "N/A",
+          "pest_management": "N/A"
+        }
+      ],
+      "common_diseases": [],
+      "preventive_tips": [
+        "Ensure adequate and consistent irrigation.",
+        "Provide balanced nutrition, with emphasis on micronutrients.",
+        "Monitor and control fruit flies and borers diligently.",
+        "Prevent citrus canker and manage greening through vector control.",
+        "Prune to improve light penetration and air circulation.",
+        "Minimize fruit drop through proper management."
+      ]
+    },
+    {
+      "phase_id": "orange_maturity",
+      "phase_name": "Fruit Maturation and Ripening",
+      "duration_days": 45,
+      "description": "This phase involves the physiological changes that lead to fruit maturity, including color break, sugar development, and aroma formation. Harvest timing is critical for optimal quality.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Nutrient Management for Quality",
+          "details": "Focus on nutrients that influence fruit quality, such as potassium, which aids in sugar accumulation and color development.",
+          "npk_dose": "Pre-harvest spray: Potassium Sulphate (1-2%) or Potassium Nitrate (1%) to enhance fruit quality and juice content.",
+          "irrigation_schedule": "Reduce irrigation slightly to concentrate sugars, but avoid severe water stress which can reduce fruit size and juice volume. Maintain moderate moisture.",
+          "pest_management": "Avoid spraying pesticides that can leave residues on mature fruit. Use biological or approved organic pesticides if possible."
+        },
+        {
+          "step": 2,
+          "operation": "Irrigation Adjustment",
+          "details": "Modulate irrigation to promote sugar accumulation and desirable fruit texture.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "Maintain 40-50% available soil moisture. Avoid heavy irrigation shortly before harvest.",
+          "pest_management": "N/A"
+        },
+        {
+          "step": 3,
+          "operation": "Pest and Disease Monitoring",
+          "details": "Monitor for any late-season pests or diseases that could affect fruit quality or storage life.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "N/A",
+          "pest_management": "Citrus black spot (Guignardia citricarpa) can be a concern. If present, apply a protective spray of Carbendazim (0.1%) or Propiconazole (0.1%) as a last resort before harvest, observing pre-harvest intervals (PHI)."
+        },
+        {
+          "step": 4,
+          "operation": "Fruit Drop Management",
+          "details": "Continue to monitor for and manage fruit drop, which can reduce marketable yield.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "Adequate moisture is important.",
+          "pest_management": "Repeat NAA spray (10-20 ppm) if significant drop occurs, adhering to PHI."
+        },
+        {
+          "step": 5,
+          "operation": "Maturity Assessment",
+          "details": "Determine harvest readiness based on color break, soluble solids content (Brix), titratable acidity (TA), and Brix/TA ratio.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "N/A",
+          "pest_management": "N/A"
+        },
+        {
+          "step": 6,
+          "operation": "Harvest Planning",
+          "details": "Plan harvesting operations to ensure efficient collection and minimize damage to fruits.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "N/A",
+          "pest_management": "N/A"
+        },
+        {
+          "step": 7,
+          "operation": "Pre-Harvest Protection",
+          "details": "Ensure fruits are protected from direct sun scorching and mechanical damage before harvest.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "N/A",
+          "pest_management": "N/A"
+        },
+        {
+          "step": 8,
+          "operation": "Orchard Cleanliness",
+          "details": "Keep the orchard floor clean to prevent contamination of harvested fruits.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "N/A",
+          "pest_management": "Remove fallen fruits promptly."
+        }
+      ],
+      "common_diseases": [],
+      "preventive_tips": [
+        "Adjust irrigation to promote sugar development.",
+        "Apply potassium-based fertilizers for better quality.",
+        "Monitor maturity parameters (Brix, TA) to determine harvest time.",
+        "Minimize pesticide use that leaves residues on mature fruit.",
+        "Carefully manage fruit drop.",
+        "Plan harvesting for efficient and gentle collection."
+      ]
+    },
+    {
+      "phase_id": "orange_harvest_postharvest",
+      "phase_name": "Harvest and Post-Harvest Management",
+      "duration_days": 45,
+      "description": "This phase includes the actual harvesting of mature fruits, followed by sorting, grading, packing, and storage to maintain quality and extend shelf life.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Harvesting",
+          "details": "Harvest fruits selectively when they reach optimal maturity. Use sharp shears or clippers to cut the fruit stalk, avoiding damage to the peel and the node. Never pull fruits. Harvest during cooler parts of the day.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "N/A",
+          "pest_management": "Ensure harvesting tools are clean."
+        },
+        {
+          "step": 2,
+          "operation": "Field Packing",
+          "details": "Use clean crates or bins for collecting harvested fruits. Avoid overfilling containers, which can cause bruising.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "N/A",
+          "pest_management": "Minimize contamination of harvested fruits."
+        },
+        {
+          "step": 3,
+          "operation": "Transportation",
+          "details": "Transport harvested fruits to the packing house promptly in well-ventilated vehicles to minimize heat buildup.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "N/A",
+          "pest_management": "N/A"
+        },
+        {
+          "step": 4,
+          "operation": "Sorting and Grading",
+          "details": "Sort fruits based on size, color, maturity, and freedom from defects (bruises, cuts, blemishes). Grade according to established standards.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "N/A",
+          "pest_management": "Remove any infected or damaged fruits to prevent spread."
+        },
+        {
+          "step": 5,
+          "operation": "Washing and Cleaning",
+          "details": "Wash fruits with clean water, sometimes with a mild detergent or sanitizing agent (e.g., sodium hypochlorite solution at 100-200 ppm), to remove dirt and residues.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "N/A",
+          "pest_management": "Use food-grade sanitizers. Ensure thorough rinsing."
+        },
+        {
+          "step": 6,
+          "operation": "Waxing (Optional)",
+          "details": "Apply food-grade wax to improve gloss, reduce moisture loss, and enhance shelf life. Ensure proper application and drying.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "N/A",
+          "pest_management": "Use approved food-grade waxes."
+        },
+        {
+          "step": 7,
+          "operation": "Packing",
+          "details": "Pack fruits carefully into appropriate containers (e.g., cartons, trays) using cushioning materials to prevent mechanical damage during transit and storage.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "N/A",
+          "pest_management": "N/A"
+        },
+        {
+          "step": 8,
+          "operation": "Storage",
+          "details": "Store fruits in controlled conditions. Recommended storage temperature for oranges is 4-8\u00b0C with relative humidity of 85-90%. Avoid storing near ethylene-producing fruits.",
+          "npk_dose": "N/A",
+          "irrigation_schedule": "Controlled humidity is crucial.",
+          "pest_management": "Monitor for storage rots (e.g., Penicillium spp., Diplodia spp.). Use post-harvest treatments like thiabendazole dips if necessary, adhering to PHI and maximum residue limits (MRLs)."
+        }
+      ],
+      "common_diseases": [],
+      "preventive_tips": [
+        "Harvest fruits at the correct maturity stage.",
+        "Handle fruits gently to avoid bruising and cuts.",
+        "Use clean harvesting and packing equipment.",
+        "Transport fruits quickly to the packing house.",
+        "Sort and grade fruits meticulously.",
+        "Store fruits under recommended temperature and humidity conditions.",
+        "Consider post-harvest treatments to control storage rots."
+      ]
+    }
+  ],
+  "disease_protocols": {
+    "citrus_canker": {
+      "name": "Citrus Canker",
+      "scientific_name": "Xanthomonas citri subsp. citri",
+      "symptoms": [
+        "Small, raised, water-soaked spots on leaves, twigs, and fruits.",
+        "Lesions become corky and brown with age, often surrounded by a yellow halo.",
+        "Fruits can develop scabby lesions, reducing marketability.",
+        "Severe infection can lead to leaf and fruit drop."
+      ],
+      "favorable_conditions": "Warm temperatures (20-30\u00b0C), high humidity (above 80%), and rainfall or overhead irrigation facilitate rapid spread. Entry into the plant through wounds caused by wind, insects, or mechanical damage.",
+      "preventive_measures": [
+        "Use disease-free planting material.",
+        "Maintain orchard sanitation and remove infected plant debris.",
+        "Avoid overhead irrigation; opt for drip irrigation.",
+        "Prune out infected branches during dry periods.",
+        "Improve air circulation through proper pruning.",
+        "Plant resistant or less susceptible varieties where possible."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Bordeaux mixture (1%) as a foliar spray.",
+          "Copper Oxychloride (0.3%) as a foliar spray.",
+          "Streptocycline (0.02%) in combination with Copper Oxychloride."
+        ],
+        "chemical": [
+          "Copper Oxychloride (0.3%) or Copper Hydroxide (0.25%) as foliar spray.",
+          "Streptocycline (0.02%) combined with Copper Oxychloride (0.3%) - apply every 15-20 days during rainy season.",
+          "Validamycin (0.2%) can also be effective."
+        ],
+        "dosage_notes": "Apply sprays every 15-20 days, especially during periods of high rainfall or humidity. Ensure thorough coverage of leaves and fruits."
+      }
+    },
+    "gummosis": {
+      "name": "Phytophthora Gummosis (Foot Rot/Root Rot)",
+      "scientific_name": "Phytophthora spp. (e.g., P. citrophthora, P. nicotianae)",
+      "symptoms": [
+        "Gooey, amber-colored resin (gum) oozing from cracks or cankers on the trunk, especially near the collar region.",
+        "Bark becomes discolored, soft, and may peel off, exposing rotten wood.",
+        "Wilting of leaves, yellowing, and reduced vigor.",
+        "In severe cases, girdling of the trunk leading to tree death."
+      ],
+      "favorable_conditions": "Poorly drained soils, waterlogging, high soil moisture, and moderate temperatures (20-30\u00b0C) favor Phytophthora development. Entry occurs through wounds or lenticels.",
+      "preventive_measures": [
+        "Ensure good drainage in the orchard.",
+        "Avoid waterlogging around the tree base.",
+        "Graft trees on resistant rootstocks (e.g., trifoliate orange).",
+        "Avoid injury to the trunk and root system.",
+        "Maintain proper soil level, ensuring the graft union is well above the soil.",
+        "Remove weeds and debris from around the tree base."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Scrape away infected bark and apply Bordeaux paste (10%).",
+          "Drench soil around the base with Trichoderma viride (20g/L water)."
+        ],
+        "chemical": [
+          "Scrape infected bark and apply Bordeaux paste (10%) or Copper Oxychloride paste (5%).",
+          "Drench the soil around the base of the tree with Metalaxyl (0.2%) or Fosetyl-Al (0.3%).",
+          "Apply systemic fungicides like Carbendazim (0.1%) or Propiconazole (0.1%) to the soil or as a trunk paint after scraping."
+        ],
+        "dosage_notes": "Treatment is most effective when applied early. Scraping and application should be done during dry weather. Multiple applications may be necessary."
+      }
+    },
+    "citrus_greening": {
+      "name": "Citrus Greening (HLB - Huanglongbing)",
+      "scientific_name": "Candidatus Liberibacter asiaticus (and other species)",
+      "symptoms": [
+        "Asymmetrical yellow mottling or blotchy chlorosis on leaves, often described as 'zebra' pattern on midribs.",
+        "Leaves become thickened, leathery, and downward-curling.",
+        "Affected fruits remain small, lopsided, and may have a persistent calyx (button).",
+        "Fruits often remain green even when ripe (hence the name 'greening').",
+        "Roots are damaged, leading to reduced vigor and eventual tree death."
+      ],
+      "favorable_conditions": "Spread by citrus psyllid (Diaphorina citri) and through infected planting material. The bacterium thrives in warm, humid climates. Optimal temperature for psyllid reproduction is 20-30\u00b0C.",
+      "preventive_measures": [
+        "Use only certified disease-free planting material.",
+        "Strict quarantine measures to prevent introduction of infected material or psyllids.",
+        "Eradicate infected trees as soon as they are detected.",
+        "Maintain vigilant monitoring for citrus psyllids and HLB symptoms.",
+        "Promote natural enemies of citrus psyllids.",
+        "Regular insecticide application targeting psyllid vector (especially in new plantings)."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Intensive trapping of citrus psyllids using yellow sticky traps.",
+          "Release of natural enemies like Tamarixia radiata (parasitoid of psyllid nymphs).",
+          "Application of neem oil (5ml/L) to deter psyllids.",
+          "Regular removal and destruction of infected trees."
+        ],
+        "chemical": [
+          "Systemic insecticides like Imidacloprid (0.5 ml/L) or Acetamiprid (0.5 g/L) to control citrus psyllid vector.",
+          "Foliar application of antibiotics like Oxytetracycline hydrochloride (1000 ppm) can suppress symptoms but does not cure the disease and is often restricted.",
+          "Systematic eradication of infected trees is the most effective strategy."
+        ],
+        "dosage_notes": "Vector control is paramount. Insecticides should be applied judiciously and rotated to prevent resistance. Antibiotic treatments are controversial and often not recommended for long-term management."
+      }
+    },
+    "citrus_black_spot": {
+      "name": "Citrus Black Spot",
+      "scientific_name": "Guignardia citricarpa",
+      "symptoms": [
+        "Small, sunken spots on the fruit surface that may be light brown (early stage) or dark brown to black (hard spot).",
+        "Hard spots are typically small, circular, and black, often with a narrow reddish-brown margin.",
+        "Virulent strains can cause larger, irregular necrotic areas, sometimes called 'flyspeck' or 'measles'.",
+        "Leaf lesions are rare but can occur as small, dark spots."
+      ],
+      "favorable_conditions": "High humidity (above 90%), prolonged leaf wetness, and moderate temperatures (20-28\u00b0C) during the flowering and fruit development stages are ideal for infection. Rain splash is the primary mode of spore dispersal.",
+      "preventive_measures": [
+        "Use disease-free planting material.",
+        "Improve air circulation by pruning.",
+        "Remove infected leaves and debris from the orchard.",
+        "Avoid overhead irrigation; use drip irrigation.",
+        "Proper orchard sanitation."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Foliar application of Bio-fungicides like Bacillus subtilis formulations.",
+          "Application of Copper Oxychloride (0.3%) as a protective spray.",
+          "Mulching to reduce soil splash."
+        ],
+        "chemical": [
+          "Protective foliar sprays of Propiconazole (0.1%) or Carbendazim (0.1%) starting before bloom and continuing at 3-4 week intervals until harvest.",
+          "Copper Oxychloride (0.3%) can be used as an alternative or in rotation.",
+          "Strobilurin fungicides like Azoxystrobin can also be effective."
+        ],
+        "dosage_notes": "Fungicides are most effective when applied preventively. Multiple applications are typically required throughout the susceptible period. Adhere strictly to pre-harvest intervals (PHI)."
+      }
+    },
+    "citrus_scab": {
+      "name": "Citrus Scab",
+      "scientific_name": "Sphaceloma fawcettii",
+      "symptoms": [
+        "Small, raised, irregular, warty or corky lesions on leaves, twigs, and fruits.",
+        "Lesions are typically pale yellow or pinkish in color when young, becoming darker brown to black with age.",
+        "On leaves, lesions can be slightly raised on the upper surface and sunken on the lower.",
+        "On fruits, lesions are rough and can distort the fruit surface.",
+        "In severe cases, young shoots may be stunted and leaves distorted."
+      ],
+      "favorable_conditions": "High humidity, frequent rainfall, and moderate temperatures (18-25\u00b0C) favor the development and spread of citrus scab. Infections typically occur on young, actively growing tissues.",
+      "preventive_measures": [
+        "Use disease-free planting material.",
+        "Prune to improve air circulation and reduce humidity within the canopy.",
+        "Avoid overhead irrigation, especially on young trees.",
+        "Remove infected plant parts during dry periods.",
+        "Plant less susceptible varieties."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Foliar spray of Copper Oxychloride (0.3%).",
+          "Application of Bordeaux mixture (1%) during periods of high risk."
+        ],
+        "chemical": [
+          "Foliar spray of Copper Oxychloride (0.3%) or Mancozeb (0.2%).",
+          "Systemic fungicides like Propiconazole (0.1%) or Carbendazim (0.1%) can also be used.",
+          "Apply sprays when new growth appears and periodically thereafter, especially during wet weather."
+        ],
+        "dosage_notes": "Sprays are most effective when applied to young, expanding tissues. Repeat applications may be necessary at 15-30 day intervals depending on weather conditions and disease severity."
+      }
+    },
+    "collar_rot": {
+      "name": "Collar Rot",
+      "scientific_name": "Sclerotium rolfsii (and other soil-borne fungi)",
+      "symptoms": [
+        "Discoloration and rotting of bark at the collar region and upper root system.",
+        "Sudden wilting of foliage, yellowing, and leaf drop.",
+        "White, cottony mycelial growth may be visible on the soil surface or at the base of the stem, often with small, spherical sclerotia (resembling mustard seeds).",
+        "Trees may eventually die."
+      ],
+      "favorable_conditions": "Poorly drained soils, waterlogging, high soil moisture, and warm temperatures (25-35\u00b0C) favor the pathogen. Fungal growth is promoted by organic matter.",
+      "preventive_measures": [
+        "Ensure good soil drainage.",
+        "Avoid waterlogging around the tree base.",
+        "Maintain proper soil level, ensuring the collar is not buried.",
+        "Remove weeds and organic debris from the tree base.",
+        "Sanitize tools used for pruning.",
+        "Use resistant rootstocks."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Scrape away infected bark and soil from the collar.",
+          "Drench the soil around the base with Trichoderma viride (20g/L water) or Pseudomonas fluorescens (20g/L water).",
+          "Apply FYM enriched with Trichoderma."
+        ],
+        "chemical": [
+          "Scrape infected bark and apply Bordeaux paste (10%) or Copper Oxychloride paste (5%).",
+          "Drench the soil around the base of the affected tree with Carbendazim (0.1%) or Metalaxyl (0.2%).",
+          "Apply systemic fungicides like Propiconazole (0.1%) as a soil drench."
+        ],
+        "dosage_notes": "Early detection and intervention are crucial. Soil drenching should be done thoroughly around the base of the affected tree."
+      }
+    },
+    "dieback": {
+      "name": "Dieback",
+      "scientific_name": "Lasiodiplodia theobromae (and other fungi like Diplodia, Colletotrichum)",
+      "symptoms": [
+        "Drying and death of twigs and branches, starting from the tip and progressing inwards.",
+        "Leaves on affected branches turn yellow, wither, and fall off.",
+        "Cankers may form on infected branches.",
+        "In severe cases, entire branches or trees can die.",
+        "Visible black pycnidia (fruiting bodies of the fungus) may be seen on dead bark."
+      ],
+      "favorable_conditions": "Stress conditions such as drought, waterlogging, nutritional deficiencies, frost, or insect damage predispose trees to dieback. High humidity and moderate temperatures favor fungal sporulation and spread.",
+      "preventive_measures": [
+        "Maintain optimal plant nutrition and water management.",
+        "Prune out and destroy all affected branches, cutting well below the visible symptoms into healthy wood.",
+        "Sanitize pruning tools between cuts.",
+        "Protect trees from frost damage.",
+        "Control insect pests that cause wounds.",
+        "Graft on healthy rootstocks."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Prune affected branches and paint the cut ends with Bordeaux paste (10%) or cow dung paste.",
+          "Foliar spray with organic copper formulations."
+        ],
+        "chemical": [
+          "Prune affected branches 15-20 cm into healthy wood and paint the cut ends with Bordeaux paste (10%) or proprietary canker paints.",
+          "Foliar spray with Propiconazole (0.1%) or Carbendazim (0.1%) or Copper Oxychloride (0.3%) after pruning and periodically during wet weather.",
+          "Systemic fungicides like Hexaconazole (0.05%) can also be effective."
+        ],
+        "dosage_notes": "Prompt removal of infected material is critical. Fungicide applications should be made after pruning and during periods conducive to disease development."
+      }
+    },
+    "anthracnose": {
+      "name": "Anthracnose",
+      "scientific_name": "Colletotrichum gloeosporioides (and other Colletotrichum spp.)",
+      "symptoms": [
+        "On leaves: Small, dark spots that enlarge and coalesce, leading to leaf blight and premature defoliation.",
+        "On twigs: Sunken cankers, twig dieback, and death.",
+        "On fruits: Soft, rot spots that enlarge rapidly, often starting at the stem end or where the fruit is injured. Pinkish or orange spore masses may appear on the surface of rotted areas.",
+        "Can cause pre- and post-harvest fruit rot."
+      ],
+      "favorable_conditions": "High humidity, prolonged leaf wetness, and warm temperatures (25-30\u00b0C) are ideal for infection and spread. The pathogen survives on infected plant debris.",
+      "preventive_measures": [
+        "Maintain orchard sanitation, removing infected fallen leaves and fruits.",
+        "Improve air circulation through pruning.",
+        "Avoid wounding fruits during handling.",
+        "Ensure adequate drainage and proper irrigation.",
+        "Plant resistant varieties if available."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Foliar spray with Bordeaux mixture (1%) or Copper Oxychloride (0.3%).",
+          "Application of Neem oil (5ml/L) as a preventive measure."
+        ],
+        "chemical": [
+          "Foliar spray with Mancozeb (0.2%) or Carbendazim (0.1%) or Propiconazole (0.1%).",
+          "Copper Oxychloride (0.3%) is also effective.",
+          "Post-harvest dip in Thiabendazole (0.1%) or Prochloraz (0.075%) can control storage rot."
+        ],
+        "dosage_notes": "Sprays should be applied preventively, especially during periods of high rainfall and humidity. For post-harvest treatment, ensure complete coverage of fruits and observe pre-harvest intervals."
+      }
+    }
+  }
+}

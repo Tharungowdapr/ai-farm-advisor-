@@ -1,0 +1,950 @@
+{
+  "crop_info": {
+    "name": "Sugarcane",
+    "scientific_name": "Saccharum officinarum",
+    "varieties": [
+      "Co-86032",
+      "CoM-0265",
+      "VSI-434",
+      "Co-0238",
+      "Co-94008",
+      "Co-98014",
+      "BO-150",
+      "Kanniyankurichi-3",
+      "Sugandha"
+    ],
+    "total_duration_days": 365,
+    "ideal_climate": {
+      "temperature": "20-35\u00b0C",
+      "rainfall": "1000-1500mm usually irrigated",
+      "humidity": "Moderate to high (70-80% for optimal growth)",
+      "soil_type": "Deep, well-drained sandy loams to clay loams with pH 5.0-8.0"
+    }
+  },
+  "lifecycle_phases": [
+    {
+      "phase_id": "sugar_1_germination_sowing",
+      "phase_name": "Nursery/Sowing",
+      "duration_days": 45,
+      "description": "This initial phase involves preparing the planting material (setts) and establishing them in the field for germination and early seedling growth. It sets the foundation for the entire crop cycle.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Land Preparation",
+          "description": "Deep ploughing (20-25 cm) followed by harrowing to achieve a fine tilth. Incorporate FYM or compost @ 25-30 t/ha and P2O5 @ 60 kg/ha at the time of last harrowing.",
+          "fertilizers_npk": {
+            "basal": {
+              "nitrogen_kg_ha": 0,
+              "phosphorus_kg_ha": 60,
+              "potassium_kg_ha": 0
+            }
+          },
+          "irrigation": "Light irrigation after ploughing if soil is dry.",
+          "pest_management": "NIL"
+        },
+        {
+          "step": 2,
+          "operation": "Seed Sett Selection & Treatment",
+          "description": "Select healthy, mature, disease-free setts (ideally from 8-10 month old plant crop) with 2-3 viable buds. Treat setts with a fungicide (e.g., Carbendazim 0.1% or Mancozeb 0.25%) for 5 minutes to prevent sett rot and other soil-borne diseases.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "NIL",
+          "pest_management": "Fungicide treatment: Carbendazim @ 2.5g/L or Mancozeb @ 2.5g/L of water."
+        },
+        {
+          "step": 3,
+          "operation": "Sett Planting",
+          "description": "Plant setts end-to-end or with a slight overlap in furrows 20-25 cm deep. Ridge and furrow method or flat planting can be adopted based on soil type and drainage. Spacing: 90-120 cm between rows.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "Light irrigation immediately after planting to ensure good soil contact and moisture for germination.",
+          "pest_management": "NIL"
+        },
+        {
+          "step": 4,
+          "operation": "Weed Control (Pre-emergence)",
+          "description": "Apply a pre-emergence herbicide within 2-3 days after planting to control early germinating weeds. Manual weeding may be necessary if herbicide is not used.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "NIL",
+          "pest_management": "Herbicide: Atrazine @ 2 kg a.i./ha or Metolachlor @ 1.5 kg a.i./ha."
+        },
+        {
+          "step": 5,
+          "operation": "Germination Monitoring",
+          "description": "Monitor for bud sprouting and emergence of shoots. This typically starts within 7-14 days depending on variety and environmental conditions.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "Maintain adequate soil moisture. Light irrigation if signs of wilting or dryness are observed.",
+          "pest_management": "Monitor for early signs of shoot borer or termites."
+        },
+        {
+          "step": 6,
+          "operation": "Gap Filling",
+          "description": "After 3-4 weeks of planting, fill in any gaps where germination has failed by replanting treated setts or transplanting healthy seedlings from nursery beds.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "Irrigate the filled areas thoroughly.",
+          "pest_management": "NIL"
+        },
+        {
+          "step": 7,
+          "operation": "First Top Dressing (Nitrogen)",
+          "description": "Apply first dose of nitrogen fertilizer around 30-45 days after planting to promote vegetative growth.",
+          "fertilizers_npk": {
+            "top_dressing_1": {
+              "nitrogen_kg_ha": 50,
+              "phosphorus_kg_ha": 0,
+              "potassium_kg_ha": 0
+            }
+          },
+          "irrigation": "Irrigate after fertilizer application.",
+          "pest_management": "Monitor for aphids and leafhoppers."
+        },
+        {
+          "step": 8,
+          "operation": "Partial Earthing Up",
+          "description": "Perform a light earthing up to cover the sett bases and encourage root development. This also helps in weed suppression.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "NIL",
+          "pest_management": "NIL"
+        }
+      ],
+      "common_diseases": [
+        "red_rot",
+        "pineapple_disease",
+        "sett_rot",
+        "leaf_scald"
+      ],
+      "preventive_tips": [
+        "Select healthy, disease-free seed setts from reputable sources.",
+        "Use certified disease-free planting material whenever possible.",
+        "Treat seed setts with appropriate fungicides before planting.",
+        "Avoid planting in waterlogged conditions.",
+        "Ensure proper field drainage."
+      ]
+    },
+    {
+      "phase_id": "sugar_2_tillering",
+      "phase_name": "Tillering Phase",
+      "duration_days": 90,
+      "description": "This phase is characterized by the emergence of tillers (side shoots) from the main stalk. The number of tillers produced significantly influences the final cane yield and quality. It typically occurs from 45 to 135 days after planting.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Weed Control (Post-emergence)",
+          "description": "Control weeds that emerge after germination through manual weeding or herbicides. This is crucial to reduce competition for nutrients, water, and light.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "NIL",
+          "pest_management": "Herbicide: 2,4-D @ 1 kg a.i./ha or hand weeding."
+        },
+        {
+          "step": 2,
+          "operation": "Second Top Dressing (Nitrogen & Potassium)",
+          "description": "Apply the second dose of nitrogen and the first dose of potassium fertilizer to support tiller development and overall growth.",
+          "fertilizers_npk": {
+            "top_dressing_2": {
+              "nitrogen_kg_ha": 75,
+              "phosphorus_kg_ha": 0,
+              "potassium_kg_ha": 40
+            }
+          },
+          "irrigation": "Irrigate after fertilizer application.",
+          "pest_management": "Monitor for early shoot borer and mealybugs."
+        },
+        {
+          "step": 3,
+          "operation": "Partial Earthing Up",
+          "description": "Perform another round of earthing up (around 60-75 days after planting) to further support the growing tillers, suppress weeds, and improve soil aeration around the root zone.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "NIL",
+          "pest_management": "NIL"
+        },
+        {
+          "step": 4,
+          "operation": "Irrigation Schedule",
+          "description": "Maintain adequate soil moisture, irrigating every 10-15 days depending on soil type and weather conditions. Avoid waterlogging.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "Irrigate as needed, approximately every 10-15 days. Moisture stress can severely impact tiller formation.",
+          "pest_management": "NIL"
+        },
+        {
+          "step": 5,
+          "operation": "Tiller Synchronization/Roguing",
+          "description": "If excessive tillering occurs, some late-formed, weak tillers can be removed (rogued) to ensure optimum tiller population for better cane development. Remove diseased tillers immediately.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "NIL",
+          "pest_management": "Remove diseased tillers promptly to prevent spread."
+        },
+        {
+          "step": 6,
+          "operation": "Pest Monitoring (Early Shoot Borer)",
+          "description": "Closely monitor for Early Shoot Borer infestation. Infested shoots show dead hearts. Early detection is key for effective management.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "NIL",
+          "pest_management": "Granular insecticide application in furrows or stem application of systemic insecticides."
+        },
+        {
+          "step": 7,
+          "operation": "Third Top Dressing (Nitrogen)",
+          "description": "Apply the third dose of nitrogen, mainly to support continued tiller development and early cane elongation.",
+          "fertilizers_npk": {
+            "top_dressing_3": {
+              "nitrogen_kg_ha": 75,
+              "phosphorus_kg_ha": 0,
+              "potassium_kg_ha": 20
+            }
+          },
+          "irrigation": "Irrigate after fertilizer application.",
+          "pest_management": "Monitor for sucking pests like mealybugs and aphids."
+        },
+        {
+          "step": 8,
+          "operation": "Disease Scouting (Smut, Grassy Shoot)",
+          "description": "Regularly scout for signs of fungal diseases like Smut and Grassy Shoot Disease. Prompt identification and removal of infected plants are crucial.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "NIL",
+          "pest_management": "Remove and destroy infected plants immediately. Use disease-resistant varieties."
+        }
+      ],
+      "common_diseases": [
+        "smut",
+        "grassy_shoot_disease",
+        "red_rot",
+        "leaf_scald",
+        "early_shoot_borer"
+      ],
+      "preventive_tips": [
+        "Maintain optimum tiller population by roguing weak or late tillers.",
+        "Ensure timely and adequate nitrogen and potassium application.",
+        "Control weeds effectively to prevent competition.",
+        "Monitor and manage early shoot borer infestation promptly.",
+        "Use disease-resistant varieties."
+      ]
+    },
+    {
+      "phase_id": "sugar_3_grand_growth",
+      "phase_name": "Grand Growth Phase",
+      "duration_days": 150,
+      "description": "This phase, typically from 135 to 285 days after planting, is characterized by rapid elongation of the main stalks and tillers, leading to significant increase in cane weight and juice accumulation. It has the highest demand for water and nutrients.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Final Earthing Up",
+          "description": "Perform the final earthing up to provide support to the rapidly growing, heavy canes, prevent lodging, and cover the developing root system. This also helps in further weed suppression.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "NIL",
+          "pest_management": "NIL"
+        },
+        {
+          "step": 2,
+          "operation": "Trash Mulching",
+          "description": "Apply trash (dried leaves) removed from the lower portion of the canes as mulch between rows. This conserves soil moisture, suppresses weeds, and adds organic matter to the soil.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "NIL",
+          "pest_management": "NIL"
+        },
+        {
+          "step": 3,
+          "operation": "Application of NPK Fertilizers (Main Dose)",
+          "description": "Apply the remaining dose of N, P, and K fertilizers. The exact dosage will depend on soil test recommendations and variety.",
+          "fertilizers_npk": {
+            "top_dressing_4": {
+              "nitrogen_kg_ha": 75,
+              "phosphorus_kg_ha": 40,
+              "potassium_kg_ha": 60
+            }
+          },
+          "irrigation": "Irrigate thoroughly after fertilizer application.",
+          "pest_management": "Monitor for borers and white flies."
+        },
+        {
+          "step": 4,
+          "operation": "Propping/Staking",
+          "description": "For tall varieties or in areas prone to lodging, propping or staking of canes using bamboo poles or ropes is recommended to prevent breakage and damage, especially during windy periods or heavy rains.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "NIL",
+          "pest_management": "NIL"
+        },
+        {
+          "step": 5,
+          "operation": "Irrigation Management",
+          "description": "Maintain consistent soil moisture. Irrigate at critical growth stages, especially during grand growth. Avoid both water stress and waterlogging. Frequent irrigation is needed during this period.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "Irrigate every 7-10 days, or as required by soil and weather conditions. Total irrigation requirement is high.",
+          "pest_management": "Monitor for stalk borer and root borer."
+        },
+        {
+          "step": 6,
+          "operation": "Detrashing",
+          "description": "Remove the lower dry leaves (detrashing) periodically. This improves aeration, sunlight penetration, and reduces humidity around the base, which can help in controlling pests and diseases.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "NIL",
+          "pest_management": "Reduces habitat for mealybugs and other pests."
+        },
+        {
+          "step": 7,
+          "operation": "Pest and Disease Monitoring",
+          "description": "Continue vigilant monitoring for pests like internode borer, top borer, and diseases like Red Rot and Wilt. Implement integrated pest and disease management strategies.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "NIL",
+          "pest_management": "Regular scouting, release of natural enemies, application of bio-pesticides or chemical pesticides as needed."
+        },
+        {
+          "step": 8,
+          "operation": "Formative Pruning (if applicable)",
+          "description": "In some systems, selective removal of immature or over-aged stalks might be done to channel resources to the most promising canes for improved sugar development.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "NIL",
+          "pest_management": "NIL"
+        }
+      ],
+      "common_diseases": [
+        "red_rot",
+        "wilt",
+        "internode_borer",
+        "top_borer",
+        "leaf_scald",
+        "root_grub"
+      ],
+      "preventive_tips": [
+        "Ensure balanced nutrition with adequate NPK application.",
+        "Maintain optimal soil moisture without waterlogging.",
+        "Implement trash mulching to conserve moisture and suppress weeds.",
+        "Provide support (propping) to prevent lodging.",
+        "Regularly detrash the lower leaves.",
+        "Monitor and manage borers and soil pests effectively."
+      ]
+    },
+    {
+      "phase_id": "sugar_4_maturation",
+      "phase_name": "Maturation & Ripening",
+      "duration_days": 80,
+      "description": "This phase, typically from 285 days to harvest (around 365 days), focuses on the accumulation of sugars (sucrose) within the cane stalk. Vegetative growth slows down, and the cane matures. Juice quality parameters like brix, purity, and sucrose content improve.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Irrigation Withdrawal",
+          "description": "Gradually reduce and then stop irrigation 15-20 days before the intended harvest date. This practice helps in increasing the sugar content by reducing water dilution in the cane stalk.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "Cease irrigation 15-20 days prior to harvest.",
+          "pest_management": "NIL"
+        },
+        {
+          "step": 2,
+          "operation": "Final Detrashing & Weed Control",
+          "description": "Complete any remaining detrashing and ensure the field is free from weeds to facilitate harvesting and reduce potential for pest infestation.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "NIL",
+          "pest_management": "NIL"
+        },
+        {
+          "step": 3,
+          "operation": "Quality Assessment (Brix & Purity)",
+          "description": "Periodically check the brix (total soluble solids) and purity of juice from a representative sample of canes using a hand refractometer. Harvest when brix readings are consistently high and purity is good.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "NIL",
+          "pest_management": "NIL"
+        },
+        {
+          "step": 4,
+          "operation": "Pest and Disease Check (Rats & Rot)",
+          "description": "Monitor for rodent damage and any late-season fungal infections like Red Rot, which can reduce quality. Implement control measures if necessary.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "NIL",
+          "pest_management": "Baiting for rats. If Red Rot is observed, harvest affected patches first."
+        },
+        {
+          "step": 5,
+          "operation": "Harvest Planning",
+          "description": "Plan the harvest based on maturity, sugar content, and crushing capacity of the mill. Harvest during cooler parts of the day to minimize sucrose loss.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "NIL",
+          "pest_management": "NIL"
+        },
+        {
+          "step": 6,
+          "operation": "Harvesting",
+          "description": "Harvest canes manually or mechanically. Cut canes close to the ground to maximize yield. Remove excess trash and tops immediately after cutting.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "NIL",
+          "pest_management": "NIL"
+        },
+        {
+          "step": 7,
+          "operation": "Post-Harvest Handling",
+          "description": "Transport harvested canes to the mill as quickly as possible (within 24-48 hours) to prevent degradation of sucrose and quality loss.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "NIL",
+          "pest_management": "NIL"
+        },
+        {
+          "step": 8,
+          "operation": "Field Cleanup for Plant Crop",
+          "description": "After harvest, clear the field of trash and stubbles. Prepare the field for the subsequent ratoon crop if planned, or for planting a new crop.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "NIL",
+          "pest_management": "NIL"
+        }
+      ],
+      "common_diseases": [
+        "red_rot",
+        "wilt",
+        "ratoon_stunting_disease",
+        "red_stripe"
+      ],
+      "preventive_tips": [
+        "Avoid late-season nitrogen application to promote ripening.",
+        "Withhold irrigation 15-20 days before harvest.",
+        "Harvest mature canes promptly to prevent quality deterioration.",
+        "Transport canes to the mill quickly after harvest.",
+        "Protect harvested canes from rodent damage."
+      ]
+    },
+    {
+      "phase_id": "sugar_5_post_harvest",
+      "phase_name": "Post-Harvest",
+      "duration_days": 30,
+      "description": "This phase includes field cleanup, management of harvest residues, and preparation for the next crop cycle or ratoon management. It's crucial for soil health and disease prevention.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Field Cleanup",
+          "description": "Remove all harvest residues, including trash and cane tops, from the field to prevent harbouring of pests and diseases.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "NIL",
+          "pest_management": "NIL"
+        },
+        {
+          "step": 2,
+          "operation": "Stubble Management (for Ratooning)",
+          "description": "If a ratoon crop is planned, manage the stubbles. This may involve shallow cultivation, application of fertilizers, and irrigation to encourage regrowth.",
+          "fertilizers_npk": {
+            "basal": {
+              "nitrogen_kg_ha": 60,
+              "phosphorus_kg_ha": 30,
+              "potassium_kg_ha": 40
+            }
+          },
+          "irrigation": "Irrigate after stubble management and fertilizer application.",
+          "pest_management": "Monitor for ratoon stunting disease. Ensure healthy stubbles."
+        },
+        {
+          "step": 3,
+          "operation": "Soil Amendment",
+          "description": "Incorporate crop residues into the soil where possible, or apply organic amendments like FYM or compost to improve soil structure and fertility for the next crop.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "NIL",
+          "pest_management": "NIL"
+        },
+        {
+          "step": 4,
+          "operation": "Deep Ploughing (if replanting)",
+          "description": "If a new plant crop is to be established, deep ploughing is essential to break hardpans and improve soil aeration.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "NIL",
+          "pest_management": "Helps to control soil-borne pests and pathogens."
+        },
+        {
+          "step": 5,
+          "operation": "Disease Control in Stubble",
+          "description": "If diseases were prevalent, consider fungicide application to the stubble to reduce inoculum for the next crop or ratoon.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "NIL",
+          "pest_management": "Fungicide drench (e.g., Carbendazim)."
+        },
+        {
+          "step": 6,
+          "operation": "Equipment Maintenance",
+          "description": "Clean and service all agricultural equipment used for planting, cultivation, and harvesting to ensure they are in good working condition for the next cycle.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "NIL",
+          "pest_management": "NIL"
+        },
+        {
+          "step": 7,
+          "operation": "Seed Selection for Next Planting",
+          "description": "Select healthy, disease-free setts from the harvested crop for planting the next crop, ensuring they are treated appropriately.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "NIL",
+          "pest_management": "Pre-treatment with fungicides and insecticides."
+        },
+        {
+          "step": 8,
+          "operation": "Record Keeping",
+          "description": "Maintain detailed records of the crop cycle, including inputs, operations, yield, pest/disease incidence, and management strategies. This data is valuable for future planning.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "NIL",
+          "pest_management": "NIL"
+        }
+      ],
+      "common_diseases": [
+        "ratoon_stunting_disease",
+        "red_rot",
+        "smut"
+      ],
+      "preventive_tips": [
+        "Remove all harvest residues promptly to prevent disease spread.",
+        "If ratooning, ensure healthy stubbles and timely fertilization.",
+        "Consider soil solarization or fumigation if severe soil-borne diseases are a problem.",
+        "Select and treat seed material carefully for the next planting.",
+        "Practice crop rotation if feasible, especially if disease pressure is high."
+      ]
+    },
+    {
+      "phase_id": "sugar_6_ratoon_growth",
+      "phase_name": "Ratoon Growth",
+      "duration_days": 270,
+      "description": "The ratoon crop is grown from the stubbles left in the field after the harvest of the plant crop. This phase involves encouraging regrowth and nurturing the ratoon until maturity, which generally takes 10-12 months.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Stubble Shaving & Fertilization",
+          "description": "Shave the stubbles to a uniform height (2-3 cm above ground) and apply basal fertilizers (N, P, K) for rapid regrowth.",
+          "fertilizers_npk": {
+            "basal": {
+              "nitrogen_kg_ha": 60,
+              "phosphorus_kg_ha": 30,
+              "potassium_kg_ha": 40
+            }
+          },
+          "irrigation": "Light irrigation immediately after fertilizer application.",
+          "pest_management": "Monitor for root grubs and termites."
+        },
+        {
+          "step": 2,
+          "operation": "Weed Control",
+          "description": "Control weeds as they emerge, using herbicides or manual weeding, to prevent competition with the developing ratoon crop.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "NIL",
+          "pest_management": "Herbicides or manual weeding."
+        },
+        {
+          "step": 3,
+          "operation": "Tiller Emergence & Thinning",
+          "description": "Observe tiller emergence. If excessive, some weak tillers can be thinned. Monitor for diseases like ratoon stunting disease.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "Maintain adequate moisture.",
+          "pest_management": "Roguing of diseased tillers. Sett treatment for next crop."
+        },
+        {
+          "step": 4,
+          "operation": "Top Dressing (Nitrogen & Potassium)",
+          "description": "Apply top dressings of nitrogen and potassium at intervals to support vegetative growth and tiller development.",
+          "fertilizers_npk": {
+            "top_dressing_1": {
+              "nitrogen_kg_ha": 90,
+              "phosphorus_kg_ha": 0,
+              "potassium_kg_ha": 40
+            },
+            "top_dressing_2": {
+              "nitrogen_kg_ha": 60,
+              "phosphorus_kg_ha": 0,
+              "potassium_kg_ha": 20
+            }
+          },
+          "irrigation": "Irrigate after each top dressing.",
+          "pest_management": "Monitor for sucking pests and borers."
+        },
+        {
+          "step": 5,
+          "operation": "Earthing Up",
+          "description": "Perform earthing up to support the ratoon canes and suppress weeds.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "NIL",
+          "pest_management": "NIL"
+        },
+        {
+          "step": 6,
+          "operation": "Irrigation Management",
+          "description": "Maintain optimal soil moisture, especially during the grand growth phase of the ratoon crop.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "Irrigate every 10-15 days, or as needed. Avoid water stress and waterlogging.",
+          "pest_management": "Monitor for red rot and wilt."
+        },
+        {
+          "step": 7,
+          "operation": "Pest & Disease Management",
+          "description": "Continuously monitor for pests (e.g., internode borer, top borer) and diseases (e.g., red rot, smut, leaf scald). Implement IPM strategies.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "NIL",
+          "pest_management": "Application of bio-pesticides and chemical pesticides as per recommendations."
+        },
+        {
+          "step": 8,
+          "operation": "Maturity & Harvest",
+          "description": "Similar to the plant crop, monitor for maturity (brix, purity) and harvest the ratoon crop when optimal sugar content is achieved.",
+          "fertilizers_npk": {
+            "basal": null
+          },
+          "irrigation": "Reduce irrigation 15-20 days before harvest.",
+          "pest_management": "NIL"
+        }
+      ],
+      "common_diseases": [
+        "ratoon_stunting_disease",
+        "red_rot",
+        "smut",
+        "leaf_scald",
+        "wilt"
+      ],
+      "preventive_tips": [
+        "Ensure healthy stubbles for vigorous regrowth.",
+        "Provide timely and adequate nutrition, especially nitrogen and potassium.",
+        "Manage weeds effectively to reduce competition.",
+        "Monitor and control pests and diseases promptly.",
+        "Harvest the ratoon crop at optimal maturity for best sugar recovery."
+      ]
+    }
+  ],
+  "disease_protocols": {
+    "red_rot": {
+      "name": "Red Rot",
+      "scientific_name": "Colletotrichum falcatum",
+      "symptoms": [
+        "Longitudinal red streaks on the leaf sheath and midrib.",
+        "Internal tissues of the cane rot, appearing reddish with whitish, oval patches (lesions).",
+        "An alcoholic or fermented smell emanates from affected canes.",
+        "Wilting and drying of leaves from the top downwards, while the rind remains intact.",
+        "Girdling of affected stalks with lesions."
+      ],
+      "favorable_conditions": "High humidity (>80%), warm temperatures (25-30\u00b0C), waterlogged soil conditions, and injuries to the cane (e.g., from borers, harvesting, or hail). Pathogen survival in infected stubbles, soil, and planting material.",
+      "preventive_measures": [
+        "Use disease-free certified seed setts.",
+        "Select resistant or tolerant varieties.",
+        "Practice crop rotation with non-host crops like paddy or pulses for at least one season.",
+        "Ensure proper field drainage and avoid waterlogging.",
+        "Destroy infected plant debris and stubbles.",
+        "Treat seed setts with fungicides before planting.",
+        "Control insect borers that cause injuries to canes."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Soil application of Trichoderma viride or T. harzianum (2.5 kg/ha mixed with FYM) during land preparation or at first earthing up.",
+          "Application of neem cake @ 250 kg/ha at the time of planting."
+        ],
+        "chemical": [
+          "Sett Treatment: Carbendazim 0.1% (2.5g/L) or Mancozeb 0.25% (2.5g/L) for 5 minutes before planting.",
+          "Drenching the soil around the base of affected clumps with Carbendazim (0.1%) or Copper Oxychloride (0.25%) at 3-5 L per clump.",
+          "Foliar spray of Hexaconazole (0.05%) or Propiconazole (0.1%) at 15-day intervals if the disease appears on leaves."
+        ]
+      }
+    },
+    "smut": {
+      "name": "Whip Smut",
+      "scientific_name": "Ustilago scitaminea",
+      "symptoms": [
+        "Affected tillers elongate and develop into long, black, whip-like structures covered with a powdery mass of spores.",
+        "The smut sori are initially covered by a delicate, silvery membrane which ruptures to expose black spore masses.",
+        "The characteristic whip-like structure emerges from the terminal bud.",
+        "Infected plants are stunted and may produce numerous small, grassy shoots.",
+        "The internal tissues of the affected stalk are replaced by the smut fungus."
+      ],
+      "favorable_conditions": "Hot, dry weather (25-30\u00b0C) during the germination period, followed by rains. High inoculum load in planting material and soil. Susceptible varieties are more prone.",
+      "preventive_measures": [
+        "Use resistant or tolerant varieties.",
+        "Select disease-free seed material.",
+        "Treat seed setts with systemic fungicides like Propiconazole or Carbendazim.",
+        "Rogue out and destroy infected clumps immediately upon observation, taking care to bag them to prevent spore dispersal.",
+        "Avoid planting susceptible varieties.",
+        "Maintain good field sanitation."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Removal and destruction of infected plants as soon as they appear. Bag the smut whips before removal to prevent spore release."
+        ],
+        "chemical": [
+          "Sett Treatment: Propiconazole (0.1%) or Carbendazim (0.1%) for 5 minutes before planting.",
+          "Foliar Spray: If the disease appears early, a spray of systemic fungicide like Propiconazole (0.1%) can help check its spread, though it's primarily a sett-borne disease.",
+          "Soil drenching is generally not effective once the disease is established in the tiller."
+        ]
+      }
+    },
+    "grassy_shoot_disease": {
+      "name": "Grassy Shoot Disease (GSD)",
+      "scientific_name": "Phytoplasma spp. (transmitted by aphids)",
+      "symptoms": [
+        "Affected buds proliferate into numerous thin, wiry, grassy shoots, giving the plant a bushy appearance.",
+        "These shoots are chlorotic (pale yellow to white) due to the absence of chlorophyll.",
+        "No proper cane formation occurs, and the plant becomes unproductive.",
+        "The disease is systemic and affects the entire plant.",
+        "Leaves are thin, narrow, and often chlorotic."
+      ],
+      "favorable_conditions": "High humidity and moderate temperatures favour the development and spread of the aphid vectors. The phytoplasma is transmitted by various aphid species. Infected planting material is a major source of spread.",
+      "preventive_measures": [
+        "Use disease-free planting material.",
+        "Hot Water Treatment (HWT) of setts at 52\u00b0C for 30 minutes or Moist Hot Air (MHA) treatment at 54\u00b0C for 2 hours is highly effective in eliminating the phytoplasma from planting material.",
+        "Control aphid vectors using insecticides.",
+        "Rogue out and destroy infected clumps immediately.",
+        "Use disease-tolerant varieties if available."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Regular monitoring for aphid vectors and their control using natural predators or neem-based formulations.",
+          "Immediate uprooting and destruction of infected plants."
+        ],
+        "chemical": [
+          "Vector Control: Spraying with Dimethoate (0.05%) or Imidacloprid (0.01%) to control aphid vectors.",
+          "No chemical cure for the established disease; prevention through healthy planting material and vector control is paramount."
+        ]
+      }
+    },
+    "wilt": {
+      "name": "Sugarcane Wilt",
+      "scientific_name": "Fusarium sacchari (syn. Gibberella fujikuroi var. subglutinans)",
+      "symptoms": [
+        "Gradual drying and yellowing of leaves, starting from the tip.",
+        "The affected stalk becomes hollow, light in weight, and brittle.",
+        "Internal vascular tissues turn purplish-brown, and dark streaks may be visible.",
+        "A characteristic offensive odour may be present in severely affected canes.",
+        "The entire plant may wither and die over a period of weeks."
+      ],
+      "favorable_conditions": "Drought stress followed by heavy rainfall or waterlogging. High soil temperatures during planting. Pathogen present in the soil and planting material. Injuries to roots and stems.",
+      "preventive_measures": [
+        "Use healthy, disease-free seed setts, preferably from wilt-free areas.",
+        "Treat seed setts with fungicides (e.g., Carbendazim).",
+        "Ensure proper irrigation and drainage to avoid drought stress and waterlogging.",
+        "Practice crop rotation with non-host crops.",
+        "Avoid ratooning in heavily wilt-infested fields.",
+        "Destroy infected plant debris."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Soil application of FYM or compost enriched with beneficial microbes.",
+          "Application of neem cake to the soil."
+        ],
+        "chemical": [
+          "Sett Treatment: Carbendazim (0.1%) or Mancozeb (0.25%) for 5 minutes before planting.",
+          "Drenching the soil with Carbendazim (0.1%) around the base of affected plants.",
+          "Foliar application of systemic fungicides like Hexaconazole (0.05%) can provide some protection."
+        ]
+      }
+    },
+    "leaf_scald": {
+      "name": "Leaf Scald",
+      "scientific_name": "Xanthomonas albilineans",
+      "symptoms": [
+        "Water-soaked streaks appear along the leaf margins, which enlarge and coalesce.",
+        "These streaks turn reddish-brown and develop a characteristic scalded appearance.",
+        "In severe cases, the entire leaf may dry out.",
+        "A thin, white, or pale yellow line (scald line) develops along the midrib, separating the green tissue from the diseased area.",
+        "Stunting and reduced vigour of the plant."
+      ],
+      "favorable_conditions": "Warm, humid conditions favour the spread of the bacterium. Rain splash and irrigation water are important dispersal agents. The pathogen can survive in infected plant debris and planting material.",
+      "preventive_measures": [
+        "Use disease-free certified seed setts.",
+        "Select resistant varieties.",
+        "Treat seed setts with hot water (50\u00b0C for 30 minutes) or systemic bactericides.",
+        "Avoid overhead irrigation that can splash water and spread the bacterium.",
+        "Practice crop rotation.",
+        "Destroy infected plant material."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Prompt removal and destruction of infected plants.",
+          "Improving drainage to reduce humidity."
+        ],
+        "chemical": [
+          "Bactericide Treatment: Treating seed setts with systemic bactericides like Streptocycline (100 ppm) or Copper Sulphate (1%).",
+          "Foliar Spray: Spraying Copper Oxychloride (0.25%) or Streptocycline (100 ppm) on young plants if the disease appears."
+        ]
+      }
+    },
+    "pineapple_disease": {
+      "name": "Pineapple Disease",
+      "scientific_name": "Thielaviopsis paradoxa",
+      "symptoms": [
+        "Affected setts fail to germinate or produce weak shoots.",
+        "Internal tissues of the sett rot and turn a reddish-brown colour, with a characteristic 'pineapple-like' odour.",
+        "Black streaks may be visible in the vascular bundles.",
+        "The pith becomes soft and degenerates."
+      ],
+      "favorable_conditions": "Warm, moist soil conditions favour the development of the fungus. Poorly drained soils and damaged setts are more susceptible. Survival in soil and infected plant debris.",
+      "preventive_measures": [
+        "Use healthy, mature seed setts free from mechanical damage.",
+        "Treat seed setts with fungicides (e.g., Mancozeb, Carbendazim).",
+        "Ensure proper field drainage and avoid planting in waterlogged areas.",
+        "Deep planting of setts can help prevent infection.",
+        "Rotate crops."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Application of Trichoderma based bio-fungicides to the soil.",
+          "Incorporation of well-decomposed organic matter."
+        ],
+        "chemical": [
+          "Sett Treatment: Mancozeb (0.25%) or Carbendazim (0.1%) for 5 minutes before planting.",
+          "Application of Captan or Thiram in furrows at planting can also be beneficial."
+        ]
+      }
+    },
+    "internode_borer": {
+      "name": "Internode Borer",
+      "scientific_name": "Chilo sacchariphagus indicus",
+      "symptoms": [
+        "Entry and exit holes on the internodes of the cane.",
+        "Infested internodes become hollowed out, reducing cane weight and sugar content.",
+        "Presence of larval frass (excreta) at the bore holes.",
+        "Reddish discolouration of affected internodes.",
+        "Reduced juice quality and millability."
+      ],
+      "favorable_conditions": "Warm and humid conditions favour the multiplication of the pest. Multiple generations per year. Overwintering in stubbles and trash.",
+      "preventive_measures": [
+        "Regular detrashing of canes to expose borer holes.",
+        "Timely earthing up to cover entry holes.",
+        "Destroying infested canes and stubbles.",
+        "Application of trash mash for mulching can suppress pest activity.",
+        "Intercropping with legumes can help attract natural enemies.",
+        "Use of resistant varieties if available."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Release of natural enemies like Trichogramma chilonis (parasitoid wasp) @ 50,000 adults per ha, 2-3 times at weekly intervals.",
+          "Application of neem seed kernel extract (NSKE 5%) or Azadirachtin based formulations.",
+          "Release of indigenous natural enemies of borers."
+        ],
+        "chemical": [
+          "Pheromone traps for monitoring and mass trapping.",
+          "Installation of bird perches to encourage predation.",
+          "Stem application of systemic insecticides like Fipronil (0.03%) or Cartap Hydrochloride (0.1%) at 1 ml/cane or 1g/cane respectively.",
+          "Granular insecticides like Phorate (10 G) @ 10 kg/ha or Carbofuran (3 G) @ 10 kg/ha in furrows at planting or earthing up.",
+          "Foliar spray of Chlorpyriphos (0.05%) or Quinalphos (0.05%) during peak infestation."
+        ]
+      }
+    },
+    "top_borer": {
+      "name": "Top Borer",
+      "scientific_name": "Scirpophaga excerptalis",
+      "symptoms": [
+        "The larva bores into the top portion of the cane, causing the central shoot to wither and dry up, known as 'dead heart of the top'.",
+        "Affected leaves turn yellow and dry from the tip downwards.",
+        "Multiple entry holes are often seen in the spindle leaves.",
+        "The boreholes may be sealed with frass.",
+        "Reduced cane growth and yield."
+      ],
+      "favorable_conditions": "Warm and humid conditions favour the pest. Several generations per year. Overwinters in stubbles and in tunnels in the cane stalk.",
+      "preventive_measures": [
+        "Removal and destruction of dead hearts (affected tops).",
+        "Regular detrashing to expose borer tunnels.",
+        "Destruction of infested plant debris and stubbles.",
+        "Pruning of affected leaf whorls.",
+        "Intercropping with legumes to promote natural enemies.",
+        "Judicious use of fertilizers, especially nitrogen."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Release of parasitoids like Trichogramma spp. and Sturmiopsis inferens.",
+          "Application of neem formulations (NSKE 5% or Azadirachtin).",
+          "Encouraging natural predators."
+        ],
+        "chemical": [
+          "Pheromone traps for monitoring and mass trapping.",
+          "Stem application of systemic insecticides like Fipronil (0.03%) or Cartap Hydrochloride (0.1%) at 1 ml/cane or 1g/cane.",
+          "Granular insecticides applied in the whorl at the base of the plant.",
+          "Foliar spray of insecticides like Chlorpyriphos (0.05%) or Acephate (0.075%) when infestation is high."
+        ]
+      }
+    },
+    "ratoon_stunting_disease": {
+      "name": "Ratoon Stunting Disease (RSD)",
+      "scientific_name": "Citrobacter freundii (bacterium)",
+      "symptoms": [
+        "Stunting of the ratoon crop, resulting in reduced vigour and lower yields.",
+        "Yellowing of leaves, particularly at the leaf tips and margins.",
+        "Shortened internodes, giving the cane a stunted appearance.",
+        "Affected canes are lighter in weight and have poor juice quality.",
+        "Internal orange-red discoloration of vascular bundles in the stem base may be visible."
+      ],
+      "favorable_conditions": "The bacterium is transmitted through infected planting material, contaminated cutting knives, and machinery. Poor sanitation practices facilitate spread. Can persist in stubbles.",
+      "preventive_measures": [
+        "Use certified disease-free planting material for both plant and ratoon crops.",
+        "Sterilize cutting knives and machinery between fields or use disposable blades.",
+        "Hot Water Treatment (HWT) of setts at 50\u00b0C for 2 hours is effective.",
+        "Avoid ratooning from severely diseased fields.",
+        "Maintain good field sanitation."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Prompt removal and destruction of severely stunted and unproductive ratoon stools."
+        ],
+        "chemical": [
+          "No chemical treatment is effective against established RSD. Prevention through healthy planting material and sanitation is key.",
+          "Post-harvest treatment of stubbles with appropriate bactericides can be considered as a preventative measure before ratoon emergence."
+        ]
+      }
+    }
+  }
+}

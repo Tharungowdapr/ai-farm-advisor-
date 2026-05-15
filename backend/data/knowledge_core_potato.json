@@ -1,0 +1,683 @@
+{
+  "crop_info": {
+    "name": "Potato",
+    "scientific_name": "Solanum tuberosum L.",
+    "family": "Solanaceae",
+    "origin": "Andes region of South America",
+    "crop_type": "Tuberous vegetable crop",
+    "total_duration_days": {
+      "short_duration": 70,
+      "medium_duration": 90,
+      "long_duration": 120
+    },
+    "ideal_climate": {
+      "temperature": {
+        "sprouting": "15-20\u00b0C",
+        "vegetative_growth": "18-25\u00b0C",
+        "tuberization": "15-20\u00b0C",
+        "tuber_bulking": "18-22\u00b0C",
+        "maturation": "15-20\u00b0C"
+      },
+      "rainfall": "600-1200 mm annually, distributed evenly during growth, but reduced during maturity for harvesting.",
+      "humidity": "High humidity favors certain diseases like Late Blight, so good air circulation is important.",
+      "soil_type": "Deep, well-drained, friable sandy loam or loam soils with a pH of 5.2-6.4.",
+      "sunlight": "Full sun, at least 6-8 hours of direct sunlight per day."
+    },
+    "economic_importance": "Fourth largest food crop globally, a major source of carbohydrates, vitamins (especially Vitamin C and B6), and minerals (potassium). Widely used for direct consumption, processing (fries, chips), and starch production.",
+    "varieties": [
+      "Kufri Jyoti",
+      "Kufri Chandramukhi",
+      "Kufri Bahar",
+      "Kufri Himmani",
+      "Kufri Pukhraj",
+      "Kufri Chipsona 1",
+      "Kufri Chipsona 2",
+      "Kufri Chipsona 3",
+      "Atlantic",
+      "Russet Burbank",
+      "Desiree"
+    ]
+  },
+  "lifecycle_phases": [
+    {
+      "phase_id": "potato_1_nursery_sowing",
+      "phase_name": "Nursery Preparation & Sowing",
+      "duration_days": {
+        "min": 15,
+        "max": 25
+      },
+      "description": "This phase involves preparing the seed material and the nursery bed for planting. Seed tubers are selected, treated to prevent diseases and pests, and then planted at the optimal depth and spacing.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Seed Tuber Selection & Preparation",
+          "details": "Select healthy, disease-free, certified seed tubers of appropriate size (30-50g). Cut larger tubers into pieces ensuring each piece has at least 2-3 healthy eyes. Allow cut surfaces to cure for 2-3 days in a shaded, airy place to prevent rotting.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "Light watering if soil is very dry before planting.",
+          "pest_management": "None specific to this stage, focus on healthy seed."
+        },
+        {
+          "step": 2,
+          "operation": "Seed Tuber Treatment (Disease Prevention)",
+          "details": "Treat seed tubers with fungicides and insecticides to prevent soil-borne diseases and early pest infestation. Common treatments include Mancozeb (0.25%) or Carbendazim (0.1%) for fungal diseases, and imidacloprid (0.05%) for insect pests. Alternatively, immerse in a solution of Trichoderma viride (10g/L water) for 20 minutes.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "N/A",
+          "pest_management": "Fungicide and insecticide dips."
+        },
+        {
+          "step": 3,
+          "operation": "Field Preparation",
+          "details": "Plough the field to a depth of 20-25 cm. Harrow to obtain a fine tilth. Incorporate well-decomposed farmyard manure (FYM) at 20-25 tonnes/ha and P2O5 at 40-60 kg/ha (as SSP or DAP) and K2O at 40-60 kg/ha (as MOP) into the soil during the last ploughing.",
+          "fertilizer_npk_kg_ha": "N:0, P:40-60, K:40-60",
+          "irrigation_schedule": "Pre-sowing irrigation if soil is dry.",
+          "pest_management": "Soil solarization in summer can reduce soil-borne pests and diseases."
+        },
+        {
+          "step": 4,
+          "operation": "Ridge and Furrow Formation",
+          "details": "Form ridges and furrows at a spacing of 60 cm (for mechanically planted crops) or 45-60 cm (for manual planting) between rows. Ridges should be 15-20 cm high.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "N/A",
+          "pest_management": "N/A"
+        },
+        {
+          "step": 5,
+          "operation": "Planting of Seed Tubers",
+          "details": "Place seed tubers in the furrows on one side of the ridge at a spacing of 20-25 cm between tubers. Ensure the eye buds are facing upwards. Cover the tubers with 5-7 cm of soil.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "Light irrigation after planting to ensure good tuber-soil contact and initiate sprouting.",
+          "pest_management": "Monitor for cutworms and soil grubs during planting."
+        },
+        {
+          "step": 6,
+          "operation": "Initial Sprouting & Emergence Monitoring",
+          "details": "Monitor for uniform sprouting and emergence of shoots from the soil. This typically occurs within 10-20 days depending on temperature and seed quality.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "Maintain adequate soil moisture in the seed zone (field capacity). Avoid waterlogging.",
+          "pest_management": "Watch for signs of wireworms or white grubs damaging emerging sprouts."
+        }
+      ]
+    },
+    {
+      "phase_id": "potato_2_vegetative",
+      "phase_name": "Vegetative Growth & Haulm Development",
+      "duration_days": {
+        "min": 25,
+        "max": 40
+      },
+      "description": "This phase is characterized by the rapid growth of stems and leaves (haulm), forming a canopy. Stolons begin to develop from the underground stems, which will later form tubers.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Earthing Up (First)",
+          "details": "When the plants reach a height of 15-20 cm (around 20-25 days after planting), perform the first earthing up. This involves drawing soil from the furrows and depositing it around the base of the plants, forming a higher ridge. This promotes stolon development and tuber formation, and helps protect tubers from light.",
+          "fertilizer_npk_kg_ha": "N:30-40, P:0, K:30-40",
+          "irrigation_schedule": "Irrigate before earthing up if soil is dry.",
+          "pest_management": "Monitor for aphids and leafhoppers. Apply neem oil (5 ml/L) or soap solution (10 g/L) if infestation is noticed."
+        },
+        {
+          "step": 2,
+          "operation": "Top Dressing Fertilization (First)",
+          "details": "Apply Nitrogen (N) and Potassium (K) fertilizers during the first earthing up. Apply N at 30-40 kg/ha and K2O at 30-40 kg/ha (as Urea and MOP respectively). This supports rapid haulm growth.",
+          "fertilizer_npk_kg_ha": "N:30-40, P:0, K:30-40",
+          "irrigation_schedule": "Light irrigation after fertilizer application.",
+          "pest_management": "N/A"
+        },
+        {
+          "step": 3,
+          "operation": "Weed Control",
+          "details": "Maintain a weed-free field during this phase. Manual weeding or intercultural operations like hoeing are crucial. Pre-emergence application of herbicides like Metribuzin (0.5 kg a.i./ha) can be done, but ensure compatibility with the variety and avoid during critical growth stages.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "N/A",
+          "pest_management": "Weeds compete for nutrients, water, and light, and can harbor pests and diseases."
+        },
+        {
+          "step": 4,
+          "operation": "Irrigation Management",
+          "details": "Maintain adequate soil moisture, especially during dry spells. Aim for soil moisture content around 60-70% of field capacity. Avoid waterlogging, which can lead to root diseases. Drip irrigation can be highly efficient.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "Light irrigations every 7-10 days depending on rainfall and soil type.",
+          "pest_management": "Water stress can predispose plants to certain pests and diseases."
+        },
+        {
+          "step": 5,
+          "operation": "Pest Monitoring (Aphids & Leafhoppers)",
+          "details": "Regularly scout for aphid and leafhopper populations. These pests transmit viral diseases (e.g., Potato virus Y, Leafroll virus) which severely impact yield and tuber quality.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "N/A",
+          "pest_management": "Systemic insecticides like imidacloprid (0.02%) or dimethoate (0.03%) can be used if pest levels are high. Biological control agents like ladybugs and lacewings can be encouraged."
+        },
+        {
+          "step": 6,
+          "operation": "Disease Monitoring (Early Blight)",
+          "details": "Keep a close watch for the appearance of Early Blight (Alternaria solani). Early detection is key for effective management.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "N/A",
+          "pest_management": "Refer to disease management protocols."
+        },
+        {
+          "step": 7,
+          "operation": "Earthing Up (Second - Optional)",
+          "details": "A second earthing up may be done around 30-40 days after planting if needed, especially in lighter soils or if stolon development is less robust. This further consolidates soil around developing tubers.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "N/A",
+          "pest_management": "N/A"
+        }
+      ]
+    },
+    {
+      "phase_id": "potato_3_tuberization_bulking",
+      "phase_name": "Tuber Initiation, Bulking & Development",
+      "duration_days": {
+        "min": 30,
+        "max": 45
+      },
+      "description": "This is the most critical phase for yield. Stolons elongate and tubers begin to form and increase in size. Maintaining optimal conditions is paramount for maximizing tuber yield and quality.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Continued Irrigation Management",
+          "details": "Maintain consistent soil moisture at 60-75% of field capacity. Critical for tuber bulking. Avoid wilting, which can lead to internal brown spotting and misshapen tubers. Ensure adequate drainage to prevent tuber rot.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "Frequent light irrigations every 5-7 days, adjusted based on weather conditions.",
+          "pest_management": "Ensure proper irrigation to reduce stress which can make plants susceptible to Late Blight."
+        },
+        {
+          "step": 2,
+          "operation": "Top Dressing Fertilization (Second)",
+          "details": "Apply the remaining Nitrogen (N) and Potassium (K) fertilizers. N: 40-60 kg/ha, K2O: 40-60 kg/ha. This supports tuber bulking. Total N: 80-100 kg/ha, P2O5: 40-60 kg/ha, K2O: 80-100 kg/ha.",
+          "fertilizer_npk_kg_ha": "N:40-60, P:0, K:40-60",
+          "irrigation_schedule": "Apply fertilizer before irrigation.",
+          "pest_management": "N/A"
+        },
+        {
+          "step": 3,
+          "operation": "Disease Monitoring (Late Blight)",
+          "details": "This phase is highly susceptible to Late Blight, especially under cool, humid conditions. Daily monitoring of leaves and stems is crucial.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "Avoid overhead irrigation during periods of high humidity and risk of disease spread.",
+          "pest_management": "Refer to disease management protocols."
+        },
+        {
+          "step": 4,
+          "operation": "Pest Monitoring (Colorado Potato Beetle, Aphids)",
+          "details": "Monitor for the Colorado Potato Beetle (CPB) and persistent aphid populations. CPB larvae can cause significant defoliation, reducing tuber yield and quality.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "N/A",
+          "pest_management": "For CPB, handpicking larvae and adults, or spraying with Bacillus thuringiensis var. tenebrionis (Bt) (5g/L) or spinosad (0.5 ml/L) if infestation is severe."
+        },
+        {
+          "step": 5,
+          "operation": "Foliar Nutrient Application (Optional)",
+          "details": "In case of suspected nutrient deficiencies or stress, foliar application of micronutrients (e.g., zinc, manganese) and potassium can be beneficial. Use formulations recommended for potatoes.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "Apply foliar sprays during cooler parts of the day.",
+          "pest_management": "N/A"
+        },
+        {
+          "step": 6,
+          "operation": "Soil Temperature Management",
+          "details": "Maintain soil temperature below 25\u00b0C for optimal tuber development. Higher temperatures can lead to heat stress, misshapen tubers, and increased susceptibility to certain diseases.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "Adequate soil moisture helps in temperature regulation.",
+          "pest_management": "N/A"
+        },
+        {
+          "step": 7,
+          "operation": "Disease Monitoring (Tuber Diseases)",
+          "details": "Keep an eye for the onset of tuber diseases like scab, black scurf, and tuber rot, which can manifest during this period and affect harvested produce.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "Avoid waterlogging which favors tuber rots.",
+          "pest_management": "Refer to disease management protocols."
+        }
+      ]
+    },
+    {
+      "phase_id": "potato_4_maturation",
+      "phase_name": "Maturation & Senescence",
+      "duration_days": {
+        "min": 10,
+        "max": 20
+      },
+      "description": "In this phase, the plant's vegetative growth slows down, and the leaves and stems begin to yellow and die back (senescence). This indicates that the tubers have reached their final size and are maturing.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Reduction in Irrigation",
+          "details": "Significantly reduce irrigation to allow the tuber skin to 'set' or harden. This improves storage quality and reduces susceptibility to bruising and damage during harvest.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "Stop irrigation or apply only minimal amounts if absolutely necessary to prevent severe wilting.",
+          "pest_management": "N/A"
+        },
+        {
+          "step": 2,
+          "operation": "Dehaulming (Cutting Tops)",
+          "details": "Remove the foliage (haulms) by cutting or burning them 7-14 days before the intended harvest date. This promotes tuber skin setting, reduces the spread of foliage diseases to tubers, and facilitates mechanical harvesting.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "N/A",
+          "pest_management": "Destroys source of disease inoculum on foliage."
+        },
+        {
+          "step": 3,
+          "operation": "Final Disease Check",
+          "details": "Conduct a final check for any remaining foliar or tuber diseases that could affect the harvested crop.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "N/A",
+          "pest_management": "Refer to disease management protocols."
+        },
+        {
+          "step": 4,
+          "operation": "Soil Conditions for Harvest",
+          "details": "Wait for favorable soil conditions for harvest. The soil should be dry and friable, but not excessively hard or cloddy.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "Avoid irrigating for at least 3-5 days before harvest.",
+          "pest_management": "N/A"
+        },
+        {
+          "step": 5,
+          "operation": "Harvesting",
+          "details": "Harvest the tubers using appropriate methods \u2013 manual digging or mechanical harvesters. Handle tubers carefully to minimize damage.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "N/A",
+          "pest_management": "N/A"
+        },
+        {
+          "step": 6,
+          "operation": "Field Sorting & Grading (Initial)",
+          "details": "Remove large clods of soil and any visibly diseased or damaged tubers from the bulk immediately after harvest. Basic grading can be done in the field.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "N/A",
+          "pest_management": "Remove diseased tubers to prevent spread."
+        }
+      ]
+    },
+    {
+      "phase_id": "potato_5_post_harvest",
+      "phase_name": "Post-Harvest Handling & Storage",
+      "duration_days": {
+        "min": 1,
+        "max": 365
+      },
+      "description": "This phase includes grading, curing, storage, and distribution of harvested potato tubers. Proper handling and storage are crucial to maintain tuber quality and prevent losses.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Curing",
+          "details": "Cure harvested tubers in a well-ventilated, humid (90-95%) environment at a temperature of 15-20\u00b0C for 1-2 weeks. This allows any minor cuts and bruises to heal, toughens the skin, and reduces susceptibility to storage rots.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "Maintain high humidity through misting if needed.",
+          "pest_management": "Ensure good air circulation to prevent fungal growth."
+        },
+        {
+          "step": 2,
+          "operation": "Grading",
+          "details": "Grade tubers based on size, shape, and quality. Remove tubers with defects, diseases, or mechanical damage. Different grades are used for different markets (e.g., processing, fresh consumption).",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "N/A",
+          "pest_management": "Remove diseased or damaged tubers to prevent spread."
+        },
+        {
+          "step": 3,
+          "operation": "Storage Preparation",
+          "details": "Store tubers in clean, well-ventilated storage facilities. Ensure the storage area is free from pests and diseases. For long-term storage, controlled temperature and humidity are essential.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "N/A",
+          "pest_management": "Sanitize storage areas before loading tubers."
+        },
+        {
+          "step": 4,
+          "operation": "Storage Conditions",
+          "details": "Ideal storage temperature is 4-7\u00b0C with relative humidity of 85-95%. Lower temperatures (near freezing) can cause internal damage and sweetening (due to starch conversion to sugars), while higher temperatures promote sprouting and respiration, leading to weight loss and quality deterioration.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "N/A",
+          "pest_management": "Monitor for storage pests like potato tuber moth."
+        },
+        {
+          "step": 5,
+          "operation": "Pest Management in Storage",
+          "details": "Implement integrated pest management strategies to control storage pests such as potato tuber moth, weevils, and rodents. This includes sanitation, physical barriers, and biological or chemical controls if necessary.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "N/A",
+          "pest_management": "Use pheromone traps for monitoring. For severe infestations, consult experts for approved fumigation or insecticidal treatments."
+        },
+        {
+          "step": 6,
+          "operation": "Disease Management in Storage",
+          "details": "Prevent and manage storage diseases like bacterial soft rot, dry rot, and late blight rots. Ensure tubers are dry before storage and maintain optimal temperature and humidity.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "Maintain low humidity to prevent fungal and bacterial growth.",
+          "pest_management": "Remove any diseased tubers immediately. Ensure good ventilation."
+        },
+        {
+          "step": 7,
+          "operation": "Market Preparation & Distribution",
+          "details": "Prepare tubers for market based on specific demands (e.g., washing, bagging). Ensure timely distribution to minimize storage duration and spoilage.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "N/A",
+          "pest_management": "N/A"
+        }
+      ]
+    },
+    {
+      "phase_id": "potato_6_reproduction_seed_setting",
+      "phase_name": "Reproduction & Seed Setting (Botanical)",
+      "duration_days": {
+        "min": 20,
+        "max": 30
+      },
+      "description": "While potato is primarily propagated vegetatively via tubers, it does produce flowers and fruits (berries) which contain true seeds. These are primarily used for breeding purposes and developing new varieties, not for commercial propagation of the current crop.",
+      "procedures": [
+        {
+          "step": 1,
+          "operation": "Flowering Period",
+          "details": "Following successful vegetative growth and tuber initiation, many potato varieties will flower. The flowers are typically star-shaped, with five petals, and come in various colors (white, pink, purple, blue).",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "Maintain adequate moisture to support flowering and potential fruit development.",
+          "pest_management": "Protect flowers from aphid infestation, which can transmit viruses."
+        },
+        {
+          "step": 2,
+          "operation": "Pollination",
+          "details": "Pollination can occur naturally via insects (bees, bumblebees) or wind. Cross-pollination between different varieties is important for breeding programs.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "N/A",
+          "pest_management": "Encourage beneficial insects."
+        },
+        {
+          "step": 3,
+          "operation": "Fruit (Berry) Development",
+          "details": "If pollination is successful, small green berries, resembling small tomatoes, will develop from the fertilized flowers. These berries contain true potato seeds.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "Consistent moisture is needed for fruit development.",
+          "pest_management": "N/A"
+        },
+        {
+          "step": 4,
+          "operation": "Seed Maturation",
+          "details": "The berries mature over several weeks, turning yellow, then orange-red, and eventually becoming fleshy and containing numerous small, hard seeds.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "Reduce watering as berries approach full maturity.",
+          "pest_management": "Protect berries from birds and other pests."
+        },
+        {
+          "step": 5,
+          "operation": "Seed Collection",
+          "details": "Collect mature berries and extract the true seeds. This involves pulping the berries and washing to separate seeds from the pulp and gelatinous coating.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "N/A",
+          "pest_management": "N/A"
+        },
+        {
+          "step": 6,
+          "operation": "Seed Drying & Storage",
+          "details": "Dry the extracted true seeds thoroughly. Store in cool, dry conditions in airtight containers. True potato seeds have a relatively long viability when stored correctly.",
+          "fertilizer_npk_kg_ha": "N:0, P:0, K:0",
+          "irrigation_schedule": "N/A",
+          "pest_management": "Store in insect-proof containers."
+        },
+        {
+          "step": 7,
+          "operation": "Seedling Cultivation (Breeding)",
+          "details": "True seeds are germinated under controlled conditions to raise seedlings. These seedlings are then evaluated for desirable traits and used in breeding programs to develop new potato varieties.",
+          "fertilizer_npk_kg_ha": "N: 20-30 (seedling stage)",
+          "irrigation_schedule": "Maintain high humidity and moderate temperature for germination.",
+          "pest_management": "Protect seedlings from damping-off diseases and early pests."
+        }
+      ]
+    }
+  ],
+  "disease_protocols": {
+    "late_blight": {
+      "name": "Late Blight",
+      "scientific_name": "Phytophthora infestans (Mont.) de Bary",
+      "symptoms": [
+        "Water-soaked, pale green lesions on leaves, rapidly expanding into large, irregular necrotic areas.",
+        "White, fuzzy growth on the underside of leaves at the margin of lesions, visible in humid conditions.",
+        "Dark brown to black lesions on stems and petioles, often girdling them.",
+        "Tuber symptoms include purplish-brown, firm, slightly sunken lesions on the surface, and internal discoloration extending into the flesh."
+      ],
+      "favorable_conditions": "High humidity (above 90%), cool temperatures (10-20\u00b0C), prolonged leaf wetness (4-12 hours). Frequent rain and overcast skies are conducive to rapid spread.",
+      "preventive_measures": [
+        "Use disease-free seed tubers.",
+        "Plant resistant or tolerant varieties where available.",
+        "Ensure adequate field drainage.",
+        "Maintain optimal plant spacing for good air circulation.",
+        "Destroy infected plant debris.",
+        "Crop rotation with non-host crops for at least 3-4 years.",
+        "Avoid overhead irrigation, especially during humid periods."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Application of copper-based fungicides like Bordeaux mixture (1%) or copper oxychloride (0.3%) at early stages.",
+          "Sprays of bio-fungicides like Trichoderma viride (10g/L) or Pseudomonas fluorescens (10 ml/L) can provide some protection.",
+          "Application of extracts like garlic (5%) or ginger (5%) may have some repellent effects."
+        ],
+        "chemical": [
+          "Preventive sprays of contact fungicides like Mancozeb (0.25%), Chlorothalonil (0.2%) or Ziram (0.25%) at 10-14 day intervals.",
+          "Curative sprays of systemic or translaminar fungicides containing Cymoxanil + Mancozeb (e.g., 0.25%), Metalaxyl + Mancozeb (e.g., 0.2%), Fosetyl-Al (0.3%) or Azoxystrobin (0.1%) should be applied as soon as symptoms appear.",
+          "Frequency of sprays depends on disease pressure and weather conditions, typically every 7-10 days during epidemics."
+        ]
+      }
+    },
+    "early_blight": {
+      "name": "Early Blight",
+      "scientific_name": "Alternaria solani (Ellis & Martin) Jones & Grout",
+      "symptoms": [
+        "Small, dark brown to black necrotic spots on lower leaves, often appearing as the plant matures.",
+        "Lesions enlarge and develop characteristic 'target' or 'bull's-eye' concentric rings.",
+        "Severe infection leads to defoliation, reducing photosynthetic area and tuber yield.",
+        "May cause lesions on stems and stolons, and occasionally superficial lesions on tubers."
+      ],
+      "favorable_conditions": "Warm temperatures (20-30\u00b0C) and periods of leaf wetness, often aggravated by plant stress (e.g., drought, nutrient deficiency, waterlogging). Most common in the later stages of the crop cycle.",
+      "preventive_measures": [
+        "Use healthy seed tubers.",
+        "Plant tolerant varieties.",
+        "Maintain good field sanitation and remove crop residue.",
+        "Ensure proper nutrition and irrigation to avoid plant stress.",
+        "Crop rotation with non-solanaceous crops.",
+        "Adequate spacing for air circulation."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Foliar sprays of Bordeaux mixture (1%) or copper oxychloride (0.3%) when symptoms are first observed.",
+          "Application of bio-fungicides like Trichoderma (10g/L) or Bacillus subtilis based products.",
+          "Neem oil (5 ml/L) can have some preventive effect."
+        ],
+        "chemical": [
+          "Preventive sprays of contact fungicides like Mancozeb (0.25%), Chlorothalonil (0.2%), Dithane M-45 (0.25%), or Ziram (0.25%) at 10-14 day intervals, especially from tuber bulking stage onwards.",
+          "If disease is severe, switch to systemic fungicides like Carbendazim (0.1%) or Propiconazole (0.1%).",
+          "Application of Copper Hydroxide (0.3%) also provides good control."
+        ]
+      }
+    },
+    "common_scab": {
+      "name": "Common Scab",
+      "scientific_name": "Streptomyces scabies (Thaxter) Waksman & Henrici",
+      "symptoms": [
+        "Variably shaped, rough, corky lesions on the tuber surface, ranging from slightly raised to pitted.",
+        "Lesions may be superficial or penetrate deeper into the tuber flesh.",
+        "Severity depends on the variety, soil pH, and environmental conditions.",
+        "Infected tubers are not edible but can be a cosmetic issue and predisposed to secondary infections."
+      ],
+      "favorable_conditions": "Alkaline soils (pH above 6.0), dry soil conditions during tuber formation and early bulking, and warm soil temperatures (15-25\u00b0C). High soil organic matter can sometimes increase disease incidence.",
+      "preventive_measures": [
+        "Maintain soil pH in the acidic range (5.2-5.8) for susceptible varieties.",
+        "Avoid excessive liming of the soil.",
+        "Use scab-resistant varieties.",
+        "Ensure consistent soil moisture during tuber development to avoid drought stress.",
+        "Use certified disease-free seed tubers.",
+        "Crop rotation with non-host crops."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Application of sulfur to lower soil pH before planting.",
+          "Incorporation of composted organic matter can improve soil health.",
+          "Bio-fumigant cover crops like mustards can help suppress soil pathogens."
+        ],
+        "chemical": [
+          "Seed treatment with Borax (3%) or sterile boric acid for 30 minutes before planting.",
+          "No effective chemical treatment for established infection in the field. Management is primarily preventive through soil pH and moisture control."
+        ]
+      }
+    },
+    "black_scurf_and_stem_canker": {
+      "name": "Black Scurf and Stem Canker",
+      "scientific_name": "Rhizoctonia solani K\u00fchn",
+      "symptoms": [
+        "Black, irregular sclerotia (resting bodies) on the tuber surface, resembling dirt that cannot be washed off.",
+        "Brown, sunken lesions on stems, known as stem cankers, especially at or near the soil line.",
+        "Rotting of seed tubers after planting.",
+        "Stunted growth, wilting, and aerial tubers or shoots from infected stems.",
+        "Reduced plant vigor and yield."
+      ],
+      "favorable_conditions": "Cool, moist soils (10-20\u00b0C) at planting time favor seed piece decay and early infection. Dry spells followed by wet conditions can exacerbate stem canker development.",
+      "preventive_measures": [
+        "Use certified disease-free seed tubers.",
+        "Treat seed tubers with fungicides or biological agents.",
+        "Maintain optimal soil temperature at planting (above 10\u00b0C).",
+        "Ensure good drainage and avoid waterlogged conditions.",
+        "Earthing up at the right time helps protect stems.",
+        "Crop rotation with non-host crops."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Seed treatment with bio-agents like Trichoderma viride (10g/L) or Pseudomonas fluorescens (10 ml/L).",
+          "Application of neem cake (250 kg/ha) during soil preparation.",
+          "Promote healthy plant growth through balanced fertilization."
+        ],
+        "chemical": [
+          "Seed treatment with fungicides like Imazalil (0.2%), Carbendazim (0.1%), or Thiophanate-methyl (0.1%) for 30 minutes.",
+          "Soil application of fungicides like Tebuconazole (0.1%) or PCNB (Pentachloronitrobenzene) before planting or at planting time.",
+          "Preventive sprays with foliar fungicides like Mancozeb during early growth stages if stem cankers are observed."
+        ]
+      }
+    },
+    "bacterial_wilt": {
+      "name": "Bacterial Wilt",
+      "scientific_name": "Ralstonia solanacearum (Smith) Yabuuchi et al.",
+      "symptoms": [
+        "Rapid wilting of leaves and stems, starting from one side of the plant and progressing to the entire plant without yellowing.",
+        "Infected stems may ooze milky bacterial slime when cut and squeezed, especially when placed in water.",
+        "Cut tubers may show a bacterial ooze from the vascular ring.",
+        "Affected plants often die completely within a few days."
+      ],
+      "favorable_conditions": "Warm temperatures (25-35\u00b0C), high soil moisture, and presence of wounds in the plant. Often spreads through contaminated irrigation water, tools, and infected planting material.",
+      "preventive_measures": [
+        "Use disease-free seed tubers from certified sources.",
+        "Strict quarantine measures to prevent introduction of the pathogen.",
+        "Avoid planting in fields previously infested with bacterial wilt.",
+        "Crop rotation with non-host crops for at least 3-5 years.",
+        "Control of alternate hosts like weeds of the Solanaceae family.",
+        "Sanitize farm tools and equipment used in the field.",
+        "Avoid waterlogging and ensure good drainage."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Uprooting and destroying infected plants immediately to prevent spread.",
+          "Application of bio-agents like Pseudomonas fluorescens (10 ml/L) as a soil drench may provide some suppression.",
+          "Avoiding irrigation water from infected sources."
+        ],
+        "chemical": [
+          "No effective chemical control for bacterial wilt once the plant is infected.",
+          "Preventive measures are paramount. In some regions, soil drenching with Copper Oxychloride (0.3%) or Streptocycline (100 ppm) at the base of the plant is attempted, but efficacy is limited.",
+          "Resistant varieties are the most effective control strategy."
+        ]
+      }
+    },
+    "potato_virus_y": {
+      "name": "Potato Virus Y (PVY)",
+      "scientific_name": "Potyvirus family",
+      "symptoms": [
+        "Mosaic patterns (light and dark green areas) on leaves.",
+        "Leaf mottling, crinkling, and stunting of the plant.",
+        "In some varieties, vein necrosis and wilting (stolon necrosis) can occur.",
+        "Tuber symptoms can include internal brown streaks and necrotic spots, reducing quality."
+      ],
+      "favorable_conditions": "Spread by aphids and other sap-sucking insects, especially during warm seasons. Mechanical transmission through infected tools and handling can also occur. High aphid populations accelerate spread.",
+      "preventive_measures": [
+        "Use certified virus-free seed tubers.",
+        "Control aphid populations effectively.",
+        "Eradicate volunteer potato plants and weed hosts.",
+        "Remove and destroy infected plants as soon as symptoms are noticed (roguing).",
+        "Maintain a buffer zone between seed and ware potato fields.",
+        "Consider planting varieties with resistance or tolerance to PVY."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Biological control of aphids using natural enemies like ladybugs, lacewings, and parasitic wasps.",
+          "Application of insecticidal soaps (10 g/L) or neem oil (5 ml/L) to deter aphids.",
+          "Planting trap crops to attract aphids away from the main crop."
+        ],
+        "chemical": [
+          "Systemic insecticides like imidacloprid (0.02%), thiamethoxam (0.02%), or dimethoate (0.03%) can be used for early season aphid control.",
+          "Regular monitoring and application as needed to keep aphid populations below economic threshold levels.",
+          "Avoid late-season application of insecticides that may leave residues."
+        ]
+      }
+    },
+    "tuber_rot": {
+      "name": "Bacterial and Fungal Tuber Rots (e.g., Soft Rot, Dry Rot, Pink Rot)",
+      "scientific_name": "Various pathogens, including Pectobacterium spp., Dickeya spp. (bacterial soft rot), Fusarium spp. (dry rot), Phytophthora erythroseptica (pink rot)",
+      "symptoms": [
+        "Bacterial Soft Rot: Rapid decay of tubers, turning mushy and foul-smelling, often liquefying tissue.",
+        "Dry Rot: Tuber surface shrivels, develops powdery fungal growth (often white, pink, or blue), and may form cavities within the tuber.",
+        "Pink Rot: Tuber flesh turns pink to reddish-brown when cut, and may exude a creamy liquid under pressure. Surface may become leathery."
+      ],
+      "favorable_conditions": "High humidity, moderate to high temperatures, physical damage to tubers during harvest and handling, poor ventilation during storage, and presence of inoculum in the soil or on equipment.",
+      "preventive_measures": [
+        "Harvest tubers carefully to minimize bruising and cuts.",
+        "Avoid harvesting during wet or excessively hot weather.",
+        "Ensure tubers are dry before storage (curing is essential).",
+        "Maintain good ventilation in storage areas.",
+        "Store tubers at optimal temperatures (4-7\u00b0C for most varieties).",
+        "Remove and destroy infected tubers immediately.",
+        "Sanitize storage facilities and equipment.",
+        "Use disease-free seed tubers and practice crop rotation."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Curing of tubers to heal wounds.",
+          "Application of bio-agents like Trichoderma (post-harvest dip or application in storage) can suppress fungal rots.",
+          "Maintaining dry storage conditions."
+        ],
+        "chemical": [
+          "Post-harvest dip for tubers with fungicides like Thiabendazole (0.05-0.1%) or Imazalil (0.2%) for fungal rots.",
+          "For bacterial soft rot, prevention is key; no effective post-harvest chemical treatment.",
+          "Ensure field treatments have controlled primary infections that could lead to storage rots."
+        ]
+      }
+    },
+    "leafroll_disease": {
+      "name": "Potato Leafroll Disease",
+      "scientific_name": "Potato Leafroll Virus (PLRV)",
+      "symptoms": [
+        "Upward rolling and stiffening of lower leaves.",
+        "Leaves may become brittle and leathery.",
+        "Stunting of the plant, especially with primary infection.",
+        "Yield reduction is significant.",
+        "Tuber symptoms can include net necrosis (brown discoloration of vascular tissues)."
+      ],
+      "favorable_conditions": "Spread primarily by aphids, particularly the green peach aphid (Myzus persicae). Vectors are efficient in transmitting the virus from infected plants to healthy ones.",
+      "preventive_measures": [
+        "Use certified virus-free seed tubers (foundation or certified stock).",
+        "Control aphid populations early and throughout the growing season.",
+        "Eradicate volunteer potato plants and susceptible weed hosts.",
+        "Rogue out and destroy infected plants promptly.",
+        "Maintain distance from sources of infection.",
+        "Plant resistant or tolerant varieties where available."
+      ],
+      "management_procedures": {
+        "organic": [
+          "Biological control of aphids (ladybugs, lacewings).",
+          "Application of insecticidal soaps (10 g/L) or neem oil (5 ml/L) to deter aphids.",
+          "Companion planting with repellant herbs like mint or basil."
+        ],
+        "chemical": [
+          "Use of systemic insecticides early in the season to control aphid vectors.",
+          "Regular scouting for aphids and timely application of appropriate insecticides like imidacloprid (0.02%) or acetamiprid (0.015%).",
+          "Avoid insecticides that are harmful to beneficial insects that prey on aphids."
+        ]
+      }
+    }
+  }
+}

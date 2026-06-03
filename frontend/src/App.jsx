@@ -1,9 +1,26 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
-import { Sprout, ScanLine, TrendingUp, Activity, Upload, Volume2, BrainCircuit, Settings, Globe, Home, BookOpen, MessageSquare, Zap, Dna, Hexagon, AlertTriangle, RefreshCw, Play, ChevronRight, ArrowUpRight, ArrowRight, CloudRain, Search, ChevronLeft, Droplets, Timer, Target, Mic, Send, BarChart3, ExternalLink, Loader2, DollarSign, Package, Radio, MapPin, Thermometer, User } from 'lucide-react';
+import { Sprout, ScanLine, TrendingUp, Activity, Upload, Volume2, BrainCircuit, Settings, Globe, Home, BookOpen, MessageSquare, Zap, Dna, Hexagon, AlertTriangle, RefreshCw, Play, ChevronRight, ArrowUpRight, ArrowRight, CloudRain, Search, ChevronLeft, Droplets, Timer, Target, Mic, Send, BarChart3, ExternalLink, Loader2, DollarSign, Package, Radio, MapPin, Thermometer, User, Moon, Sun as SunIcon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import axios from 'axios';
+
+// Dark mode init — default dark
+const initTheme = () => {
+  const saved = localStorage.getItem('theme');
+  const theme = saved || 'dark';
+  document.documentElement.setAttribute('data-theme', theme);
+  return theme;
+};
+
+// Configure Axios to automatically attach the API key from localStorage to all requests
+axios.interceptors.request.use(config => {
+  const apiKey = localStorage.getItem('vani_api_key');
+  if (apiKey) {
+    config.headers['X-Api-Key'] = apiKey;
+  }
+  return config;
+});
 
 import PredictionTerminal from './components/PredictionTerminal';
 import LoginPage from './components/LoginPage';
@@ -14,8 +31,10 @@ import CropIntelligenceHub from './components/CropIntelligenceHub';
 import MarketHub from './components/MarketHub';
 import VaniAIChat from './components/VaniAIChat';
 import SmartEnvironmentScanner from './components/SmartEnvironmentScanner';
-import AiNegotiator from './components/AiNegotiator';
+import LLMSetupModal from './components/LLMSetupModal';
+
 import AdminDashboard from './components/AdminDashboard';
+import { CROP_DATABASE } from './data/cropData';
 
 // --- Global UI ---
 // ... (rest of App.jsx unchanged until KnowledgeCore)
@@ -25,9 +44,21 @@ const GrainOverlay = () => <div className="grain-overlay opacity-30" />;
 const SectionLabel = ({ text, icon: Icon }) => (
   <div className="flex items-center gap-2 mb-6 opacity-60">
     {Icon && <Icon size={12} className="text-[#84cc16]" />}
-    <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#0c0a09]">{text}</span>
+    <span className="text-[10px] font-black uppercase tracking-[0.4em] t-text">{text}</span>
   </div>
 );
+
+// Theme toggle hook
+const useTheme = () => {
+  const [theme, setTheme] = useState(() => initTheme());
+  const toggle = () => {
+    const next = theme === 'dark' ? 'light' : 'dark';
+    setTheme(next);
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  };
+  return { theme, toggle, isDark: theme === 'dark' };
+};
 
 // --- Mock price data for chart ---
 const PRICE_DATA = [
@@ -40,45 +71,34 @@ const PRICE_DATA = [
 ];
 
 // --- Crop Data ---
-const CROPS = [
-  { id: 1, name: 'Paddy', scientific: 'Oryza sativa', variety: 'Hybrid-4', region: 'Cauvery Basin', msp: '₹2,183', cycle: '120 Days', water: 'High', yield: '25q/acre', image: '/api/image/paddy.png' },
-  { id: 2, name: 'Ragi', scientific: 'Eleusine coracana', variety: 'GPU-28', region: 'Dry Zone', msp: '₹3,846', cycle: '110 Days', water: 'Low', yield: '15q/acre', image: '/api/image/ragi.png' },
-  { id: 3, name: 'Coffee', scientific: 'Coffea arabica', variety: 'Sln.795', region: 'Malnad Highlands', msp: 'Market', cycle: 'Perennial', water: 'Moderate', yield: '800kg/acre', image: '/api/image/coffee.png' },
-  { id: 4, name: 'Sugarcane', scientific: 'Saccharum officinarum', variety: 'Co-86032', region: 'Mandya Belt', msp: 'FRP', cycle: '12 Months', water: 'Very High', yield: '40t/acre', image: '/api/image/sugarcane.png' },
-  { id: 5, name: 'Arecanut', scientific: 'Areca catechu', variety: 'Mangala', region: 'Shivamogga', msp: 'Market', cycle: 'Perennial', water: 'Moderate', yield: '12q/acre', image: '/api/image/arecanut.jpg' },
-  { id: 6, name: 'Coconut', scientific: 'Cocos nucifera', variety: 'Tall/Dwarf', region: 'Coastal Belt', msp: 'Market', cycle: 'Perennial', water: 'Moderate', yield: '100 nuts/palm', image: '/api/image/coconut.jpg' },
-  { id: 7, name: 'Maize', scientific: 'Zea mays', variety: 'Ganga Kaveri', region: 'Davangere Belt', msp: '₹2,225', cycle: '110 Days', water: 'Moderate', yield: '30q/acre', image: '/api/image/maize.png' },
-  { id: 8, name: 'Groundnut', scientific: 'Arachis hypogaea', variety: 'TMV-2', region: 'Chitradurga', msp: '₹6,700', cycle: '115 Days', water: 'Low', yield: '11q/acre', image: '/api/image/groundnut.jpg' },
-  { id: 9, name: 'Tomato', scientific: 'Solanum lycopersicum', variety: 'Arka Rakshak', region: 'Kolar Belt', msp: 'Market', cycle: '135 Days', water: 'Moderate', yield: '28t/acre', image: '/api/image/tomato.png' },
-  { id: 10, name: 'Cotton', scientific: 'Gossypium hirsutum', variety: 'Bunny', region: 'Raichur Belt', msp: '₹7,720', cycle: '165 Days', water: 'Moderate', yield: '10q/acre', image: '/api/image/cotton.jpg' }
-];
+const CROPS = CROP_DATABASE;
 
 // --- Navigation ---
-const Navbar = ({ user, onLogout }) => {
+const Navbar = ({ user, onLogout, onOpenLLMSetup }) => {
   const [lang, setLang] = useState(localStorage.getItem('lang') || 'EN');
   const location = useLocation();
   const navigate = useNavigate();
+  const { theme, toggle, isDark } = useTheme();
 
   const navLinks = [
     { path: '/', label: 'Home' },
     { path: '/land-analyser', label: 'Land Analyser' },
     { path: '/crops', label: 'Crop Intelligence' },
     { path: '/market', label: 'Market' },
-    { path: '/negotiator', label: 'AI Negotiator' },
     { path: '/vaniai', label: 'Vani AI' },
   ];
 
   return (
-    <nav className="fixed top-0 w-full z-[100] h-16 px-6 flex justify-between items-center bg-white/90 backdrop-blur-[30px] border-b border-stone-100">
+    <nav className="fixed top-0 w-full z-[100] h-16 px-6 flex justify-between items-center t-navbar">
       <Link to="/" className="flex items-center gap-3">
-        <div className="bg-[#0c0a09] p-2 rounded-lg shadow-2xl shadow-[#84cc16]/20 hover:scale-110 transition-transform">
-          <Sprout className="text-[#84cc16] w-5 h-5" />
+        <div className="bg-[#84cc16] p-2 rounded-lg shadow-2xl shadow-[#84cc16]/30 hover:scale-110 transition-transform glow-lime">
+          <Sprout className="text-[#0c0a09] w-5 h-5" />
         </div>
         <div className="flex flex-col">
-          <span className="font-serif font-black text-lg tracking-tight text-[#0c0a09] leading-none">
+          <span className="font-serif font-black text-lg tracking-tight t-text leading-none">
             Krishi<span className="italic text-[#84cc16]">Vigyan</span>
           </span>
-          <span className="text-[7px] font-black tracking-[0.2em] uppercase opacity-40">Intelligence</span>
+          <span className="text-[7px] font-black tracking-[0.2em] uppercase t-text-muted">Intelligence</span>
         </div>
       </Link>
 
@@ -89,43 +109,57 @@ const Navbar = ({ user, onLogout }) => {
             to={link.path}
             className="group relative"
           >
-            <div className={`text-[9px] font-black tracking-[0.15em] uppercase ${location.pathname === link.path ? 'text-[#84cc16]' : 'text-stone-400 group-hover:text-[#0c0a09]'}`}>
+            <div className={`text-[9px] font-black tracking-[0.15em] uppercase ${location.pathname === link.path ? 'text-[#84cc16]' : 't-text-muted group-hover:t-text'}`}>
               {link.label}
             </div>
             {location.pathname === link.path && (
-              <motion.div layoutId="navline" className="absolute -bottom-1 w-0.5 h-0.5 bg-[#84cc16] rounded-full" />
+              <motion.div layoutId="navline" className="absolute -bottom-1 left-0 right-0 mx-auto w-1 h-1 bg-[#84cc16] rounded-full" />
             )}
           </Link>
         ))}
         {user?.is_admin && (
           <Link to="/admin" className="group relative">
-            <div className={`text-[9px] font-black tracking-[0.15em] uppercase ${location.pathname === '/admin' ? 'text-[#84cc16]' : 'text-stone-400 group-hover:text-[#0c0a09]'}`}>
+            <div className={`text-[9px] font-black tracking-[0.15em] uppercase ${location.pathname === '/admin' ? 'text-[#84cc16]' : 't-text-muted group-hover:t-text'}`}>
               Admin
             </div>
             {location.pathname === '/admin' && (
-              <motion.div layoutId="navline" className="absolute -bottom-1 w-0.5 h-0.5 bg-[#84cc16] rounded-full" />
+              <motion.div layoutId="navline" className="absolute -bottom-1 left-0 right-0 mx-auto w-1 h-1 bg-[#84cc16] rounded-full" />
             )}
           </Link>
         )}
       </div>
 
       <div className="flex items-center gap-3">
+        <button
+          onClick={toggle}
+          className="p-2 rounded-lg transition-all hover:bg-[#84cc16]/10 t-text-muted hover:text-[#84cc16]"
+          title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+        >
+          {isDark ? <SunIcon size={16} /> : <Moon size={16} />}
+        </button>
         {user ? (
           <Link to="/profile" className="flex items-center gap-2 px-3 py-1.5 bg-[#84cc16]/10 rounded-xl border border-[#84cc16]/20 hover:bg-[#84cc16]/20 transition-all">
             <div className="w-6 h-6 bg-[#84cc16] rounded-full flex items-center justify-center">
               <span className="text-[9px] font-black text-[#0c0a09]">{user.name?.[0]?.toUpperCase() || 'F'}</span>
             </div>
-            <span className="text-[9px] font-black text-[#0c0a09] uppercase max-w-[80px] truncate">{user.name?.split(' ')[0]}</span>
+            <span className="text-[9px] font-black t-text uppercase max-w-[80px] truncate">{user.name?.split(' ')[0]}</span>
           </Link>
         ) : (
-          <Link to="/login" className="px-4 py-1.5 bg-[#0c0a09] text-white rounded-xl font-black text-[9px] uppercase tracking-wider hover:bg-stone-800 transition-all">
+          <Link to="/login" className="px-4 py-1.5 bg-[#84cc16] text-[#0c0a09] rounded-xl font-black text-[9px] uppercase tracking-wider hover:bg-[#a3e635] transition-all shadow-md glow-lime">
             Sign In
           </Link>
         )}
-        <Link to="/settings" className="p-2 hover:bg-stone-100 rounded-lg transition-colors opacity-40 hover:opacity-100"><Settings size={16} /></Link>
+        <button
+          onClick={() => onOpenLLMSetup?.()}
+          className="p-2 rounded-lg transition-colors t-text-muted hover:text-[#84cc16] hover:bg-[#84cc16]/10"
+          title="Setup LLM API Key"
+        >
+          <BrainCircuit size={16} />
+        </button>
+        <Link to="/settings" className="p-2 rounded-lg transition-colors t-text-muted hover:text-[#84cc16] hover:bg-[#84cc16]/10"><Settings size={16} /></Link>
         <button
           onClick={() => setLang(lang === 'EN' ? 'KN' : 'EN')}
-          className="bg-[#0c0a09] text-white px-4 py-2 rounded-lg font-black text-[9px] tracking-wider uppercase flex items-center gap-2 hover:bg-[#84cc16] hover:text-[#0c0a09] transition-all shadow-md"
+          className="bg-[#84cc16] text-[#0c0a09] px-4 py-2 rounded-lg font-black text-[9px] tracking-wider uppercase flex items-center gap-2 hover:bg-[#a3e635] transition-all shadow-md glow-lime"
         >
           <Globe className="w-3 h-3" />
           {lang}
@@ -152,7 +186,7 @@ const HomeTerminal = () => {
   }, []);
 
   return (
-    <div className="pt-20 min-h-screen bg-[#fafaf9]">
+    <div className="pt-20 min-h-screen t-bg">
       <GrainOverlay />
       {/* Hero */}
       <section className="relative h-[70vh] mx-3 my-2 rounded-3xl overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.1)]">
@@ -202,33 +236,33 @@ const HomeTerminal = () => {
 
       {/* Stats Bar */}
       <section className="max-w-6xl mx-auto px-6 -mt-6 relative z-20">
-        <div className="bg-white rounded-2xl p-6 shadow-xl border border-stone-100 grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="text-center"><p className="text-[#84cc16] font-black text-2xl">286</p><p className="text-stone-500 text-xs font-bold">Cities Covered</p></div>
-          <div className="text-center"><p className="text-[#84cc16] font-black text-2xl">12</p><p className="text-stone-500 text-xs font-bold">Crops Analyzed</p></div>
-          <div className="text-center"><p className="text-[#84cc16] font-black text-2xl">33</p><p className="text-stone-500 text-xs font-bold">Districts</p></div>
-          <div className="text-center"><p className="text-[#84cc16] font-black text-2xl">224</p><p className="text-stone-500 text-xs font-bold">RAG Knowledge</p></div>
+        <div className="t-card rounded-2xl p-6 shadow-xl grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="text-center"><p className="text-[#84cc16] font-black text-2xl">286</p><p className="t-text-muted text-xs font-bold">Cities Covered</p></div>
+          <div className="text-center"><p className="text-[#84cc16] font-black text-2xl">12</p><p className="t-text-muted text-xs font-bold">Crops Analyzed</p></div>
+          <div className="text-center"><p className="text-[#84cc16] font-black text-2xl">33</p><p className="t-text-muted text-xs font-bold">Districts</p></div>
+          <div className="text-center"><p className="text-[#84cc16] font-black text-2xl">224</p><p className="t-text-muted text-xs font-bold">RAG Knowledge</p></div>
         </div>
       </section>
 
       {/* Quick Actions */}
       <section className="max-w-6xl mx-auto px-6 py-12">
-        <p className="text-[8px] font-black uppercase tracking-[0.2em] text-stone-400 mb-4">Quick Actions</p>
+        <p className="text-[8px] font-black uppercase tracking-[0.2em] t-text-muted mb-4">Quick Actions</p>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
           {[
             { to: '/land-analyser', icon: <MapPin size={18} />, label: 'Land Analyser', desc: 'GPS + soil + weather analysis', color: '#84cc16' },
             { to: '/crops', icon: <Sprout size={18} />, label: 'Crop Intelligence', desc: 'Lifecycle + disease forecast + tracking', color: '#facc15' },
             { to: '/market', icon: <TrendingUp size={18} />, label: 'Market', desc: 'MSP + 90-day forecast', color: '#10b981' },
-            { to: '/negotiator', icon: <DollarSign size={18} />, label: 'Negotiator', desc: 'AI smart pricing', color: '#f59e0b' },
+            { to: '/scan', icon: <DollarSign size={18} />, label: 'Plant Scanner', desc: 'AI disease detection', color: '#f59e0b' },
             { to: '/vaniai', icon: <MessageSquare size={18} />, label: 'Vani AI', desc: 'Multi-agent RAG assistant', color: '#8b5cf6' },
             { to: user ? '/profile' : '/login', icon: <User size={18} />, label: user ? 'Profile' : 'Sign In', desc: user ? 'Your farm' : 'Register farm', color: '#0c0a09' },
           ].map((item, i) => (
             <Link key={i} to={item.to}
-              className="bg-white rounded-xl p-5 border border-stone-200 hover:shadow-lg hover:border-stone-300 transition-all group">
+              className="t-card rounded-xl p-5 hover:shadow-lg transition-all group">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3 transition-transform group-hover:scale-110" style={{ backgroundColor: `${item.color}15` }}>
                 <span style={{ color: item.color }}>{item.icon}</span>
               </div>
-              <p className="font-black text-sm text-[#0c0a09]">{item.label}</p>
-              <p className="text-[9px] text-stone-400 mt-0.5">{item.desc}</p>
+              <p className="font-black text-sm t-text">{item.label}</p>
+              <p className="text-[9px] t-text-muted mt-0.5">{item.desc}</p>
             </Link>
           ))}
         </div>
@@ -236,7 +270,7 @@ const HomeTerminal = () => {
 
       {/* All Tools Grid */}
       <section className="max-w-6xl mx-auto px-6 pb-16">
-        <p className="text-[8px] font-black uppercase tracking-[0.2em] text-stone-400 mb-4">All Tools</p>
+        <p className="text-[8px] font-black uppercase tracking-[0.2em] t-text-muted mb-4">All Tools</p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {[
             { to: '/settings', icon: <Settings size={16} />, label: 'Settings' },
@@ -245,9 +279,9 @@ const HomeTerminal = () => {
             { to: user ? '/profile' : '/signup', icon: <User size={16} />, label: user ? 'Profile' : 'Sign Up' },
           ].map((item, i) => (
             <Link key={i} to={item.to}
-              className="bg-stone-50 rounded-xl p-4 border border-stone-200 hover:bg-white hover:shadow-md transition-all flex items-center gap-3">
-              <span className="text-stone-500">{item.icon}</span>
-              <span className="font-bold text-xs text-stone-700">{item.label}</span>
+              className="t-bg-card rounded-xl p-4 border-2 t-border hover:shadow-md transition-all flex items-center gap-3 hover:border-[#84cc16]/20">
+              <span className="t-text-muted">{item.icon}</span>
+              <span className="font-bold text-xs t-text">{item.label}</span>
             </Link>
           ))}
         </div>
@@ -255,7 +289,7 @@ const HomeTerminal = () => {
 
       {/* Platform Guide */}
       <section className="max-w-6xl mx-auto px-6 pb-20">
-        <p className="text-[8px] font-black uppercase tracking-[0.2em] text-stone-400 mb-6">Platform Guide</p>
+        <p className="text-[8px] font-black uppercase tracking-[0.2em] t-text-muted mb-6">Platform Guide</p>
         <div className="grid md:grid-cols-4 gap-6">
           {[
             { step: "01", title: "Analyze Land", desc: "Run GPS diagnostics to understand your soil and local climate.", link: "/land-analyser", icon: <MapPin size={18} /> },
@@ -263,13 +297,13 @@ const HomeTerminal = () => {
             { step: "03", title: "Chat with Vani", desc: "Ask Vani AI for a 7-day action plan or specific cultivation advice.", link: "/vaniai", icon: <MessageSquare size={18} /> },
             { step: "04", title: "Market Check", desc: "Monitor MSP and price forecasts to plan your harvest and sales.", link: "/market", icon: <TrendingUp size={18} /> },
           ].map((g, i) => (
-            <div key={i} className="relative p-8 bg-white rounded-3xl border border-stone-100 shadow-sm hover:shadow-lg transition-all group">
-              <div className="text-[40px] font-black text-stone-50 absolute -top-4 -right-2 transition-colors group-hover:text-[#84cc16]/10">{g.step}</div>
+            <div key={i} className="relative p-8 t-card rounded-3xl shadow-sm hover:shadow-lg transition-all group">
+              <div className="text-[40px] font-black absolute -top-4 -right-2 transition-colors group-hover:text-[#84cc16]/10" style={{ color: 'var(--border-primary)' }}>{g.step}</div>
               <div className="w-10 h-10 bg-[#84cc16]/10 rounded-xl flex items-center justify-center mb-4 text-[#84cc16]">
                 {g.icon}
               </div>
-              <h3 className="font-serif text-xl font-black text-[#0c0a09] mb-2">{g.title}</h3>
-              <p className="text-stone-500 text-[13px] leading-relaxed mb-6">{g.desc}</p>
+              <h3 className="font-serif text-xl font-black t-text mb-2">{g.title}</h3>
+              <p className="t-text-secondary text-[13px] leading-relaxed mb-6">{g.desc}</p>
               <Link to={g.link} className="inline-flex items-center gap-1.5 text-[#84cc16] text-[10px] font-black uppercase tracking-widest hover:gap-3 transition-all">
                 Explore Now <ChevronRight size={12} />
               </Link>
@@ -516,10 +550,9 @@ const SettingsTerminal = () => {
         if (response.data.success) {
           const settings = response.data.settings;
           setLocalLang(settings.language || 'EN');
-          setCropCluster(settings.crop_cluster || 'All Karnataka');
-          setNotifications(settings.notifications !== false);
           setPriceAlerts(settings.price_alerts !== false);
-          setApiKey(settings.has_api_key ? '••••••••' : '');
+          // Load API key from local storage exclusively
+          setApiKey(localStorage.getItem('vani_api_key') || '');
         }
       } catch (err) {
         console.error('Failed to load settings:', err);
@@ -581,25 +614,44 @@ const SettingsTerminal = () => {
     }
   };
 
+  const [keyTestResult, setKeyTestResult] = useState(null);
+  const [keyTesting, setKeyTesting] = useState(false);
+
   const handleSaveApiKey = async () => {
     try {
       setApiKeySaving(true);
       setError(null);
-      const token = localStorage.getItem('token');
-      const headers = token ? { Authorization: `Bearer ${token}` } : {};
-      const response = await axios.post('/api/settings/api-key', { api_key: apiKey }, { headers });
-      if (response.data.success) {
-        setApiKeySaved(true);
-        setApiKey('••••••••');
-        setTimeout(() => setApiKeySaved(false), 2000);
-      } else {
-        setError(response.data.error || 'Failed to save API key');
-      }
+
+      // Save directly to localStorage for frontend-only use
+      localStorage.setItem('vani_api_key', apiKey);
+
+      setApiKeySaved(true);
+      setKeyTestResult(null);
+      setTimeout(() => setApiKeySaved(false), 2000);
     } catch (err) {
       console.error('Error saving API key:', err);
-      setError('Failed to save API key');
+      setError('Failed to save API key to browser storage');
     } finally {
       setApiKeySaving(false);
+    }
+  };
+
+  const handleTestApiKey = async () => {
+    if (!apiKey) {
+      setKeyTestResult({ success: false, error: 'Enter an API key first.' });
+      return;
+    }
+    setKeyTesting(true);
+    setKeyTestResult(null);
+    // Temporarily save key so axios interceptor sends it
+    localStorage.setItem('vani_api_key', apiKey);
+    try {
+      const res = await axios.post('/api/settings/test-key');
+      setKeyTestResult(res.data);
+    } catch (err) {
+      setKeyTestResult({ success: false, error: err.response?.data?.error || 'Connection failed. Check your key.' });
+    } finally {
+      setKeyTesting(false);
     }
   };
 
@@ -644,11 +696,11 @@ const SettingsTerminal = () => {
   };
 
   const Toggle = ({ checked, onChange, label }) => (
-    <div className="flex items-center justify-between p-6 bg-stone-50 rounded-2xl border border-stone-200 hover:border-[#84cc16]/30 transition-all">
-      <span className="font-bold text-stone-700">{label}</span>
+    <div className="flex items-center justify-between p-6 t-bg-input rounded-2xl border-2 t-border hover:border-[#84cc16]/30 transition-all">
+      <span className="font-bold t-text">{label}</span>
       <button
         onClick={() => onChange(!checked)}
-        className={`relative w-16 h-8 rounded-full transition-all shadow-inner ${checked ? 'bg-[#84cc16]' : 'bg-stone-300'}`}
+        className={`relative w-16 h-8 rounded-full transition-all shadow-inner ${checked ? 'bg-[#84cc16]' : 'bg-[var(--border-secondary)]'}`}
       >
         <div className={`absolute top-1 w-6 h-6 bg-white rounded-full shadow-lg transition-all ${checked ? 'right-1' : 'left-1'}`}>
           {checked && <div className="absolute inset-0 m-auto w-2 h-2 bg-[#84cc16] rounded-full animate-pulse"></div>}
@@ -659,24 +711,24 @@ const SettingsTerminal = () => {
 
   if (loading) {
     return (
-      <div className="pt-24 min-h-screen bg-[#fafaf9] px-6 pb-20 flex items-center justify-center">
+      <div className="pt-24 min-h-screen t-bg px-6 pb-20 flex items-center justify-center">
         <div className="text-center">
           <Loader2 className="w-8 h-8 animate-spin text-[#84cc16] mx-auto mb-4" />
-          <p className="text-stone-600 font-bold">Loading settings...</p>
+          <p className="t-text-secondary font-bold">Loading settings...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="pt-24 min-h-screen bg-[#fafaf9] px-6 pb-20">
+    <div className="pt-24 min-h-screen t-bg px-6 pb-20">
       <GrainOverlay />
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <header className="mb-12">
           <SectionLabel text="Settings" icon={Settings} />
-          <h1 className="font-serif text-5xl font-black text-[#0c0a09] mb-4">Control <span className="italic text-[#84cc16]">Panel.</span></h1>
-          <p className="text-stone-500 text-base font-medium max-w-2xl">Configure your preferences, language, and system settings.</p>
+          <h1 className="font-serif text-5xl font-black t-text mb-4">Control <span className="italic text-[#84cc16]">Panel.</span></h1>
+          <p className="t-text-secondary text-base font-medium max-w-2xl">Configure your preferences, language, and system settings.</p>
         </header>
 
         {error && (
@@ -690,19 +742,19 @@ const SettingsTerminal = () => {
           {/* Main Settings Panel */}
           <div className="space-y-6">
             {/* Regional Configuration */}
-            <div className="bg-white border-2 border-stone-200 rounded-[3rem] p-10 shadow-xl">
+            <div className="t-card rounded-[3rem] p-10 shadow-xl">
               <div className="mb-8">
-                <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-stone-400 mb-2">Regional Configuration</h3>
-                <h2 className="font-serif text-4xl font-black text-[#0c0a09]">Localization Protocol</h2>
+                <h3 className="text-[10px] font-black uppercase tracking-[0.4em] t-text-muted mb-2">Regional Configuration</h3>
+                <h2 className="font-serif text-4xl font-black t-text">Localization Protocol</h2>
               </div>
 
               <div className="space-y-6">
                 <div>
-                  <label className="block font-black text-xs uppercase tracking-widest text-stone-500 mb-3">Primary Language</label>
+                  <label className="block font-black text-xs uppercase tracking-widest t-text-muted mb-3">Primary Language</label>
                   <select
                     value={localLang}
                     onChange={(e) => setLocalLang(e.target.value)}
-                    className="w-full bg-stone-50 border-2 border-stone-200 rounded-2xl p-5 font-bold text-stone-700 outline-none focus:ring-4 focus:ring-[#84cc16]/10 focus:border-[#84cc16] transition-all"
+                    className="w-full t-bg-input border-2 t-border rounded-2xl p-5 font-bold t-text outline-none focus:ring-4 focus:ring-[#84cc16]/10 focus:border-[#84cc16] transition-all"
                   >
                     <option value="EN">English (Default)</option>
                     <option value="KN">ಕನ್ನಡ (Kannada)</option>
@@ -713,11 +765,11 @@ const SettingsTerminal = () => {
                 </div>
 
                 <div>
-                  <label className="block font-black text-xs uppercase tracking-widest text-stone-500 mb-3">Crop Cluster Region</label>
+                  <label className="block font-black text-xs uppercase tracking-widest t-text-muted mb-3">Crop Cluster Region</label>
                   <select
                     value={cropCluster}
                     onChange={(e) => setCropCluster(e.target.value)}
-                    className="w-full bg-stone-50 border-2 border-stone-200 rounded-2xl p-5 font-bold text-stone-700 outline-none focus:ring-4 focus:ring-[#84cc16]/10 focus:border-[#84cc16] transition-all"
+                    className="w-full t-bg-input border-2 t-border rounded-2xl p-5 font-bold t-text outline-none focus:ring-4 focus:ring-[#84cc16]/10 focus:border-[#84cc16] transition-all"
                   >
                     <option value="All Karnataka">All Karnataka (Statewide)</option>
                     <option value="North Karnataka">North Karnataka (Hubli, Belagavi)</option>
@@ -731,45 +783,67 @@ const SettingsTerminal = () => {
             </div>
 
             {/* API Key Configuration */}
-            <div className="bg-white border-2 border-stone-200 rounded-[3rem] p-10 shadow-xl">
+            <div className="t-card rounded-[3rem] p-10 shadow-xl">
               <div className="mb-8">
-                <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-stone-400 mb-2">AI Provider</h3>
-                <h2 className="font-serif text-4xl font-black text-[#0c0a09]">OpenRouter API Key</h2>
-                <p className="text-stone-500 text-sm mt-2 font-medium">Enter your OpenRouter API key to enable AI features. Get a free key at <span className="text-[#84cc16]">openrouter.ai/keys</span></p>
+                <h3 className="text-[10px] font-black uppercase tracking-[0.4em] t-text-muted mb-2">AI Provider</h3>
+                <h2 className="font-serif text-4xl font-black t-text">Groq API Key</h2>
+                <p className="t-text-secondary text-sm mt-2 font-medium">Enter your Groq API key to enable AI features. Get a free key at <a href="https://console.groq.com/keys" target="_blank" rel="noopener" className="text-[#84cc16] underline">console.groq.com</a></p>
               </div>
               <div className="space-y-4">
                 <div>
-                  <label className="block font-black text-xs uppercase tracking-widest text-stone-500 mb-3">API Key</label>
+                  <label className="block font-black text-xs uppercase tracking-widest t-text-muted mb-3">API Key</label>
                   <div className="flex gap-3">
                     <input
                       type="password"
-                      value={apiKey === '••••••••' ? '' : apiKey}
+                      value={apiKey}
                       onChange={(e) => setApiKey(e.target.value)}
-                      placeholder={apiKey === '••••••••' ? 'API key is set (enter new one to change)' : 'sk-or-...'}
-                      className="flex-1 bg-stone-50 border-2 border-stone-200 rounded-2xl p-5 font-bold text-stone-700 outline-none focus:ring-4 focus:ring-[#84cc16]/10 focus:border-[#84cc16] transition-all"
+                      placeholder="gsk_..."
+                      className="flex-1 t-bg-input border-2 t-border rounded-2xl p-5 font-bold t-text outline-none focus:ring-4 focus:ring-[#84cc16]/10 focus:border-[#84cc16] transition-all"
                     />
                     <button
                       onClick={handleSaveApiKey}
                       disabled={apiKeySaving || !apiKey}
-                      className={`px-8 rounded-2xl font-black text-sm uppercase tracking-wider transition-all ${apiKeySaved
-                          ? 'bg-[#10b981] text-white'
-                          : apiKeySaving
-                            ? 'bg-[#84cc16]/50 text-[#0c0a09]'
-                            : 'bg-[#84cc16] text-[#0c0a09] hover:bg-[#facc15]'
+                      className={`px-6 rounded-2xl font-black text-sm uppercase tracking-wider transition-all ${apiKeySaved
+                        ? 'bg-[#10b981] text-white'
+                        : apiKeySaving
+                          ? 'bg-[#84cc16]/50 text-[#0c0a09]'
+                          : 'bg-[#84cc16] text-[#0c0a09] hover:bg-[#facc15]'
                         } disabled:opacity-50`}
                     >
-                      {apiKeySaved ? 'Saved' : apiKeySaving ? 'Saving...' : 'Save'}
+                      {apiKeySaved ? '✓ Saved' : apiKeySaving ? '...' : 'Save'}
+                    </button>
+                    <button
+                      onClick={handleTestApiKey}
+                      disabled={keyTesting || !apiKey}
+                      className="px-6 rounded-2xl font-black text-sm uppercase tracking-wider bg-stone-900 text-white hover:bg-stone-700 transition-all disabled:opacity-50 flex items-center gap-2"
+                    >
+                      {keyTesting ? <Loader2 size={14} className="animate-spin" /> : <Zap size={14} />}
+                      {keyTesting ? 'Testing...' : 'Test'}
                     </button>
                   </div>
                 </div>
+                {keyTestResult && (
+                  <div className={`p-5 rounded-2xl border-2 flex items-start gap-3 ${keyTestResult.success ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`}>
+                    <div className={`w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 ${keyTestResult.success ? 'bg-green-500' : 'bg-red-500'}`}>
+                      {keyTestResult.success ? <Zap size={16} className="text-white" /> : <AlertTriangle size={16} className="text-white" />}
+                    </div>
+                    <div>
+                      <p className={`font-black text-sm ${keyTestResult.success ? 'text-green-700' : 'text-red-700'}`}>
+                        {keyTestResult.success ? 'Connection Successful!' : 'Connection Failed'}
+                      </p>
+                      <p className="text-xs text-stone-600 mt-1">{keyTestResult.message || keyTestResult.error}</p>
+                      {keyTestResult.model && <p className="text-[10px] text-stone-400 mt-1 font-bold uppercase tracking-widest">Model: {keyTestResult.model}</p>}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
 
             {/* Notification Preferences */}
-            <div className="bg-white border-2 border-stone-200 rounded-[3rem] p-10 shadow-xl">
+            <div className="t-card rounded-[3rem] p-10 shadow-xl">
               <div className="mb-8">
-                <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-stone-400 mb-2">Alert System</h3>
-                <h2 className="font-serif text-4xl font-black text-[#0c0a09]">Notification Matrix</h2>
+                <h3 className="text-[10px] font-black uppercase tracking-[0.4em] t-text-muted mb-2">Alert System</h3>
+                <h2 className="font-serif text-4xl font-black t-text">Notification Matrix</h2>
               </div>
 
               <div className="space-y-4">
@@ -797,7 +871,7 @@ const SettingsTerminal = () => {
               <button
                 onClick={handleResetSettings}
                 disabled={saving}
-                className="w-full py-4 rounded-2xl font-bold text-sm uppercase tracking-wider bg-stone-100 text-stone-700 hover:bg-stone-200 transition-all border-2 border-stone-300"
+                className="w-full py-4 rounded-2xl font-bold text-sm uppercase tracking-wider t-bg-input t-text hover:bg-[var(--bg-elevated)] transition-all border-2 t-border"
               >
                 Reset to Defaults
               </button>
@@ -807,39 +881,40 @@ const SettingsTerminal = () => {
           {/* Sidebar - Neural Cache & Privacy */}
           <div className="space-y-6">
             {/* Storage Overview */}
-            <div className="bg-stone-900 border-2 border-stone-800 rounded-[3rem] p-10 shadow-2xl sticky top-32">
+            {/* Storage Overview */}
+            <div className="t-bg-card border-2 t-border rounded-[3rem] p-10 shadow-2xl sticky top-32">
               <div className="mb-8">
                 <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#facc15] mb-2">Data Sovereignty</h3>
-                <h2 className="font-serif text-3xl font-black text-white mb-4">Neural Cache</h2>
-                <p className="text-stone-400 text-sm font-medium">Local diagnostic history and metadata storage.</p>
+                <h2 className="font-serif text-3xl font-black t-text mb-4">Neural Cache</h2>
+                <p className="t-text-secondary text-sm font-medium">Local diagnostic history and metadata storage.</p>
               </div>
 
               <div className="space-y-6">
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-xs font-black uppercase tracking-widest text-stone-500">Cache Usage</span>
-                    <span className="text-white font-black">{cacheSize} KB</span>
+                    <span className="text-xs font-black uppercase tracking-widest t-text-muted">Cache Usage</span>
+                    <span className="t-text font-black">{cacheSize} KB</span>
                   </div>
-                  <div className="h-3 bg-white/10 rounded-full overflow-hidden">
+                  <div className="h-3 t-bg-input rounded-full overflow-hidden border t-border">
                     <div
                       className="h-full bg-gradient-to-r from-[#84cc16] to-[#facc15] transition-all duration-1000"
                       style={{ width: `${Math.min((cacheSize / 100) * 100, 100)}%` }}
                     ></div>
                   </div>
-                  <p className="text-xs text-stone-500 mt-2 font-medium">Limit: ~5MB browser storage</p>
+                  <p className="text-xs t-text-muted mt-2 font-medium">Limit: ~5MB browser storage</p>
                 </div>
 
                 <button
                   onClick={handlePurgeCache}
-                  className="w-full bg-red-600 text-white py-5 rounded-2xl font-black text-sm uppercase tracking-wider hover:bg-red-700 transition-all shadow-xl flex items-center justify-center gap-3"
+                  className="w-full bg-red-600/20 text-red-500 py-5 rounded-2xl font-black text-sm uppercase tracking-wider hover:bg-red-600 hover:text-white transition-all shadow-xl flex items-center justify-center gap-3 border border-red-500/20"
                 >
                   <AlertTriangle size={18} />
                   Purge Diagnostic Cache
                 </button>
 
-                <div className="pt-6 border-t border-white/10">
-                  <h4 className="text-white font-black text-sm mb-3">Privacy Statement</h4>
-                  <p className="text-stone-400 text-xs leading-relaxed">All diagnostic data is stored locally on your device. No analysis results are transmitted to external servers. You maintain complete sovereignty over your agricultural intelligence footprint.</p>
+                <div className="pt-6 border-t t-border">
+                  <h4 className="t-text font-black text-sm mb-3">Privacy Statement</h4>
+                  <p className="t-text-secondary text-xs leading-relaxed">All diagnostic data is stored locally on your device. No analysis results are transmitted to external servers. You maintain complete sovereignty over your agricultural intelligence footprint.</p>
                 </div>
               </div>
             </div>
@@ -1084,7 +1159,7 @@ const DiagnosticsTerminal = () => {
                   <h3 className="text-[8px] font-black uppercase tracking-widest text-stone-500 mb-2">Water Availability</h3>
                   <div className="flex items-center gap-3 mb-3">
                     <div className={`w-3 h-3 rounded-full ${locResult.water.status === 'High' ? 'bg-blue-500' :
-                        locResult.water.status === 'Moderate' ? 'bg-yellow-500' : 'bg-red-500'
+                      locResult.water.status === 'Moderate' ? 'bg-yellow-500' : 'bg-red-500'
                       }`}></div>
                     <p className="font-black text-lg text-[#0c0a09]">{locResult.water.status}</p>
                   </div>
@@ -1194,6 +1269,7 @@ const App = () => {
   const [user, setUser] = useState(() => {
     try { return JSON.parse(localStorage.getItem('user')); } catch { return null; }
   });
+  const [showLLMSetup, setShowLLMSetup] = useState(false);
 
   const handleLogin = (u) => {
     setUser(u);
@@ -1209,18 +1285,23 @@ const App = () => {
     <Router>
       <div className="min-h-screen font-sans">
         <GrainOverlay />
-        <Navbar user={user} onLogout={handleLogout} />
+        <LLMSetupModal
+          isOpen={showLLMSetup}
+          onClose={() => setShowLLMSetup(false)}
+          onSuccess={() => setShowLLMSetup(false)}
+        />
+        <Navbar user={user} onLogout={handleLogout} onOpenLLMSetup={() => setShowLLMSetup(true)} />
         <Routes>
-          <Route path="/" element={<HomeTerminal />} />
+          <Route path="/" element={<HomeTerminal onOpenLLMSetup={() => setShowLLMSetup(true)} />} />
           <Route path="/land-analyser" element={<LandAnalyser />} />
           <Route path="/scan" element={<SmartEnvironmentScanner />} />
           <Route path="/crops" element={<CropIntelligenceHub user={user} />} />
 
           <Route path="/market" element={<MarketHub />} />
-          <Route path="/negotiator" element={<AiNegotiator />} />
-          <Route path="/vaniai" element={<VaniAIChat />} />
+
+          <Route path="/vaniai" element={<VaniAIChat onOpenLLMSetup={() => setShowLLMSetup(true)} />} />
           <Route path="/admin" element={<AdminDashboard user={user} />} />
-          <Route path="/settings" element={<SettingsTerminal />} />
+          <Route path="/settings" element={<SettingsTerminal onOpenLLMSetup={() => setShowLLMSetup(true)} />} />
           <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
           <Route path="/signup" element={<SignupPage onLogin={handleLogin} />} />
           <Route path="/profile" element={<ProfilePage user={user} onLogout={handleLogout} />} />

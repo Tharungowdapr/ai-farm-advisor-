@@ -42,3 +42,25 @@ def _try_openmeteo(city):
     except:
         pass
     return None
+
+def search_cities(query):
+    """Search for Indian cities matching the query"""
+    try:
+        url = f"https://geocoding-api.open-meteo.com/v1/search?name={query}&count=10&language=en&format=json"
+        res = requests.get(url, timeout=10).json()
+        cities = []
+        for r in res.get("results", []):
+            if r.get("country_code") == "IN":
+                name = r["name"]
+                admin1 = r.get("admin1", "")
+                display = f"{name}, {admin1}" if admin1 else name
+                cities.append({
+                    "name": name,
+                    "display": display,
+                    "lat": r["latitude"],
+                    "lon": r["longitude"],
+                    "state": admin1
+                })
+        return cities
+    except:
+        return []

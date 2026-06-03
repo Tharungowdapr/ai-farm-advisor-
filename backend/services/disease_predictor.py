@@ -33,9 +33,9 @@ def predict_disease_risk(city_name, crop_name=None, soil_npk=None):
     dict with keys:
       city, soil, weather, disease_risks, forecast, timestamp
     """
-    from real_weather import get_weather_for_location, get_forecast_for_location
-    from soil_lookup import get_soil_for_city
-    from icar_integration import calculate_disease_risk_icar
+    from services.real_weather import get_weather_for_location, get_forecast_for_location
+    from services.soil_lookup import get_soil_for_city
+    from services.icar_integration import calculate_disease_risk_icar
 
     # 1. Weather
     weather = get_weather_for_location(city_name)
@@ -71,7 +71,7 @@ def predict_disease_risk(city_name, crop_name=None, soil_npk=None):
     if crop_name:
         crops_to_check = [crop_name]
     else:
-        from icar_integration import CROP_DISEASE_MAP
+        from services.icar_integration import CROP_DISEASE_MAP
         crops_to_check = list(CROP_DISEASE_MAP.keys())
 
     # 4. Disease risk for each crop

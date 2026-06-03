@@ -261,7 +261,7 @@ def setup_monitoring(app):
 
         # Check database
         try:
-            from database import get_db
+            from core.database import get_db
             conn = get_db()
             conn.execute("SELECT 1")
             conn.close()
@@ -293,7 +293,7 @@ def setup_monitoring(app):
 
         # Check ML models
         try:
-            from local_inference_service import LocalInferenceService
+            from services.local_inference_service import LocalInferenceService
             model_loaded = LocalInferenceService.load_model()
             checks["checks"]["ml_model"] = {
                 "status": "loaded" if model_loaded else "fallback_mode",
@@ -323,23 +323,30 @@ def setup_monitoring(app):
 
 
 # ── Decorators for Service-Level Tracking ────────────────────────
-def track_llm_call(func):
-    """Decorator to track LLM API call latency and errors."""
-    @functools.wraps(func)
-    def wrapper(*args, **kwargs):
-        start = time.time()
-        try:
-            result = func(*args, **kwargs)
-            duration_ms = (time.time() - start) * 1000
-            metrics.record_llm_call(duration_ms, success=True)
-            logger.info(f"LLM call success: {duration_ms:.0f}ms")
-            return result
-        except Exception as e:
-            duration_ms = (time.time() - start) * 1000
-            metrics.record_llm_call(duration_ms, success=False)
-            logger.error(f"LLM call failed after {duration_ms:.0f}ms: {e}")
-            raise
-    return wrapper
+def track_llm_call(operation_name="unspecified"):
+    """Decorator factory to track LLM API call latency and errors."""
+    def decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            start = time.time()
+            try:
+                result = func(*args, **kwargs)
+                duration_ms = (time.time() - start) * 1000
+                metrics.record_llm_call(duration_ms, success=True)
+                logger.info(f"LLM call [{operation_name}] success: {duration_ms:.0f}ms")
+                return result
+            except Exception as e:
+                duration_ms = (time.time() - start) * 1000
+                metrics.record_llm_call(duration_ms, success=False)
+                logger.error(f"LLM call [{operation_name}] failed after {duration_ms:.0f}ms: {e}")
+                raise
+        return wrapper
+    # Support both @track_llm_call and @track_llm_call("name")
+    if callable(operation_name):
+        f = operation_name
+        operation_name = "unspecified"
+        return decorator(f)
+    return decorator
 
 
 def track_model_inference(model_name):

@@ -1,16 +1,30 @@
-# React + Vite
+# 🌾 KrishiSync AI - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the React-based frontend for the KrishiSync AI platform.
 
-Currently, two official plugins are available:
+## 🚀 Features
+- **Dynamic Dashboards:** Real-time visualization of soil, weather, and market data.
+- **Vani AI Chat:** Interactive RAG-based agricultural assistant.
+- **Smart Scanner:** Geolocation-aware environmental diagnostic tool.
+- **Market Hub:** Live MSP tracking and AI price forecasting.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Development
 
-## React Compiler
+### Setup
+```bash
+npm install
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Run Locally
+```bash
+npm run dev
+```
+The app will be available at `http://localhost:5173`.
 
-## Expanding the ESLint configuration
+### Proxy Configuration
+The frontend is configured to proxy `/api` requests to `http://127.0.0.1:5001`. Ensure the backend server is running on that port.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📁 Structure
+- `src/components`: UI components for each major feature.
+- `src/data`: Static knowledge bases and crop databases.
+- `src/assets`: Images and styling resources.

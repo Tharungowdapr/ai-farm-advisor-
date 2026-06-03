@@ -9,7 +9,7 @@ os.environ["OMP_NUM_THREADS"] = "1"
 logger = logging.getLogger(__name__)
 
 try:
-    from monitoring import metrics as _metrics
+    from core.monitoring import metrics as _metrics
 except ImportError:
     _metrics = None
 

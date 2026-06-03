@@ -17,17 +17,12 @@ This document serves as a persistent technical reference to quickly understand t
 ```
 6th-sem-main-el/
 ├── backend/
-│   ├── app.py                      # Main entrypoint, registers blueprints/routes
-│   ├── routes/                     # API endpoint definitions (main_routes.py, prediction_routes.py)
-│   ├── services/                   # Core business logic
-│   │   ├── llm_service.py          # Groq API client & key management
-│   │   ├── rag_service.py          # ChromaDB indexing & semantic search
-│   │   ├── soil_service.py         # SoilGrids/ICAR integration
-│   │   ├── weather_disease_risk.py # Open-Meteo weather and risk models
-│   │   └── ...
+│   ├── app.py                      # Main entrypoint, registers blueprints
+│   ├── routes/                     # Blueprint definitions (auth, farmer, intel, env, etc.)
+│   ├── core/                       # Core engine (database, monitoring)
+│   ├── services/                   # Business logic (llm, rag, msp, etc.)
 │   ├── data/                       # JSON knowledge bases (ICAR, schemes, crops)
-│   ├── settings/                   # user_settings.json (stores Groq API keys)
-│   ├── local_inference_service.py  # Plant disease detection via PyTorch/timm
+│   ├── settings/                   # user_settings.json (local fallbacks)
 │   └── requirements.txt            # Python dependencies
 ├── frontend/
 │   ├── src/
@@ -43,9 +38,9 @@ This document serves as a persistent technical reference to quickly understand t
 ## 4. Key Systems & Workflows
 
 ### A. AI Chat & RAG (`rag_service.py` & `llm_service.py`)
-- **Indexing**: `rag_service.py` indexes local JSON files (`data/knowledge_core_*.json`, `synthetic_icar_data.json`) into ChromaDB (`backend/data/chromadb`).
-- **Inference**: Chat endpoints use `llm_service.py` (Groq API) enriched with ChromaDB context (Retrieval-Augmented Generation).
-- **Key management**: API keys are pulled from `backend/settings/user_settings.json` or `.env`.
+- **Indexing**: `rag_service.py` indexes local JSON files into ChromaDB.
+- **Inference**: Chat endpoints use `llm_service.py` (Groq API) enriched with context.
+- **Key management**: API keys are strictly passed from the frontend via the `X-Api-Key` header. The backend does not persist or store these keys, ensuring user privacy and security.
 
 ### B. Geospatial & Environment Scanning
 - **Frontend**: `LandAnalyser.jsx` / `CropIntelligenceHub.jsx` / `SmartEnvironmentScanner.jsx` collect location data.
@@ -62,7 +57,8 @@ This document serves as a persistent technical reference to quickly understand t
 - Relies on PyTorch and `timm`. If these are missing, it falls back to a "Mock Inference" mode.
 
 ## 5. Common Troubleshooting & Gotchas
-- **Missing API Key**: If Vani AI fails, check `user_settings.json` or set `GROQ_API_KEY` in `.env`.
+- **Missing API Key**: If AI features fail, ensure the Groq API key is entered in the web app's **Settings** page.
+- **Backend Modularization**: If adding routes, use the Blueprint pattern in `backend/routes/`.
 - **ChromaDB Issues**: If RAG fails, delete `backend/data/chromadb` and let the system re-index on the next request.
 - **Dependency Issues**: The backend requires heavy ML libraries (`torch`, `torchvision`, `timm`). Ensure they are installed via `pip install -r backend/requirements.txt`.
 - **Port Collisions**: Backend runs on `5001` by default. Vite will auto-increment (e.g., `5174`, `5175`) if `5173` is busy.

@@ -47,7 +47,8 @@ class SoilAgent(BaseAgent):
                     "deficiencies": issues,
                     "summary": f"Soil is {soil_type}. " + ("Issues: " + "; ".join(issues) if issues else "No major deficiencies.")
                 }
-            except:
+            except Exception as e:
+                logger.error(f"SoilAgent error: {e}")
                 result = {"agent": self.name, "status": "error", "summary": "Invalid soil parameter values"}
         return result
 
@@ -110,7 +111,7 @@ class PriceAgent(BaseAgent):
         result = {"agent": self.name, "status": "no_data"}
 
         try:
-            from msp_fetcher import MSPFetcher, get_msp_for_crop
+            from services.msp_fetcher import MSPFetcher, get_msp_for_crop
             msp = get_msp_for_crop(crop)
             if msp:
                 result = {
@@ -210,7 +211,7 @@ class MarketAgent(BaseAgent):
         result = {"agent": self.name, "status": "no_data"}
 
         try:
-            from msp_fetcher import MSPFetcher
+            from services.msp_fetcher import MSPFetcher
             history = MSPFetcher.get_price_history(crop, days=180)
             msp_data = MSPFetcher.fetch_live_msp(crop)
             trend = "Stable"

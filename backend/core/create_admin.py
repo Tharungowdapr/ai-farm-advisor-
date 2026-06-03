@@ -1,7 +1,7 @@
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-from database import create_user, get_user_by_email, get_db
+from core.database import create_user, get_user_by_email, get_db
 
 admin_email = "admin@krishisync.com"
 admin_pass = "Admin@123"

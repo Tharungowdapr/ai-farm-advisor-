@@ -1,11 +1,14 @@
+from services.msp_fetcher import MSPFetcher
+from services.llm_service import LLMService
 from flask import Blueprint, request, jsonify
-from negotiator_routes import call_openrouter
 import math
 import random
 import urllib.parse
 import requests
 import re
+import logging
 
+logger = logging.getLogger(__name__)
 vendor_bp = Blueprint('vendor_bp', __name__)
 
 MANDIS = [
@@ -23,14 +26,6 @@ MANDIS = [
     {"name": "APMC Bellary", "lat": 15.1394, "lon": 76.9214, "rating": 4.4},
 ]
 
-CROP_PRICES = {
-    "Paddy": 22, "Wheat": 28, "Tomato": 35, "Potato": 25, "Onion": 30,
-    "Maize": 20, "Sugarcane": 3, "Cotton": 70, "Ragi": 35, "Arecanut": 400,
-    "Coffee": 300, "Soybean": 45, "Grape": 80, "Orange": 50, "Apple": 120,
-    "Sunflower": 60, "Mustard": 55, "Barley": 24, "Jowar": 28, "Bajra": 25,
-    "Capsicum": 45
-}
-
 def haversine(lat1, lon1, lat2, lon2):
     R = 6371
     dLat = math.radians(lat2 - lat1)
@@ -42,12 +37,9 @@ def haversine(lat1, lon1, lat2, lon2):
     return R * c
 
 def geocode_location(loc_str):
-    # Check if string has Lat: ... Lon: ...
     match = re.search(r"Lat:\s*([\d\.\-]+).*?Lon:\s*([\d\.\-]+)", loc_str, re.IGNORECASE)
     if match:
         return float(match.group(1)), float(match.group(2))
-    
-    # Try Nominatim search
     try:
         headers = {"User-Agent": "KrishiSync/1.0"}
         url = f"https://nominatim.openstreetmap.org/search?q={urllib.parse.quote(loc_str)}&format=json&limit=1"
@@ -56,77 +48,75 @@ def geocode_location(loc_str):
             return float(res[0]['lat']), float(res[0]['lon'])
     except:
         pass
-    
-    return 12.9716, 77.5946 # Default to Bangalore
+    return 12.9716, 77.5946 
 
 @vendor_bp.route("/find", methods=["POST"])
 def find_vendors():
+    from app import call_llm
     data = request.json or {}
     crop = data.get("crop", "Paddy")
     location = data.get("location", "Karnataka")
-    try:
-        quantity_kg = float(data.get("quantity", 100))
-    except ValueError:
-        quantity_kg = 100
-        
+    qty_kg = float(data.get("quantity", 100))
+    
     try:
         user_lat, user_lon = geocode_location(location)
         
-        # Calculate distances to all hardcoded mandis
+        # 1. Accurate Pricing from MSPFetcher
+        msp_info = MSPFetcher.fetch_live_msp(crop)
+        # Convert string like "₹2,350" to float per kg
+        price_str = msp_info["msp"].replace("₹", "").replace(",", "")
+        base_price_quintal = float(price_str)
+        base_price_kg = base_price_quintal / 100.0 if "Quintal" in msp_info.get("unit", "Quintal") else base_price_quintal
+        
+        # 2. Regional Analysis (Most grown crops) using LLM
+        regional_prompt = f"Identify the top 3 most commonly grown crops in the region of {location}, Karnataka. Return ONLY a comma-separated list."
+        most_grown = call_llm(regional_prompt, max_tokens=50).strip().split(",")
+        
+        # 3. Mandi Logic
         scored_mandis = []
         for m in MANDIS:
             dist = haversine(user_lat, user_lon, m["lat"], m["lon"])
             scored_mandis.append({**m, "distance_km": dist})
-            
-        # Sort by closest and pick top 3
         scored_mandis.sort(key=lambda x: x["distance_km"])
-        nearest_mandis = scored_mandis[:3]
         
         vendors = []
-        base_price = CROP_PRICES.get(crop, 40)
-        
-        for idx, m in enumerate(nearest_mandis):
-            # Create slight variations in price based on distance/randomness to make it realistic
-            price_variation = random.uniform(-1.0, 3.0)
-            if idx == 0:
-                price_variation += 1.5 # Closest mandi pays slightly more sometimes
-                
-            price = max(1, round(base_price + price_variation, 2))
+        for idx, m in enumerate(scored_mandis[:4]):
+            price_var = random.uniform(0.95, 1.15)
+            buying_price = round(base_price_kg * price_var, 2)
+            
+            # Transport Cost Calculation
+            if qty_kg <= 100:
+                transport = m["distance_km"] * 3.5 
+            else:
+                num_trucks = math.ceil(qty_kg / 800)
+                transport = (250 + (m["distance_km"] * 12)) * num_trucks
+            
+            gross = round(buying_price * qty_kg)
+            net = round(gross - transport)
             
             vendors.append({
                 "vendor_name": m["name"],
                 "distance_km": round(m["distance_km"], 1),
-                "buying_price_per_kg": price,
-                "rating": m["rating"]
+                "buying_price_per_kg": buying_price,
+                "rating": m["rating"],
+                "transport_cost": round(transport),
+                "gross_revenue": gross,
+                "net_profit": net,
+                "is_msp_linked": msp_info["live_updated"]
             })
-        
-        # Calculate proper transport cost based on Indian logistics
-        def calculate_transport(dist_km, qty_kg):
-            if qty_kg <= 50:
-                # Can be transported via two-wheeler
-                return dist_km * 2.5 # ₹2.5 per km fuel
-            else:
-                # Requires a small truck (e.g. Tata Ace, capacity ~750kg)
-                truck_capacity = 750
-                num_trucks = math.ceil(qty_kg / truck_capacity)
-                base_loading_fee = 150
-                per_km_rate = 14 # ₹14 per km per truck
-                return (base_loading_fee + (dist_km * per_km_rate)) * num_trucks
-        
-        for v in vendors:
-            # Enforce numeric
-            v["distance_km"] = float(v.get("distance_km", 10))
-            v["buying_price_per_kg"] = float(v.get("buying_price_per_kg", 20))
             
-            v["transport_cost"] = round(calculate_transport(v["distance_km"], quantity_kg))
-            v["gross_revenue"] = round(v["buying_price_per_kg"] * quantity_kg)
-            v["net_profit"] = v["gross_revenue"] - v["transport_cost"]
-            
-        # Sort by net profit descending
         vendors.sort(key=lambda x: x["net_profit"], reverse=True)
         
-        return jsonify({"success": True, "vendors": vendors, "best_vendor": vendors[0] if vendors else None})
+        return jsonify({
+            "success": True, 
+            "vendors": vendors, 
+            "most_grown": [c.strip() for c in most_grown],
+            "market_context": {
+                "base_price": base_price_kg,
+                "price_source": msp_info["source"],
+                "location_detected": location
+            }
+        })
     except Exception as e:
-        import traceback
-        traceback.print_exc()
+        logger.error(f"Find vendors failed: {e}")
         return jsonify({"success": False, "error": str(e)}), 500

@@ -53,14 +53,11 @@ echo "  Frontend dependencies ready"
 # ── Environment ──
 echo "[5/6] Setting up environment..."
 cd "$PROJECT_DIR"
-if [ ! -f ".env" ]; then
-    if [ -f ".env.example" ]; then
-        cp .env.example .env
-        echo "  Created .env from .env.example"
-        echo "  IMPORTANT: Edit .env and add your Groq API key"
-    else
-        echo "  WARNING: No .env.example found"
-    fi
+# .env is no longer strictly required for the backend as keys are passed from the frontend UI
+if [ ! -f "backend/settings/user_settings.json" ]; then
+    mkdir -p backend/settings
+    echo '{"language": "EN", "theme": "light"}' > backend/settings/user_settings.json
+    echo "  Initialized default user settings"
 fi
 
 # Create required directories

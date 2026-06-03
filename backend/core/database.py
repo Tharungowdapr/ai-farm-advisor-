@@ -67,6 +67,12 @@ def init_db():
         weather_data TEXT,
         FOREIGN KEY(farm_id) REFERENCES farms(id)
     )''')
+    c.execute('''CREATE TABLE IF NOT EXISTS custom_crops (
+        id TEXT PRIMARY KEY,
+        name TEXT UNIQUE,
+        data_json TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )''')
 
     conn.commit()
     conn.close()
@@ -216,3 +222,30 @@ def get_or_create_user(user_id="default_user", name="Farmer", language="EN", reg
     return dict(user)
 
 init_db()
+def save_custom_crop(name, data_dict):
+    conn = get_db()
+    c = conn.cursor()
+    try:
+        cid = f"crop_{uuid.uuid4().hex[:8]}"
+        c.execute("INSERT OR REPLACE INTO custom_crops (id, name, data_json) VALUES (?, ?, ?)",
+                  (cid, name, json.dumps(data_dict)))
+        conn.commit()
+        return cid
+    except Exception as e:
+        print(f"Error saving custom crop: {e}")
+        return None
+    finally:
+        conn.close()
+
+def get_custom_crops():
+    conn = get_db()
+    c = conn.cursor()
+    try:
+        c.execute("SELECT name, data_json FROM custom_crops")
+        rows = c.fetchall()
+        return [json.loads(r["data_json"]) for r in rows]
+    except Exception as e:
+        print(f"Error getting custom crops: {e}")
+        return []
+    finally:
+        conn.close()

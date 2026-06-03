@@ -1,5 +1,6 @@
 import json
 import os
+import time
 import logging
 import requests as http_requests
 from pathlib import Path
@@ -11,15 +12,19 @@ load_dotenv()
 logger = logging.getLogger(__name__)
 
 try:
-    from monitoring import metrics
+    from core.monitoring import metrics
 except ImportError:
     metrics = None
 
 SETTINGS_DIR = Path(__file__).parent.parent / "settings"
 SETTINGS_FILE = SETTINGS_DIR / "user_settings.json"
 
-# Load from environment or use a placeholder (not hardcoded secret)
-DEFAULT_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
+# Load from environment
+DEFAULT_API_KEY = os.getenv("GROQ_API_KEY", "")
+
+# Groq API Configuration
+GROQ_BASE_URL = "https://api.groq.com/openai/v1/chat/completions"
+GROQ_DEFAULT_MODEL = "llama-3.3-70b-versatile"  # Fast + high quality
 
 
 class LLMService:
@@ -36,40 +41,19 @@ class LLMService:
             return
         self._initialized = True
         self.api_key = None
-        self._load_key()
-
-    def _load_key(self):
-        # Always start with the working OpenRouter key
-        self.api_key = DEFAULT_API_KEY
-
-        try:
-            if SETTINGS_FILE.exists():
-                with open(SETTINGS_FILE) as f:
-                    settings = json.load(f)
-                user_key = settings.get("api_key", "").strip()
-                # Only override if it's actually an OpenRouter key (sk-or-...)
-                if user_key and user_key.startswith("sk-or-"):
-                    self.api_key = user_key
-        except Exception:
-            pass
-
-        env_key = os.getenv("OPENROUTER_API_KEY", "").strip()
-        if env_key and env_key.startswith("sk-or-"):
-            self.api_key = env_key
-
-        if self.api_key:
-            logger.info("LLMService initialized with OpenRouter (Gemini via requests)")
-        else:
-            logger.warning("No API key found for OpenRouter")
+        # Keys are now strictly provided from the frontend via the 'api_key' argument in call()
+        logger.info("LLMService initialized in pass-through mode (frontend provided keys)")
 
     def refresh_key(self):
-        self._initialized = False
-        self._load_key()
-        self._initialized = True
+        pass
 
-    def call(self, prompt, system_prompt=None, json_mode=False, model="openai/gpt-4o-mini", max_tokens=1500):
-        if not self.api_key:
-            raise Exception("OpenRouter API key not configured. Set it in Settings.")
+    def call(self, prompt, system_prompt=None, json_mode=False, model=None, max_tokens=1500, api_key=None):
+        key_to_use = api_key or self.api_key or DEFAULT_API_KEY
+        if not key_to_use:
+            raise Exception("Groq API key not configured. Enter it in the Settings page or set GROQ_API_KEY env var.")
+
+        if model is None:
+            model = GROQ_DEFAULT_MODEL
 
         messages = []
         if system_prompt:
@@ -77,39 +61,44 @@ class LLMService:
         messages.append({"role": "user", "content": prompt})
 
         headers = {
-            "Authorization": f"Bearer {self.api_key}",
+            "Authorization": f"Bearer {key_to_use}",
             "Content-Type": "application/json",
-            "HTTP-Referer": "http://localhost:5173",
-            "X-Title": "KrishiSync Vani AI"
         }
 
         payload = {
             "model": model,
             "messages": messages,
             "max_tokens": max_tokens,
+            "temperature": 0.7,
+            "top_p": 0.9,
         }
 
         if json_mode:
             payload["response_format"] = {"type": "json_object"}
 
         try:
-            import time
             _start = time.time()
             resp = http_requests.post(
-                "https://openrouter.ai/api/v1/chat/completions",
+                GROQ_BASE_URL,
                 headers=headers,
                 json=payload,
                 timeout=60
             )
             _duration = (time.time() - _start) * 1000
+
             if not resp.ok:
-                logger.error(f"OpenRouter HTTP {resp.status_code}: {resp.text[:300]}")
+                logger.error(f"Groq HTTP {resp.status_code}: {resp.text[:300]}")
                 if metrics:
                     metrics.record_llm_call(_duration, success=False, model=model)
-                raise Exception(f"OpenRouter API Error {resp.status_code}: {resp.text[:200]}")
+                raise Exception(f"Groq API Error {resp.status_code}: {resp.text[:200]}")
+
             if metrics:
                 metrics.record_llm_call(_duration, success=True, model=model)
-            return resp.json()["choices"][0]["message"]["content"]
+
+            result = resp.json()["choices"][0]["message"]["content"]
+            logger.info(f"Groq LLM call success: {_duration:.0f}ms, model={model}, tokens={resp.json().get('usage', {}).get('total_tokens', '?')}")
+            return result
+
         except Exception as e:
-            logger.error(f"OpenRouter API error: {e}")
+            logger.error(f"Groq API error: {e}")
             raise

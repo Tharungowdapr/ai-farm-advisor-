@@ -14,6 +14,33 @@ from agents.specialist_agents import ALL_AGENTS, AGENT_DESCRIPTIONS
 llm = LLMService()
 rag = RAGService()
 
+def _safe_json_parse(text, fallback_crop="Paddy"):
+    """Robustly parse JSON from LLM response, even if it has markdown or garbage."""
+    import re
+    try:
+        # Try finding a JSON block
+        json_match = re.search(r'\{.*\}', text, re.DOTALL)
+        if json_match:
+            data = json.loads(json_match.group(0))
+            return {
+                "detected_crop": data.get("detected_crop", fallback_crop),
+                "selected_agents": [str(a) for a in data.get("selected_agents", []) if str(a) in ALL_AGENTS]
+            }
+    except Exception:
+        pass
+    
+    # Second attempt: simple regex for agents if JSON fails
+    agents = []
+    for agent_id in ALL_AGENTS.keys():
+        if agent_id in text.lower():
+            agents.append(agent_id)
+            
+    return {
+        "detected_crop": fallback_crop,
+        "selected_agents": agents if agents else ["weather", "soil", "price"]
+    }
+
+
 SUPERVISOR_PROMPT = """You are the Senior Intelligence Routing Agent for KrishiVigyan, an advanced agricultural advisory system.
 Given a farmer's query and their local environmental context, determine which specialized expert models must be activated to provide a comprehensive answer.
 
@@ -81,18 +108,13 @@ def supervisor(state):
     context_crop = ctx.get("crop", "Paddy")
     
     try:
+        api_key = state.get("api_key")
         prompt = SUPERVISOR_PROMPT.format(agents=AGENT_DESCRIPTIONS, query=query, context_crop=context_crop)
-        response = llm.call(prompt, json_mode=True, max_tokens=500)
+        response = llm.call(prompt, json_mode=True, max_tokens=500, api_key=api_key)
         
-        # Parse JSON
-        import re
-        json_match = re.search(r'\{.*\}', response, re.DOTALL)
-        if json_match:
-            data = json.loads(json_match.group(0))
-            state["selected_agents"] = [a for a in data.get("selected_agents", []) if a in ALL_AGENTS]
-            # Update crop context if a specific crop is detected
-            if data.get("detected_crop"):
-                state["context"]["crop"] = data["detected_crop"]
+        parsed = _safe_json_parse(response, context_crop)
+        state["selected_agents"] = parsed["selected_agents"]
+        state["context"]["crop"] = parsed["detected_crop"]
         
         if not state.get("selected_agents"):
             state["selected_agents"] = ["weather", "soil", "price"]
@@ -101,6 +123,7 @@ def supervisor(state):
         logger.warning(f"Supervisor routing failed: {e}")
         state["selected_agents"] = ["weather", "soil", "price"]
     return state
+
 
 
 def run_agents(state):
@@ -128,27 +151,40 @@ def synthesis(state):
         for r in results.values()
     )
 
-    rag_context = ""
+    rag_context_text = ""
     try:
-        rag_context = rag.augment_prompt(f"{query} " + " ".join(r.get('summary','') for r in results.values()))
+        # Search for knowledge chunks related to the query and detected crop
+        crop_context = ctx.get("crop", "")
+        search_query = f"{crop_context} {query}"
+        rag_hits = rag.semantic_search(search_query, top_k=5)
+        
+        context_parts = []
+        for h in rag_hits:
+            m = h.get("metadata", {})
+            source = m.get("crop") or m.get("name") or "General"
+            context_parts.append(f"Source [{source}]: {h['document']}")
+        rag_context_text = "\n\n".join(context_parts)
     except Exception as e:
-        logger.warning(f"RAG augment failed in synthesis: {e}")
-        rag_context = ""
+        logger.warning(f"RAG search failed in synthesis: {e}")
 
     location = ctx.get("city") or f"{ctx.get('lat','?')},{ctx.get('lon','?')}"
-    crop = ctx.get("crop") or "general"
+    crop = ctx.get("crop") or "General"
     month = __import__('datetime').datetime.now().month
     season = "Kharif (Monsoon)" if month in [6,7,8,9] else "Rabi (Winter)" if month in [10,11,12,1] else "Summer"
     lang_instr = state.get("lang_instruction") or ctx.get("lang_instruction") or "Respond in English."
+    
     prompt = SYNTHESIS_PROMPT.format(
         user_query=query,
         location=location, crop=crop, season=season,
-        agent_reports=agent_reports, rag_context=rag_context[:2000],
+        agent_reports=agent_reports if agent_reports else "No specific sensor data available.",
+        rag_context=rag_context_text[:3000] if rag_context_text else "No specific technical data found.",
         language_instruction=lang_instr
     )
 
+
     try:
-        response = llm.call(prompt, max_tokens=1000)
+        api_key = state.get("api_key")
+        response = llm.call(prompt, max_tokens=1000, api_key=api_key)
         state["final_response"] = response
     except Exception as e:
         logger.warning(f"Synthesis LLM failed, using template: {e}")
@@ -173,6 +209,8 @@ def build_agent_graph():
             selected_agents: list = []
             agent_results: dict = {}
             final_response: str = ""
+            api_key: str = ""
+            lang_instruction: str = ""
 
         graph = StateGraph(AgentState)
 
@@ -191,27 +229,34 @@ def build_agent_graph():
         return None
 
 
-def run_agent_pipeline(query, context=None):
+def run_agent_pipeline(query, context=None, api_key=None):
     if context is None:
         context = {}
 
     graph = build_agent_graph()
 
+    lang_instr = context.get("lang_instruction") or "Respond in English."
+    
+    state = {
+        "query": query, 
+        "context": context, 
+        "selected_agents": [], 
+        "agent_results": {}, 
+        "final_response": "", 
+        "api_key": api_key,
+        "lang_instruction": lang_instr
+    }
+
     if graph:
         try:
-            result = graph.invoke({
-                "query": query,
-                "context": context,
-                "selected_agents": [],
-                "agent_results": {},
-                "final_response": ""
-            })
+            result = graph.invoke(state)
             return result.get("final_response", "Analysis complete.")
         except Exception as e:
             logger.error(f"LangGraph failed: {e}")
 
     lang_instr = context.get("lang_instruction") or "Respond in English."
-    state = {"query": query, "context": context, "selected_agents": [], "agent_results": {}, "final_response": "", "lang_instruction": lang_instr}
+    state["lang_instruction"] = lang_instr
+    
     state = supervisor(state)
     state = run_agents(state)
     state = synthesis(state)

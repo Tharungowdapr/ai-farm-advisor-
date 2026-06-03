@@ -24,7 +24,8 @@ Move beyond simple price checking with our strategic bargaining engine:
 
 ### 📊 Market Intelligence Hub
 - **Universal Pricing:** Live MSP data for government-regulated crops and regional benchmark fallbacks for non-MSP fruits/vegetables.
-- **Profit Analytics:** Clear visualization of "Gross vs. Net" profit after deducting labor, seeds, and transportation.
+- **Regional Dominance:** Dynamically identifies the top 3 crops grown in your specific district using AI-driven location analysis.
+- **Profit Analytics:** Clear visualization of "Gross vs. Net" profit after deducting labor, seeds, and vehicle-specific transportation costs (Tata Ace/Truck).
 
 ### 🌍 Environmental Diagnostics
 - **Hyper-Local Weather:** Integration with OpenWeatherMap and OpenMeteo for real-time field conditions.
@@ -44,7 +45,7 @@ The platform utilizes a **Directed Acyclic Graph (DAG)** flow for query resoluti
 ### Technology Stack
 - **Frontend:** React 18, Tailwind CSS, Vite.
 - **Backend:** Flask, Python Dotenv, Requests.
-- **AI/LLM:** OpenRouter Gateway (Gemini 1.5 Pro / GPT-4o-mini).
+- **AI/LLM:** Groq API (Llama 3.3 70B Versatile).
 - **Search:** Custom Geocoding Resolver (OpenWeather + OpenMeteo).
 
 ---
@@ -60,13 +61,7 @@ source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### 2. Configure Environment
-Create a `.env` file in the `backend/` directory:
-```env
-OPENROUTER_API_KEY=your_api_key_here
-```
-
-### 3. Run the Platform
+### 2. Run the Platform
 **Terminal 1 (Backend):**
 ```bash
 python app.py
@@ -79,11 +74,18 @@ npm install
 npm run dev
 ```
 
+### 3. Configure API Key
+1. Open the web app in your browser (usually http://localhost:5173).
+2. Navigate to the **Settings** page via the navigation bar.
+3. Enter your **Groq API Key** and click "Save & Activate".
+4. The key is stored securely in your browser and passed to the backend for AI requests.
+
 ---
 
 ## 🛡️ Security & Privacy
-- **Zero-Secret Commits:** All API keys are managed via `.env` and excluded from Git history.
-- **Local Sovereignty:** Soil and farm data are processed via local-first endpoints to ensure farmer data privacy.
+- **Zero-Secret Backend:** The backend is designed to be "secret-free." All API keys (Groq) are provided by the user via the frontend and stored strictly in the browser's `localStorage`.
+- **In-Memory Processing:** Sensitive credentials are passed via secure headers (`X-Api-Key`) and are never persisted to the server's disk or database.
+- **Local Sovereignty:** Soil and farm data are processed via specialized agents to ensure context-aware but private analysis.
 
 ---
 

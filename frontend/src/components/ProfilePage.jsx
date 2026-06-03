@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { User, Mail, Phone, MapPin, Ruler, Sprout, Loader2, Save, LogOut, CheckCircle2 } from 'lucide-react';
 import axios from 'axios';
+import { motion } from 'framer-motion';
 
 const GrainOverlay = () => <div className="grain-overlay opacity-20" />;
 

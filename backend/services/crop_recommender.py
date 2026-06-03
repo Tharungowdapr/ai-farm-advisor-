@@ -289,7 +289,7 @@ def _disease_penalty(crop_name, weather_data, soil_data):
     Higher disease risk = lower score multiplier.
     """
     try:
-        from icar_integration import calculate_disease_risk_icar
+        from services.icar_integration import calculate_disease_risk_icar
         risks = calculate_disease_risk_icar(crop_name, weather_data, soil_data)
         if not risks:
             return 1.0
@@ -409,7 +409,7 @@ def recommend_crops(location_data, top_k=5):
 
         disease_risks = []
         try:
-            from icar_integration import calculate_disease_risk_icar
+            from services.icar_integration import calculate_disease_risk_icar
             disease_risks = calculate_disease_risk_icar(crop_name, combined_weather, soil)
         except Exception:
             pass

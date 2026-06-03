@@ -127,7 +127,116 @@ CROP_REQUIREMENT_PROFILES = {
         "market_price": 6000, "risk_level": "High", "input_cost": "High",
         "companion_crops": ["Pear", "Plum"],
     },
+    "Arecanut": {
+        "temp_min": 14, "temp_max": 35, "temp_opt_min": 18, "temp_opt_max": 30,
+        "rain_min": 1000, "rain_max": 3000, "ph_min": 5.0, "ph_max": 7.0, "ph_opt_min": 5.5, "ph_opt_max": 6.5,
+        "water": "High", "duration_days": 365, "season": "perennial",
+        "elevation_max": 1200, "n_demand": "Moderate", "root_depth": "Medium",
+        "drought_tolerance": "Low", "salinity_tolerance": "Low",
+        "market_price": 45000, "risk_level": "Moderate", "input_cost": "High",
+        "companion_crops": ["Pepper", "Cardamom", "Cocoa"],
+    },
+    "Coconut": {
+        "temp_min": 20, "temp_max": 35, "temp_opt_min": 24, "temp_opt_max": 30,
+        "rain_min": 1000, "rain_max": 2500, "ph_min": 5.2, "ph_max": 8.0, "ph_opt_min": 5.5, "ph_opt_max": 7.0,
+        "water": "Moderate-High", "duration_days": 365, "season": "perennial",
+        "elevation_max": 1000, "n_demand": "Moderate", "root_depth": "Deep",
+        "drought_tolerance": "Medium", "salinity_tolerance": "High",
+        "market_price": 25000, "risk_level": "Low", "input_cost": "Moderate",
+        "companion_crops": ["Cocoa", "Banana", "Pineapple"],
+    },
+    "Cotton": {
+        "temp_min": 21, "temp_max": 35, "temp_opt_min": 25, "temp_opt_max": 32,
+        "rain_min": 500, "rain_max": 1000, "ph_min": 6.0, "ph_max": 8.5, "ph_opt_min": 6.5, "ph_opt_max": 7.5,
+        "water": "Moderate", "duration_days": 180, "season": "kharif",
+        "elevation_max": 1000, "n_demand": "High", "root_depth": "Deep",
+        "drought_tolerance": "High", "salinity_tolerance": "Medium",
+        "market_price": 7500, "risk_level": "High", "input_cost": "Moderate-High",
+        "companion_crops": ["Cowpea", "Soybean"],
+    },
+    "Groundnut": {
+        "temp_min": 18, "temp_max": 32, "temp_opt_min": 22, "temp_opt_max": 30,
+        "rain_min": 400, "rain_max": 800, "ph_min": 5.5, "ph_max": 7.5, "ph_opt_min": 6.0, "ph_opt_max": 7.0,
+        "water": "Low-Moderate", "duration_days": 120, "season": "kharif",
+        "elevation_max": 1500, "n_demand": "Low", "root_depth": "Medium",
+        "drought_tolerance": "Medium-High", "salinity_tolerance": "Low",
+        "market_price": 6700, "risk_level": "Moderate", "input_cost": "Low-Moderate",
+        "companion_crops": ["Sunflower", "Castor"],
+    },
 }
+
+# ── Regional Data ───────────────────────────────────────────────
+REGIONAL_CROP_STATS = [
+    {
+        "region": "Cauvery Basin (Mandya/Mysuru)",
+        "lat_range": (11.5, 13.0), "lon_range": (76.0, 77.5),
+        "dominant_crops": [
+            {"name": "Paddy", "acreage_pct": 45, "production": "High"},
+            {"name": "Sugarcane", "acreage_pct": 30, "production": "Very High"},
+            {"name": "Ragi", "acreage_pct": 15, "production": "Moderate"}
+        ]
+    },
+    {
+        "region": "Coastal Karnataka (Dakshina Kannada/Udupi)",
+        "lat_range": (12.5, 15.0), "lon_range": (74.0, 75.5),
+        "dominant_crops": [
+            {"name": "Arecanut", "acreage_pct": 50, "production": "Highest in India"},
+            {"name": "Coconut", "acreage_pct": 25, "production": "High"},
+            {"name": "Paddy", "acreage_pct": 15, "production": "Moderate"}
+        ]
+    },
+    {
+        "region": "North Karnataka (Raichur/Ballari)",
+        "lat_range": (15.0, 17.5), "lon_range": (75.5, 77.5),
+        "dominant_crops": [
+            {"name": "Cotton", "acreage_pct": 40, "production": "High"},
+            {"name": "Maize", "acreage_pct": 25, "production": "High"},
+            {"name": "Paddy", "acreage_pct": 20, "production": "Moderate (Irrigated)"}
+        ]
+    },
+    {
+        "region": "Malnad (Chikkamagaluru/Kodagu)",
+        "lat_range": (12.0, 14.5), "lon_range": (75.0, 76.5),
+        "dominant_crops": [
+            {"name": "Coffee", "acreage_pct": 60, "production": "Primary Hub"},
+            {"name": "Arecanut", "acreage_pct": 20, "production": "High"},
+            {"name": "Pepper", "acreage_pct": 10, "production": "Significant"}
+        ]
+    },
+    {
+        "region": "Central/Dry Belt (Tumkur/Chitradurga)",
+        "lat_range": (13.0, 15.0), "lon_range": (76.0, 77.5),
+        "dominant_crops": [
+            {"name": "Coconut", "acreage_pct": 35, "production": "High"},
+            {"name": "Groundnut", "acreage_pct": 30, "production": "Moderate"},
+            {"name": "Ragi", "acreage_pct": 25, "production": "High"}
+        ]
+    }
+]
+
+def _get_regional_stats(lat, lon):
+    try:
+        lat_f = float(lat)
+        lon_f = float(lon)
+    except:
+        return {"name": "Unknown Region", "most_grown": []}
+
+    for reg in REGIONAL_CROP_STATS:
+        l_min, l_max = reg["lat_range"]
+        o_min, o_max = reg["lon_range"]
+        if l_min <= lat_f <= l_max and o_min <= lon_f <= o_max:
+            return {
+                "name": reg["region"],
+                "most_grown": reg["dominant_crops"]
+            }
+    return {
+        "name": "General Interior Karnataka",
+        "most_grown": [
+            {"name": "Paddy", "acreage_pct": 20},
+            {"name": "Maize", "acreage_pct": 20},
+            {"name": "Ragi", "acreage_pct": 15}
+        ]
+    }
 
 
 def analyze_land(lat, lon, city, N, P, K, ph, weather_data, open_meteo_raw=None):
@@ -145,6 +254,7 @@ def analyze_land(lat, lon, city, N, P, K, ph, weather_data, open_meteo_raw=None)
     crop_matrix = _analyze_crop_suitability(climate, soil, water, topography)
     recommendations = _generate_recommendations(climate, soil, water, topography, crop_matrix)
 
+    regional_stats = _get_regional_stats(lat, lon)
     return {
         "location": {"city": city, "lat": lat, "lon": lon, "elevation_m": elevation},
         "climate": climate,
@@ -153,7 +263,9 @@ def analyze_land(lat, lon, city, N, P, K, ph, weather_data, open_meteo_raw=None)
         "water": water,
         "crop_suitability": crop_matrix,
         "recommendations": recommendations,
+        "regional_stats": regional_stats,
         "timestamp": datetime.now().isoformat(),
+        "status": "complete"
     }
 
 

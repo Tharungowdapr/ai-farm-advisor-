@@ -38,6 +38,9 @@ bcrypt>=4.1.0
 # API key encryption
 cryptography>=41.0.0
 
+# PostgreSQL (Neon)
+psycopg2-binary>=2.9.0
+
 # Google GenAI (for cultivation manager)
 google-genai>=1.0.0
 

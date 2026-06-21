@@ -3,7 +3,7 @@
   "outputDirectory": "dist",
   "framework": "vite",
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "https://your-app-name.onrender.com/api/$1" },
+    { "source": "/api/(.*)", "destination": "https://ai-farm-advisor.onrender.com/api/$1" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

@@ -4,9 +4,9 @@ import { Sprout, TrendingUp, Settings, MessageSquare, User, DollarSign, BookOpen
 import axios from 'axios';
 import { GrainOverlay } from './GrainOverlay';
 
-const HomeTerminal = () => {
+const HomeTerminal = ({ user: propUser }) => {
   const [weather, setWeather] = useState(null);
-  const [user, setUser] = useState(() => { try { return JSON.parse(localStorage.getItem('user')); } catch { return null; } });
+  const user = propUser || (() => { try { return JSON.parse(localStorage.getItem('user')); } catch { return null; } })();
 
   useEffect(() => {
     if (navigator.geolocation) {

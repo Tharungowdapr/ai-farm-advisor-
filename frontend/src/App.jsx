@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Navbar from './components/Navbar';
 import LandingPage from './components/LandingPage';
 import ProtectedRoute from './components/ProtectedRoute';
+import ErrorBoundary from './components/ErrorBoundary';
 import HomeTerminal from './components/HomeTerminal';
 import SettingsTerminal from './components/SettingsTerminal';
 import PredictionTerminal from './components/PredictionTerminal';
@@ -36,28 +37,30 @@ const App = () => {
   return (
     <Router>
       <div className="min-h-screen font-sans">
-        <GrainOverlay />
-        <Navbar user={user} onLogout={handleLogout} />
-        <Routes>
-          <Route path="/" element={
-            user ? <Navigate to="/dashboard" replace /> : <LandingPage />
-          } />
-          <Route path="/login" element={
-            user ? <Navigate to="/dashboard" replace /> : <LoginPage onLogin={handleLogin} />
-          } />
-          <Route path="/signup" element={
-            user ? <Navigate to="/dashboard" replace /> : <SignupPage onLogin={handleLogin} />
-          } />
-          <Route path="/dashboard" element={<ProtectedRoute user={user}><HomeTerminal /></ProtectedRoute>} />
-          <Route path="/land-analyser" element={<ProtectedRoute user={user}><LandAnalyser /></ProtectedRoute>} />
-          <Route path="/scan" element={<ProtectedRoute user={user}><SmartEnvironmentScanner /></ProtectedRoute>} />
-          <Route path="/crops" element={<ProtectedRoute user={user}><CropIntelligenceHub user={user} /></ProtectedRoute>} />
-          <Route path="/market" element={<ProtectedRoute user={user}><MarketHub /></ProtectedRoute>} />
-          <Route path="/vaniai" element={<ProtectedRoute user={user}><VaniAIChat /></ProtectedRoute>} />
-          <Route path="/admin" element={<ProtectedRoute user={user}><AdminDashboard user={user} /></ProtectedRoute>} />
-          <Route path="/settings" element={<ProtectedRoute user={user}><SettingsTerminal /></ProtectedRoute>} />
-          <Route path="/profile" element={<ProtectedRoute user={user}><ProfilePage user={user} onLogout={handleLogout} /></ProtectedRoute>} />
-        </Routes>
+        <ErrorBoundary>
+          <GrainOverlay />
+          <Navbar user={user} onLogout={handleLogout} />
+          <Routes>
+            <Route path="/" element={
+              user ? <Navigate to="/dashboard" replace /> : <LandingPage />
+            } />
+            <Route path="/login" element={
+              user ? <Navigate to="/dashboard" replace /> : <LoginPage onLogin={handleLogin} />
+            } />
+            <Route path="/signup" element={
+              user ? <Navigate to="/dashboard" replace /> : <SignupPage onLogin={handleLogin} />
+            } />
+            <Route path="/dashboard" element={<ProtectedRoute user={user}><HomeTerminal user={user} /></ProtectedRoute>} />
+            <Route path="/land-analyser" element={<ProtectedRoute user={user}><LandAnalyser user={user} /></ProtectedRoute>} />
+            <Route path="/scan" element={<ProtectedRoute user={user}><SmartEnvironmentScanner /></ProtectedRoute>} />
+            <Route path="/crops" element={<ProtectedRoute user={user}><CropIntelligenceHub user={user} /></ProtectedRoute>} />
+            <Route path="/market" element={<ProtectedRoute user={user}><MarketHub /></ProtectedRoute>} />
+            <Route path="/vaniai" element={<ProtectedRoute user={user}><VaniAIChat user={user} /></ProtectedRoute>} />
+            <Route path="/admin" element={<ProtectedRoute user={user}><AdminDashboard user={user} /></ProtectedRoute>} />
+            <Route path="/settings" element={<ProtectedRoute user={user}><SettingsTerminal /></ProtectedRoute>} />
+            <Route path="/profile" element={<ProtectedRoute user={user}><ProfilePage user={user} onLogout={handleLogout} /></ProtectedRoute>} />
+          </Routes>
+        </ErrorBoundary>
       </div>
     </Router>
   );

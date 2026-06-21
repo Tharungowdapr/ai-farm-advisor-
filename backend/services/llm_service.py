@@ -52,7 +52,7 @@ class LLMService:
         if not CRYPTO_AVAILABLE or not encrypted_key:
             return encrypted_key
         try:
-            secret = os.getenv("SECRET_KEY", "krishivigyan-dev-key-change-in-production-32")
+            secret = os.getenv("SECRET_KEY") or os.urandom(32).hex()
             key_bytes = secret.encode() if len(secret.encode()) >= 32 else secret.encode().ljust(32, b'x')[:32]
             kdf = PBKDF2HMAC(algorithm=hashes.SHA256(), length=32, salt=b'kv_salt_2024', iterations=100000)
             fernet_key = base64.urlsafe_b64encode(kdf.derive(key_bytes))
@@ -127,7 +127,7 @@ class LLMService:
         headers = {
             "Authorization": f"Bearer {self.api_key}",
             "Content-Type": "application/json",
-            "HTTP-Referer": "http://localhost:5173",
+            "HTTP-Referer": os.getenv("APP_URL", "http://localhost:5173"),
             "X-Title": "KrishiSync Vani AI"
         }
 

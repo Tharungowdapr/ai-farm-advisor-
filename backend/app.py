@@ -60,7 +60,7 @@ SETTINGS_DIR.mkdir(exist_ok=True)
 SETTINGS_FILE = SETTINGS_DIR / "user_settings.json"
 
 def _get_cipher():
-    secret = os.getenv("SECRET_KEY", "krishivigyan-dev-key-change-in-production-32")
+    secret = os.getenv("SECRET_KEY") or os.urandom(32).hex()
     key_bytes = secret.encode() if len(secret.encode()) >= 32 else secret.encode().ljust(32, b'x')[:32]
     kdf = PBKDF2HMAC(algorithm=hashes.SHA256(), length=32, salt=b'kv_salt_2024', iterations=100000)
     fernet_key = base64.urlsafe_b64encode(kdf.derive(key_bytes))
@@ -97,7 +97,14 @@ DEFAULT_SETTINGS = {
     "last_updated": None
 }
 
-from database import get_or_create_user, create_farm, get_user_farms, log_daily_activity, get_farm_logs, create_user, login_user, get_user, update_user, generate_token
+from database import (
+    get_or_create_user, create_farm, get_user_farms, log_daily_activity, get_farm_logs,
+    create_user, login_user, get_user, update_user, generate_token,
+    create_chat_session, get_chat_sessions, get_chat_session, update_chat_session_title,
+    touch_chat_session, delete_chat_session,
+    add_chat_message, get_chat_messages,
+    save_land_analysis, get_land_analyses, get_land_analysis, delete_land_analysis
+)
 
 TOKENS = {}
 
@@ -573,12 +580,29 @@ def llm_status():
         provider = settings.get("provider", "openrouter")
         model = settings.get("llm_model", "openai/gpt-4o-mini")
         has_key = bool(settings.get("api_key", "")) or bool(os.getenv("OPENROUTER_API_KEY", "")) or bool(os.getenv("GROQ_API_KEY", ""))
+        configured = bool(llm.api_key)
+        working = False
+        error_msg = None
+        if configured:
+            try:
+                test_resp = llm.call("Reply with just OK", system_prompt="Say OK", max_tokens=5)
+                working = bool(test_resp and "OK" in test_resp.strip().upper())
+                if not working:
+                    error_msg = "LLM responded with unexpected format"
+            except Exception as e:
+                error_msg = str(e)
+        elif has_key and not configured:
+            error_msg = "API key stored but could not be loaded (decryption may have failed)"
+        else:
+            error_msg = "No API key configured"
         return jsonify({
             "success": True,
             "provider": provider,
             "model": model,
             "has_api_key": has_key,
-            "configured": bool(llm.api_key)
+            "configured": configured,
+            "working": working,
+            "error": error_msg
         })
     except Exception as e:
         return jsonify({"success": False, "error": str(e)}), 500
@@ -738,6 +762,113 @@ def auth_profile():
         user = get_user(user_id)
         user.pop("password_hash", None)
         return jsonify({"success": ok, "user": user})
+
+# ── Chat Sessions (persistent) ─────────────────────────────────
+
+def _get_user_id():
+    token = request.headers.get("Authorization", "").replace("Bearer ", "")
+    return TOKENS.get(token)
+
+@app.route("/api/chat/sessions", methods=["GET", "POST"])
+def chat_sessions_api():
+    user_id = _get_user_id()
+    if not user_id:
+        return jsonify({"success": False, "error": "Not authenticated"}), 401
+    if request.method == "GET":
+        sessions = get_chat_sessions(user_id)
+        return jsonify({"success": True, "sessions": sessions})
+    data = request.json or {}
+    title = (data.get("title") or "New Chat").strip()
+    sid = create_chat_session(user_id, title)
+    return jsonify({"success": True, "session_id": sid, "title": title})
+
+@app.route("/api/chat/sessions/<session_id>", methods=["GET", "DELETE"])
+def chat_session_detail(session_id):
+    user_id = _get_user_id()
+    if not user_id:
+        return jsonify({"success": False, "error": "Not authenticated"}), 401
+    session = get_chat_session(session_id)
+    if not session or session["user_id"] != user_id:
+        return jsonify({"success": False, "error": "Not found"}), 404
+    if request.method == "GET":
+        messages = get_chat_messages(session_id)
+        return jsonify({"success": True, "session": session, "messages": messages})
+    delete_chat_session(session_id)
+    return jsonify({"success": True})
+
+@app.route("/api/chat/sessions/<session_id>/messages", methods=["POST"])
+def chat_session_add_message(session_id):
+    user_id = _get_user_id()
+    if not user_id:
+        return jsonify({"success": False, "error": "Not authenticated"}), 401
+    session = get_chat_session(session_id)
+    if not session or session["user_id"] != user_id:
+        return jsonify({"success": False, "error": "Not found"}), 404
+    data = request.json or {}
+    role = data.get("role", "user")
+    content = data.get("content", "")
+    if not content:
+        return jsonify({"success": False, "error": "Content required"}), 400
+    mid = add_chat_message(session_id, role, content)
+    touch_chat_session(session_id)
+    return jsonify({"success": True, "message_id": mid})
+
+@app.route("/api/chat/sessions/<session_id>/title", methods=["PUT"])
+def chat_session_rename(session_id):
+    user_id = _get_user_id()
+    if not user_id:
+        return jsonify({"success": False, "error": "Not authenticated"}), 401
+    session = get_chat_session(session_id)
+    if not session or session["user_id"] != user_id:
+        return jsonify({"success": False, "error": "Not found"}), 404
+    title = (request.json or {}).get("title", "").strip()
+    if not title:
+        return jsonify({"success": False, "error": "Title required"}), 400
+    update_chat_session_title(session_id, title)
+    return jsonify({"success": True})
+
+# ── Land Analyses (persistent) ──────────────────────────────────
+
+@app.route("/api/land-analyses", methods=["GET"])
+def list_land_analyses():
+    user_id = _get_user_id()
+    if not user_id:
+        return jsonify({"success": False, "error": "Not authenticated"}), 401
+    analyses = get_land_analyses(user_id)
+    return jsonify({"success": True, "analyses": analyses})
+
+@app.route("/api/land-analyses", methods=["POST"])
+def create_land_analysis():
+    user_id = _get_user_id()
+    if not user_id:
+        return jsonify({"success": False, "error": "Not authenticated"}), 401
+    data = request.json or {}
+    result = data.get("result")
+    if not result:
+        return jsonify({"success": False, "error": "result required"}), 400
+    aid = save_land_analysis(
+        user_id=user_id,
+        city=data.get("city", ""),
+        lat=data.get("lat"),
+        lon=data.get("lon"),
+        result_json=result
+    )
+    return jsonify({"success": True, "analysis_id": aid})
+
+@app.route("/api/land-analyses/<analysis_id>", methods=["GET", "DELETE"])
+def land_analysis_detail(analysis_id):
+    user_id = _get_user_id()
+    if not user_id:
+        return jsonify({"success": False, "error": "Not authenticated"}), 401
+    analysis = get_land_analysis(analysis_id)
+    if not analysis or analysis["user_id"] != user_id:
+        return jsonify({"success": False, "error": "Not found"}), 404
+    if request.method == "GET":
+        analysis["result_json"] = json.loads(analysis["result_json"]) if isinstance(analysis["result_json"], str) else analysis["result_json"]
+        return jsonify({"success": True, "analysis": analysis})
+    delete_land_analysis(analysis_id)
+    return jsonify({"success": True})
+
 @app.route("/api/user/farms", methods=["GET"])
 def api_user_farms():
     user_id = request.args.get("user_id")
@@ -966,22 +1097,6 @@ def market_forecast_all():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-CONVERSATIONS = {}
-
-@app.route("/api/chat/history", methods=["GET"])
-def get_chat_history():
-    token = request.headers.get("Authorization", "").replace("Bearer ", "")
-    user_id = TOKENS.get(token, "anonymous")
-    conv = CONVERSATIONS.get(user_id, [])
-    return jsonify({"history": conv[-50:]})
-
-@app.route("/api/chat/clear", methods=["POST"])
-def clear_chat_history():
-    token = request.headers.get("Authorization", "").replace("Bearer ", "")
-    user_id = TOKENS.get(token, "anonymous")
-    CONVERSATIONS[user_id] = []
-    return jsonify({"success": True, "message": "Conversation cleared"})
-
 @app.route("/api/chat", methods=["POST"])
 def chat():
     try:
@@ -990,15 +1105,25 @@ def chat():
             return jsonify({"reply": "Invalid JSON payload", "response": "Invalid JSON payload"}), 400
         user_message = data.get("message", "")
         ctx = data.get("context", {})
-        history = data.get("history", [])
+        session_id = data.get("session_id", "")
         if not user_message:
             return jsonify({"reply": "Please enter a message.", "response": "Please enter a message."}), 400
 
         token = request.headers.get("Authorization", "").replace("Bearer ", "")
         user_id = TOKENS.get(token, "anonymous")
 
-        if user_id not in CONVERSATIONS:
-            CONVERSATIONS[user_id] = []
+        # Create or reuse chat session
+        if not session_id and user_id != "anonymous":
+            title = user_message[:60]
+            session_id = create_chat_session(user_id, title)
+        elif session_id:
+            session = get_chat_session(session_id)
+            if session and session["user_id"] == user_id:
+                msg_count = len(get_chat_messages(session_id))
+                if msg_count <= 2:
+                    update_chat_session_title(session_id, user_message[:60])
+            elif user_id != "anonymous":
+                session_id = create_chat_session(user_id, user_message[:60])
 
         language = ctx.get("language", "EN")
         lang_instruction = ""
@@ -1011,15 +1136,13 @@ def chat():
         elif language == "TA":
             lang_instruction = "Respond in Tamil (தமிழ்)."
 
-        recent_history = history[-6:] if history else []
+        # Build history from DB if session exists
         hist_str = ""
-        if recent_history:
-            hist_lines = []
-            for h in recent_history:
-                role = h.get("role", "user")
-                content = h.get("content", "")
-                hist_lines.append(f"{role}: {content}")
-            hist_str = "\n".join(hist_lines)
+        if session_id and user_id != "anonymous":
+            db_messages = get_chat_messages(session_id)
+            recent = db_messages[-12:]
+            lines = [f"{m['role']}: {m['content']}" for m in recent]
+            hist_str = "\n".join(lines)
 
         agent_context = {
             "crop": ctx.get("selected_crop") or ctx.get("crop", ""),
@@ -1040,7 +1163,6 @@ def chat():
         profile = None
         if user_id != "anonymous":
             try:
-                from database import get_user
                 profile = get_user(user_id)
             except:
                 pass
@@ -1059,12 +1181,13 @@ def chat():
             system_prompt = f"You are Vani AI, an expert agricultural advisor for Karnataka farmers. Answer concisely. {lang_instruction}"
             response_text = call_llm(prompt=augmented_query, system_prompt=system_prompt, max_tokens=1000)
 
-        CONVERSATIONS[user_id].append({"role": "user", "content": user_message, "timestamp": datetime.now().isoformat()})
-        CONVERSATIONS[user_id].append({"role": "assistant", "content": response_text, "timestamp": datetime.now().isoformat()})
-        if len(CONVERSATIONS[user_id]) > 100:
-            CONVERSATIONS[user_id] = CONVERSATIONS[user_id][-100:]
+        # Persist to DB
+        if session_id and user_id != "anonymous":
+            add_chat_message(session_id, "user", user_message)
+            add_chat_message(session_id, "assistant", response_text)
+            touch_chat_session(session_id)
 
-        return jsonify({"reply": response_text, "response": response_text})
+        return jsonify({"reply": response_text, "response": response_text, "session_id": session_id})
     except Exception as e:
         return jsonify({"reply": f"Something went wrong: {str(e)}", "response": f"Something went wrong: {str(e)}"}), 500
 
@@ -1247,6 +1370,6 @@ app.register_blueprint(vendor_bp, url_prefix="/api/vendors")
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5001))
-    debug = os.environ.get("FLASK_DEBUG", "true").lower() == "true"
+    debug = os.environ.get("FLASK_DEBUG", "false").lower() == "true"
     logger.info(f"Starting KrishiVigyan backend on port {port} (debug={debug})")
     app.run(debug=debug, port=port)

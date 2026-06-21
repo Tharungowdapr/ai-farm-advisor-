@@ -1,13 +1,12 @@
 import { useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Sprout, Settings, Globe, User, Menu, X } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+import { Sprout, Settings, Globe, User, Menu, X, LayoutDashboard, MessageSquare, TrendingUp, MapPin } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = ({ user, onLogout }) => {
   const [lang, setLang] = useState(localStorage.getItem('lang') || 'EN');
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
 
   // Hide main nav on landing page (it has its own nav)
   if (location.pathname === '/' && !user) return null;
@@ -18,6 +17,7 @@ const Navbar = ({ user, onLogout }) => {
     { path: '/crops', label: 'Crop Intelligence' },
     { path: '/market', label: 'Market' },
     { path: '/vaniai', label: 'Vani AI' },
+    { path: '/settings', label: 'Settings' },
   ];
 
   const closeMobile = () => setMobileOpen(false);
@@ -152,6 +152,35 @@ const Navbar = ({ user, onLogout }) => {
           </>
         )}
       </AnimatePresence>
+
+      {/* Mobile bottom nav */}
+      <nav className="fixed bottom-0 left-0 right-0 z-[150] lg:hidden bg-white/95 backdrop-blur-[30px] border-t border-stone-200 safe-area-bottom">
+        <div className="flex items-center justify-around py-1.5 px-1">
+          {[
+            { path: '/dashboard', icon: LayoutDashboard, label: 'Home' },
+            { path: '/land-analyser', icon: MapPin, label: 'Analyse' },
+            { path: '/vaniai', icon: MessageSquare, label: 'Vani AI' },
+            { path: '/market', icon: TrendingUp, label: 'Market' },
+            { path: '/profile', icon: User, label: 'Profile' },
+          ].map(({ path, icon: Icon, label }) => {
+            const active = location.pathname === path;
+            return (
+              <Link key={path} to={path}
+                className={`flex flex-col items-center gap-0.5 py-1 px-2 min-w-[56px] rounded-xl transition-all ${
+                  active ? 'text-[#84cc16]' : 'text-stone-400 hover:text-stone-600'
+                }`}
+              >
+                <div className={`p-1 rounded-lg transition-all ${active ? 'bg-[#84cc16]/10' : ''}`}>
+                  <Icon size={18} strokeWidth={active ? 2.5 : 1.5} />
+                </div>
+                <span className={`text-[8px] font-bold tracking-wider uppercase ${active ? 'font-black' : ''}`}>
+                  {label}
+                </span>
+              </Link>
+            );
+          })}
+        </div>
+      </nav>
     </>
   );
 };

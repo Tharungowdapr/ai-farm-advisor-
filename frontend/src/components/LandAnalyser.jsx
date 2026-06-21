@@ -117,7 +117,7 @@ const CitySearchStep = ({ onBack, onSelect, loading }) => {
   );
 };
 
-export default function LandAnalyser() {
+export default function LandAnalyser({ user }) {
   const [step, setStep] = useState('choose');
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -132,12 +132,21 @@ export default function LandAnalyser() {
       const res = await axios.post('/api/diagnostics/location', payload);
       setResult(res.data);
       setStep('results');
+      const token = localStorage.getItem('token');
+      if (user && token && res.data) {
+        axios.post('/api/land-analyses', {
+          city: city || res.data.location?.city || '',
+          lat: lat ?? res.data.location?.lat,
+          lon: lon ?? res.data.location?.lon,
+          result: res.data
+        }, { headers: { Authorization: `Bearer ${token}` } }).catch(() => {});
+      }
     } catch (err) {
       setError(err.response?.data?.error || 'Analysis failed. Check the city name or try GPS.');
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [user]);
 
   const handleGpsDetect = () => {
     if (!navigator.geolocation) { setError('GPS not available on this device. Please search for a city instead.'); return; }
@@ -160,7 +169,7 @@ export default function LandAnalyser() {
     </div>
   );
 
-  const r = result; const c = r?.climate; const s = r?.soil; const w = r?.water; const cr = r?.crop_suitability; const recs = r?.recommendations; const llmCrops = cr?.llm_suggestions || [];
+  const r = result; const c = r?.climate; const s = r?.soil; const w = r?.water; const cr = r?.crop_suitability; const recs = r?.recommendations; const llmCrops = cr?.llm_suggestions || []; const mostGrown = cr?.most_grown_crops || [];
 
   return (
     <div className="pt-24 min-h-screen bg-[#fafaf9]">
@@ -288,14 +297,56 @@ export default function LandAnalyser() {
               </div>
             )}
 
-            {/* Best Crops for Your Land */}
+            {/* Most Grown Crops in Region — hardcoded regional data */}
+            {mostGrown.length > 0 && (
+              <div className="bg-stone-50 rounded-2xl p-5 border border-stone-200 mb-6">
+                <div className="mb-3 flex items-center gap-2">
+                  <Sprout className="w-4 h-4 text-[#84cc16]" />
+                  <span className="text-[11px] font-black uppercase tracking-widest text-stone-700">🌾 Most Grown Crops in Region</span>
+                </div>
+                <p className="text-[9px] text-stone-500 mb-4">These crops are most commonly cultivated in your region, based on Karnataka agricultural statistics.</p>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  {mostGrown.map((s, i) => (
+                    <div key={i} className="bg-white rounded-xl p-4 border border-stone-200 hover:shadow-md transition-all">
+                      <p className="font-black text-base text-stone-800">{s.crop}</p>
+                      <p className="font-black text-[#84cc16] text-xl">{s.area_pct}%</p>
+                      <p className="text-[9px] text-stone-400">{s.season} · {s.typical_yield}</p>
+                    </div>
+                  ))}
+                </div>
+                {llmCrops.length > 0 && (
+                  <div className="mt-4 pt-4 border-t border-stone-200">
+                    <p className="text-[8px] font-black uppercase text-stone-500 mb-2">🤖 Also Consider (AI Suggestions)</p>
+                    <div className="flex flex-wrap gap-2">
+                      {llmCrops.map((s, i) => (
+                        <span key={i} className="px-3 py-1.5 bg-white rounded-full border border-stone-200 text-xs font-bold text-stone-600">{s.crop} {s.score ? `(${s.score}%)` : ''}</span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* AI Suggested Best Crops — sorted by risk (low first) then profitability */}
             <div className="mb-3 flex items-center gap-2">
               <Sprout size={16} className="text-[#84cc16]" />
-              <span className="text-[11px] font-black uppercase tracking-widest text-stone-700">🌾 Best Crops for Your Land</span>
+              <span className="text-[11px] font-black uppercase tracking-widest text-stone-700">🧠 AI Suggested Best Crops (Sorted by Risk & Return)</span>
             </div>
-            <p className="text-[9px] text-stone-500 mb-4">These crops scored highest based on your soil, weather, and location data. Each score reflects how well the crop matches your specific conditions.</p>
+            <p className="text-[9px] text-stone-500 mb-4">These crops are ranked by risk level (low risk first) then profitability, based on your soil, weather, and location data.</p>
             <div className="space-y-2">
-              {(cr.best_crops || []).map((crop, i) => (
+              {(cr.best_crops || []).slice().sort((a, b) => {
+                const riskOrder = { Low: 0, Moderate: 1, High: 2 };
+                const rDiff = (riskOrder[a.risk_level] ?? 1) - (riskOrder[b.risk_level] ?? 1);
+                if (rDiff !== 0) return rDiff;
+                const profitA = (parseInt(String(a.market_price_msp).replace(/[^0-9]/g, '')) || 0) - (parseInt(String(a.input_cost).replace(/[^0-9]/g, '')) || 0);
+                const profitB = (parseInt(String(b.market_price_msp).replace(/[^0-9]/g, '')) || 0) - (parseInt(String(b.input_cost).replace(/[^0-9]/g, '')) || 0);
+                return profitB - profitA;
+              }).map((crop, i) => {
+                const mspNum = parseInt(String(crop.market_price_msp).replace(/[^0-9]/g, '')) || 0;
+                const costNum = parseInt(String(crop.input_cost).replace(/[^0-9]/g, '')) || 0;
+                const estReturn = mspNum - costNum;
+                const netProfitLabel = estReturn > 0 ? `₹${estReturn}/q` : '—';
+                return (
                 <div key={i}>
                   <button onClick={() => setExpandedCrop(expandedCrop === crop.crop ? null : crop.crop)}
                     className="w-full text-left bg-stone-50 rounded-xl p-4 border border-stone-200 hover:border-[#84cc16]/30 transition-all">
@@ -304,11 +355,16 @@ export default function LandAnalyser() {
                         <span className={`w-8 h-8 rounded-xl flex items-center justify-center font-black text-sm ${i === 0 ? 'bg-[#84cc16] text-[#0c0a09]' : i < 3 ? 'bg-[#84cc16]/20 text-[#84cc16]' : 'bg-stone-200 text-stone-600'}`}>{i + 1}</span>
                         <div>
                           <p className="font-black text-[#0c0a09]">{crop.crop}</p>
-                          <p className="text-[9px] text-stone-500">{crop.water_requirement} · {crop.duration_days}d · {crop.risk_level} risk</p>
+                          <p className="text-[9px] text-stone-500">{crop.water_requirement} · {crop.duration_days}d</p>
                         </div>
                       </div>
-                      <div className="text-right flex items-center gap-3">
-                        <div>
+                      <div className="text-right flex items-center gap-4">
+                        {/* Risk badge */}
+                        <div className={`px-2 py-1 rounded-lg text-[8px] font-black uppercase ${crop.risk_level === 'Low' ? 'bg-emerald-100 text-emerald-700' : crop.risk_level === 'Moderate' ? 'bg-yellow-100 text-yellow-700' : 'bg-red-100 text-red-700'}`}>
+                          {crop.risk_level} Risk
+                        </div>
+                        {/* Score */}
+                        <div className="text-right">
                           <p className={`font-black text-lg ${crop.score >= 80 ? 'text-emerald-600' : crop.score >= 65 ? 'text-[#84cc16]' : crop.score >= 50 ? 'text-yellow-600' : 'text-orange-600'}`}>{crop.score}/100</p>
                           <p className="text-[8px] font-black uppercase text-stone-400">{crop.grade}</p>
                         </div>
@@ -321,7 +377,7 @@ export default function LandAnalyser() {
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
                         <div className="bg-white rounded-lg p-2 border border-stone-100"><p className="text-stone-400">Market Price (MSP)</p><p className="font-bold text-stone-800">₹{crop.market_price_msp}/q</p></div>
                         <div className="bg-white rounded-lg p-2 border border-stone-100"><p className="text-stone-400">Input Cost</p><p className="font-bold text-stone-800">{crop.input_cost}</p></div>
-                        <div className="bg-white rounded-lg p-2 border border-stone-100"><p className="text-stone-400">Risk Level</p><p className={`font-bold ${crop.risk_level === 'Low' ? 'text-emerald-600' : crop.risk_level === 'Moderate' ? 'text-yellow-600' : 'text-red-600'}`}>{crop.risk_level}</p></div>
+                        <div className="bg-white rounded-lg p-2 border border-stone-100"><p className="text-stone-400">Est. Net Return</p><p className={`font-bold ${estReturn > 0 ? 'text-emerald-600' : 'text-red-600'}`}>{netProfitLabel}</p></div>
                         <div className="bg-white rounded-lg p-2 border border-stone-100"><p className="text-stone-400">Companion Crops</p><p className="font-bold text-stone-800">{crop.companion_crops?.slice(0,2).join(', ') || '—'}</p></div>
                       </div>
                       {crop.strengths?.length > 0 && (
@@ -339,28 +395,8 @@ export default function LandAnalyser() {
                     </div>
                   )}
                 </div>
-              ))}
+              );})}
             </div>
-
-            {/* AI Suggested Crops */}
-            {llmCrops.length > 0 && (
-              <div className="mt-8 bg-gradient-to-r from-[#84cc16]/5 to-transparent rounded-2xl p-5 border border-[#84cc16]/20">
-                <div className="mb-3 flex items-center gap-2">
-                  <Sprout className="w-4 h-4 text-[#84cc16]" />
-                  <span className="text-[11px] font-black uppercase tracking-widest text-stone-700">🧠 AI Suggested Crops (Most Grown in Region)</span>
-                </div>
-                <p className="text-[9px] text-stone-500 mb-4">The AI recommends these additional crops based on regional growing patterns and your specific land conditions.</p>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                  {llmCrops.map((s, i) => (
-                    <div key={i} className="bg-white rounded-xl p-4 border border-stone-200 hover:shadow-md transition-all">
-                      <p className="font-black text-base text-stone-800">{s.crop}</p>
-                      {s.score && <p className="font-black text-[#84cc16] text-xl">{s.score}%</p>}
-                      {s.reason && <p className="text-[10px] text-stone-500 mt-1 leading-tight">{s.reason}</p>}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
 
             <p className="text-[10px] text-stone-400 font-bold mt-4 text-center">{cr.total_crops_evaluated || 20} crops evaluated · 12-dimension scoring</p>
           </div>

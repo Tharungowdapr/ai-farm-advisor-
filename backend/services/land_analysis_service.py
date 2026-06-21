@@ -202,6 +202,102 @@ CROP_REQUIREMENT_PROFILES = {
 }
 
 
+# ── Most Grown Crops by Karnataka Region ──────────────────────────
+MOST_GROWN_CROPS_BY_REGION = {
+    "North Karnataka": [
+        {"crop": "Paddy", "area_pct": 28, "season": "Kharif", "typical_yield": "25 q/acre"},
+        {"crop": "Ragi", "area_pct": 18, "season": "Kharif", "typical_yield": "15 q/acre"},
+        {"crop": "Sugarcane", "area_pct": 12, "season": "Annual", "typical_yield": "40 t/acre"},
+        {"crop": "Cotton", "area_pct": 15, "season": "Kharif", "typical_yield": "8 q/acre"},
+        {"crop": "Groundnut", "area_pct": 10, "season": "Kharif", "typical_yield": "12 q/acre"},
+        {"crop": "Jowar (Sorghum)", "area_pct": 8, "season": "Kharif", "typical_yield": "10 q/acre"},
+        {"crop": "Maize", "area_pct": 5, "season": "Kharif", "typical_yield": "30 q/acre"},
+        {"crop": "Sunflower", "area_pct": 4, "season": "Rabi", "typical_yield": "8 q/acre"},
+    ],
+    "South Karnataka": [
+        {"crop": "Paddy", "area_pct": 30, "season": "Kharif", "typical_yield": "28 q/acre"},
+        {"crop": "Ragi", "area_pct": 15, "season": "Kharif", "typical_yield": "16 q/acre"},
+        {"crop": "Sugarcane", "area_pct": 10, "season": "Annual", "typical_yield": "42 t/acre"},
+        {"crop": "Maize", "area_pct": 8, "season": "Kharif", "typical_yield": "32 q/acre"},
+        {"crop": "Tomato", "area_pct": 7, "season": "Rabi", "typical_yield": "25 t/acre"},
+        {"crop": "Potato", "area_pct": 5, "season": "Rabi", "typical_yield": "20 t/acre"},
+        {"crop": "Coconut", "area_pct": 10, "season": "Perennial", "typical_yield": "15000 nuts/acre"},
+        {"crop": "Banana", "area_pct": 8, "season": "Perennial", "typical_yield": "30 t/acre"},
+    ],
+    "Coastal Karnataka": [
+        {"crop": "Paddy", "area_pct": 35, "season": "Kharif", "typical_yield": "22 q/acre"},
+        {"crop": "Coconut", "area_pct": 25, "season": "Perennial", "typical_yield": "18000 nuts/acre"},
+        {"crop": "Arecanut", "area_pct": 15, "season": "Perennial", "typical_yield": "2000 kg/acre"},
+        {"crop": "Banana", "area_pct": 8, "season": "Perennial", "typical_yield": "28 t/acre"},
+        {"crop": "Pepper", "area_pct": 5, "season": "Perennial", "typical_yield": "500 kg/acre"},
+        {"crop": "Cashew", "area_pct": 7, "season": "Perennial", "typical_yield": "800 kg/acre"},
+        {"crop": "Rubber", "area_pct": 5, "season": "Perennial", "typical_yield": "1500 kg/acre"},
+    ],
+    "Malnad": [
+        {"crop": "Coffee", "area_pct": 30, "season": "Perennial", "typical_yield": "800 kg/acre"},
+        {"crop": "Paddy", "area_pct": 15, "season": "Kharif", "typical_yield": "20 q/acre"},
+        {"crop": "Coconut", "area_pct": 10, "season": "Perennial", "typical_yield": "12000 nuts/acre"},
+        {"crop": "Arecanut", "area_pct": 12, "season": "Perennial", "typical_yield": "1800 kg/acre"},
+        {"crop": "Pepper", "area_pct": 10, "season": "Perennial", "typical_yield": "600 kg/acre"},
+        {"crop": "Orange", "area_pct": 5, "season": "Perennial", "typical_yield": "500 fruits/tree"},
+        {"crop": "Cardamom", "area_pct": 8, "season": "Perennial", "typical_yield": "150 kg/acre"},
+        {"crop": "Ginger", "area_pct": 5, "season": "Kharif", "typical_yield": "10 t/acre"},
+    ],
+    "All Karnataka": [
+        {"crop": "Paddy", "area_pct": 25, "season": "Kharif", "typical_yield": "25 q/acre"},
+        {"crop": "Ragi", "area_pct": 15, "season": "Kharif", "typical_yield": "15 q/acre"},
+        {"crop": "Sugarcane", "area_pct": 10, "season": "Annual", "typical_yield": "40 t/acre"},
+        {"crop": "Coconut", "area_pct": 8, "season": "Perennial", "typical_yield": "15000 nuts/acre"},
+        {"crop": "Cotton", "area_pct": 8, "season": "Kharif", "typical_yield": "8 q/acre"},
+        {"crop": "Groundnut", "area_pct": 6, "season": "Kharif", "typical_yield": "12 q/acre"},
+        {"crop": "Coffee", "area_pct": 5, "season": "Perennial", "typical_yield": "800 kg/acre"},
+        {"crop": "Maize", "area_pct": 5, "season": "Kharif", "typical_yield": "30 q/acre"},
+        {"crop": "Banana", "area_pct": 4, "season": "Perennial", "typical_yield": "28 t/acre"},
+        {"crop": "Jowar (Sorghum)", "area_pct": 4, "season": "Kharif", "typical_yield": "10 q/acre"},
+    ],
+}
+
+CITY_TO_REGION = {
+    # North Karnataka
+    "hubballi": "North Karnataka", "hubli": "North Karnataka",
+    "belagavi": "North Karnataka", "belgaum": "North Karnataka",
+    "kalaburagi": "North Karnataka", "gulbarga": "North Karnataka",
+    "ballari": "North Karnataka", "bellary": "North Karnataka",
+    "vijayapura": "North Karnataka", "bijapur": "North Karnataka",
+    "davangere": "North Karnataka", "davanagere": "North Karnataka",
+    "bagalkot": "North Karnataka", "bagalkote": "North Karnataka",
+    "raichur": "North Karnataka", "koppal": "North Karnataka",
+    "gadag": "North Karnataka", "haveri": "North Karnataka",
+    "bidar": "North Karnataka", "yadgir": "North Karnataka",
+    # South Karnataka
+    "bengaluru": "South Karnataka", "bangalore": "South Karnataka",
+    "mysuru": "South Karnataka", "mysore": "South Karnataka",
+    "tumakuru": "South Karnataka", "tumkur": "South Karnataka",
+    "chikkaballapura": "South Karnataka", "chikballapur": "South Karnataka",
+    "kolar": "South Karnataka", "ramanagara": "South Karnataka",
+    "mandya": "South Karnataka", "hassan": "South Karnataka",
+    "chamarajanagara": "South Karnataka", "chamarajanagar": "South Karnataka",
+    # Coastal Karnataka
+    "mangaluru": "Coastal Karnataka", "mangalore": "Coastal Karnataka",
+    "udupi": "Coastal Karnataka", "karwar": "Coastal Karnataka",
+    "kundapura": "Coastal Karnataka", "puttur": "Coastal Karnataka",
+    # Malnad
+    "shivamogga": "Malnad", "shimoga": "Malnad",
+    "chikkamagaluru": "Malnad", "chikmagalur": "Malnad",
+    "sakleshpur": "Malnad", "sagara": "Malnad",
+    "sirsi": "Malnad", "kodagu": "Malnad", "madikeri": "Malnad",
+}
+
+
+def _get_most_grown_crops(city):
+    """Return most-grown crops for the region matching the given city."""
+    if not city:
+        return MOST_GROWN_CROPS_BY_REGION.get("All Karnataka", [])
+    city_lower = city.strip().lower()
+    region = CITY_TO_REGION.get(city_lower, "All Karnataka")
+    return MOST_GROWN_CROPS_BY_REGION.get(region, MOST_GROWN_CROPS_BY_REGION["All Karnataka"])
+
+
 def analyze_land(lat, lon, city, N, P, K, ph, weather_data, open_meteo_raw=None):
     """Returns a comprehensive land analysis report."""
     elevation = None
@@ -215,6 +311,9 @@ def analyze_land(lat, lon, city, N, P, K, ph, weather_data, open_meteo_raw=None)
     soil = _analyze_soil_deep(N, P, K, ph, climate)
     water = _analyze_water_deep(weather_data, climate)
     crop_matrix = _analyze_crop_suitability(climate, soil, water, topography)
+
+    # Add most-grown crops for the city's region (doesn't need API key)
+    crop_matrix["most_grown_crops"] = _get_most_grown_crops(city)
 
     # Add LLM-suggested crops not in the hardcoded database
     llm_suggestions = _suggest_crops_llm(climate, soil, water, topography, city)

@@ -161,7 +161,9 @@ def synthesis(state):
         state["final_response"] = response
     except Exception as e:
         logger.warning(f"Synthesis LLM failed, using template: {e}")
+        err_reason = str(e)
         parts = [f"**🌾 Analysis for {crop} in {location} ({season})**\n\n"]
+        parts.append(f"> ⚠️ *AI Synthesis unavailable ({err_reason[:100]})*\n\n")
         parts.append("**📊 CURRENT STATUS**\n")
         for r in results.values():
             parts.append(f"- {r.get('summary','No data')}\n")

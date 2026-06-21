@@ -74,6 +74,35 @@ def init_db():
         FOREIGN KEY(farm_id) REFERENCES farms(id)
     )''')
 
+    c.execute('''CREATE TABLE IF NOT EXISTS chat_sessions (
+        id TEXT PRIMARY KEY,
+        user_id TEXT NOT NULL,
+        title TEXT DEFAULT 'New Chat',
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY(user_id) REFERENCES users(id)
+    )''')
+
+    c.execute('''CREATE TABLE IF NOT EXISTS chat_messages (
+        id TEXT PRIMARY KEY,
+        session_id TEXT NOT NULL,
+        role TEXT NOT NULL,
+        content TEXT NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY(session_id) REFERENCES chat_sessions(id) ON DELETE CASCADE
+    )''')
+
+    c.execute('''CREATE TABLE IF NOT EXISTS land_analyses (
+        id TEXT PRIMARY KEY,
+        user_id TEXT NOT NULL,
+        city TEXT,
+        lat REAL,
+        lon REAL,
+        result_json TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY(user_id) REFERENCES users(id)
+    )''')
+
     conn.commit()
     conn.close()
 
@@ -224,5 +253,109 @@ def get_or_create_user(user_id="default_user", name="Farmer", language="EN", reg
         user = c.fetchone()
     conn.close()
     return dict(user)
+
+# ── Chat Sessions ────────────────────────────────────────────────
+
+def create_chat_session(user_id, title="New Chat"):
+    conn = get_db()
+    c = conn.cursor()
+    sid = f"chat_{uuid.uuid4().hex[:12]}"
+    c.execute("INSERT INTO chat_sessions (id, user_id, title) VALUES (?, ?, ?)", (sid, user_id, title))
+    conn.commit()
+    conn.close()
+    return sid
+
+def get_chat_sessions(user_id):
+    conn = get_db()
+    c = conn.cursor()
+    c.execute("SELECT * FROM chat_sessions WHERE user_id=? ORDER BY updated_at DESC", (user_id,))
+    rows = [dict(r) for r in c.fetchall()]
+    conn.close()
+    return rows
+
+def get_chat_session(session_id):
+    conn = get_db()
+    c = conn.cursor()
+    c.execute("SELECT * FROM chat_sessions WHERE id=?", (session_id,))
+    row = c.fetchone()
+    conn.close()
+    return dict(row) if row else None
+
+def update_chat_session_title(session_id, title):
+    conn = get_db()
+    c = conn.cursor()
+    c.execute("UPDATE chat_sessions SET title=?, updated_at=CURRENT_TIMESTAMP WHERE id=?", (title, session_id))
+    conn.commit()
+    conn.close()
+
+def touch_chat_session(session_id):
+    conn = get_db()
+    c = conn.cursor()
+    c.execute("UPDATE chat_sessions SET updated_at=CURRENT_TIMESTAMP WHERE id=?", (session_id,))
+    conn.commit()
+    conn.close()
+
+def delete_chat_session(session_id):
+    conn = get_db()
+    c = conn.cursor()
+    c.execute("DELETE FROM chat_messages WHERE session_id=?", (session_id,))
+    c.execute("DELETE FROM chat_sessions WHERE id=?", (session_id,))
+    conn.commit()
+    conn.close()
+
+# ── Chat Messages ────────────────────────────────────────────────
+
+def add_chat_message(session_id, role, content):
+    conn = get_db()
+    c = conn.cursor()
+    mid = f"msg_{uuid.uuid4().hex[:12]}"
+    c.execute("INSERT INTO chat_messages (id, session_id, role, content) VALUES (?, ?, ?, ?)",
+              (mid, session_id, role, content))
+    conn.commit()
+    conn.close()
+    return mid
+
+def get_chat_messages(session_id):
+    conn = get_db()
+    c = conn.cursor()
+    c.execute("SELECT * FROM chat_messages WHERE session_id=? ORDER BY created_at ASC", (session_id,))
+    rows = [dict(r) for r in c.fetchall()]
+    conn.close()
+    return rows
+
+# ── Land Analyses ────────────────────────────────────────────────
+
+def save_land_analysis(user_id, city, lat, lon, result_json):
+    conn = get_db()
+    c = conn.cursor()
+    aid = f"land_{uuid.uuid4().hex[:12]}"
+    c.execute("INSERT INTO land_analyses (id, user_id, city, lat, lon, result_json) VALUES (?, ?, ?, ?, ?, ?)",
+              (aid, user_id, city, lat, lon, json.dumps(result_json)))
+    conn.commit()
+    conn.close()
+    return aid
+
+def get_land_analyses(user_id):
+    conn = get_db()
+    c = conn.cursor()
+    c.execute("SELECT * FROM land_analyses WHERE user_id=? ORDER BY created_at DESC", (user_id,))
+    rows = [dict(r) for r in c.fetchall()]
+    conn.close()
+    return rows
+
+def get_land_analysis(analysis_id):
+    conn = get_db()
+    c = conn.cursor()
+    c.execute("SELECT * FROM land_analyses WHERE id=?", (analysis_id,))
+    row = c.fetchone()
+    conn.close()
+    return dict(row) if row else None
+
+def delete_land_analysis(analysis_id):
+    conn = get_db()
+    c = conn.cursor()
+    c.execute("DELETE FROM land_analyses WHERE id=?", (analysis_id,))
+    conn.commit()
+    conn.close()
 
 init_db()

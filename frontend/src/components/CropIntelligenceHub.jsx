@@ -28,7 +28,7 @@ const AnimatedCard = ({ children, className, delay = 0, glow = false }) => (
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ delay, duration: 0.4 }}
-    className={`backdrop-blur-sm bg-white/[0.04] border border-white/[0.08] rounded-2xl p-5 transition-all duration-300 ${glow ? 'shadow-[0_0_25px_rgba(132,204,22,0.1)] border-[#84cc16]/20' : 'hover:border-white/20'} ${className || ''}`}
+    className={`bg-stone-900 border border-stone-700 rounded-2xl p-5 transition-all duration-300 ${glow ? 'shadow-[0_0_25px_rgba(132,204,22,0.1)] border-[#84cc16]/20' : 'hover:border-stone-600'} ${className || ''}`}
   >
     {children}
   </motion.div>
@@ -53,7 +53,7 @@ const ProgressRing = ({ progress, size = 80, strokeWidth = 6, color = "#84cc16",
       </svg>
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="text-center">
-          <div className="text-lg font-black text-white">{Math.round(progress)}<span className="text-[13px] text-[#84cc16]">%</span></div>
+          <div className="text-lg font-bold text-white">{Math.round(progress)}<span className="text-[13px] text-[#84cc16]">%</span></div>
           {label && <div className="text-[6px] uppercase tracking-wider text-stone-500 -mt-0.5">{label}</div>}
         </div>
       </div>
@@ -67,7 +67,7 @@ const ConfidenceBar = ({ val, size = "md", label }) => {
   return (
     <div className="w-full">
       {label && <div className="flex justify-between text-[13px] text-stone-500 mb-1"><span>{label}</span><span className="font-bold text-white">{val}%</span></div>}
-      <div className={`w-full bg-white/5 rounded-full ${h} overflow-hidden shadow-inner`}>
+      <div className={`w-full bg-black/60 rounded-full ${h} overflow-hidden`}>
         <motion.div initial={{ width: 0 }} animate={{ width: `${Math.min(100, val)}%` }} transition={{ duration: 1, ease: "easeOut" }} className={`${h} rounded-full ${band} shadow-[0_0_8px_rgba(132,204,22,0.3)]`} />
       </div>
     </div>
@@ -75,7 +75,7 @@ const ConfidenceBar = ({ val, size = "md", label }) => {
 };
 
 const StatusBadge = ({ st, label, msgs }) => {
-  const color = st === "success" ? "text-green-400 border-green-500/30 bg-green-500/10" : st === "loading" ? "text-yellow-400 border-yellow-500/30 bg-yellow-500/10" : st === "error" ? "text-red-400 border-red-500/30 bg-red-500/10" : "text-stone-500 border-white/10 bg-white/[0.03]";
+  const color = st === "success" ? "text-green-400 border-green-500/30 bg-green-500/10" : st === "loading" ? "text-yellow-400 border-yellow-500/30 bg-yellow-500/10" : st === "error" ? "text-red-400 border-red-500/30 bg-red-500/10" : "text-stone-500 border-stone-700 bg-stone-900";
   return (
     <div className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-[13px] font-bold uppercase tracking-wider border ${color} transition-all`}>
       {st === "success" ? <CheckCircle size={12} /> : st === "loading" ? <Loader2 size={12} className="animate-spin" /> : st === "error" ? <XCircle size={12} /> : <div className="w-2 h-2 rounded-full bg-stone-700" />}
@@ -87,7 +87,7 @@ const StatusBadge = ({ st, label, msgs }) => {
 
 // ─── Environmental Tag ──────────────────────────────────
 const EnvTag = ({ label, color = "text-[#84cc16]", icon: Icon }) => (
-  <div className="px-3 py-1 rounded-full text-[14px] font-black uppercase tracking-wider border bg-[#84cc16]/10 border-[#84cc16]/25 flex items-center gap-1.5">
+  <div className="px-3 py-1 rounded-full text-[13px] font-bold uppercase tracking-wider border bg-[#84cc16]/10 border-[#84cc16]/25 flex items-center gap-1.5">
     {Icon && <Icon size={10} />}{label}
   </div>
 );
@@ -99,7 +99,7 @@ const AlertBanner = ({ type, message, onDismiss }) => {
   const Icon = icons[type] || Info;
   return (
     <motion.div initial={{ opacity: 0, y: -10, x: -20 }} animate={{ opacity: 1, y: 0, x: 0 }} exit={{ opacity: 0, x: 20 }}
-      className={`flex items-start gap-3 px-4 py-3 rounded-xl border ${colors} backdrop-blur-sm`}
+      className={`flex items-start gap-3 px-4 py-2.5 rounded-lg border ${colors}`}
     >
       <Icon size={16} className="flex-shrink-0 mt-0.5" />
       <span className="text-[13px] font-medium flex-1">{message}</span>
@@ -275,20 +275,20 @@ const getEnvTags = (crop) => {
 const getCropTags = (crop) => {
   const tags = [];
   if (crop.waterReq?.toLowerCase().includes("high")) tags.push({
-    label: "High Water", color: "text-[#84cc16]"
+    label: "High Water", color: "text-[#84cc16]", icon: Droplets
   });
   if (crop.waterReq?.toLowerCase().includes("low")) tags.push({
-    label: "Drought Resistant", color: "text-[#84cc16]"
+    label: "Drought Resistant", color: "text-[#84cc16]", icon: Sun
   });
   if (crop.classification?.toLowerCase() === "perennial")
-    tags.push({ label: "Perennial", color: "text-[#84cc16]" });
+    tags.push({ label: "Perennial", color: "text-[#84cc16]", icon: Sprout });
   if (crop.classification?.toLowerCase().includes("kharif"))
-    tags.push({ label: "Kharif", color: "text-[#84cc16]" });
+    tags.push({ label: "Kharif", color: "text-[#84cc16]", icon: Calendar });
   if (crop.classification?.toLowerCase().includes("rabi"))
-    tags.push({ label: "Rabi", color: "text-[#84cc16]" });
+    tags.push({ label: "Rabi", color: "text-[#84cc16]", icon: Calendar });
   if (crop.multiCycle) tags.push({
     label: "Multi-Cycle", color:
-      "text-[#84cc16]"
+      "text-[#84cc16]", icon: RefreshCw
   });
   return tags.slice(0, 3);
 };
@@ -498,13 +498,13 @@ const CropIntelligenceHub = ({ user }) => {
 
   // ═══════════════════════ HUB VIEW ═══════════════════════
   return (
-    <div className="pt-20 min-h-screen bg-[#0c0a09] px-4 pb-20 text-white relative">
+    <div className="pt-20 min-h-screen bg-[#0c0a09] px-6 pb-20 text-white relative">
       <GrainOverlay />
       <GradBg />
 
       {/* Environment Bar */}
       <div className="max-w-6xl mx-auto relative z-10 mb-6">
-        <div className="flex flex-wrap items-center gap-2 bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-2.5 backdrop-blur-sm">
+        <div className="flex flex-wrap items-center gap-3 bg-stone-900 border border-stone-700 rounded-xl px-4 py-2.5">
           <Globe size={14} className="text-[#84cc16]" />
           {mode === "idle" ? (
             <>
@@ -516,7 +516,7 @@ const CropIntelligenceHub = ({ user }) => {
               <div className="flex items-center gap-1.5 ml-1">
                 <input value={manualCity} onChange={e => setManualCity(e.target.value)}
                   placeholder="Enter city name (e.g. Bengaluru)..."
-                  className="w-40 bg-black/60 border border-white/10 rounded-lg px-3 py-1.5 text-[13px] text-white outline-none focus:border-[#84cc16] placeholder:text-stone-600"
+                  className="w-40 bg-stone-900 border border-stone-700 rounded-lg px-3 py-1.5 text-[13px] text-white outline-none focus:border-[#84cc16] placeholder:text-stone-600"
                   onKeyDown={e => e.key === "Enter" && manualDetectLocation()}
                 />
                 <button onClick={manualDetectLocation} className="px-3 py-1.5 bg-[#84cc16]/20 text-[#84cc16] border border-[#84cc16]/30 rounded-lg text-[13px] font-bold hover:bg-[#84cc16]/30 transition-all flex items-center gap-1">
@@ -539,15 +539,15 @@ const CropIntelligenceHub = ({ user }) => {
       </div>
 
       {/* Header */}
-      <header className="text-center pt-2 pb-6 max-w-2xl mx-auto relative z-10">
+      <header className="text-center pt-2 pb-6 max-w-6xl mx-auto relative z-10">
         <div className="flex items-center justify-center gap-2 mb-3">
           <Sprout size={16} className="text-[#84cc16]" />
-          <span className="text-[15px] font-black uppercase tracking-[0.4em] text-[#84cc16]">Crop Intelligence Hub</span>
+          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#84cc16]">Crop Intelligence Hub</span>
         </div>
-        <h1 className="font-serif text-4xl md:text-5xl font-black text-white mb-3 drop-shadow-[0_2px_12px_rgba(132,204,22,0.15)]">
+        <h1 className="font-serif text-4xl md:text-5xl font-black text-white mb-3">
           Crop <span className="italic text-[#84cc16]">Intelligence Hub</span>
         </h1>
-        <p className="text-stone-400 text-sm max-w-xl mx-auto leading-relaxed">
+        <p className="text-stone-400 text-sm max-w-2xl mx-auto leading-relaxed">
           Intelligent lifecycle management, predictive disease forecasting, and AI-powered crop advisory for Karnataka crops.
         </p>
         {locationName && (
@@ -559,12 +559,12 @@ const CropIntelligenceHub = ({ user }) => {
       </header>
 
       {/* Search */}
-      <div className="max-w-lg mx-auto relative z-10 mb-8">
+      <div className="max-w-xl mx-auto relative z-10 mb-8">
         <div className="relative">
           <Search size={15} className="absolute left-4 top-1/2 -translate-y-1/2 text-stone-500" />
           <input value={searchTerm} onChange={e => setSearchTerm(e.target.value)}
             placeholder="Search crops by name, variety, scientific name, or region..."
-            className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl pl-11 pr-4 py-3.5 text-sm text-white outline-none focus:border-[#84cc16]/50 focus:shadow-[0_0_20px_rgba(132,204,22,0.06)] placeholder:text-stone-600 transition-all"
+            className="w-full bg-stone-900 border border-stone-700 rounded-xl pl-11 pr-4 py-3.5 text-sm text-white outline-none focus:border-[#84cc16]/50 placeholder:text-stone-600 transition-all"
           />
         </div>
       </div>
@@ -610,7 +610,7 @@ const CropCard = ({ crop, index, onClick }) => {
       initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.04 }}
       ref={cardRef} onClick={onClick}
       onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} onMouseMove={handleMouseMove}
-      className="group cursor-pointer bg-white/[0.03] border border-white/[0.08] rounded-2xl overflow-hidden hover:border-[#84cc16]/30 hover:bg-white/[0.06] transition-all duration-500 relative"
+      className="group cursor-pointer bg-stone-900 border border-stone-700 rounded-2xl overflow-hidden hover:border-[#84cc16]/30 transition-all duration-500 relative"
     >
       {/* Image area with fallback */}
       <div className="h-48 overflow-hidden relative bg-gradient-to-br from-stone-900 via-stone-950 to-black">
@@ -642,11 +642,11 @@ const CropCard = ({ crop, index, onClick }) => {
           animate={isHovered ? { background: `radial-gradient(circle at ${mousePos.x * 100}% ${mousePos.y * 100}%, rgba(132,204,22,0.15) 0%, transparent 70%)` } : {}}
         />
 
-        {/* Tags */}
+        {/* Tags with icons */}
         <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
           {tags.map(t => (
-            <span key={t.label} className={`px-2 py-0.5 rounded-full text-[14px] font-black uppercase tracking-wider bg-black/60 backdrop-blur-sm border ${t.color}`}>
-              {t.label}
+            <span key={t.label} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-black/80 border border-white/10 text-white">
+              {t.icon && <t.icon size={10} className="text-[#84cc16]" />}{t.label}
             </span>
           ))}
         </div>
@@ -656,7 +656,7 @@ const CropCard = ({ crop, index, onClick }) => {
       </div>
 
       {/* Info section */}
-      <div className="p-4">
+      <div className="p-5">
         <div className="flex items-start justify-between mb-3">
           <div className="flex-1 min-w-0">
             <h3 className="font-serif text-xl font-black text-white truncate">{crop.name}</h3>
@@ -669,9 +669,15 @@ const CropCard = ({ crop, index, onClick }) => {
         </div>
 
         <div className="flex flex-wrap gap-1.5 mb-3">
-          <span className="px-2 py-0.5 bg-white/5 rounded text-[12px] text-stone-400 uppercase tracking-wider border border-white/5">{crop.waterReq?.split(" ")[0]}</span>
-          <span className="px-2 py-0.5 bg-white/5 rounded text-[12px] text-stone-400 uppercase tracking-wider border border-white/5">{crop.idealSoil?.split("/")[0]?.trim()}</span>
-          <span className="px-2 py-0.5 bg-white/5 rounded text-[12px] text-stone-400 uppercase tracking-wider border border-white/5">{crop.avgYield}</span>
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-stone-900 border border-stone-700 rounded text-[11px] text-stone-300 font-medium">
+            <Droplets size={10} className="text-blue-400" />{crop.waterReq?.split(" ")[0]}
+          </span>
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-stone-900 border border-stone-700 rounded text-[11px] text-stone-300 font-medium">
+            <Layers size={10} className="text-amber-400" />{crop.idealSoil?.split("/")[0]?.trim()}
+          </span>
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-stone-900 border border-stone-700 rounded text-[11px] text-stone-300 font-medium">
+            <Target size={10} className="text-[#84cc16]" />{crop.avgYield}
+          </span>
         </div>
 
         <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between">
@@ -707,7 +713,7 @@ const CropDetailPage = ({
 }) => {
   const [activeTab, setActiveTab] = useState("overview");
   const [manualCityLocal, setManualCityLocal] = useState("");
-  const [showAlerts, setShowAlerts] = useState(true);
+  const [showAlerts, setShowAlerts] = useState(false);
 
   const tp = useMemo(() => trackingProgress(tracking, crop), [tracking, crop]);
   const waterScore = useMemo(() => calcWaterScore(weatherData), [weatherData]);
@@ -769,84 +775,91 @@ const CropDetailPage = ({
       <GrainOverlay />
       <GradBg />
 
-      {/* ── Alert Bar ── */}
+      {/* ── Alert Bar (compact/collapsible) ── */}
       <AnimatePresence>
-        {showAlerts && alerts.length > 0 && (
+        {alerts.length > 0 && (
           <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
-            className="max-w-6xl mx-auto px-4 mb-4 relative z-10 space-y-2"
+            className="max-w-6xl mx-auto px-4 mb-4 relative z-10"
           >
-            <div className="flex items-center gap-2 mb-2">
-              <BellRing size={14} className="text-[#84cc16]" />
-              <span className="text-[13px] font-black uppercase tracking-wider text-[#84cc16]">Smart Alerts</span>
-              <button onClick={() => setShowAlerts(false)} className="ml-auto text-[13px] text-stone-500 hover:text-white transition-colors">Dismiss All</button>
-            </div>
-            <div className="space-y-1.5">
-              {alerts.slice(0, 3).map((a, i) => <AlertBanner key={i} {...a} />)}
+            <div className="bg-stone-900 border border-stone-700 rounded-xl p-3">
+              <button onClick={() => setShowAlerts(!showAlerts)} className="flex items-center gap-2 w-full text-left">
+                <BellRing size={12} className="text-[#84cc16]" />
+                <span className="text-[12px] font-bold uppercase tracking-wider text-stone-300">{alerts.length} Alert{alerts.length > 1 ? 's' : ''}</span>
+                <span className="ml-auto text-[11px] text-stone-500">{showAlerts ? 'Collapse' : 'Expand'}</span>
+              </button>
+              <AnimatePresence>
+                {showAlerts && (
+                  <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
+                    <div className="pt-2 space-y-1">
+                      {alerts.slice(0, 2).map((a, i) => <AlertBanner key={i} {...a} />)}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      <div className="max-w-6xl mx-auto px-4 pb-20 relative z-10">
-        {/* Back */}
-        <button onClick={onBack} className="flex items-center gap-2 text-stone-400 hover:text-[#84cc16] font-bold mb-5 transition-colors text-xs group">
-          <ChevronLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> Back to Crop Hub
-        </button>
-
+      <div className="max-w-6xl mx-auto px-6 pb-20 relative z-10">
         {/* ─── HERO ─── */}
-        <div className="relative rounded-[2rem] overflow-hidden mb-8 bg-gradient-to-br from-stone-900 via-stone-950 to-black border border-white/[0.08] group">
-          {/* Background image */}
+        <div className="relative rounded-[2rem] overflow-hidden mb-8 bg-[#0c0a09] border border-white/[0.08]">
+          {/* Background image with heavy dark overlay */}
           <div className="absolute inset-0">
             <img src={crop.image} alt={crop.name}
-              className="w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-700"
+              className="w-full h-full object-cover opacity-15"
               onError={(e) => { e.target.style.display = 'none'; }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0c0a09] via-[#0c0a09]/80 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0c0a09] via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0c0a09] via-[#0c0a09]/90 to-[#0c0a09]/70" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0c0a09] via-[#0c0a09]/50 to-transparent" />
           </div>
-          <ParticleBg count={8} />
-          <div className="absolute top-4 right-4 z-10 flex gap-2">
-            {envTags.map(t => <EnvTag key={t.label} {...t} />)}
-          </div>
-          <div className="relative p-8 md:p-10">
-            <div className="flex flex-wrap gap-2 mb-4">
-              <span className="px-3 py-1 bg-[#84cc16]/20 text-[#84cc16] text-[13px] font-black rounded-lg uppercase tracking-wider border border-[#84cc16]/30">{crop.classification}</span>
-              <span className="px-3 py-1 bg-white/10 text-stone-300 text-[13px] font-black rounded-lg uppercase tracking-wider border border-white/10">{crop.season}</span>
-              <span className="px-3 py-1 bg-blue-500/10 text-blue-400 text-[13px] font-black rounded-lg uppercase tracking-wider border border-blue-500/20">{crop.regions.split(",")[0].trim()}</span>
-            </div>
-            <h1 className="font-serif text-5xl md:text-7xl 
-font-black text-white mb-2 drop-shadow-[0_2px_12px_rgba(132,204,22,0.12)]">{crop.name}</h1>
-            <p className="text-stone-400 italic text-base md:text-lg mb-6">{crop.scientific} — <span className="text-[#84cc16] not-italic">{crop.variety}</span></p>
+          <div className="relative p-6 md:p-10">
+            {/* Back button - sticky visible */}
+            <button onClick={onBack} className="flex items-center gap-1.5 text-stone-400 hover:text-white font-bold mb-4 transition-colors text-[13px] bg-stone-900 px-3 py-1.5 rounded-lg w-fit border border-stone-700">
+              <ChevronLeft size={16} /> Crop Hub
+            </button>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {/* Tags with icons */}
+            <div className="flex flex-wrap gap-2 mb-4">
+              {envTags.map(t => (
+                <span key={t.label} className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[13px] font-bold tracking-wider bg-stone-900 text-white border border-stone-700">
+                  {t.icon && <t.icon size={12} className="text-[#84cc16]" />}{t.label}
+                </span>
+              ))}
+              <span className="px-3 py-1 bg-[#84cc16]/15 text-white text-[13px] font-bold rounded-lg border border-[#84cc16]/20">{crop.classification}</span>
+            </div>
+
+            {/* Crop name - dominant */}
+            <h1 className="font-serif text-5xl md:text-7xl font-black text-white mb-1 leading-[1.1]">{crop.name}</h1>
+            <p className="text-stone-400 text-base md:text-lg mb-2">{crop.scientific}</p>
+            <p className="text-stone-500 text-sm mb-6 italic">{crop.variety}</p>
+
+            {/* Stats reordered: Yield first for farmers */}
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
               {[
-                { label: "Duration", value: crop.duration, icon: Clock, color: "text-[#84cc16]" },
-                { label: "MSP", value: crop.msp, icon: TrendingUp, color: "text-yellow-400" },
-                { label: "Avg Yield", value: crop.avgYield, icon: Target, color: "text-green-400" },
-                { label: "Water Need", value: crop.waterReq.split(" ")[0], icon: Droplets, color: "text-blue-400" },
+                { label: "Avg Yield", value: crop.avgYield, icon: Target, color: "text-[#84cc16]" },
+                { label: "MSP", value: crop.msp, icon: TrendingUp, color: "text-white" },
+                { label: "Duration", value: crop.duration, icon: Clock, color: "text-white" },
+                { label: "Water Need", value: crop.waterReq.split(" ")[0], icon: Droplets, color: "text-white" },
+                { label: "Suitability", value: `${envScore.score}%`, icon: Gauge, color: "text-white" },
               ].map(({ label, value, icon: Icon, color }) => (
-                <div key={label} className="bg-white/[0.04] border border-white/[0.08] rounded-xl p-4 text-center hover:border-white/20 transition-all">
-                  <Icon size={16} className={`mx-auto mb-1.5 ${color}`} />
-                  <div className="text-[13px] text-stone-500 uppercase tracking-wider font-medium">{label}</div>
-                  <div className="text-sm font-black text-white mt-0.5">{value}</div>
+                <div key={label} className="bg-stone-900 border border-stone-700 rounded-xl p-3 text-center">
+                  <Icon size={14} className={`mx-auto mb-1 ${color}`} />
+                  <div className="text-[11px] text-stone-400 uppercase tracking-wider">{label}</div>
+                  <div className="text-sm font-bold text-white mt-0.5">{value}</div>
                 </div>
               ))}
-            </div>
-
-            {/* Score ring */}
-            <div className="absolute top-6 right-6 md:right-10 flex flex-col items-center">
-              <ProgressRing progress={envScore.score} size={72} strokeWidth={5} label="Suitability" />
             </div>
           </div>
         </div>
 
         {/* ─── TABS ─── */}
-        <div className="flex overflow-x-auto gap-1 mb-6 pb-2 scrollbar-hide">
+        <div className="flex overflow-x-auto gap-2 mb-8 pb-2 scrollbar-hide">
           {tabs.map(({ id, label, icon: Icon }) => (
             <button key={id} onClick={() => setActiveTab(id)}
               className={`flex items-center gap-2 px-5 py-3 rounded-xl text-[13px] font-bold uppercase tracking-wider transition-all whitespace-nowrap flex-shrink-0 border ${activeTab === id
-                  ? 'bg-[#84cc16]/15 text-[#84cc16] border-[#84cc16]/30 shadow-[0_0_15px_rgba(132,204,22,0.08)]'
-                  : 'bg-white/[0.03] text-stone-400 border-white/[0.06] hover:border-white/20 hover:text-stone-300'
+                  ? 'bg-[#84cc16]/15 text-[#84cc16] border-[#84cc16]/30'
+                  : 'bg-stone-900 text-stone-400 border-stone-700 hover:border-stone-500 hover:text-stone-300'
                 }`}
             >
               <Icon size={13} /> {label}
@@ -875,7 +888,7 @@ font-black text-white mb-2 drop-shadow-[0_2px_12px_rgba(132,204,22,0.12)]">{crop
                   ].map((it, i) => (
                     <AnimatedCard key={it.label} delay={i * 0.04} glow>
                       <div className="flex items-start gap-3">
-                        <div className={`p-2.5 rounded-xl bg-white/5 ${it.color}`}><it.icon size={18} /></div>
+                        <div className={`p-2.5 rounded-xl bg-stone-900 border border-stone-700 ${it.color}`}><it.icon size={18} /></div>
                         <div>
                           <div className="text-[13px] text-stone-500 uppercase tracking-wider font-medium">{it.label}</div>
                           <div className="text-sm font-bold text-white mt-0.5 leading-relaxed">{it.value}</div>
@@ -891,13 +904,13 @@ font-black text-white mb-2 drop-shadow-[0_2px_12px_rgba(132,204,22,0.12)]">{crop
                   <div className="flex flex-col md:flex-row items-start gap-6">
                     <div className="flex-shrink-0 text-center mx-auto md:mx-0">
                       <ProgressRing progress={envScore.score} size={100} strokeWidth={8} />
-                      <div className="text-lg font-black text-white mt-2">{envScore.label}</div>
+                      <div className="text-lg font-bold text-white mt-2">{envScore.label}</div>
                     </div>
                     <div className="flex-1 space-y-2 w-full">
                       {envScore.reasons.map((r, i) => (
                         <div key={i} className={`p-3 rounded-xl text-[13px] flex items-start gap-2 leading-relaxed ${r.type === "positive" ? "bg-green-500/10 text-green-300 border border-green-500/20" :
                             r.type === "warning" ? "bg-yellow-500/10 text-yellow-300 border border-yellow-500/20" :
-                              "bg-stone-800 text-stone-400 border border-white/10"
+                              "bg-stone-800 text-stone-400 border border-stone-700"
                           }`}>
                           <span className="text-base flex-shrink-0">{r.icon}</span>
                           <span>{r.text}</span>
@@ -912,10 +925,10 @@ font-black text-white mb-2 drop-shadow-[0_2px_12px_rgba(132,204,22,0.12)]">{crop
                   <h3 className="text-xs font-bold text-stone-300 uppercase tracking-wider mb-4 flex items-center gap-2"><ShieldAlert size={14} className="text-[#84cc16]" /> Key Disease Prevention</h3>
                   <div className="grid md:grid-cols-2 gap-3">
                     {(crop.diseaseRules || []).slice(0, 4).map((d, i) => (
-                      <div key={i} className="bg-white/[0.04] border border-white/[0.08] rounded-xl p-4 hover:border-white/20 transition-all">
+                        <div key={i} className="bg-stone-900 border border-stone-700 rounded-xl p-4 hover:border-stone-600 transition-all">
                         <div className="flex items-center justify-between mb-2">
                           <span className="text-sm font-bold text-white">{d.disease}</span>
-                          <span className={`text-[13px] px-2 py-0.5 rounded font-black uppercase border ${d.severity === "Severe" ? "bg-red-500/20 text-red-400 border-red-500/30" :
+                          <span className={`text-[12px] px-2 py-0.5 rounded font-bold uppercase border ${d.severity === "Severe" ? "bg-red-500/20 text-red-400 border-red-500/30" :
                               d.severity === "High" ? "bg-orange-500/20 text-orange-400 border-orange-500/30" :
                                 "bg-yellow-500/20 text-yellow-400 border-yellow-500/30"
                             }`}>{d.severity}</span>
@@ -957,21 +970,21 @@ font-black text-white mb-2 drop-shadow-[0_2px_12px_rgba(132,204,22,0.12)]">{crop
 
                             {/* Content */}
                             <div className={`p-5 rounded-xl transition-all duration-500 ${isActive
-                                ? "bg-[#84cc16]/10 border border-[#84cc16]/30 shadow-[0_0_30px_rgba(132,204,22,0.1)]"
+                                ? "bg-[#84cc16]/10 border border-[#84cc16]/30"
                                 : isPast
-                                  ? "bg-white/[0.03] border border-white/10"
-                                  : "bg-white/[0.02] border border-white/[0.06]"
+                                  ? "bg-stone-900/80 border border-white/10"
+                                  : "bg-stone-900/60 border border-white/10"
                               }`}>
                               <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
                                 <div>
                                   <h4 className="text-base font-bold text-white flex items-center gap-2">
                                     {stage.stage}
                                     {isActive && (
-                                      <span className="flex items-center gap-1.5 px-2.5 py-0.5 bg-[#84cc16] text-[#0c0a09] text-[13px] font-black rounded-full uppercase tracking-wider shadow-[0_0_10px_rgba(132,204,22,0.4)]">
+                                      <span className="flex items-center gap-1.5 px-2.5 py-0.5 bg-[#84cc16] text-[#0c0a09] text-[12px] font-bold rounded-full uppercase tracking-wider">
                                         <Activity size={10} /> Currently Active
                                       </span>
                                     )}
-                                    {isPast && <span className="px-2 py-0.5 bg-green-500/20 text-green-400 text-[13px] font-black rounded-full uppercase tracking-wider border border-green-500/30">Complete ✓</span>}
+                                    {isPast && <span className="px-2 py-0.5 bg-green-500/20 text-green-300 text-[12px] font-bold rounded-full uppercase tracking-wider border border-green-500/30">Complete ✓</span>}
                                   </h4>
                                   <div className="flex items-center gap-3 mt-1">
                                     <span className="text-[13px] text-stone-500 font-medium">Duration: {stage.duration}</span>
@@ -985,25 +998,25 @@ font-black text-white mb-2 drop-shadow-[0_2px_12px_rgba(132,204,22,0.12)]">{crop
                                     )}
                                   </div>
                                 </div>
-                                <span className="text-[13px] text-stone-600 bg-white/5 px-2.5 py-1 rounded-lg">Stage {i + 1}/{crop.lifecycle.length}</span>
+                                <span className="text-[13px] text-stone-500 bg-stone-900 border border-stone-700 px-2.5 py-1 rounded-lg">Stage {i + 1}/{crop.lifecycle.length}</span>
                               </div>
 
                               {/* Stage detail grid */}
                               <div className="grid md:grid-cols-2 gap-2.5 mt-3">
-                                <div className="bg-white/[0.03] rounded-lg p-3 border border-white/[0.04]">
-                                  <div className="text-[13px] text-blue-400 uppercase tracking-wider mb-1.5 font-bold flex items-center gap-1.5"><Droplets size={10} /> Irrigation</div>
+                                <div className="bg-stone-900/80 rounded-lg p-3 border border-white/10">
+                                  <div className="text-[13px] text-blue-300 uppercase tracking-wider mb-1.5 font-bold flex items-center gap-1.5"><Droplets size={10} /> Irrigation</div>
                                   <p className="text-[13px] text-stone-300 leading-relaxed">{stage.irrigation}</p>
                                 </div>
-                                <div className="bg-white/[0.03] rounded-lg p-3 border border-white/[0.04]">
+                                <div className="bg-stone-900/80 rounded-lg p-3 border border-white/10">
                                   <div className="text-[13px] text-[#84cc16] uppercase tracking-wider mb-1.5 font-bold flex items-center gap-1.5"><Leaf size={10} /> Nutrition</div>
                                   <p className="text-[13px] text-stone-300 leading-relaxed">{stage.nutrient}</p>
                                 </div>
-                                <div className="bg-white/[0.03] rounded-lg p-3 border border-white/[0.04]">
-                                  <div className="text-[13px] text-red-400 uppercase tracking-wider mb-1.5 font-bold flex items-center gap-1.5"><ShieldAlert size={10} /> Disease Prevention</div>
+                                <div className="bg-stone-900/80 rounded-lg p-3 border border-white/10">
+                                  <div className="text-[13px] text-red-300 uppercase tracking-wider mb-1.5 font-bold flex items-center gap-1.5"><ShieldAlert size={10} /> Disease Prevention</div>
                                   <p className="text-[13px] text-stone-300 leading-relaxed">{stage.disease}</p>
                                 </div>
-                                <div className="bg-white/[0.03] rounded-lg p-3 border border-white/[0.04]">
-                                  <div className="text-[13px] text-yellow-400 uppercase tracking-wider mb-1.5 font-bold flex items-center gap-1.5"><Tractor size={10} /> Farmer Actions</div>
+                                <div className="bg-stone-900/80 rounded-lg p-3 border border-white/10">
+                                  <div className="text-[13px] text-yellow-300 uppercase tracking-wider mb-1.5 font-bold flex items-center gap-1.5"><Tractor size={10} /> Farmer Actions</div>
                                   <p className="text-[13px] text-stone-300 leading-relaxed">{stage.actions}</p>
                                 </div>
                               </div>
@@ -1028,18 +1041,18 @@ font-black text-white mb-2 drop-shadow-[0_2px_12px_rgba(132,204,22,0.12)]">{crop
                         <div>
                           <label className="text-[13px] font-bold text-stone-400 uppercase tracking-wider block mb-1.5">Cultivation Start Date</label>
                           <input type="date" required value={trackForm.startDate} onChange={e => setTrackForm(p => ({ ...p, startDate: e.target.value }))}
-                            className="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm outline-none focus:border-[#84cc16] focus:shadow-[0_0_15px_rgba(132,204,22,0.06)] transition-all" />
+                            className="w-full bg-stone-900 border border-stone-700 rounded-xl px-4 py-3.5 text-white text-sm outline-none focus:border-[#84cc16] transition-all" />
                         </div>
                         <div>
                           <label className="text-[13px] font-bold text-stone-400 uppercase tracking-wider block mb-1.5">Farm Location / Village (optional)</label>
                           <input type="text" placeholder="e.g., Mandya, Karnataka" value={trackForm.farmLocation} onChange={e => setTrackForm(p => ({ ...p, farmLocation: e.target.value }))}
-                            className="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm outline-none focus:border-[#84cc16] transition-all" />
+                            className="w-full bg-stone-900 border border-stone-700 rounded-xl px-4 py-3.5 text-white text-sm outline-none focus:border-[#84cc16] transition-all" />
                         </div>
                         <div className="flex gap-3">
-                          <button type="submit" className="flex-1 py-4 bg-[#84cc16] text-[#0c0a09] font-black text-sm uppercase tracking-widest rounded-xl hover:bg-[#facc15] transition-all shadow-lg flex items-center justify-center gap-2">
+                          <button type="submit" className="flex-1 py-4 bg-[#84cc16] text-[#0c0a09] font-bold text-sm uppercase tracking-widest rounded-xl hover:bg-[#facc15] transition-all shadow-lg flex items-center justify-center gap-2">
                             <Play size={16} /> Start Tracking
                           </button>
-                          <button type="button" onClick={() => setShowTrackingForm(false)} className="px-6 py-4 bg-white/5 text-stone-400 font-bold text-sm rounded-xl border border-white/10 hover:bg-white/10 transition-all">Cancel</button>
+                          <button type="button" onClick={() => setShowTrackingForm(false)} className="px-6 py-4 bg-stone-900 text-stone-400 font-bold text-sm rounded-xl border border-stone-700 hover:bg-stone-800 transition-all">Cancel</button>
                         </div>
                       </form>
                     </AnimatedCard>
@@ -1051,7 +1064,7 @@ font-black text-white mb-2 drop-shadow-[0_2px_12px_rgba(132,204,22,0.12)]">{crop
                         Track your <span className="text-[#84cc16] font-bold">{crop.name}</span> cultivation day-by-day. Get AI-powered daily guidance, disease warnings, and harvest alerts.
                       </p>
                       <button onClick={() => setShowTrackingForm(true)}
-                        className="px-10 py-5 bg-[#84cc16] text-[#0c0a09] font-black text-sm uppercase tracking-widest rounded-xl hover:bg-[#facc15] transition-all shadow-lg flex items-center gap-2 mx-auto">
+                        className="px-10 py-5 bg-[#84cc16] text-[#0c0a09] font-bold text-sm uppercase tracking-widest rounded-xl hover:bg-[#facc15] transition-all shadow-lg flex items-center gap-2 mx-auto">
                         <Play size={18} /> Start Tracking {crop.name}
                       </button>
                     </AnimatedCard>
@@ -1067,10 +1080,10 @@ font-black text-white mb-2 drop-shadow-[0_2px_12px_rgba(132,204,22,0.12)]">{crop
                         { label: "Days to Harvest", value: `${tp.daysLeft} days`, icon: Calendar, color: "text-yellow-400" },
                         { label: "Harvest By", value: tp.harvestDate.toLocaleDateString(), icon: Target, color: "text-orange-400" },
                       ].map(({ label, value, icon: Icon, color }) => (
-                        <div key={label} className="bg-white/[0.04] border border-white/[0.08] rounded-xl p-4 text-center hover:border-white/20 transition-all">
+                          <div key={label} className="bg-stone-900 border border-stone-700 rounded-xl p-4 text-center">
                           <Icon size={15} className={`mx-auto mb-1.5 ${color}`} />
                           <div className="text-[13px] text-stone-500 uppercase tracking-wider font-medium">{label}</div>
-                          <div className="text-sm font-black text-white mt-0.5">{value}</div>
+                          <div className="text-sm font-bold text-white mt-0.5">{value}</div>
                         </div>
                       ))}
                     </div>
@@ -1089,7 +1102,7 @@ font-black text-white mb-2 drop-shadow-[0_2px_12px_rgba(132,204,22,0.12)]">{crop
                               <span className="font-bold text-[#84cc16]">Active: {tp.activeStage.stage}</span>
                               <span>Next: {tp.nextStage ? tp.nextStage.stage : "Harvest"}</span>
                             </div>
-                            <div className="w-full bg-white/5 rounded-full h-3 overflow-hidden shadow-inner">
+                            <div className="w-full bg-black/60 rounded-full h-3 overflow-hidden">
                               <motion.div initial={{ width: 0 }} animate={{ width: `${tp.pct}%` }}
                                 className="h-full rounded-full bg-gradient-to-r from-[#84cc16] to-green-400 shadow-[0_0_10px_rgba(132,204,22,0.3)] transition-all duration-700" />
                             </div>
@@ -1143,7 +1156,7 @@ font-black text-white mb-2 drop-shadow-[0_2px_12px_rgba(132,204,22,0.12)]">{crop
                             <span>Stage {tp.activeIdx + 1} of {crop.lifecycle.length}</span>
                             <span>{tp.stagePct}%</span>
                           </div>
-                          <div className="w-full bg-white/5 rounded-full h-2 overflow-hidden shadow-inner">
+                          <div className="w-full bg-black/60 rounded-full h-2 overflow-hidden">
                             <motion.div initial={{ width: 0 }} animate={{ width: `${tp.stagePct}%` }}
                               className="h-full rounded-full bg-gradient-to-r from-emerald-400 to-[#84cc16] shadow-[0_0_10px_rgba(132,204,22,0.3)]" />
                           </div>
@@ -1151,22 +1164,22 @@ font-black text-white mb-2 drop-shadow-[0_2px_12px_rgba(132,204,22,0.12)]">{crop
 
                         {/* What to do TODAY */}
                         <div className="grid md:grid-cols-2 gap-3 mb-3">
-                          <div className="bg-white/[0.05] rounded-xl p-4 border border-white/[0.06]">
-                            <div className="text-[13px] text-blue-400 uppercase tracking-wider font-bold mb-2 flex items-center gap-1.5"><Droplets size={12} /> Irrigation Today</div>
+                          <div className="bg-stone-900/80 rounded-xl p-4 border border-white/10">
+                            <div className="text-[13px] text-blue-300 uppercase tracking-wider font-bold mb-2 flex items-center gap-1.5"><Droplets size={12} /> Irrigation Today</div>
                             <p className="text-[14px] text-stone-200 leading-relaxed">{tp.activeStage.irrigation}</p>
                           </div>
-                          <div className="bg-white/[0.05] rounded-xl p-4 border border-white/[0.06]">
+                          <div className="bg-stone-900/80 rounded-xl p-4 border border-white/10">
                             <div className="text-[13px] text-[#84cc16] uppercase tracking-wider font-bold mb-2 flex items-center gap-1.5"><Leaf size={12} /> Nutrient Today</div>
                             <p className="text-[14px] text-stone-200 leading-relaxed">{tp.activeStage.nutrient}</p>
                           </div>
                         </div>
                         <div className="grid md:grid-cols-2 gap-3">
-                          <div className="bg-white/[0.05] rounded-xl p-4 border border-white/[0.06]">
-                            <div className="text-[13px] text-red-400 uppercase tracking-wider font-bold mb-2 flex items-center gap-1.5"><ShieldAlert size={12} /> Disease Watch</div>
+                          <div className="bg-stone-900/80 rounded-xl p-4 border border-white/10">
+                            <div className="text-[13px] text-red-300 uppercase tracking-wider font-bold mb-2 flex items-center gap-1.5"><ShieldAlert size={12} /> Disease Watch</div>
                             <p className="text-[14px] text-stone-200 leading-relaxed">{tp.activeStage.disease}</p>
                           </div>
-                          <div className="bg-white/[0.05] rounded-xl p-4 border border-white/[0.06]">
-                            <div className="text-[13px] text-yellow-400 uppercase tracking-wider font-bold mb-2 flex items-center gap-1.5"><Tractor size={12} /> Recommended Actions</div>
+                          <div className="bg-stone-900/80 rounded-xl p-4 border border-white/10">
+                            <div className="text-[13px] text-yellow-300 uppercase tracking-wider font-bold mb-2 flex items-center gap-1.5"><Tractor size={12} /> Recommended Actions</div>
                             <p className="text-[14px] text-stone-200 leading-relaxed">{tp.activeStage.actions}</p>
                           </div>
                         </div>
@@ -1174,7 +1187,7 @@ font-black text-white mb-2 drop-shadow-[0_2px_12px_rgba(132,204,22,0.12)]">{crop
 
                       {/* Next Stage Preview */}
                       {tp.nextStage && (
-                        <div className="mb-4 p-4 rounded-xl bg-white/[0.03] border border-white/[0.08]">
+                        <div className="mb-4 p-4 rounded-xl bg-stone-900 border border-stone-700">
                           <div className="text-[13px] text-stone-500 uppercase tracking-wider font-bold mb-1.5 flex items-center gap-1.5"><SkipForward size={11} /> Upcoming: {tp.nextStage.stage}</div>
                           <p className="text-[13px] text-stone-400 leading-relaxed">{tp.nextStage.actions}</p>
                         </div>
@@ -1186,11 +1199,11 @@ font-black text-white mb-2 drop-shadow-[0_2px_12px_rgba(132,204,22,0.12)]">{crop
                           <div className="text-[13px] text-[#84cc16] uppercase tracking-wider font-bold mb-3 flex items-center gap-1.5"><Lightbulb size={12} /> Intelligent Recommendations</div>
                           <div className="grid md:grid-cols-2 gap-2">
                             {guidanceTips.map((tip, i) => {
-                              const borderColor = tip.type === "warning" ? "border-red-500/25 bg-red-500/8" :
-                                tip.type === "nutrient" ? "border-[#84cc16]/25 bg-[#84cc16]/8" :
-                                  tip.type === "irrigation" ? "border-blue-500/25 bg-blue-500/8" :
-                                    tip.type === "mistake" ? "border-orange-500/25 bg-orange-500/8" :
-                                      "border-white/10 bg-white/[0.03]";
+                              const borderColor = tip.type === "warning" ? "border-red-500/25 bg-red-500/10" :
+                                tip.type === "nutrient" ? "border-[#84cc16]/25 bg-[#84cc16]/10" :
+                                  tip.type === "irrigation" ? "border-blue-500/25 bg-blue-500/10" :
+                                    tip.type === "mistake" ? "border-orange-500/25 bg-orange-500/10" :
+                                      "border-stone-700 bg-stone-900";
                               const textColor = tip.type === "warning" ? "text-red-300" :
                                 tip.type === "nutrient" ? "text-[#84cc16]" :
                                   tip.type === "irrigation" ? "text-blue-300" :
@@ -1266,7 +1279,7 @@ font-black text-white mb-2 drop-shadow-[0_2px_12px_rgba(132,204,22,0.12)]">{crop
                                 <div className="flex-1">
                                   <div className="flex items-center gap-2 mb-1">
                                     <h4 className="text-base font-bold text-white">{d.disease}</h4>
-                                    <span className={`px-2.5 py-0.5 text-[13px] font-black rounded-full uppercase tracking-wider border ${riskTextColor} bg-black/40`}>{d.level}</span>
+                                    <span className={`px-2.5 py-0.5 text-[13px] font-bold rounded-full uppercase tracking-wider border ${riskTextColor} bg-black/40`}>{d.level}</span>
                                   </div>
                                   <div className="flex flex-wrap gap-3 text-[13px] text-stone-500 mt-1">
                                     <span className="flex items-center gap-1"><Clock size={10} /> Risk window: <span className="text-white font-bold">{d.window}</span></span>
@@ -1274,13 +1287,13 @@ font-black text-white mb-2 drop-shadow-[0_2px_12px_rgba(132,204,22,0.12)]">{crop
                                   </div>
                                 </div>
                                 <div className="flex-shrink-0 text-center ml-4">
-                                  <div className="text-2xl font-black text-white">{d.score}<span className="text-xs text-stone-500">%</span></div>
+                                  <div className="text-2xl font-bold text-white">{d.score}<span className="text-xs text-stone-500">%</span></div>
                                   <div className="text-[13px] text-stone-500 uppercase tracking-wider">Probability</div>
                                 </div>
                               </div>
 
                               <div className="mb-3">
-                                <div className="w-full bg-white/5 rounded-full h-2.5 overflow-hidden shadow-inner">
+                                <div className="w-full bg-black/60 rounded-full h-2.5 overflow-hidden">
                                   <motion.div initial={{ width: 0 }} animate={{ width: `${d.score}%` }}
                                     className={`h-full rounded-full bg-gradient-to-r ${barColor} shadow-[0_0_8px_rgba(255,100,50,0.2)]`}
                                     transition={{ duration: 1, delay: i * 0.1 }}
@@ -1301,7 +1314,7 @@ font-black text-white mb-2 drop-shadow-[0_2px_12px_rgba(132,204,22,0.12)]">{crop
                             </motion.div>
                           );
                         }) : (
-                          <div className="text-center py-8 text-stone-500 border border-white/10 rounded-xl bg-white/[0.02]">
+                          <div className="text-center py-8 text-stone-500 border border-stone-700 rounded-xl bg-stone-900">
                             <ShieldAlert size={36} className="mx-auto mb-3 opacity-30" />
                             <p className="text-sm text-stone-400 mb-1">No significant disease risks predicted</p>
                             <p className="text-[13px] text-stone-600">Current environmental conditions do not favor major disease outbreaks for {crop.name}.</p>
@@ -1358,12 +1371,12 @@ font-black text-white mb-2 drop-shadow-[0_2px_12px_rgba(132,204,22,0.12)]">{crop
                         <h3 className="text-[13px] font-bold text-stone-300 uppercase tracking-wider mb-4 flex items-center gap-2"><Info size={13} className="text-[#84cc16]" /> Disease Knowledge Base — {crop.name}</h3>
                         <div className="space-y-2 max-h-72 overflow-y-auto pr-1 scrollbar-hide">
                           {(crop.diseaseRules || []).map((d, i) => (
-                            <div key={i} className="bg-white/[0.03] border border-white/[0.08] rounded-xl p-4 hover:border-white/20 transition-all">
+                              <div key={i} className="bg-stone-900 border border-stone-700 rounded-xl p-4">
                               <div className="flex items-center justify-between mb-2">
                                 <span className="text-sm font-bold text-white">{d.disease}</span>
-                                <span className={`text-[13px] px-2 py-0.5 rounded font-black uppercase border ${d.severity === "Severe" ? "bg-red-500/20 text-red-400 border-red-500/30" :
-                                    d.severity === "High" ? "bg-orange-500/20 text-orange-400 border-orange-500/30" :
-                                      "bg-yellow-500/20 text-yellow-400 border-yellow-500/30"
+                                <span className={`text-[12px] px-2 py-0.5 rounded font-bold uppercase border ${d.severity === "Severe" ? "bg-red-500/20 text-red-300 border-red-500/30" :
+                                    d.severity === "High" ? "bg-orange-500/20 text-orange-300 border-orange-500/30" :
+                                      "bg-yellow-500/20 text-yellow-300 border-yellow-500/30"
                                   }`}>{d.severity}</span>
                               </div>
                               <div className="grid grid-cols-3 gap-3 text-[13px] text-stone-500 mb-2">
@@ -1398,11 +1411,11 @@ font-black text-white mb-2 drop-shadow-[0_2px_12px_rgba(132,204,22,0.12)]">{crop
                     <div className="flex items-center gap-1.5 flex-1 min-w-[200px]">
                       <input value={manualCityLocal || manualCity} onChange={e => setManualCityLocal(e.target.value)}
                         placeholder="Enter city name (e.g. Bengaluru)..."
-                        className="flex-1 bg-black/60 border border-white/10 rounded-xl px-3.5 py-2.5 text-[13px] text-white outline-none focus:border-[#84cc16] placeholder:text-stone-600"
+                        className="flex-1 bg-stone-900 border border-stone-700 rounded-xl px-3.5 py-2.5 text-[13px] text-white outline-none focus:border-[#84cc16] placeholder:text-stone-600"
                         onKeyDown={e => e.key === "Enter" && manualDetect()}
                       />
                       <button onClick={manualDetect} disabled={!manualCityLocal.trim()}
-                        className="px-4 py-2.5 bg-white/5 text-stone-400 rounded-xl border border-white/10 text-[13px] font-bold hover:bg-white/10 hover:text-white transition-all disabled:opacity-30 flex items-center gap-1.5">
+                        className="px-4 py-2.5 bg-stone-900 text-stone-400 rounded-xl border border-stone-700 text-[13px] font-bold hover:bg-stone-800 hover:text-white transition-all disabled:opacity-30 flex items-center gap-1.5">
                         <Search size={12} /> Go
                       </button>
                     </div>
@@ -1429,10 +1442,10 @@ font-black text-white mb-2 drop-shadow-[0_2px_12px_rgba(132,204,22,0.12)]">{crop
                         { icon: Wind, label: "Wind", value: `${weatherData.wind_speed || 0} km/h`, color: "text-stone-400" },
                         { icon: Sun, label: "Condition", value: weatherData.condition || "Clear", color: "text-[#84cc16]" },
                       ].map(({ icon: Icon, label, value, color }) => (
-                        <div key={label} className="bg-white/[0.04] border border-white/[0.08] rounded-xl p-3.5 text-center hover:border-white/20 transition-all">
+                        <div key={label} className="bg-stone-900 border border-stone-700 rounded-xl p-3.5 text-center">
                           <Icon size={16} className={`mx-auto mb-1.5 ${color}`} />
                           <div className="text-[13px] text-stone-500 uppercase tracking-wider font-medium">{label}</div>
-                          <div className="text-sm font-black text-white mt-0.5">{value}</div>
+                          <div className="text-sm font-bold text-white mt-0.5">{value}</div>
                         </div>
                       ))}
                     </div>
@@ -1443,9 +1456,9 @@ font-black text-white mb-2 drop-shadow-[0_2px_12px_rgba(132,204,22,0.12)]">{crop
                         <h4 className="text-[13px] text-stone-500 uppercase tracking-wider font-bold mb-3 flex items-center gap-1.5"><Calendar size={11} /> 7-Day Forecast</h4>
                         <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
                           {forecastData.map((d, i) => (
-                            <div key={i} className="flex-shrink-0 w-20 bg-white/[0.03] border border-white/[0.06] rounded-xl p-2.5 text-center">
+                            <div key={i} className="flex-shrink-0 w-20 bg-stone-900 border border-stone-700 rounded-xl p-2.5 text-center">
                               <div className="text-[13px] text-stone-500 font-bold">{new Date(d.date).toLocaleDateString("en-IN", { weekday: "short" })}</div>
-                              <div className="text-xs font-black text-white mt-1">{Math.round(d.temp_avg || d.temp || 0)}°</div>
+                              <div className="text-xs font-bold text-white mt-1">{Math.round(d.temp_avg || d.temp || 0)}°</div>
                               <div className="text-[13px] text-stone-600 uppercase">{d.condition?.substring(0, 8)}</div>
                               <div className="flex items-center justify-center gap-1 mt-1">
                                 <Droplets size={7} className="text-blue-400" />
@@ -1476,9 +1489,9 @@ font-black text-white mb-2 drop-shadow-[0_2px_12px_rgba(132,204,22,0.12)]">{crop
                         { label: "Phosphorus (P)", value: soilData.phosphorus != null ? Math.round(soilData.phosphorus) : "N/A", unit: "mg/kg", color: "text-blue-400" },
                         { label: "Potassium (K)", value: soilData.potassium != null ? Math.round(soilData.potassium) : "N/A", unit: "mg/kg", color: "text-orange-400" },
                       ].map(({ label, value, unit, color }) => (
-                        <div key={label} className="bg-white/[0.04] border border-white/[0.08] rounded-xl p-3.5 text-center hover:border-white/20 transition-all">
+                        <div key={label} className="bg-stone-900 border border-stone-700 rounded-xl p-3.5 text-center">
                           <div className="text-[13px] text-stone-500 uppercase tracking-wider font-medium">{label}</div>
-                          <div className={`text-sm font-black mt-0.5 ${color}`}>{value}<span className="text-[13px] text-stone-600 ml-0.5">{unit}</span></div>
+                          <div className={`text-sm font-bold mt-0.5 ${color}`}>{value}<span className="text-[13px] text-stone-600 ml-0.5">{unit}</span></div>
                         </div>
                       ))}
                     </div>
@@ -1490,12 +1503,12 @@ font-black text-white mb-2 drop-shadow-[0_2px_12px_rgba(132,204,22,0.12)]">{crop
                 {waterScore && (
                   <AnimatedCard>
                     <h3 className="text-xs font-bold text-stone-300 uppercase tracking-wider mb-3 flex items-center gap-2"><Droplets size={14} className="text-[#84cc16]" /> Water Availability Index</h3>
-                    <div className="p-5 rounded-xl bg-white/[0.04] border border-white/[0.08]">
+                    <div className="p-5 rounded-xl bg-stone-900 border border-stone-700">
                       <div className="flex items-center justify-between mb-3">
                         <div className="flex items-center gap-3">
-                          <span className={`text-2xl font-black ${waterScore.score >= 60 ? "text-green-400" : waterScore.score >= 30 ? "text-yellow-400" : "text-red-400"}`}>{waterScore.label}</span>
+                          <span className={`text-2xl font-bold ${waterScore.score >= 60 ? "text-green-300" : waterScore.score >= 30 ? "text-yellow-300" : "text-red-300"}`}>{waterScore.label}</span>
                         </div>
-                        <span className="text-3xl font-black text-white">{waterScore.score}<span className="text-base text-stone-500">/100</span></span>
+                        <span className="text-3xl font-bold text-white">{waterScore.score}<span className="text-base text-stone-500">/100</span></span>
                       </div>
                       <ConfidenceBar val={waterScore.score} size="lg" />
                       <p className="text-[13px] text-stone-500 mt-2 leading-relaxed">

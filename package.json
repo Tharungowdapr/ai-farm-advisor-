@@ -1,4 +1,17 @@
 {
+  "scripts": {
+    "setup": "pip install -r backend/requirements.txt && cd frontend && npm install",
+    "dev": "cd backend && python app.py & cd frontend && npm run dev",
+    "backend": "cd backend && python app.py",
+    "frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && python app.py",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "test": "cd backend && python -m pytest && cd ../frontend && npm test",
+    "test:backend": "cd backend && python -m pytest",
+    "test:frontend": "cd frontend && npm test",
+    "lint": "cd frontend && npm run lint"
+  },
   "devDependencies": {
     "stylelint": "^16.26.1",
     "stylelint-config-recommended": "^17.0.0",

@@ -28,6 +28,8 @@ Thumbs.db
 tempCodeRunnerFile.py
 .idea/
 .vscode/
+.gemini/
+start_servers.cmd
 .abstra/
 
 # Unit test / coverage reports
@@ -74,3 +76,6 @@ uploads/
 # Root-level package files (frontend has its own)
 /package.json
 /package-lock.json
+
+.gemini/
+start_servers.cmd

@@ -4,6 +4,7 @@ Synthesis Agent — combines all outputs + RAG + LLM final response.
 """
 import json
 import logging
+from datetime import datetime
 
 logger = logging.getLogger(__name__)
 
@@ -41,6 +42,9 @@ SYNTHESIS_PROMPT = """You are 'Vani AI', KrishiVigyan's lead Agricultural Intell
 
 USER QUESTION: {user_query}
 
+CONVERSATION HISTORY (previous messages):
+{conversation_history}
+
 MISSION CONTEXT:
 - Location: {location}
 - Detected Crop: {crop}
@@ -57,6 +61,7 @@ INSTRUCTIONS:
 2. If the user asks about a specific crop (e.g., Tomato) but the local sensors report on another (e.g., Paddy), acknowledge the sensors but focus your expertise on the user's crop using the RAG Context.
 3. Use bold headers for sections.
 4. Structure your response to be actionable for the user's specific problem.
+5. Use the conversation history to maintain context across messages.
 
 RESPONSE STRUCTURE:
 **📊 CURRENT STATUS**
@@ -137,11 +142,15 @@ def synthesis(state):
 
     location = ctx.get("city") or f"{ctx.get('lat','?')},{ctx.get('lon','?')}"
     crop = ctx.get("crop") or "general"
-    month = __import__('datetime').datetime.now().month
+    month = datetime.now().month
     season = "Kharif (Monsoon)" if month in [6,7,8,9] else "Rabi (Winter)" if month in [10,11,12,1] else "Summer"
     lang_instr = state.get("lang_instruction") or ctx.get("lang_instruction") or "Respond in English."
+    conv_history = ctx.get("history", "")
+    if not conv_history:
+        conv_history = "No previous conversation."
     prompt = SYNTHESIS_PROMPT.format(
         user_query=query,
+        conversation_history=conv_history,
         location=location, crop=crop, season=season,
         agent_reports=agent_reports, rag_context=rag_context[:2000],
         language_instruction=lang_instr
@@ -211,6 +220,8 @@ def run_agent_pipeline(query, context=None):
             logger.error(f"LangGraph failed: {e}")
 
     lang_instr = context.get("lang_instruction") or "Respond in English."
+    if "history" not in context:
+        context["history"] = ""
     state = {"query": query, "context": context, "selected_agents": [], "agent_results": {}, "final_response": "", "lang_instruction": lang_instr}
     state = supervisor(state)
     state = run_agents(state)

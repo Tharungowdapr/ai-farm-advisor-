@@ -6,6 +6,12 @@ import secrets
 from pathlib import Path
 from datetime import datetime
 
+try:
+    import bcrypt
+    BCRYPT_AVAILABLE = True
+except ImportError:
+    BCRYPT_AVAILABLE = False
+
 DB_PATH = Path(__file__).parent / "data" / "krishisync.db"
 DB_PATH.parent.mkdir(parents=True, exist_ok=True)
 
@@ -42,9 +48,9 @@ def init_db():
     )''')
     
     try:
-        c.execute("ALTER TABLE users ADD COLUMN is_admin BOOLEAN DEFAULT FALSE")
+        c.execute("SELECT is_admin FROM users LIMIT 1")
     except sqlite3.OperationalError:
-        pass
+        c.execute("ALTER TABLE users ADD COLUMN is_admin BOOLEAN DEFAULT FALSE")
 
     c.execute('''CREATE TABLE IF NOT EXISTS farms (
         id TEXT PRIMARY KEY,
@@ -74,11 +80,15 @@ def init_db():
 # ── Auth ─────────────────────────────────────────────────────────
 
 def hash_password(password):
+    if BCRYPT_AVAILABLE:
+        return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
     salt = secrets.token_hex(16)
     h = hashlib.sha256((salt + password).encode()).hexdigest()
     return f"{salt}${h}"
 
 def verify_password(password, stored):
+    if BCRYPT_AVAILABLE:
+        return bcrypt.checkpw(password.encode('utf-8'), stored.encode('utf-8'))
     salt, h = stored.split("$", 1)
     return hashlib.sha256((salt + password).encode()).hexdigest() == h
 

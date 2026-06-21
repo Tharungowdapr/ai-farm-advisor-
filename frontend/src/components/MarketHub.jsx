@@ -3,7 +3,7 @@ import { TrendingUp, DollarSign, Search, Loader2, AlertTriangle, ArrowUp, ArrowD
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import axios from 'axios';
 import { CROP_DATABASE } from '../data/cropData';
-import AiNegotiator from './AiNegotiator';
+
 
 const GrainOverlay = () => <div className="grain-overlay opacity-20" />;
 const CROPS = [...new Set([...CROP_DATABASE.map(c => c.name), 'Potato','Capsicum','Soybean','Grape','Orange','Apple','Sunflower','Mustard','Wheat','Barley','Jowar','Bajra'])];
@@ -511,23 +511,7 @@ export default function MarketHub() {
               </div>
             )}
             
-            {/* Embedded AI Negotiator System */}
-            <div className="mt-12 bg-[#fafaf9] rounded-[2.5rem] p-8 shadow-2xl relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-[#84cc16]/10 rounded-bl-full pointer-events-none"></div>
-              
-              <div className="mb-8 border-b border-stone-200 pb-6 relative z-10">
-                <div className="flex items-center gap-2 mb-2 opacity-60">
-                  <ShieldCheck size={16} className="text-[#84cc16]" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#0c0a09]">AI NEGOTIATOR SUBSYSTEM</span>
-                </div>
-                <h3 className="text-3xl font-black text-stone-900">Pre-Market <span className="italic text-[#84cc16]">Analysis.</span></h3>
-                <p className="text-stone-500 font-medium mt-2">Use the AI Agent below to analyze specific crop conditions and negotiate your target selling price with buyers.</p>
-              </div>
 
-              <div className="relative z-10">
-                <AiNegotiator embedded={true} />
-              </div>
-            </div>
 
           </div>
         )}

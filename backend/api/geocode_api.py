@@ -1,13 +1,50 @@
+import json
 import requests
+from pathlib import Path
 from config.settings import OPENWEATHER_API_KEY
 
+CITY_ALIASES = {
+    "bangalore": "Bengaluru", "mysore": "Mysuru", "mangalore": "Mangaluru",
+    "hubli": "Hubballi", "belgaum": "Belagavi", "gulbarga": "Kalaburagi",
+    "bellary": "Ballari", "shimoga": "Shivamogga", "tumkur": "Tumakuru",
+    "chikmagalur": "Chikkamagaluru", "hospet": "Hosapete",
+}
+
+def _load_cities_db():
+    """Load local Karnataka cities coordinate database."""
+    try:
+        db_path = Path(__file__).parent.parent / "data" / "karnataka_cities.json"
+        if db_path.exists():
+            with open(db_path, encoding="utf-8") as f:
+                return json.load(f)
+    except Exception:
+        pass
+    return []
+
+def _lookup_local(city):
+    """Search the local JSON database for a city match."""
+    cities = _load_cities_db()
+    q = city.strip().lower()
+    for entry in cities:
+        if entry["city"].strip().lower() == q:
+            return entry["lat"], entry["lon"]
+    return None
+
 def get_coordinates(city):
-    result = _try_openweather(city)
+    city_name = CITY_ALIASES.get(city.strip().lower(), city.strip())
+
+    result = _try_openweather(city_name)
     if result and not (isinstance(result, dict) and "error" in result):
         return result
-    result = _try_openmeteo(city)
+
+    result = _try_openmeteo(city_name)
     if result and not (isinstance(result, dict) and "error" in result):
         return result
+
+    local = _lookup_local(city_name)
+    if local:
+        return local
+
     return {"error": "Could not find coordinates. Try a major Indian city."}
 
 def _try_openweather(city):

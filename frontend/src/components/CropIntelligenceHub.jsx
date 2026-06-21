@@ -597,6 +597,7 @@ const CropCard = ({ crop, index, onClick }) => {
   const tags = getCropTags(crop);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
+  const [imgError, setImgError] = useState(false);
 
   const handleMouseMove = useCallback((e) => {
     if (!cardRef.current) return;
@@ -611,20 +612,26 @@ const CropCard = ({ crop, index, onClick }) => {
       onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} onMouseMove={handleMouseMove}
       className="group cursor-pointer bg-white/[0.03] border border-white/[0.08] rounded-2xl overflow-hidden hover:border-[#84cc16]/30 hover:bg-white/[0.06] transition-all duration-500 relative"
     >
-      {/* Image area with parallax */}
+      {/* Image area with fallback */}
       <div className="h-48 overflow-hidden relative bg-gradient-to-br from-stone-900 via-stone-950 to-black">
-        <motion.div className="absolute inset-0"
-          animate={isHovered ? { scale: 1.1, rotate: mousePos.x * 3 - 1.5 } : { scale: 1, rotate: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
-          <img src={crop.image} alt={crop.name}
-            className="w-full h-full object-cover"
-            onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
-          />
-          <div className="absolute inset-0 hidden items-center justify-center bg-gradient-to-br from-stone-900 via-stone-950 to-black">
-            <Sprout size={64} className="text-[#84cc16]/30" />
+        {imgError ? (
+          <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-stone-900 via-stone-950 to-black">
+            <div className="text-center">
+              <Sprout size={48} className="mx-auto text-[#84cc16]/20 mb-2" />
+              <span className="text-[13px] text-stone-600 font-medium uppercase tracking-wider">{crop.name}</span>
+            </div>
           </div>
-        </motion.div>
+        ) : (
+          <motion.div className="absolute inset-0"
+            animate={isHovered ? { scale: 1.1, rotate: mousePos.x * 3 - 1.5 } : { scale: 1, rotate: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <img src={crop.image} alt={crop.name}
+              className="w-full h-full object-cover"
+              onError={() => setImgError(true)}
+            />
+          </motion.div>
+        )}
 
         {/* Gradient overlays */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
@@ -638,8 +645,7 @@ const CropCard = ({ crop, index, onClick }) => {
         {/* Tags */}
         <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
           {tags.map(t => (
-            <span key={t.label} className={`px-2 py-0.5 
-rounded-full text-[14px] font-black uppercase tracking-wider bg-black/60 backdrop-blur-sm border ${t.color}`}>
+            <span key={t.label} className={`px-2 py-0.5 rounded-full text-[14px] font-black uppercase tracking-wider bg-black/60 backdrop-blur-sm border ${t.color}`}>
               {t.label}
             </span>
           ))}
@@ -649,26 +655,26 @@ rounded-full text-[14px] font-black uppercase tracking-wider bg-black/60 backdro
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-stone-950/90 to-transparent" />
       </div>
 
-      {/* Info */}
-      <div className="p-5">
-        <div className="flex items-start justify-between mb-1">
+      {/* Info section */}
+      <div className="p-4">
+        <div className="flex items-start justify-between mb-3">
           <div className="flex-1 min-w-0">
             <h3 className="font-serif text-xl font-black text-white truncate">{crop.name}</h3>
-            <p className="text-stone-500 text-[14px] italic truncate">{crop.scientific}</p>
+            <p className="text-stone-500 text-[13px] italic truncate">{crop.scientific}</p>
           </div>
           <div className="text-right flex-shrink-0 ml-3">
-            <div className="text-[13px] text-stone-500 uppercase tracking-wider">Duration</div>
+            <div className="text-[11px] text-stone-500 uppercase tracking-wider">Duration</div>
             <div className="text-sm font-bold text-[#84cc16]">{crop.duration?.split(" ")[0]}</div>
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-1.5 mt-3">
-          <span className="px-2 py-0.5 bg-white/5 rounded text-[13px] text-stone-400 uppercase tracking-wider border border-white/5">{crop.waterReq?.split(" ")[0]}</span>
-          <span className="px-2 py-0.5 bg-white/5 rounded text-[13px] text-stone-400 uppercase tracking-wider border border-white/5">{crop.idealSoil?.split("/")[0]?.trim()}</span>
-          <span className="px-2 py-0.5 bg-white/5 rounded text-[13px] text-stone-400 uppercase tracking-wider border border-white/5">{crop.avgYield}</span>
+        <div className="flex flex-wrap gap-1.5 mb-3">
+          <span className="px-2 py-0.5 bg-white/5 rounded text-[12px] text-stone-400 uppercase tracking-wider border border-white/5">{crop.waterReq?.split(" ")[0]}</span>
+          <span className="px-2 py-0.5 bg-white/5 rounded text-[12px] text-stone-400 uppercase tracking-wider border border-white/5">{crop.idealSoil?.split("/")[0]?.trim()}</span>
+          <span className="px-2 py-0.5 bg-white/5 rounded text-[12px] text-stone-400 uppercase tracking-wider border border-white/5">{crop.avgYield}</span>
         </div>
 
-        <div className="mt-3 pt-3 border-t border-white/[0.06] flex items-center justify-between">
+        <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between">
           <span className="text-[13px] text-stone-500 font-medium">{crop.msp}</span>
           <span className="text-[#84cc16] text-[13px] font-bold flex items-center gap-1 group-hover:gap-2 transition-all">
             Access Intelligence <ChevronRight size={10} />

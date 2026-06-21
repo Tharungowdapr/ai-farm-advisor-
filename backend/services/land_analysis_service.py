@@ -127,6 +127,78 @@ CROP_REQUIREMENT_PROFILES = {
         "market_price": 6000, "risk_level": "High", "input_cost": "High",
         "companion_crops": ["Pear", "Plum"],
     },
+    "Coconut": {
+        "temp_min": 20, "temp_max": 38, "temp_opt_min": 25, "temp_opt_max": 32,
+        "rain_min": 1000, "rain_max": 3000, "ph_min": 5.0, "ph_max": 8.0, "ph_opt_min": 5.5, "ph_opt_max": 6.5,
+        "water": "Moderate", "duration_days": 365, "season": "perennial",
+        "elevation_max": 1000, "n_demand": "Moderate", "root_depth": "Deep",
+        "drought_tolerance": "Medium", "salinity_tolerance": "High",
+        "market_price": 2800, "risk_level": "Low", "input_cost": "Moderate",
+        "companion_crops": ["Arecanut", "Pepper", "Banana"],
+    },
+    "Cotton": {
+        "temp_min": 18, "temp_max": 40, "temp_opt_min": 25, "temp_opt_max": 35,
+        "rain_min": 500, "rain_max": 1200, "ph_min": 5.5, "ph_max": 8.5, "ph_opt_min": 6.0, "ph_opt_max": 7.5,
+        "water": "Moderate", "duration_days": 165, "season": "kharif",
+        "elevation_max": 1000, "n_demand": "Moderate", "root_depth": "Deep",
+        "drought_tolerance": "Medium", "salinity_tolerance": "Medium",
+        "market_price": 6600, "risk_level": "Moderate", "input_cost": "Moderate-High",
+        "companion_crops": ["Groundnut", "Sorghum", "Pigeonpea"],
+    },
+    "Groundnut": {
+        "temp_min": 18, "temp_max": 35, "temp_opt_min": 22, "temp_opt_max": 30,
+        "rain_min": 350, "rain_max": 800, "ph_min": 5.5, "ph_max": 7.5, "ph_opt_min": 6.0, "ph_opt_max": 6.5,
+        "water": "Low", "duration_days": 120, "season": "kharif",
+        "elevation_max": 1500, "n_demand": "Low", "root_depth": "Shallow",
+        "drought_tolerance": "High", "salinity_tolerance": "Low",
+        "market_price": 5300, "risk_level": "Low", "input_cost": "Low-Moderate",
+        "companion_crops": ["Cotton", "Sorghum", "Sunflower"],
+    },
+    "Banana": {
+        "temp_min": 15, "temp_max": 38, "temp_opt_min": 22, "temp_opt_max": 30,
+        "rain_min": 600, "rain_max": 2000, "ph_min": 5.5, "ph_max": 7.5, "ph_opt_min": 6.0, "ph_opt_max": 6.8,
+        "water": "High", "duration_days": 365, "season": "perennial",
+        "elevation_max": 1500, "n_demand": "High", "root_depth": "Medium",
+        "drought_tolerance": "Low", "salinity_tolerance": "Medium",
+        "market_price": 3000, "risk_level": "Moderate", "input_cost": "Moderate-High",
+        "companion_crops": ["Coffee", "Coconut", "Pepper"],
+    },
+    "Mango": {
+        "temp_min": 10, "temp_max": 45, "temp_opt_min": 24, "temp_opt_max": 35,
+        "rain_min": 500, "rain_max": 2500, "ph_min": 5.5, "ph_max": 7.5, "ph_opt_min": 5.8, "ph_opt_max": 6.5,
+        "water": "Low", "duration_days": 365, "season": "perennial",
+        "elevation_max": 1500, "n_demand": "Low", "root_depth": "Deep",
+        "drought_tolerance": "High", "salinity_tolerance": "Medium",
+        "market_price": 4000, "risk_level": "Low", "input_cost": "Moderate",
+        "companion_crops": ["Coconut", "Banana", "Pepper"],
+    },
+    "Onion": {
+        "temp_min": 10, "temp_max": 35, "temp_opt_min": 15, "temp_opt_max": 25,
+        "rain_min": 350, "rain_max": 800, "ph_min": 5.5, "ph_max": 7.5, "ph_opt_min": 6.0, "ph_opt_max": 6.8,
+        "water": "Moderate", "duration_days": 120, "season": "rabi",
+        "elevation_max": 2000, "n_demand": "Moderate", "root_depth": "Shallow",
+        "drought_tolerance": "Low", "salinity_tolerance": "Low",
+        "market_price": 1800, "risk_level": "Moderate", "input_cost": "Moderate",
+        "companion_crops": ["Tomato", "Chili", "Coriander"],
+    },
+    "Chili": {
+        "temp_min": 15, "temp_max": 38, "temp_opt_min": 20, "temp_opt_max": 30,
+        "rain_min": 400, "rain_max": 1200, "ph_min": 5.5, "ph_max": 7.0, "ph_opt_min": 6.0, "ph_opt_max": 6.8,
+        "water": "Moderate", "duration_days": 150, "season": "kharif",
+        "elevation_max": 1800, "n_demand": "Moderate", "root_depth": "Medium",
+        "drought_tolerance": "Medium", "salinity_tolerance": "Low",
+        "market_price": 4000, "risk_level": "High", "input_cost": "Moderate",
+        "companion_crops": ["Onion", "Tomato", "Coriander"],
+    },
+    "Jowar (Sorghum)": {
+        "temp_min": 15, "temp_max": 40, "temp_opt_min": 25, "temp_opt_max": 32,
+        "rain_min": 300, "rain_max": 800, "ph_min": 5.5, "ph_max": 8.0, "ph_opt_min": 6.0, "ph_opt_max": 7.0,
+        "water": "Low", "duration_days": 110, "season": "kharif",
+        "elevation_max": 2000, "n_demand": "Low", "root_depth": "Deep",
+        "drought_tolerance": "Very High", "salinity_tolerance": "Medium",
+        "market_price": 3400, "risk_level": "Low", "input_cost": "Low",
+        "companion_crops": ["Cotton", "Groundnut", "Pigeonpea"],
+    },
 }
 
 
@@ -143,6 +215,15 @@ def analyze_land(lat, lon, city, N, P, K, ph, weather_data, open_meteo_raw=None)
     soil = _analyze_soil_deep(N, P, K, ph, climate)
     water = _analyze_water_deep(weather_data, climate)
     crop_matrix = _analyze_crop_suitability(climate, soil, water, topography)
+
+    # Add LLM-suggested crops not in the hardcoded database
+    llm_suggestions = _suggest_crops_llm(climate, soil, water, topography, city)
+    if llm_suggestions:
+        existing_names = {c["crop"].lower() for c in crop_matrix.get("best_crops", [])}
+        for s in llm_suggestions:
+            if s["crop"].lower() not in existing_names:
+                crop_matrix.setdefault("llm_suggestions", []).append(s)
+
     recommendations = _generate_recommendations(climate, soil, water, topography, crop_matrix)
 
     return {
@@ -337,7 +418,7 @@ def _analyze_soil_deep(N, P, K, ph, climate):
     # ── Depth & drainage ──
     depth_class = "Deep (>100cm)" if ph < 7.5 else "Moderate (50-100cm)"
     erosion_risk = "Low"
-    if rainfall > 1500 and "Steep" in _get_slope_for_rainfall(rainfall):
+    if rainfall > 1500:
         erosion_risk = "High"
     elif rainfall > 1000:
         erosion_risk = "Moderate"
@@ -391,8 +472,7 @@ def _analyze_soil_deep(N, P, K, ph, climate):
     }
 
 
-def _get_slope_for_rainfall(rainfall):
-    return ""  # placeholder
+
 
 
 def _score_soil_health(n, p, k, ph, oc):
@@ -628,6 +708,45 @@ def _analyze_crop_suitability(climate, soil, water, topography):
             "poor": len([c for c in scored if c["grade"] == "Poor"]),
         }
     }
+
+
+def _suggest_crops_llm(climate, soil, water, topography, city):
+    """Use LLM to suggest additional region-specific crops not in the database."""
+    try:
+        from services.llm_service import LLMService
+        llm = LLMService()
+        if not llm.api_key:
+            return []
+
+        temp = climate.get("current", {}).get("temperature_celsius", "?")
+        rain = climate.get("current", {}).get("rainfall_mm", "?")
+        humidity = climate.get("current", {}).get("humidity_percent", "?")
+        ph = soil.get("ph", "?")
+        n = soil.get("nitrogen", soil.get("N", "?"))
+        p = soil.get("phosphorus", soil.get("P", "?"))
+        k = soil.get("potassium", soil.get("K", "?"))
+        elevation = topography.get("elevation_m", "?")
+        season = climate.get("season", "?")
+
+        prompt = f"""Given this land in {city or 'a Karnataka location'}:
+- Current temp: {temp}°C, humidity: {humidity}%, rainfall: {rain}mm
+- Soil pH: {ph}, N: {n}, P: {p}, K: {k}
+- Elevation: {elevation}m, Season: {season}
+
+Suggest 3-4 crops that would grow well here, focusing on crops suitable for Karnataka's climate.
+For each crop, give a name (common name only), a suitability score 0-100, and a one-line reason.
+Return as JSON array: [{{"crop": "name", "score": 85, "reason": "..."}}]
+Do NOT include any crops from this list: Paddy, Ragi, Coffee, Sugarcane, Tomato, Potato, Maize, Capsicum, Soybean, Grape, Orange, Apple, Coconut, Cotton, Groundnut, Banana, Mango, Onion, Chili, Jowar (Sorghum)."""
+        resp = llm.call(prompt, json_mode=True, max_tokens=800)
+        import json as _json
+        import re
+        match = re.search(r'\[.*?\]', resp, re.DOTALL)
+        if match:
+            suggestions = _json.loads(match.group(0))
+            return [s for s in suggestions if isinstance(s, dict) and "crop" in s][:4]
+    except Exception as e:
+        logger.debug(f"LLM crop suggestion skipped: {e}")
+    return []
 
 
 def _generate_recommendations(climate, soil, water, topography, crop_matrix):

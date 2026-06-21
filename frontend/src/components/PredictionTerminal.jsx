@@ -307,7 +307,7 @@ const PredictionTerminal = () => {
 
           {/* Weather Cards */}
           {weatherData && (
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
               <div className="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
                 <Thermometer size={14} className="text-orange-400 mx-auto mb-1" />
                 <div className="text-[9px] text-stone-500 uppercase">Temp</div>
@@ -339,7 +339,7 @@ const PredictionTerminal = () => {
                 <label className="text-[9px] font-bold text-stone-500 uppercase tracking-wider mb-1.5 block flex items-center gap-1"><MapPin size={10} /> Location</label>
                 <input required type="text" placeholder="Village / City" className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-[#84cc16]" value={formData.city} onChange={e => setFormData({...formData, city: e.target.value})} />
               </div>
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div>
                   <label className="text-[9px] font-bold text-stone-500 uppercase tracking-wider mb-1.5 block text-center">N (mg/kg)</label>
                   <input type="number" placeholder="N" className="w-full bg-black/40 border border-white/10 rounded-xl px-3 py-3 text-white text-sm text-center outline-none focus:border-[#84cc16]" value={formData.N} onChange={e => setFormData({...formData, N: e.target.value})} />

@@ -9,12 +9,21 @@ if sys.platform == 'win32':
 
 import json
 import logging
+import base64
 import requests
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from dotenv import load_dotenv
 from pathlib import Path
 from datetime import datetime
+
+try:
+    from cryptography.fernet import Fernet
+    from cryptography.hazmat.primitives import hashes
+    from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+    CRYPTO_AVAILABLE = True
+except ImportError:
+    CRYPTO_AVAILABLE = False
 
 load_dotenv()
 logging.basicConfig(
@@ -28,7 +37,6 @@ from msp_fetcher import MSPFetcher, get_msp_for_crop
 from weather_disease_risk import WeatherDiseaseRiskCalculator, get_crop_disease_risks
 from cultivation_advisor import CultivationAdvisor, get_cultivation_advisory
 
-import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from controllers.prediction_controller import handle_prediction
 from api.geocode_api import get_coordinates
@@ -42,13 +50,37 @@ from agents.supervisor_agent import run_agent_pipeline
 from services.land_analysis_service import analyze_land
 from services.market_forecast import forecast_price, forecast_all
 from services.soil_service import get_soil_summary
-from negotiator_routes import negotiator_bp
+
 from admin_routes import admin_bp
 from vendor_routes import vendor_bp
+from yield_prediction import YieldPredictor
 
 SETTINGS_DIR = Path(__file__).parent / "settings"
 SETTINGS_DIR.mkdir(exist_ok=True)
 SETTINGS_FILE = SETTINGS_DIR / "user_settings.json"
+
+def _get_cipher():
+    secret = os.getenv("SECRET_KEY", "krishivigyan-dev-key-change-in-production-32")
+    key_bytes = secret.encode() if len(secret.encode()) >= 32 else secret.encode().ljust(32, b'x')[:32]
+    kdf = PBKDF2HMAC(algorithm=hashes.SHA256(), length=32, salt=b'kv_salt_2024', iterations=100000)
+    fernet_key = base64.urlsafe_b64encode(kdf.derive(key_bytes))
+    return Fernet(fernet_key)
+
+def encrypt_value(plaintext):
+    if not CRYPTO_AVAILABLE or not plaintext:
+        return plaintext
+    try:
+        return _get_cipher().encrypt(plaintext.encode()).decode()
+    except Exception:
+        return plaintext
+
+def decrypt_value(ciphertext):
+    if not CRYPTO_AVAILABLE or not ciphertext:
+        return ciphertext
+    try:
+        return _get_cipher().decrypt(ciphertext.encode()).decode()
+    except Exception:
+        return ciphertext
 
 DEFAULT_SETTINGS = {
     "language": "EN",
@@ -60,6 +92,8 @@ DEFAULT_SETTINGS = {
     "unit_preference": "metric",
     "crop_favorites": [],
     "api_key": "",
+    "provider": "openrouter",
+    "llm_model": "openai/gpt-4o-mini",
     "last_updated": None
 }
 
@@ -68,7 +102,8 @@ from database import get_or_create_user, create_farm, get_user_farms, log_daily_
 TOKENS = {}
 
 app = Flask(__name__)
-CORS(app, resources={r"/api/*": {"origins": "*"}})
+allowed_origins = os.getenv("CORS_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173").split(",")
+CORS(app, resources={r"/api/*": {"origins": allowed_origins}})
 
 # ── MLOps Monitoring ─────────────────────────────────────────
 from monitoring import setup_monitoring, metrics, track_llm_call
@@ -101,6 +136,8 @@ def load_settings():
 def save_settings(settings):
     try:
         settings_to_save = {k: v for k, v in settings.items() if k != 'last_updated'}
+        if settings_to_save.get("api_key"):
+            settings_to_save["api_key"] = encrypt_value(settings_to_save["api_key"])
         with open(SETTINGS_FILE, 'w') as f:
             json.dump(settings_to_save, f, indent=2)
         logger.info("Settings saved successfully")
@@ -335,6 +372,10 @@ def update_settings():
         validated_settings = {**current_settings, **new_settings}
         if "api_key" not in new_settings:
             validated_settings["api_key"] = current_settings.get("api_key", "")
+        provider = validated_settings.get("provider", current_settings.get("provider", "openrouter"))
+        if provider not in ("openrouter", "groq"):
+            provider = "openrouter"
+
         validated_settings = {
             "language": validated_settings.get("language", "EN"),
             "crop_cluster": validated_settings.get("crop_cluster", "All Karnataka"),
@@ -344,7 +385,9 @@ def update_settings():
             "region": validated_settings.get("region", "Karnataka"),
             "unit_preference": validated_settings.get("unit_preference", "metric"),
             "crop_favorites": validated_settings.get("crop_favorites", []),
-            "api_key": validated_settings.get("api_key", "")
+            "api_key": validated_settings.get("api_key", ""),
+            "provider": provider,
+            "llm_model": validated_settings.get("llm_model", current_settings.get("llm_model", "openai/gpt-4o-mini"))
         }
         if not isinstance(validated_settings.get("notifications"), bool):
             validated_settings["notifications"] = True
@@ -488,7 +531,58 @@ def reset_settings():
     except Exception as e:
         return jsonify({"success": False, "error": str(e)}), 500
 
-from cultivation_manager import CultivationManager
+@app.route("/api/settings/test-llm", methods=["POST"])
+def test_llm():
+    data = request.json or {}
+    provider = data.get("provider", llm.provider)
+    api_key = data.get("api_key", "").strip()
+    model = data.get("model", "openai/gpt-4o-mini" if provider == "openrouter" else "llama-3.1-8b-instant")
+
+    if not api_key:
+        return jsonify({"success": False, "error": "API key is required"}), 400
+
+    try:
+        test_llm = LLMService()
+        old_key = test_llm.api_key
+        old_provider = test_llm.provider
+        test_llm.api_key = api_key
+        test_llm.provider = provider
+        test_llm.model = model
+
+        resp = test_llm.call(
+            "Reply with exactly and only: OK. Do not add anything else.",
+            max_tokens=10
+        )
+
+        test_llm.api_key = old_key
+        test_llm.provider = old_provider
+        test_llm.model = model
+
+        if resp and "OK" in resp.strip().upper():
+            return jsonify({"success": True, "message": "LLM connection successful!", "response": resp.strip()})
+        else:
+            return jsonify({"success": True, "message": "LLM responded (unexpected format)", "response": resp.strip()})
+    except Exception as e:
+        return jsonify({"success": False, "error": f"LLM test failed: {str(e)}"}), 400
+
+
+@app.route("/api/settings/llm-status", methods=["GET"])
+def llm_status():
+    try:
+        settings = load_settings()
+        provider = settings.get("provider", "openrouter")
+        model = settings.get("llm_model", "openai/gpt-4o-mini")
+        has_key = bool(settings.get("api_key", "")) or bool(os.getenv("OPENROUTER_API_KEY", "")) or bool(os.getenv("GROQ_API_KEY", ""))
+        return jsonify({
+            "success": True,
+            "provider": provider,
+            "model": model,
+            "has_api_key": has_key,
+            "configured": bool(llm.api_key)
+        })
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
+
 
 @app.route("/api/cultivation/start", methods=["POST"])
 def start_cultivation():
@@ -644,8 +738,6 @@ def auth_profile():
         user = get_user(user_id)
         user.pop("password_hash", None)
         return jsonify({"success": ok, "user": user})
-from yield_prediction import YieldPredictor
-
 @app.route("/api/user/farms", methods=["GET"])
 def api_user_farms():
     user_id = request.args.get("user_id")
@@ -824,12 +916,22 @@ def _load_cities():
             _KARNATAKA_CITIES = []
     return _KARNATAKA_CITIES
 
+CITY_ALIASES = {
+    "bangalore": "bengaluru", "mysore": "mysuru", "mangalore": "mangaluru",
+    "hubli": "hubballi", "belgaum": "belagavi", "gulbarga": "kalaburagi",
+    "bellary": "ballari", "shimoga": "shivamogga", "tumkur": "tumakuru",
+    "chikmagalur": "chikkamagaluru", "hospet": "hosapete",
+    "chikkaballapura": "chikkaballapura", "chikballapur": "chikkaballapura",
+    "davanagere": "davangere", "koppal": "koppal",
+}
+
 @app.route("/api/cities", methods=["GET"])
 def api_cities():
     q = request.args.get("q", "").strip().lower()
+    q_normalized = CITY_ALIASES.get(q, q)
     cities = _load_cities()
     if q:
-        results = [c for c in cities if q in c["city"].lower() or q in c.get("district","").lower()]
+        results = [c for c in cities if q in c["city"].lower() or q_normalized in c["city"].lower() or q in c.get("district","").lower()]
     else:
         results = cities
     return jsonify({"cities": results[:30], "total": len(results)})
@@ -888,6 +990,7 @@ def chat():
             return jsonify({"reply": "Invalid JSON payload", "response": "Invalid JSON payload"}), 400
         user_message = data.get("message", "")
         ctx = data.get("context", {})
+        history = data.get("history", [])
         if not user_message:
             return jsonify({"reply": "Please enter a message.", "response": "Please enter a message."}), 400
 
@@ -908,6 +1011,16 @@ def chat():
         elif language == "TA":
             lang_instruction = "Respond in Tamil (தமிழ்)."
 
+        recent_history = history[-6:] if history else []
+        hist_str = ""
+        if recent_history:
+            hist_lines = []
+            for h in recent_history:
+                role = h.get("role", "user")
+                content = h.get("content", "")
+                hist_lines.append(f"{role}: {content}")
+            hist_str = "\n".join(hist_lines)
+
         agent_context = {
             "crop": ctx.get("selected_crop") or ctx.get("crop", ""),
             "city": ctx.get("city", ""),
@@ -921,6 +1034,7 @@ def chat():
             "humidity": ctx.get("humidity"),
             "language": language,
             "lang_instruction": lang_instruction,
+            "history": hist_str,
         }
 
         profile = None
@@ -1127,7 +1241,7 @@ def api_env_forecast():
 
 app.register_blueprint(main_bp, url_prefix="/legacy")
 app.register_blueprint(prediction_bp, url_prefix="/legacy")
-app.register_blueprint(negotiator_bp, url_prefix="/api/negotiator")
+
 app.register_blueprint(admin_bp, url_prefix="/api/admin")
 app.register_blueprint(vendor_bp, url_prefix="/api/vendors")
 

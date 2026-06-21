@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: krishivigyan-backend
+    env: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: .
+    plan: free
+    envVars:
+      - key: PORT
+        value: 5001
+      - key: FLASK_DEBUG
+        value: "false"
+      - key: CORS_ORIGINS
+        value: "https://your-frontend.vercel.app,http://localhost:5173,http://127.0.0.1:5173"
+      - key: PYTHONUNBUFFERED
+        value: "1"
+    disk:
+      name: data
+      mountPath: /opt/render/data
+      sizeGB: 1

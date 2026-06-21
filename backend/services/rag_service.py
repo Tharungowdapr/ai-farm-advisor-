@@ -14,7 +14,11 @@ except ImportError:
     _metrics = None
 
 DATA_DIR = Path(__file__).parent.parent / "data"
-CHROMA_DIR = DATA_DIR / "chromadb"
+_CHROMA_OVERRIDE = os.getenv("CHROMA_DIR")
+if _CHROMA_OVERRIDE:
+    CHROMA_DIR = Path(_CHROMA_OVERRIDE)
+else:
+    CHROMA_DIR = DATA_DIR / "chromadb"
 
 class RAGService:
     _instance = None

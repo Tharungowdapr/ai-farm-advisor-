@@ -1,3 +1,4 @@
+import os
 import sqlite3
 import json
 import uuid
@@ -12,7 +13,11 @@ try:
 except ImportError:
     BCRYPT_AVAILABLE = False
 
-DB_PATH = Path(__file__).parent / "data" / "krishisync.db"
+_DB_PATH_OVERRIDE = os.getenv("DATABASE_PATH")
+if _DB_PATH_OVERRIDE:
+    DB_PATH = Path(_DB_PATH_OVERRIDE)
+else:
+    DB_PATH = Path(__file__).parent / "data" / "krishisync.db"
 DB_PATH.parent.mkdir(parents=True, exist_ok=True)
 
 def get_db():

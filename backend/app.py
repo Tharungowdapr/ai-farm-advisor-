@@ -55,7 +55,7 @@ from admin_routes import admin_bp
 from vendor_routes import vendor_bp
 from yield_prediction import YieldPredictor
 
-SETTINGS_DIR = Path(__file__).parent / "settings"
+SETTINGS_DIR = Path(os.getenv("SETTINGS_DIR", Path(__file__).parent / "settings"))
 SETTINGS_DIR.mkdir(exist_ok=True)
 SETTINGS_FILE = SETTINGS_DIR / "user_settings.json"
 
@@ -117,7 +117,7 @@ from monitoring import setup_monitoring, metrics, track_llm_call
 setup_monitoring(app)
 logger.info("MLOps monitoring initialized")
 
-UPLOAD_FOLDER = os.path.join(os.getcwd(), 'uploads')
+UPLOAD_FOLDER = os.getenv("UPLOAD_FOLDER", os.path.join(os.getcwd(), 'uploads'))
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 

@@ -109,6 +109,11 @@ def init_db():
             created_at TIMESTAMPTZ DEFAULT {_NOW},
             FOREIGN KEY(user_id) REFERENCES users(id)
         )""")
+        c.execute(f"""CREATE TABLE IF NOT EXISTS auth_tokens (
+            token TEXT PRIMARY KEY, user_id TEXT NOT NULL,
+            created_at TIMESTAMPTZ DEFAULT {_NOW},
+            FOREIGN KEY(user_id) REFERENCES users(id)
+        )""")
     else:
         c.execute("""CREATE TABLE IF NOT EXISTS users (
             id TEXT PRIMARY KEY, email TEXT UNIQUE, password_hash TEXT,
@@ -152,6 +157,11 @@ def init_db():
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY(user_id) REFERENCES users(id)
         )""")
+        c.execute("""CREATE TABLE IF NOT EXISTS auth_tokens (
+            token TEXT PRIMARY KEY, user_id TEXT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY(user_id) REFERENCES users(id)
+        )""")
 
     conn.commit()
     conn.close()
@@ -174,6 +184,26 @@ def verify_password(password, stored):
 
 def generate_token():
     return secrets.token_hex(32)
+
+def save_token(token, user_id):
+    conn = get_db()
+    c = conn.cursor()
+    try:
+        c.execute(f"DELETE FROM auth_tokens WHERE user_id={_PLACEHOLDER}", (user_id,))
+        c.execute(f"INSERT INTO auth_tokens (token, user_id) VALUES ({_PLACEHOLDER}, {_PLACEHOLDER})", (token, user_id))
+        conn.commit()
+    except Exception:
+        conn.rollback()
+    finally:
+        conn.close()
+
+def get_user_id_by_token(token):
+    conn = get_db()
+    c = conn.cursor()
+    c.execute(f"SELECT user_id FROM auth_tokens WHERE token={_PLACEHOLDER}", (token,))
+    row = _fetchone(c)
+    conn.close()
+    return row["user_id"] if row else None
 
 def create_user(email, password, name, phone="", state="", district="", village="", lat=None, lon=None, land_size=None, soil_type="", farm_type="rainfed", language="EN", is_admin=False):
     conn = get_db()

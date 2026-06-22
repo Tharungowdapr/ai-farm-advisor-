@@ -146,17 +146,11 @@ const SettingsTerminal = () => {
       setTesting(true);
       setTestResult(null);
       setError(null);
-      const testKey = apiKey && apiKey !== '••••••••' ? apiKey : null;
-      if (!testKey) {
-        setError('Enter an API key first before testing.');
-        setTesting(false);
-        return;
+      const body = { provider, model: llmModel };
+      if (apiKey && apiKey !== '••••••••') {
+        body.api_key = apiKey;
       }
-      const response = await axios.post('/api/settings/test-llm', {
-        api_key: testKey,
-        provider,
-        model: llmModel,
-      });
+      const response = await axios.post('/api/settings/test-llm', body);
       if (response.data.success) {
         setTestResult({ success: true, message: 'Connection successful! LLM responded correctly.' });
       } else {

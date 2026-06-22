@@ -100,13 +100,12 @@ DEFAULT_SETTINGS = {
 from database import (
     get_or_create_user, create_farm, get_user_farms, log_daily_activity, get_farm_logs,
     create_user, login_user, get_user, update_user, generate_token,
+    save_token, get_user_id_by_token,
     create_chat_session, get_chat_sessions, get_chat_session, update_chat_session_title,
     touch_chat_session, delete_chat_session,
     add_chat_message, get_chat_messages,
     save_land_analysis, get_land_analyses, get_land_analysis, delete_land_analysis
 )
-
-TOKENS = {}
 
 app = Flask(__name__)
 allowed_origins = os.getenv("CORS_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173").split(",")
@@ -353,7 +352,7 @@ def get_settings():
         settings["has_api_key"] = has_api_key
 
         token = request.headers.get("Authorization", "").replace("Bearer ", "")
-        user_id = TOKENS.get(token)
+        user_id = get_user_id_by_token(token)
         if user_id:
             user = get_user(user_id)
             if user:
@@ -408,7 +407,7 @@ def update_settings():
             validated_settings["crop_cluster"] = "All Karnataka"
 
         token = request.headers.get("Authorization", "").replace("Bearer ", "")
-        user_id = TOKENS.get(token)
+        user_id = get_user_id_by_token(token)
         if user_id:
             user = get_user(user_id)
             if user:
@@ -545,14 +544,16 @@ def test_llm():
     api_key = data.get("api_key", "").strip()
     model = data.get("model", "openai/gpt-4o-mini" if provider == "openrouter" else "llama-3.1-8b-instant")
 
-    if not api_key:
-        return jsonify({"success": False, "error": "API key is required"}), 400
-
     try:
         test_llm = LLMService()
         old_key = test_llm.api_key
         old_provider = test_llm.provider
-        test_llm.api_key = api_key
+
+        if api_key:
+            test_llm.api_key = api_key
+        elif not test_llm.api_key:
+            return jsonify({"success": False, "error": "No API key found. Enter one in Settings first."}), 400
+
         test_llm.provider = provider
         test_llm.model = model
 
@@ -718,7 +719,7 @@ def signup():
         if not user:
             return jsonify({"success": False, "error": "Email already registered"}), 409
         token = generate_token()
-        TOKENS[token] = user["id"]
+        save_token(token, user["id"])
         return jsonify({"success": True, "token": token, "user": {"id": user["id"], "email": user["email"], "name": user["name"]}})
     except Exception as e:
         return jsonify({"success": False, "error": str(e)}), 500
@@ -733,7 +734,7 @@ def login():
         if not user:
             return jsonify({"success": False, "error": "Invalid email or password"}), 401
         token = generate_token()
-        TOKENS[token] = user["id"]
+        save_token(token, user["id"])
         return jsonify({
             "success": True, "token": token,
             "user": {"id": user["id"], "email": user["email"], "name": user["name"],
@@ -746,7 +747,7 @@ def login():
 @app.route("/api/auth/profile", methods=["GET", "PUT"])
 def auth_profile():
     token = request.headers.get("Authorization", "").replace("Bearer ", "")
-    user_id = TOKENS.get(token)
+    user_id = get_user_id_by_token(token)
     if not user_id:
         return jsonify({"success": False, "error": "Not authenticated"}), 401
     if request.method == "GET":
@@ -767,7 +768,7 @@ def auth_profile():
 
 def _get_user_id():
     token = request.headers.get("Authorization", "").replace("Bearer ", "")
-    return TOKENS.get(token)
+    return get_user_id_by_token(token)
 
 @app.route("/api/chat/sessions", methods=["GET", "POST"])
 def chat_sessions_api():
@@ -1110,7 +1111,7 @@ def chat():
             return jsonify({"reply": "Please enter a message.", "response": "Please enter a message."}), 400
 
         token = request.headers.get("Authorization", "").replace("Bearer ", "")
-        user_id = TOKENS.get(token, "anonymous")
+        user_id = get_user_id_by_token(token) or "anonymous"
 
         # Create or reuse chat session
         if not session_id and user_id != "anonymous":

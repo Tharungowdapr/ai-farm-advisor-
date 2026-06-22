@@ -595,6 +595,7 @@ const CropIntelligenceHub = ({ user }) => {
 
 // ═══════════════════════ CROP CARD ═══════════════════════
 const CropCard = ({ crop, index, onClick }) => {
+  const { t } = useLanguage();
   const cardRef = useRef(null);
   const tags = getCropTags(crop);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });

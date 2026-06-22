@@ -38,8 +38,8 @@ const App = () => {
   return (
     <Router>
       <div className="min-h-screen font-sans">
-        <ErrorBoundary>
           <LanguageProvider>
+          <ErrorBoundary>
           <GrainOverlay />
           <Navbar user={user} onLogout={handleLogout} />
           <Routes>
@@ -62,8 +62,8 @@ const App = () => {
             <Route path="/settings" element={<ProtectedRoute user={user}><SettingsTerminal /></ProtectedRoute>} />
             <Route path="/profile" element={<ProtectedRoute user={user}><ProfilePage user={user} onLogout={handleLogout} /></ProtectedRoute>} />
           </Routes>
+          </ErrorBoundary>
           </LanguageProvider>
-        </ErrorBoundary>
       </div>
     </Router>
   );

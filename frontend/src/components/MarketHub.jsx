@@ -3,12 +3,14 @@ import { TrendingUp, DollarSign, Search, Loader2, AlertTriangle, ArrowUp, ArrowD
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import axios from 'axios';
 import { CROP_DATABASE } from '../data/cropData';
+import { useLanguage } from '../i18n/LanguageContext';
 
 
 const GrainOverlay = () => <div className="grain-overlay opacity-20" />;
 const CROPS = [...new Set([...CROP_DATABASE.map(c => c.name), 'Potato','Capsicum','Soybean','Grape','Orange','Apple','Sunflower','Mustard','Wheat','Barley','Jowar','Bajra'])];
 
 export default function MarketHub() {
+  const { t } = useLanguage();
   const [crop, setCrop] = useState('Paddy');
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
@@ -107,10 +109,10 @@ export default function MarketHub() {
   const trend25 = fc?.trend === 'up';
 
   const tabs = [
-    { id:'overview', label:'Overview', icon: TrendingUp },
-    { id:'forecast', label:'Forecast', icon: BarChart3 },
-    { id:'smart_selling', label:'Smart Selling', icon: Truck },
-    { id:'insights', label:'AI Insights', icon: Target },
+    { id:'overview', label:t('market.overview'), icon: TrendingUp },
+    { id:'forecast', label:t('market.forecast'), icon: BarChart3 },
+    { id:'smart_selling', label:t('market.smartSelling'), icon: Truck },
+    { id:'insights', label:t('market.aiInsights'), icon: Target },
   ];
 
   return (
@@ -120,9 +122,9 @@ export default function MarketHub() {
         {/* Header */}
         <div className="flex flex-wrap items-end justify-between gap-4 mb-10">
           <div>
-            <p className="text-[8px] font-black uppercase tracking-[0.3em] text-[#facc15] mb-2">MarketHub AI Intelligence</p>
-            <h1 className="font-serif text-5xl font-black text-white">Market <span className="text-[#facc15]">Intelligence.</span></h1>
-            <p className="text-stone-400 text-sm mt-1">Real-time pricing, forecasting, and market analysis for Karnataka</p>
+            <p className="text-[8px] font-black uppercase tracking-[0.3em] text-[#facc15] mb-2">{t('market.title')}</p>
+            <h1 className="font-serif text-5xl font-black text-white">{t('market.marketIntelligence')}</h1>
+            <p className="text-stone-400 text-sm mt-1">{t('market.subtitle')}</p>
           </div>
           <div className="flex items-center gap-3">
             <select value={crop} onChange={e => setCrop(e.target.value)}
@@ -132,7 +134,7 @@ export default function MarketHub() {
             <button onClick={fetchData} disabled={loading}
               className="px-6 py-3 bg-[#facc15] text-[#0c0a09] font-black text-sm rounded-xl hover:bg-yellow-400 shadow-lg disabled:opacity-50 transition-all flex items-center gap-2">
               {loading ? <Loader2 size={16} className="animate-spin" /> : <Search size={16} />}
-              {loading ? 'Loading...' : 'Analyze'}
+              {loading ? t('market.loading') : t('market.analyze')}
             </button>
           </div>
         </div>
@@ -157,31 +159,31 @@ export default function MarketHub() {
             {/* KPI Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
               <div className="bg-stone-900 border border-stone-700 rounded-2xl p-5">
-                <p className="text-[8px] font-black uppercase text-stone-500 mb-1">MSP Floor</p>
+                <p className="text-[8px] font-black uppercase text-stone-500 mb-1">{t('market.mspFloor')}</p>
                 <p className="text-white text-2xl font-black">{k.msp || '—'}/q</p>
                 <p className={`text-xs font-bold mt-1 ${trend25 ? 'text-green-400' : 'text-red-400'}`}>{k.trend_percent || '0%'}</p>
               </div>
               <div className="bg-stone-900 border border-stone-700 rounded-2xl p-5">
-                <p className="text-[8px] font-black uppercase text-stone-500 mb-1">Trend</p>
+                <p className="text-[8px] font-black uppercase text-stone-500 mb-1">{t('market.trend')}</p>
                 <p className="text-white text-2xl font-black">{k.trend || '—'} %</p>
                 <p className="text-xs text-stone-500 mt-1">{k.forecast_percent || '—'} forecast</p>
               </div>
               <div className="bg-stone-900 border border-stone-700 rounded-2xl p-5">
-                <p className="text-[8px] font-black uppercase text-stone-500 mb-1">Supply Index</p>
+                <p className="text-[8px] font-black uppercase text-stone-500 mb-1">{t('market.supplyIndex')}</p>
                 <p className="text-white text-2xl font-black">{k.supply_index ?? '—'} %</p>
                 <div className="mt-2 h-1.5 bg-stone-700 rounded-full overflow-hidden">
                   <div className="h-full bg-[#facc15] rounded-full" style={{width: `${k.supply_index || 50}%`}}></div>
                 </div>
               </div>
               <div className="bg-stone-900 border border-stone-700 rounded-2xl p-5">
-                <p className="text-[8px] font-black uppercase text-stone-500 mb-1">90-Day Forecast</p>
+                <p className="text-[8px] font-black uppercase text-stone-500 mb-1">{t('market.forecast90Day')}</p>
                 <p className="text-white text-2xl font-black">₹{f90?.price ? Math.round(f90.price) : '—'}</p>
                 <p className={`text-xs font-bold mt-1 ${trend25 ? 'text-green-400' : 'text-red-400'}`}>
                   {fc?.change_pct ? `${trend25 ? '↑' : '↓'} ${Math.abs(fc.change_pct)}%` : '—'}
                 </p>
               </div>
               <div className="bg-stone-900 border border-stone-700 rounded-2xl p-5">
-                <p className="text-[8px] font-black uppercase text-stone-500 mb-1">Signal</p>
+                <p className="text-[8px] font-black uppercase text-stone-500 mb-1">{t('market.signal')}</p>
                 {signal ? (
                   <div className={`inline-block px-3 py-1 rounded-lg font-black text-sm ${
                     signal === 'BUY' ? 'bg-green-500/20 text-green-400' :
@@ -191,7 +193,7 @@ export default function MarketHub() {
                 <p className="text-[8px] text-stone-500 mt-1">Market signal</p>
               </div>
               <div className="bg-stone-900 border border-stone-700 rounded-2xl p-5">
-                <p className="text-[8px] font-black uppercase text-stone-500 mb-1">Confidence</p>
+                <p className="text-[8px] font-black uppercase text-stone-500 mb-1">{t('market.confidence')}</p>
                 <p className="text-white text-2xl font-black">{f90?.confidence ?? '—'} %</p>
                 <p className="text-xs text-stone-500 mt-1">90-day forecast</p>
               </div>
@@ -199,7 +201,7 @@ export default function MarketHub() {
 
             {/* Price Chart */}
             <div className="bg-stone-900 border border-stone-700 rounded-[2rem] p-8">
-              <h3 className="text-white font-black text-lg mb-6">6-Month Price Trajectory — {crop}</h3>
+              <h3 className="text-white font-black text-lg mb-6">{t('market.priceTrajectory')} — {crop}</h3>
               {priceHistory.length > 0 ? (
                 <ResponsiveContainer width="100%" height={300}>
                   <AreaChart data={priceHistory}>
@@ -212,24 +214,24 @@ export default function MarketHub() {
                   </AreaChart>
                 </ResponsiveContainer>
               ) : (
-                <div className="h-[300px] flex items-center justify-center text-stone-500">No historical data available</div>
+                <div className="h-[300px] flex items-center justify-center text-stone-500">{t('market.noHistory')}</div>
               )}
             </div>
 
             {/* Forecast Points */}
             {fp.length > 0 && (
               <div className="bg-stone-900 border border-stone-700 rounded-[2rem] p-8">
-                <h3 className="text-white font-black text-lg mb-4">90-Day Price Forecast Points</h3>
+                <h3 className="text-white font-black text-lg mb-4">{t('market.forecastPoints')}</h3>
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
                   {fp.filter((_,i) => i % Math.max(1, Math.floor(fp.length/5)) === 0 || i === fp.length-1).slice(0, 6).map((p, i) => (
                     <div key={i} className="bg-stone-800 rounded-xl p-4 border border-stone-700">
-                      <p className="text-[8px] font-bold text-stone-500 uppercase">Day {p.day}</p>
+                      <p className="text-[8px] font-bold text-stone-500 uppercase">{t('market.day')} {p.day}</p>
                       <p className="font-black text-lg text-[#facc15]">₹{Math.round(p.price)}</p>
                       <p className="text-[8px] text-stone-500">{p.date?.slice(0, 6)}</p>
                       <div className="mt-1 h-1 bg-stone-700 rounded-full overflow-hidden">
                         <div className="h-full bg-[#facc15] rounded-full" style={{width: `${p.confidence}%`}}></div>
                       </div>
-                      <p className="text-[8px] text-stone-500 mt-0.5">{p.confidence}% conf</p>
+                      <p className="text-[8px] text-stone-500 mt-0.5">{p.confidence}% {t('market.conf')}</p>
                     </div>
                   ))}
                 </div>
@@ -239,7 +241,7 @@ export default function MarketHub() {
             {/* Analysis */}
             {data?.analysis && (
               <div className="bg-gradient-to-r from-stone-900 to-stone-800 border border-stone-700 rounded-[2rem] p-8">
-                <h3 className="text-[#facc15] font-black text-sm uppercase tracking-wider mb-3">🧠 AI Market Analysis</h3>
+                <h3 className="text-[#facc15] font-black text-sm uppercase tracking-wider mb-3">{t('market.aiAnalysis')}</h3>
                 <p className="text-stone-300 text-sm leading-relaxed">{data.analysis}</p>
               </div>
             )}
@@ -251,10 +253,10 @@ export default function MarketHub() {
           <div className="space-y-6">
             <div className="grid md:grid-cols-3 gap-4">
               {[
-                {l:'Current', p: fc?.current_price, d: 'Now', c: 100},
-                {l:'30-Day', p: f30?.price, d: f30?.date, c: f30?.confidence},
-                {l:'60-Day', p: f60?.price, d: f60?.date, c: f60?.confidence},
-                {l:'90-Day', p: f90?.price, d: f90?.date, c: f90?.confidence},
+                {l:t('market.current'), p: fc?.current_price, d: t('market.now'), c: 100},
+                {l:t('market.day30'), p: f30?.price, d: f30?.date, c: f30?.confidence},
+                {l:t('market.day60'), p: f60?.price, d: f60?.date, c: f60?.confidence},
+                {l:t('market.day90'), p: f90?.price, d: f90?.date, c: f90?.confidence},
               ].map((item, i) => (
                 <div key={i} className="bg-stone-900 border border-stone-700 rounded-2xl p-6">
                   <p className="text-[8px] font-black uppercase text-stone-500">{item.l} Forecast</p>
@@ -272,7 +274,7 @@ export default function MarketHub() {
 
             {fp.length > 0 && (
               <div className="bg-stone-900 border border-stone-700 rounded-[2rem] p-8">
-                <h3 className="text-white font-black text-lg mb-6">Forecast Trajectory</h3>
+                <h3 className="text-white font-black text-lg mb-6">{t('market.forecastTrajectory')}</h3>
                 <ResponsiveContainer width="100%" height={250}>
                   <AreaChart data={fp}>
                     <defs>
@@ -299,19 +301,19 @@ export default function MarketHub() {
 
             {/* Market timing */}
             <div className="bg-stone-900 border border-stone-700 rounded-[2rem] p-8">
-              <h3 className="text-white font-black text-lg mb-3">⏰ Market Timing</h3>
+              <h3 className="text-white font-black text-lg mb-3">{t('market.marketTiming')}</h3>
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="bg-stone-800 rounded-xl p-5 border border-stone-700">
-                  <p className="text-[8px] font-black uppercase text-stone-500">Best Selling Window</p>
-                  <p className="font-black text-lg text-[#facc15] mt-1">{trend25 ? 'Hold — prices rising' : 'Sell soon — prices declining'}</p>
+                  <p className="text-[8px] font-black uppercase text-stone-500">{t('market.bestWindow')}</p>
+                  <p className="font-black text-lg text-[#facc15] mt-1">{trend25 ? t('market.holdRising') : t('market.sellDeclining')}</p>
                   <p className="text-xs text-stone-400 mt-1">Based on 90-day forecast trend</p>
                 </div>
                 <div className="bg-stone-800 rounded-xl p-5 border border-stone-700">
-                  <p className="text-[8px] font-black uppercase text-stone-500">Recommendation</p>
+                  <p className="text-[8px] font-black uppercase text-stone-500">{t('market.recommendation')}</p>
                   <div className={`inline-block mt-1 px-4 py-2 rounded-xl font-black text-sm ${
                     signal === 'BUY' ? 'bg-green-500/20 text-green-400' :
                     signal === 'SELL' ? 'bg-red-500/20 text-red-400' : 'bg-yellow-500/20 text-yellow-400'
-                  }`}>{signal === 'BUY' ? '📈 BUY — Growing demand expected' : signal === 'SELL' ? '📉 SELL — Prices expected to drop' : '➡️ HOLD — Market stable'}</div>
+                  }`}>{signal === 'BUY' ? t('market.buyGrowingDemand') : signal === 'SELL' ? t('market.sellPriceDrop') : t('market.holdMarketStable')}</div>
                 </div>
               </div>
             </div>
@@ -324,7 +326,7 @@ export default function MarketHub() {
             {/* AI Analysis */}
             {data?.analysis && (
               <div className="bg-gradient-to-br from-stone-900 to-stone-800 border border-stone-700 rounded-[2rem] p-8">
-                <h3 className="text-[#facc15] font-black text-sm uppercase tracking-wider mb-4">🧠 AI Market Analysis — {crop}</h3>
+                <h3 className="text-[#facc15] font-black text-sm uppercase tracking-wider mb-4">{t('market.aiAnalysis')} — {crop}</h3>
                 <p className="text-stone-300 text-sm leading-relaxed">{data.analysis}</p>
               </div>
             )}
@@ -332,21 +334,21 @@ export default function MarketHub() {
             {/* Volatility + Risk */}
             <div className="grid md:grid-cols-2 gap-4">
               <div className="bg-stone-900 border border-stone-700 rounded-2xl p-6">
-                <p className="text-[8px] font-black uppercase text-stone-500 mb-2">📊 Volatility Meter</p>
+                <p className="text-[8px] font-black uppercase text-stone-500 mb-2">{t('market.volatilityMeter')}</p>
                 {fc?.change_pct ? (
                   <div>
                     <div className="flex items-center gap-3 mb-2">
                       <div className={`w-3 h-3 rounded-full ${Math.abs(fc.change_pct) > 10 ? 'bg-red-500' : Math.abs(fc.change_pct) > 5 ? 'bg-yellow-500' : 'bg-green-500'}`}></div>
                       <span className={`font-black text-lg ${Math.abs(fc.change_pct) > 10 ? 'text-red-400' : Math.abs(fc.change_pct) > 5 ? 'text-yellow-400' : 'text-green-400'}`}>
-                        {Math.abs(fc.change_pct) > 10 ? 'High Volatility' : Math.abs(fc.change_pct) > 5 ? 'Moderate Volatility' : 'Low Volatility'}
+                        {Math.abs(fc.change_pct) > 10 ? t('market.highVolatility') : Math.abs(fc.change_pct) > 5 ? t('market.moderateVolatility') : t('market.lowVolatility')}
                       </span>
                     </div>
                     <p className="text-xs text-stone-500">Price change: {fc.change_pct}% over 90 days</p>
                   </div>
-                ) : <p className="text-stone-500 text-sm">Insufficient data</p>}
+                ) : <p className="text-stone-500 text-sm">{t('market.insufficientData')}</p>}
               </div>
               <div className="bg-stone-900 border border-stone-700 rounded-2xl p-6">
-                <p className="text-[8px] font-black uppercase text-stone-500 mb-2">🌤 Weather Impact</p>
+                <p className="text-[8px] font-black uppercase text-stone-500 mb-2">{t('market.weatherImpact')}</p>
                 <div className="flex items-center gap-2 mb-2">
                   <CloudRain size={18} className="text-blue-400" />
                   <span className="text-white font-bold text-sm">Monsoon analysis for {crop}</span>
@@ -357,7 +359,7 @@ export default function MarketHub() {
 
             {/* Supply Chain */}
             <div className="bg-stone-900 border border-stone-700 rounded-[2rem] p-6">
-              <h3 className="text-[8px] font-black uppercase text-stone-500 mb-4">🚚 Supply Chain Intelligence</h3>
+              <h3 className="text-[8px] font-black uppercase text-stone-500 mb-4">{t('market.supplyChain')}</h3>
               <div className="grid md:grid-cols-3 gap-4 text-xs">
                 <div className="bg-stone-800 rounded-xl p-4 border border-stone-700">
                   <p className="font-bold text-white">Transport Cost Impact</p>
@@ -376,19 +378,19 @@ export default function MarketHub() {
 
             {/* Schemes */}
             <div className="bg-gradient-to-r from-blue-900/30 to-stone-900 border border-blue-800/30 rounded-[2rem] p-6">
-              <h3 className="text-[8px] font-black uppercase text-blue-400 mb-4">🏛 Government Schemes — {crop}</h3>
+              <h3 className="text-[8px] font-black uppercase text-blue-400 mb-4">{t('market.governmentSchemes')} — {crop}</h3>
               <div className="grid md:grid-cols-3 gap-3 text-xs">
                 <div className="bg-stone-800/50 rounded-xl p-4 border border-blue-800/30">
-                  <p className="font-bold text-white">PM-KISAN</p>
-                  <p className="text-stone-400 mt-1">₹6,000/yr direct income support</p>
+                  <p className="font-bold text-white">{t('market.schemePmKisan')}</p>
+                  <p className="text-stone-400 mt-1">{t('market.schemePmKisanDesc')}</p>
                 </div>
                 <div className="bg-stone-800/50 rounded-xl p-4 border border-blue-800/30">
-                  <p className="font-bold text-white">PMFBY Insurance</p>
-                  <p className="text-stone-400 mt-1">Crop coverage at 2% premium</p>
+                  <p className="font-bold text-white">{t('market.schemePmfby')}</p>
+                  <p className="text-stone-400 mt-1">{t('market.schemePmfbyDesc')}</p>
                 </div>
                 <div className="bg-stone-800/50 rounded-xl p-4 border border-blue-800/30">
-                  <p className="font-bold text-white">MSP Support</p>
-                  <p className="text-stone-400 mt-1">Govt. minimum price: {k.msp || '—'}/quintal</p>
+                  <p className="font-bold text-white">{t('market.schemeMsp')}</p>
+                  <p className="text-stone-400 mt-1">{t('market.schemeMspDesc', {price: k.msp || '—'})}</p>
                 </div>
               </div>
             </div>
@@ -401,12 +403,12 @@ export default function MarketHub() {
             <div className="bg-gradient-to-br from-stone-900 to-stone-800 border border-stone-700 rounded-[2rem] p-8">
               <div className="flex flex-col md:flex-row gap-6 mb-8">
                 <div className="flex-1">
-                  <h3 className="text-white font-black text-2xl mb-2">Smart Vendor Finder</h3>
-                  <p className="text-stone-400 text-sm">Find nearby buyers and optimize your profit by analyzing local prices against transportation costs.</p>
+                  <h3 className="text-white font-black text-2xl mb-2">{t('market.vendorFinder')}</h3>
+                  <p className="text-stone-400 text-sm">{t('market.vendorFinderDesc')}</p>
                 </div>
                 <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div>
-                    <label className="text-[10px] font-black uppercase tracking-widest text-stone-500 block mb-2">Crop</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-stone-500 block mb-2">{t('market.crop')}</label>
                     <div className="flex items-center">
                       <select 
                         value={sellCrop}
@@ -418,7 +420,7 @@ export default function MarketHub() {
                     </div>
                   </div>
                   <div>
-                    <label className="text-[10px] font-black uppercase tracking-widest text-stone-500 block mb-2">Your Location</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-stone-500 block mb-2">{t('market.yourLocation')}</label>
                     <div className="flex bg-stone-800 border border-stone-700 rounded-xl overflow-hidden focus-within:border-[#facc15] transition-colors">
                       <button onClick={detectLocation} disabled={locating} className="p-3 text-stone-400 hover:text-[#facc15] transition-colors disabled:opacity-50" title="Use GPS">
                         {locating ? <Loader2 size={18} className="animate-spin text-[#facc15]" /> : <MapPin size={18} />}
@@ -427,13 +429,13 @@ export default function MarketHub() {
                         type="text" 
                         value={locationStr}
                         onChange={e => setLocationStr(e.target.value)}
-                        placeholder="City, Region, or GPS"
+                        placeholder={t('market.locationPlaceholder')}
                         className="flex-1 bg-transparent border-none outline-none text-white text-sm px-2 py-3"
                       />
                     </div>
                   </div>
                   <div>
-                    <label className="text-[10px] font-black uppercase tracking-widest text-stone-500 block mb-2">Quantity (kg)</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-stone-500 block mb-2">{t('market.quantity')}</label>
                     <div className="flex items-center">
                       <input 
                         type="number" 
@@ -452,7 +454,7 @@ export default function MarketHub() {
                 className="w-full md:w-auto px-8 py-4 bg-[#facc15] text-[#0c0a09] font-black text-sm uppercase tracking-wider rounded-xl hover:bg-yellow-400 shadow-lg disabled:opacity-50 transition-all flex items-center justify-center gap-2"
               >
                 {fetchingVendors ? <Loader2 size={18} className="animate-spin" /> : <Search size={18} />}
-                {fetchingVendors ? 'Analyzing Routes & Prices...' : 'Find Best Vendors'}
+                {fetchingVendors ? t('market.analyzingRoutes') : t('market.findVendors')}
               </button>
             </div>
 
@@ -477,11 +479,11 @@ export default function MarketHub() {
                           
                           <div className="grid grid-cols-2 gap-4 mt-6">
                             <div>
-                              <p className="text-[10px] font-black uppercase tracking-widest text-stone-500 mb-1">Buying Rate</p>
+                              <p className="text-[10px] font-black uppercase tracking-widest text-stone-500 mb-1">{t('market.buyingRate')}</p>
                               <p className="text-lg font-black text-white">₹{v.buying_price_per_kg} <span className="text-xs text-stone-500 font-medium">/kg</span></p>
                             </div>
                             <div>
-                              <p className="text-[10px] font-black uppercase tracking-widest text-stone-500 mb-1">Gross Value</p>
+                              <p className="text-[10px] font-black uppercase tracking-widest text-stone-500 mb-1">{t('market.grossValue')}</p>
                               <p className="text-lg font-black text-white">₹{v.gross_revenue}</p>
                             </div>
                           </div>
@@ -491,11 +493,11 @@ export default function MarketHub() {
                         
                         <div className="md:w-64 flex flex-col justify-center">
                           <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-3 mb-3 flex justify-between items-center">
-                            <span className="text-xs font-bold text-red-400">Est. Transport Cost</span>
+                            <span className="text-xs font-bold text-red-400">{t('market.transportCost')}</span>
                             <span className="font-black text-red-400">-₹{v.transport_cost}</span>
                           </div>
                           <div className="bg-[#facc15]/10 border border-[#facc15]/20 rounded-xl p-4 flex justify-between items-center">
-                            <span className="text-xs font-black uppercase tracking-widest text-[#facc15]">Net Profit</span>
+                            <span className="text-xs font-black uppercase tracking-widest text-[#facc15]">{t('market.netProfit')}</span>
                             <span className="text-2xl font-black text-[#facc15]">₹{v.net_profit}</span>
                           </div>
                         </div>
@@ -507,7 +509,7 @@ export default function MarketHub() {
             )}
             {vendorsData?.vendors && vendorsData.vendors.length === 0 && (
               <div className="bg-stone-900 border border-stone-800 p-8 rounded-3xl text-center">
-                <p className="text-stone-400">No suitable vendors found nearby. Try increasing search range or changing location.</p>
+                <p className="text-stone-400">{t('market.noVendors')}</p>
               </div>
             )}
             

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useLanguage } from '../i18n/LanguageContext';
 import {
   MapPin, Crosshair, Loader2, Thermometer, Droplets, CloudRain, Wind,
   CheckCircle, XCircle, AlertTriangle, Target, Sprout, Dna, TestTube,
@@ -19,6 +20,7 @@ const GradBg = () => <div className="fixed inset-0 pointer-events-none bg-gradie
 
 const SmartEnvironmentScanner = () => {
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   // ── Mode ──
   const [mode, setMode] = useState('auto'); // auto | manual
@@ -93,7 +95,7 @@ const SmartEnvironmentScanner = () => {
         setWeatherData(w.data);
         setSt('weather', 'success', `${w.data.temperature}°C, ${w.data.humidity}%`);
       } catch {
-        setSt('weather', 'error', 'Unavailable');
+        setSt('weather', 'error', t('scanner.unavailable'));
       }
 
       // Soil
@@ -102,12 +104,12 @@ const SmartEnvironmentScanner = () => {
         setSoilData(s.data);
         setSt('soil', 'success', `pH ${s.data.ph}, N ${s.data.nitrogen ?? '?'}`);
       } catch {
-        setSt('soil', 'error', 'Unavailable');
+        setSt('soil', 'error', t('scanner.unavailable'));
       }
 
       setPhase('done');
     } catch (e) {
-      setError('Environment scan failed. Try manual mode.');
+      setError(t('scanner.scanFailed'));
       setPhase('error');
     }
   };
@@ -115,14 +117,14 @@ const SmartEnvironmentScanner = () => {
   // ── Auto detect ──
   const autoDetect = () => {
     if (!navigator.geolocation) {
-      setError('Geolocation not supported — switch to manual mode.');
+      setError(t('scanner.gpsNotSupported'));
       return;
     }
     setPhase('detecting');
     setError(null);
     navigator.geolocation.getCurrentPosition(
       pos => runScan(pos.coords.latitude, pos.coords.longitude),
-      () => { setPhase('error'); setError('Permission denied. Enter location manually.'); },
+      () => { setPhase('error'); setError(t('scanner.gpsDenied')); },
       { timeout: 10000, enableHighAccuracy: true }
     );
   };
@@ -137,7 +139,7 @@ const SmartEnvironmentScanner = () => {
     if (manualLat && manualLon) {
       lat = parseFloat(manualLat);
       lon = parseFloat(manualLon);
-      if (isNaN(lat) || isNaN(lon)) { setError('Invalid coordinates'); setPhase('idle'); return; }
+      if (isNaN(lat) || isNaN(lon)) { setError(t('scanner.invalidCoords')); setPhase('idle'); return; }
       await runScan(lat, lon);
     } else if (manualCity.trim()) {
       try {
@@ -147,15 +149,15 @@ const SmartEnvironmentScanner = () => {
           lon = parseFloat(ow.data[0].lon);
           await runScan(lat, lon);
         } else {
-          setError('City not found. Try entering coordinates.');
+          setError(t('scanner.cityNotFound'));
           setPhase('error');
         }
       } catch {
-        setError('Geocoding failed. Enter lat/lon manually.');
+        setError(t('scanner.geocodeFailed'));
         setPhase('error');
       }
     } else {
-      setError('Enter a city or coordinates.');
+      setError(t('scanner.enterCityOrCoords'));
       setPhase('idle');
     }
   };
@@ -166,7 +168,7 @@ const SmartEnvironmentScanner = () => {
     const rain = weatherData.rainfall || 0;
     const hum = weatherData.humidity || 0;
     const score = Math.min(100, (rain * 3 + hum * 0.5));
-    const label = score >= 60 ? 'High' : score >= 30 ? 'Medium' : 'Low';
+    const label = score >= 60 ? t('scanner.waterHigh') : score >= 30 ? t('scanner.waterMedium') : t('scanner.waterLow');
     const color = score >= 60 ? 'text-green-400' : score >= 30 ? 'text-yellow-400' : 'text-red-400';
     const bar = score >= 60 ? 'bg-green-500' : score >= 30 ? 'bg-yellow-500' : 'bg-red-500';
     return { score: Math.round(score), label, color, bar };
@@ -239,10 +241,10 @@ const SmartEnvironmentScanner = () => {
       <header className="text-center pt-6 pb-6 max-w-2xl mx-auto relative z-10">
         <div className="flex items-center justify-center gap-2 mb-3">
           <Globe size={16} className="text-[#84cc16]" />
-          <span className="text-[9px] font-black uppercase tracking-[0.4em] text-[#84cc16]">Step 1</span>
+          <span className="text-[9px] font-black uppercase tracking-[0.4em] text-[#84cc16]">{t('scanner.step1')}</span>
         </div>
         <h1 className="font-serif text-4xl md:text-5xl font-black text-white mb-2">
-          Smart Environment <span className="italic text-[#84cc16]">Scanner</span>
+          {t('scanner.title')}
         </h1>
         <p className="text-stone-400 text-sm">Detect your farm's weather, soil, and water profile — then use it for intelligent crop prediction.</p>
       </header>
@@ -252,11 +254,11 @@ const SmartEnvironmentScanner = () => {
         <div className="flex items-center justify-center gap-4 mb-8">
           <button onClick={() => { setMode('auto'); setPhase('idle'); setError(null); }}
             className={`px-6 py-3 rounded-xl font-bold text-sm flex items-center gap-2 transition-all ${mode === 'auto' ? 'bg-[#84cc16]/20 text-[#84cc16] border border-[#84cc16]/40' : 'bg-white/5 text-stone-400 border border-white/10'}`}>
-            <Crosshair size={16} /> Auto-Detect
+            <Crosshair size={16} /> {t('scanner.autoDetect')}
           </button>
           <button onClick={() => { setMode('manual'); setPhase('idle'); setError(null); }}
             className={`px-6 py-3 rounded-xl font-bold text-sm flex items-center gap-2 transition-all ${mode === 'manual' ? 'bg-[#84cc16]/20 text-[#84cc16] border border-[#84cc16]/40' : 'bg-white/5 text-stone-400 border border-white/10'}`}>
-            <Search size={16} /> Manual Entry
+            <Search size={16} /> {t('scanner.manualEntry')}
           </button>
         </div>
 
@@ -266,11 +268,11 @@ const SmartEnvironmentScanner = () => {
             {phase === 'idle' && (
               <motion.button onClick={autoDetect} whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
                 className="px-10 py-5 bg-[#84cc16] text-[#0c0a09] font-black text-base uppercase tracking-widest rounded-2xl shadow-lg hover:bg-[#facc15] transition-all flex items-center gap-3 mx-auto">
-                <Crosshair size={22} /> Detect My Environment
+                <Crosshair size={22} /> {t('scanner.detectEnvironment')}
               </motion.button>
             )}
             {phase === 'detecting' && (
-              <div className="flex items-center justify-center gap-3 text-yellow-400"><Loader2 size={22} className="animate-spin" /> Detecting location...</div>
+              <div className="flex items-center justify-center gap-3 text-yellow-400"><Loader2 size={22} className="animate-spin" /> {t('scanner.detecting')}</div>
             )}
           </div>
         )}
@@ -282,8 +284,8 @@ const SmartEnvironmentScanner = () => {
             <h3 className="text-sm font-bold text-white mb-4 flex items-center gap-2"><MapPin size={16} className="text-[#84cc16]" /> Enter Location</h3>
             <div className="space-y-3">
               <div ref={cityRef} className="relative">
-                <label className="text-[9px] font-bold text-stone-500 uppercase tracking-wider mb-1.5 block">City / Village Name</label>
-                <input type="text" placeholder="e.g. Bangalore, Karnataka" className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-[#84cc16]"
+                <label className="text-[9px] font-bold text-stone-500 uppercase tracking-wider mb-1.5 block">{t('scanner.cityLabel')}</label>
+                <input type="text" placeholder={t('scanner.cityPlaceholder')} className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-[#84cc16]"
                   value={manualCity} onChange={e => { setManualCity(e.target.value); setShowDropdown(true); }}
                   onFocus={() => citySuggestions.length > 0 && setShowDropdown(true)} />
                 {showDropdown && citySuggestions.length > 0 && (
@@ -297,18 +299,18 @@ const SmartEnvironmentScanner = () => {
                   </div>
                 )}
               </div>
-              <div className="flex items-center gap-3"><div className="flex-1 h-px bg-white/10" /><span className="text-[10px] text-stone-600 uppercase">or</span><div className="flex-1 h-px bg-white/10" /></div>
+              <div className="flex items-center gap-3"><div className="flex-1 h-px bg-white/10" /><span className="text-[10px] text-stone-600 uppercase">{t('scanner.or')}</span><div className="flex-1 h-px bg-white/10" /></div>
               <div className="grid grid-cols-2 gap-3">
-                <div><label className="text-[9px] font-bold text-stone-500 uppercase mb-1.5 block">Latitude</label>
-                  <input type="text" placeholder="12.9716" className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-[#84cc16]"
+                <div><label className="text-[9px] font-bold text-stone-500 uppercase mb-1.5 block">{t('scanner.latLabel')}</label>
+                  <input type="text" placeholder={t('scanner.latPlaceholder')} className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-[#84cc16]"
                     value={manualLat} onChange={e => setManualLat(e.target.value)} /></div>
-                <div><label className="text-[9px] font-bold text-stone-500 uppercase mb-1.5 block">Longitude</label>
-                  <input type="text" placeholder="77.5946" className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-[#84cc16]"
+                <div><label className="text-[9px] font-bold text-stone-500 uppercase mb-1.5 block">{t('scanner.lonLabel')}</label>
+                  <input type="text" placeholder={t('scanner.lonPlaceholder')} className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-[#84cc16]"
                     value={manualLon} onChange={e => setManualLon(e.target.value)} /></div>
               </div>
               <button type="submit" disabled={phase === 'detecting'}
                 className="w-full mt-2 py-4 bg-[#84cc16] text-[#0c0a09] font-black text-sm uppercase tracking-widest rounded-xl hover:bg-[#facc15] transition-all disabled:opacity-30 flex items-center justify-center gap-2">
-                {phase === 'detecting' ? <><Loader2 size={16} className="animate-spin" /> Scanning...</> : <><Search size={16} /> Scan Environment</>}
+                {phase === 'detecting' ? <><Loader2 size={16} className="animate-spin" /> {t('scanner.scanning')}</> : <><Search size={16} /> {t('scanner.scanEnvironment')}</>}
               </button>
             </div>
           </motion.form>
@@ -326,9 +328,9 @@ const SmartEnvironmentScanner = () => {
         {phase !== 'idle' && (
           <div className="flex flex-wrap gap-2 justify-center mb-8">
             {[
-              { key: 'location', label: '📍 Location' },
-              { key: 'weather', label: '🌤 Weather' },
-              { key: 'soil', label: '🌱 Soil' },
+              { key: 'location', label: `📍 ${t('scanner.location')}` },
+              { key: 'weather', label: `🌤 ${t('scanner.weatherLabel')}` },
+              { key: 'soil', label: `🌱 ${t('scanner.soilLabel')}` },
             ].map(({ key, label }) => {
               const st = statuses[key];
               const cfg = STATUS[st] || STATUS.idle;
@@ -348,7 +350,7 @@ const SmartEnvironmentScanner = () => {
         {phase === 'scanning' && (
           <div className="text-center py-12">
             <Loader2 size={36} className="animate-spin text-[#84cc16] mx-auto mb-4" />
-            <p className="text-stone-400 text-sm">Fetching weather data and soil intelligence...</p>
+            <p className="text-stone-400 text-sm">{t('scanner.fetchingData')}</p>
           </div>
         )}
 
@@ -360,7 +362,7 @@ const SmartEnvironmentScanner = () => {
             <div className="bg-white/5 border border-white/10 rounded-2xl p-5 flex items-center gap-4">
               <MapPin size={20} className="text-[#84cc16]" />
               <div>
-                <div className="text-xs text-stone-500 uppercase tracking-wider">Detected Location</div>
+                <div className="text-xs text-stone-500 uppercase tracking-wider">{t('scanner.detectedLocation')}</div>
                 <div className="text-lg font-bold">{locationName}</div>
                 {coords && <div className="text-[10px] text-stone-600">Lat {coords.lat.toFixed(4)}, Lon {coords.lon.toFixed(4)}</div>}
               </div>
@@ -368,14 +370,14 @@ const SmartEnvironmentScanner = () => {
 
             {/* Weather Cards */}
             <div>
-              <h3 className="text-xs font-bold text-stone-400 uppercase tracking-wider mb-3 flex items-center gap-2"><Thermometer size={14} /> Weather Conditions</h3>
+              <h3 className="text-xs font-bold text-stone-400 uppercase tracking-wider mb-3 flex items-center gap-2"><Thermometer size={14} /> {t('scanner.weather')}</h3>
               <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
                 {[
-                  { icon: Thermometer, label: 'Temperature', value: `${weatherData.temperature}°C`, color: 'text-orange-400' },
-                  { icon: Droplets, label: 'Humidity', value: `${weatherData.humidity}%`, color: 'text-blue-400' },
-                  { icon: CloudRain, label: 'Rainfall', value: `${weatherData.rainfall}mm`, color: 'text-cyan-400' },
-                  { icon: Wind, label: 'Wind Speed', value: `${weatherData.wind_speed} km/h`, color: 'text-stone-400' },
-                  { icon: ShieldAlert, label: 'Condition', value: weatherData.condition || 'Clear', color: 'text-[#84cc16]' },
+                  { icon: Thermometer, label: t('scanner.temperature'), value: `${weatherData.temperature}°C`, color: 'text-orange-400' },
+                  { icon: Droplets, label: t('scanner.humidity'), value: `${weatherData.humidity}%`, color: 'text-blue-400' },
+                  { icon: CloudRain, label: t('scanner.rainfall'), value: `${weatherData.rainfall}mm`, color: 'text-cyan-400' },
+                  { icon: Wind, label: t('scanner.windSpeed'), value: `${weatherData.wind_speed} km/h`, color: 'text-stone-400' },
+                  { icon: ShieldAlert, label: t('scanner.condition'), value: weatherData.condition || 'Clear', color: 'text-[#84cc16]' },
                 ].map(({ icon: Icon, label, value, color }) => (
                   <div key={label} className="bg-white/5 border border-white/10 rounded-xl p-4 text-center hover:border-[#84cc16]/30 transition-all">
                     <Icon size={18} className={`mx-auto mb-2 ${color}`} />
@@ -389,16 +391,16 @@ const SmartEnvironmentScanner = () => {
             {/* Soil Intelligence */}
             {soilData && (
               <div>
-                <h3 className="text-xs font-bold text-stone-400 uppercase tracking-wider mb-3 flex items-center gap-2"><Dna size={14} /> Soil Intelligence</h3>
+                <h3 className="text-xs font-bold text-stone-400 uppercase tracking-wider mb-3 flex items-center gap-2"><Dna size={14} /> {t('scanner.soil')}</h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                   {[
-                    { label: 'pH Level', value: soilData.ph ?? 'N/A', unit: '', color: soilData.ph >= 5.5 && soilData.ph <= 7 ? 'text-green-400' : 'text-yellow-400' },
-                    { label: 'Nitrogen (N)', value: soilData.nitrogen != null ? Math.round(soilData.nitrogen) : 'N/A', unit: 'mg/kg', color: 'text-[#84cc16]' },
-                    { label: 'Phosphorus (P)', value: soilData.phosphorus != null ? Math.round(soilData.phosphorus) : 'N/A', unit: 'mg/kg', color: 'text-blue-400' },
-                    { label: 'Potassium (K)', value: soilData.potassium != null ? Math.round(soilData.potassium) : 'N/A', unit: 'mg/kg', color: 'text-orange-400' },
-                    ...(soilData.sand != null ? [{ label: 'Sand', value: Math.round(soilData.sand), unit: '%', color: 'text-yellow-400' }] : []),
-                    ...(soilData.clay != null ? [{ label: 'Clay', value: Math.round(soilData.clay), unit: '%', color: 'text-red-400' }] : []),
-                    ...(soilData.soc != null ? [{ label: 'Org. Carbon', value: soilData.soc, unit: 'g/kg', color: 'text-stone-300' }] : []),
+                    { label: t('scanner.phLevel'), value: soilData.ph ?? 'N/A', unit: '', color: soilData.ph >= 5.5 && soilData.ph <= 7 ? 'text-green-400' : 'text-yellow-400' },
+                    { label: t('scanner.nitrogen'), value: soilData.nitrogen != null ? Math.round(soilData.nitrogen) : 'N/A', unit: 'mg/kg', color: 'text-[#84cc16]' },
+                    { label: t('scanner.phosphorus'), value: soilData.phosphorus != null ? Math.round(soilData.phosphorus) : 'N/A', unit: 'mg/kg', color: 'text-blue-400' },
+                    { label: t('scanner.potassium'), value: soilData.potassium != null ? Math.round(soilData.potassium) : 'N/A', unit: 'mg/kg', color: 'text-orange-400' },
+                    ...(soilData.sand != null ? [{ label: t('scanner.sand'), value: Math.round(soilData.sand), unit: '%', color: 'text-yellow-400' }] : []),
+                    ...(soilData.clay != null ? [{ label: t('scanner.clay'), value: Math.round(soilData.clay), unit: '%', color: 'text-red-400' }] : []),
+                    ...(soilData.soc != null ? [{ label: t('scanner.orgCarbon'), value: soilData.soc, unit: 'g/kg', color: 'text-stone-300' }] : []),
                   ].map(({ label, value, unit, color }) => (
                     <div key={label} className="bg-white/5 border border-white/10 rounded-xl p-4 text-center hover:border-[#84cc16]/30 transition-all">
                       <div className="text-[8px] text-stone-500 uppercase tracking-wider">{label}</div>
@@ -413,7 +415,7 @@ const SmartEnvironmentScanner = () => {
             {/* Water Availability */}
             {water && (
               <div>
-                <h3 className="text-xs font-bold text-stone-400 uppercase tracking-wider mb-3 flex items-center gap-2"><Droplets size={14} /> Water Availability Score</h3>
+                <h3 className="text-xs font-bold text-stone-400 uppercase tracking-wider mb-3 flex items-center gap-2"><Droplets size={14} /> {t('scanner.water')}</h3>
                 <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
                   <div className="flex items-center justify-between mb-3">
                     <span className={`text-2xl font-black ${water.color}`}>{water.label}</span>
@@ -433,7 +435,7 @@ const SmartEnvironmentScanner = () => {
             {/* AI Explanation */}
             {explanations.length > 0 && (
               <div>
-                <h3 className="text-xs font-bold text-stone-400 uppercase tracking-wider mb-3 flex items-center gap-2"><Target size={14} /> Environmental Analysis</h3>
+                <h3 className="text-xs font-bold text-stone-400 uppercase tracking-wider mb-3 flex items-center gap-2"><Target size={14} /> {t('scanner.environment')}</h3>
                 <div className="grid md:grid-cols-2 gap-3">
                   {explanations.map((item, i) => (
                     <motion.div key={i} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.07 }}
@@ -450,7 +452,7 @@ const SmartEnvironmentScanner = () => {
             <div className="bg-gradient-to-r from-[#84cc16]/10 to-transparent border border-[#84cc16]/20 rounded-2xl p-5">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-[9px] text-stone-500 uppercase tracking-wider mb-1">Environmental Suitability</div>
+                  <div className="text-[9px] text-stone-500 uppercase tracking-wider mb-1">{t('scanner.suitability')}</div>
                   <div className="text-lg font-bold text-white">
                     {(() => {
                       const score = (water?.score || 0) * 0.4 + (soilData?.ph >= 5.5 && soilData?.ph <= 7 ? 30 : 10) + (weatherData?.temperature >= 20 && weatherData?.temperature <= 35 ? 30 : 10);
@@ -467,7 +469,7 @@ const SmartEnvironmentScanner = () => {
             {allDone && (
               <motion.button onClick={goToPrediction} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
                 className="w-full py-5 bg-[#84cc16] text-[#0c0a09] font-black text-base uppercase tracking-widest rounded-2xl hover:bg-[#facc15] transition-all shadow-lg flex items-center justify-center gap-3">
-                <Route size={20} /> Use This Data for Prediction <ChevronRight size={18} />
+                <Route size={20} /> {t('scanner.useForPrediction')} <ChevronRight size={18} />
               </motion.button>
             )}
           </motion.div>

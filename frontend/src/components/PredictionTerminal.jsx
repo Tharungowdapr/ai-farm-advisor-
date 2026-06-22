@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { Target, MapPin, Crosshair, Loader2, Thermometer, CloudRain, Droplets, Wind, ShieldAlert, Sprout, CheckCircle, XCircle, AlertTriangle, Search, ChevronRight, Dna, TestTube, Globe } from 'lucide-react';
 import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const GradientOverlay = () => (
   <div className="fixed inset-0 pointer-events-none bg-gradient-to-b from-[#84cc16]/5 via-transparent to-[#0c0a09] opacity-40" />
@@ -19,6 +20,7 @@ const PredictionTerminal = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const runOnce = useRef(false);
+  const { t } = useLanguage();
 
   // Form state
   const [formData, setFormData] = useState({ city: '', N: '', P: '', K: '', ph: '' });
@@ -158,7 +160,7 @@ const PredictionTerminal = () => {
   // ── Run Prediction ──────────────────────────────────
   const handlePredict = async (e) => {
     if (e) e.preventDefault();
-    if (!formData.city.trim()) { setError('Enter a city'); return; }
+    if (!formData.city.trim()) { setError(t('prediction.enterCity')); return; }
     setLoading(true);
     setResult(null);
     setError(null);
@@ -172,7 +174,7 @@ const PredictionTerminal = () => {
       });
       setResult(res.data);
     } catch (err) {
-      setError(err.response?.data?.error || err.message || 'Prediction failed');
+      setError(err.response?.data?.error || err.message || t('prediction.predictionFailed'));
     } finally {
       setLoading(false);
     }
@@ -246,12 +248,12 @@ const PredictionTerminal = () => {
       <header className="text-center pt-6 pb-6 max-w-2xl mx-auto relative z-10">
         <div className="flex items-center justify-center gap-2 mb-3">
           <Target size={16} className="text-[#84cc16]" />
-          <span className="text-[9px] font-black uppercase tracking-[0.4em] text-[#84cc16]">Smart Prediction</span>
+          <span className="text-[9px] font-black uppercase tracking-[0.4em] text-[#84cc16]">{t('prediction.title')}</span>
         </div>
         <h1 className="font-serif text-4xl md:text-5xl font-black text-white mb-2">
-          Context-Aware <span className="italic text-[#84cc16]">Crop Advisor</span>
+          {t('prediction.subtitle')}
         </h1>
-        <p className="text-stone-400 text-sm">Auto-detects your environment — weather, soil, and location — to recommend the best crops.</p>
+        <p className="text-stone-400 text-sm">{t('prediction.autoDetectInfo')}</p>
       </header>
 
       <div className="max-w-6xl mx-auto grid lg:grid-cols-[420px_1fr] gap-8 relative z-10">
@@ -263,7 +265,7 @@ const PredictionTerminal = () => {
             <div className="bg-[#84cc16]/10 border border-[#84cc16]/30 rounded-xl px-4 py-3 flex items-center gap-3 text-sm">
               <Globe size={18} className="text-[#84cc16]" />
               <div>
-                <div className="text-[#84cc16] font-bold text-xs">Data loaded from Environment Scanner</div>
+                 <div className="text-[#84cc16] font-bold text-xs">{t('prediction.dataLoaded')}</div>
                 <div className="text-stone-400 text-[10px]">{location.state?.envData?.location || formData.city}</div>
               </div>
             </div>
@@ -282,19 +284,19 @@ const PredictionTerminal = () => {
             }`}
           >
             {detectPhase === 'detecting' ? (
-              <><Loader2 size={18} className="animate-spin" /> Detecting Environment...</>
+              <><Loader2 size={18} className="animate-spin" /> {t('prediction.detecting')}</>
             ) : detectPhase === 'done' ? (
-              <><CheckCircle size={18} /> Detected — Ready to Predict</>
+              <><CheckCircle size={18} /> {t('prediction.detectedReady')}</>
             ) : (
-              <><Crosshair size={18} /> Detect My Environment</>
+              <><Crosshair size={18} /> {t('prediction.detectEnvironment')}</>
             )}
           </motion.button>
 
           {/* Status Indicators */}
           <div className="flex flex-wrap gap-2">
-            <StatusBadge statusKey="location" label="📍 Location" />
-            <StatusBadge statusKey="weather" label="🌤 Weather" />
-            <StatusBadge statusKey="soil" label="🌱 Soil" />
+            <StatusBadge statusKey="location" label={t('prediction.location')} />
+            <StatusBadge statusKey="weather" label={t('prediction.weather')} />
+            <StatusBadge statusKey="soil" label={t('prediction.soil')} />
           </div>
 
           {/* Coords display */}
@@ -310,22 +312,22 @@ const PredictionTerminal = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
               <div className="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
                 <Thermometer size={14} className="text-orange-400 mx-auto mb-1" />
-                <div className="text-[9px] text-stone-500 uppercase">Temp</div>
+                <div className="text-[9px] text-stone-500 uppercase">{t('prediction.temp')}</div>
                 <div className="text-lg font-black">{weatherData.temperature}°C</div>
               </div>
               <div className="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
                 <Droplets size={14} className="text-blue-400 mx-auto mb-1" />
-                <div className="text-[9px] text-stone-500 uppercase">Humidity</div>
+                <div className="text-[9px] text-stone-500 uppercase">{t('prediction.humidity')}</div>
                 <div className="text-lg font-black">{weatherData.humidity}%</div>
               </div>
               <div className="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
                 <CloudRain size={14} className="text-cyan-400 mx-auto mb-1" />
-                <div className="text-[9px] text-stone-500 uppercase">Rain</div>
+                <div className="text-[9px] text-stone-500 uppercase">{t('prediction.rain')}</div>
                 <div className="text-lg font-black">{weatherData.rainfall}mm</div>
               </div>
               <div className="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
                 <Wind size={14} className="text-stone-400 mx-auto mb-1" />
-                <div className="text-[9px] text-stone-500 uppercase">Wind</div>
+                <div className="text-[9px] text-stone-500 uppercase">{t('prediction.wind')}</div>
                 <div className="text-lg font-black">{weatherData.wind_speed} km/h</div>
               </div>
             </div>
@@ -333,32 +335,32 @@ const PredictionTerminal = () => {
 
           {/* Prediction Form */}
           <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-            <h3 className="font-serif text-lg font-black text-white mb-4 flex items-center gap-2"><Dna size={16} className="text-[#84cc16]" /> Input Parameters</h3>
+            <h3 className="font-serif text-lg font-black text-white mb-4 flex items-center gap-2"><Dna size={16} className="text-[#84cc16]" /> {t('prediction.inputParameters')}</h3>
             <form onSubmit={handlePredict} className="space-y-3">
               <div>
-                <label className="text-[9px] font-bold text-stone-500 uppercase tracking-wider mb-1.5 block flex items-center gap-1"><MapPin size={10} /> Location</label>
-                <input required type="text" placeholder="Village / City" className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-[#84cc16]" value={formData.city} onChange={e => setFormData({...formData, city: e.target.value})} />
+                <label className="text-[9px] font-bold text-stone-500 uppercase tracking-wider mb-1.5 block flex items-center gap-1"><MapPin size={10} /> {t('prediction.location')}</label>
+                <input required type="text" placeholder={t('prediction.cityPlaceholder')} className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-[#84cc16]" value={formData.city} onChange={e => setFormData({...formData, city: e.target.value})} />
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div>
-                  <label className="text-[9px] font-bold text-stone-500 uppercase tracking-wider mb-1.5 block text-center">N (mg/kg)</label>
-                  <input type="number" placeholder="N" className="w-full bg-black/40 border border-white/10 rounded-xl px-3 py-3 text-white text-sm text-center outline-none focus:border-[#84cc16]" value={formData.N} onChange={e => setFormData({...formData, N: e.target.value})} />
+                  <label className="text-[9px] font-bold text-stone-500 uppercase tracking-wider mb-1.5 block text-center">{t('prediction.n')}</label>
+                  <input type="number" placeholder={t('prediction.nPlaceholder')} className="w-full bg-black/40 border border-white/10 rounded-xl px-3 py-3 text-white text-sm text-center outline-none focus:border-[#84cc16]" value={formData.N} onChange={e => setFormData({...formData, N: e.target.value})} />
                 </div>
                 <div>
-                  <label className="text-[9px] font-bold text-stone-500 uppercase tracking-wider mb-1.5 block text-center">P (mg/kg)</label>
-                  <input type="number" placeholder="P" className="w-full bg-black/40 border border-white/10 rounded-xl px-3 py-3 text-white text-sm text-center outline-none focus:border-[#84cc16]" value={formData.P} onChange={e => setFormData({...formData, P: e.target.value})} />
+                  <label className="text-[9px] font-bold text-stone-500 uppercase tracking-wider mb-1.5 block text-center">{t('prediction.p')}</label>
+                  <input type="number" placeholder={t('prediction.pPlaceholder')} className="w-full bg-black/40 border border-white/10 rounded-xl px-3 py-3 text-white text-sm text-center outline-none focus:border-[#84cc16]" value={formData.P} onChange={e => setFormData({...formData, P: e.target.value})} />
                 </div>
                 <div>
-                  <label className="text-[9px] font-bold text-stone-500 uppercase tracking-wider mb-1.5 block text-center">K (mg/kg)</label>
-                  <input type="number" placeholder="K" className="w-full bg-black/40 border border-white/10 rounded-xl px-3 py-3 text-white text-sm text-center outline-none focus:border-[#84cc16]" value={formData.K} onChange={e => setFormData({...formData, K: e.target.value})} />
+                  <label className="text-[9px] font-bold text-stone-500 uppercase tracking-wider mb-1.5 block text-center">{t('prediction.k')}</label>
+                  <input type="number" placeholder={t('prediction.kPlaceholder')} className="w-full bg-black/40 border border-white/10 rounded-xl px-3 py-3 text-white text-sm text-center outline-none focus:border-[#84cc16]" value={formData.K} onChange={e => setFormData({...formData, K: e.target.value})} />
                 </div>
               </div>
               <div>
-                <label className="text-[9px] font-bold text-stone-500 uppercase tracking-wider mb-1.5 block flex items-center gap-1"><TestTube size={10} /> Soil pH</label>
-                <input type="number" step="0.1" placeholder="e.g. 6.5" className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-[#84cc16]" value={formData.ph} onChange={e => setFormData({...formData, ph: e.target.value})} />
+                <label className="text-[9px] font-bold text-stone-500 uppercase tracking-wider mb-1.5 block flex items-center gap-1"><TestTube size={10} /> {t('prediction.soilPh')}</label>
+                <input type="number" step="0.1" placeholder={t('prediction.phPlaceholder')} className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-[#84cc16]" value={formData.ph} onChange={e => setFormData({...formData, ph: e.target.value})} />
               </div>
               <button type="submit" disabled={loading || !formData.city.trim()} className="w-full mt-3 py-4 bg-[#84cc16] text-[#0c0a09] font-black text-sm uppercase tracking-widest rounded-xl hover:bg-[#facc15] transition-all disabled:opacity-30 flex items-center justify-center gap-2">
-                {loading ? <><Loader2 size={16} className="animate-spin" /> Running Prediction...</> : <><Target size={16} /> Predict Best Crop</>}
+                {loading ? <><Loader2 size={16} className="animate-spin" /> {t('prediction.runningPrediction')}</> : <><Target size={16} /> {t('prediction.predictCrop')}</>}
               </button>
             </form>
           </div>
@@ -371,7 +373,7 @@ const PredictionTerminal = () => {
             <div className="h-full flex items-center justify-center py-24">
               <div className="text-center">
                 <Loader2 size={40} className="animate-spin mx-auto mb-4 text-[#84cc16]" />
-                <p className="text-stone-400 text-sm">Analyzing soil, weather, and crop models...</p>
+                <p className="text-stone-400 text-sm">{t('prediction.analyzing')}</p>
               </div>
             </div>
           )}
@@ -392,7 +394,7 @@ const PredictionTerminal = () => {
                 {/* Primary Recommendation */}
                 <div className="bg-gradient-to-br from-[#84cc16]/20 to-[#0c0a09] border border-[#84cc16]/30 rounded-[2rem] p-8 relative overflow-hidden">
                   <div className="relative z-10">
-                    <span className="px-4 py-1.5 bg-[#84cc16] text-[#0c0a09] rounded-full text-[9px] font-black uppercase tracking-widest inline-block mb-4">🌟 Primary Recommendation</span>
+                    <span className="px-4 py-1.5 bg-[#84cc16] text-[#0c0a09] rounded-full text-[9px] font-black uppercase tracking-widest inline-block mb-4">{t('prediction.primaryRecommendation')}</span>
                     <div className="flex items-end gap-4 mb-2">
                       <h2 className="font-serif text-5xl font-black text-white capitalize">{result.selected_crop}</h2>
                       <span className="text-green-400 font-black text-lg mb-1">
@@ -412,8 +414,8 @@ const PredictionTerminal = () => {
                     <TrendingUp size={80} className="text-[#84cc16]" />
                   </div>
                   <div className="flex justify-between items-center mb-4">
-                    <p className="text-[10px] font-black uppercase text-stone-400 tracking-widest">Regional Benchmark</p>
-                    <div className="bg-[#84cc16]/10 text-[#84cc16] px-2 py-0.5 rounded-full text-[8px] font-black uppercase border border-[#84cc16]/20">APY Census Data</div>
+                    <p className="text-[10px] font-black uppercase text-stone-400 tracking-widest">{t('prediction.regionalBenchmark')}</p>
+                    <div className="bg-[#84cc16]/10 text-[#84cc16] px-2 py-0.5 rounded-full text-[8px] font-black uppercase border border-[#84cc16]/20">{t('prediction.apyData')}</div>
                   </div>
                   <div className="flex items-center gap-6">
                     <div className="text-4xl font-black text-white flex items-center gap-2">
@@ -429,7 +431,7 @@ const PredictionTerminal = () => {
                 {/* Top Alternatives */}
                 {result.top_crops && result.top_crops.length > 1 && (
                   <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                    <h3 className="text-xs font-bold text-stone-400 uppercase tracking-wider mb-4">Alternative Crops</h3>
+                    <h3 className="text-xs font-bold text-stone-400 uppercase tracking-wider mb-4">{t('prediction.alternativeCrops')}</h3>
                     <div className="space-y-2">
                       {result.top_crops.slice(1, 4).map((c, i) => {
                         const cy = result.top_yields?.find(y => y.crop === c.crop);
@@ -450,7 +452,7 @@ const PredictionTerminal = () => {
                 {/* Explainable AI Section */}
                 <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
                   <h3 className="font-serif text-lg font-black text-white mb-4 flex items-center gap-2">
-                    <Search size={16} className="text-[#84cc16]" /> Why This Recommendation?
+                    <Search size={16} className="text-[#84cc16]" /> {t('prediction.whyRecommendation')}
                   </h3>
                   <div className="grid md:grid-cols-2 gap-3">
                     {generateExplanation(result.selected_crop, result.top_yields, result.disease_risks).map((item, i) => (
@@ -474,7 +476,7 @@ const PredictionTerminal = () => {
                  {result.expert_advisory && (
                    <div className="bg-gradient-to-br from-blue-500/10 to-[#0c0a09] border border-blue-500/20 rounded-2xl p-6">
                      <h3 className="font-serif text-lg font-black text-white mb-4 flex items-center gap-2">
-                       <Globe size={16} className="text-blue-400" /> Scientific Expert Advisory
+                        <Globe size={16} className="text-blue-400" /> {t('prediction.expertAdvisory')}
                      </h3>
                      <div className="space-y-4">
                        {result.expert_advisory.split('\n\n').map((block, i) => (
@@ -491,7 +493,7 @@ const PredictionTerminal = () => {
                        onClick={() => navigate('/vaniai', { state: { initialMessage: `Tell me more about the scientific advice for ${result.selected_crop} in ${result.city}.` } })}
                        className="mt-4 flex items-center gap-2 text-[#84cc16] font-bold text-[10px] uppercase tracking-wider hover:underline"
                      >
-                       Ask Vani AI for more details <ChevronRight size={14} />
+                       {t('prediction.askVani')} <ChevronRight size={14} />
                      </button>
                    </div>
                  )}
@@ -500,7 +502,7 @@ const PredictionTerminal = () => {
                  {result.expert_advisory && (
                    <div className="bg-gradient-to-br from-blue-500/10 to-[#0c0a09] border border-blue-500/20 rounded-2xl p-6">
                      <h3 className="font-serif text-lg font-black text-white mb-4 flex items-center gap-2">
-                       <Globe size={16} className="text-blue-400" /> Scientific Expert Advisory
+                        <Globe size={16} className="text-blue-400" /> {t('prediction.expertAdvisory')}
                      </h3>
                      <div className="space-y-4">
                        {result.expert_advisory.split('\n\n').map((block, i) => (
@@ -517,14 +519,14 @@ const PredictionTerminal = () => {
                        onClick={() => navigate('/vaniai', { state: { initialMessage: `Tell me more about the scientific advice for ${result.selected_crop} in ${result.city}.` } })}
                        className="mt-4 flex items-center gap-2 text-[#84cc16] font-bold text-[10px] uppercase tracking-wider hover:underline"
                      >
-                       Ask Vani AI for more details <ChevronRight size={14} />
+                       {t('prediction.askVani')} <ChevronRight size={14} />
                      </button>
                    </div>
                  )}
 
                 {/* Disease Risks */}
                 <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                  <h3 className="text-xs font-bold text-stone-400 uppercase tracking-wider mb-4 flex items-center gap-2"><ShieldAlert size={14} /> Disease Risk Assessment</h3>
+                  <h3 className="text-xs font-bold text-stone-400 uppercase tracking-wider mb-4 flex items-center gap-2"><ShieldAlert size={14} /> {t('prediction.diseaseRisk')}</h3>
                   <div className="space-y-3 max-h-48 overflow-y-auto pr-1 scrollbar-hide">
                     {result.disease_risks && result.disease_risks.length > 0 ? result.disease_risks.map((d, i) => (
                       <div key={i} className="p-3 bg-black/30 rounded-xl border-l-4 border-red-500">
@@ -538,13 +540,13 @@ const PredictionTerminal = () => {
                         </div>
                         <p className="text-[10px] text-stone-400">{d.trigger || 'Monitor field conditions'}</p>
                       </div>
-                    )) : <p className="text-stone-500 text-sm text-center py-4">No significant disease risks detected.</p>}
+                    )) : <p className="text-stone-500 text-sm text-center py-4">{t('prediction.noDiseaseRisk')}</p>}
                   </div>
                 </div>
 
                 {/* Raw data (collapsible) */}
                 <details className="bg-white/[0.03] border border-white/5 rounded-2xl p-4">
-                  <summary className="text-[10px] text-stone-600 font-bold uppercase tracking-wider cursor-pointer">Prediction Data</summary>
+                  <summary className="text-[10px] text-stone-600 font-bold uppercase tracking-wider cursor-pointer">{t('prediction.predictionData')}</summary>
                   <pre className="mt-3 text-[10px] text-stone-600 overflow-x-auto whitespace-pre-wrap">{JSON.stringify(result, null, 2)}</pre>
                 </details>
               </motion.div>
@@ -556,8 +558,8 @@ const PredictionTerminal = () => {
             <div className="h-full flex items-center justify-center py-24">
               <div className="text-center">
                 <Sprout size={48} className="mx-auto mb-4 opacity-20 text-[#84cc16]" />
-                <p className="text-stone-500 text-sm">Waiting for environment detection...</p>
-                <p className="text-stone-600 text-xs mt-1">or fill the form and click "Predict Best Crop"</p>
+                <p className="text-stone-500 text-sm">{t('prediction.waitingForEnv')}</p>
+                <p className="text-stone-600 text-xs mt-1">{t('prediction.orFillForm')}</p>
               </div>
             </div>
           )}

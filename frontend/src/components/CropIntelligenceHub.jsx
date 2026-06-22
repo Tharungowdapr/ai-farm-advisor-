@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import axios from "axios";
 import { CROP_DATABASE } from "../data/cropData";
+import { useLanguage } from '../i18n/LanguageContext';
 import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   BarChart, Bar, Cell
@@ -369,6 +370,7 @@ const trackingProgress = (tracking, crop) => {
 
 const CropIntelligenceHub = ({ user }) => {
   const navigate = useNavigate();
+  const { t } = useLanguage();
   const [selectedCrop, setSelectedCrop] = useState(null);
   const [view, setView] = useState("hub");
   const [searchTerm, setSearchTerm] = useState("");
@@ -509,13 +511,13 @@ const CropIntelligenceHub = ({ user }) => {
           {mode === "idle" ? (
             <>
               <button onClick={autoDetectLocation} className="text-[13px] text-stone-400 hover:text-[#84cc16] font-bold flex items-center gap-1.5 transition-colors">
-                <Crosshair size={12} /> Auto-Detect
+                <Crosshair size={12} /> {t('cropHub.autoDetect')}
               </button>
               <span className="text-stone-700 text-[13px]">|</span>
               <span className="text-[13px] text-stone-600">or</span>
               <div className="flex items-center gap-1.5 ml-1">
                 <input value={manualCity} onChange={e => setManualCity(e.target.value)}
-                  placeholder="Enter city name (e.g. Bengaluru)..."
+                  placeholder={t('cropHub.cityPlaceholder')}
                   className="w-40 bg-stone-900 border border-stone-700 rounded-lg px-3 py-1.5 text-[13px] text-white outline-none focus:border-[#84cc16] placeholder:text-stone-600"
                   onKeyDown={e => e.key === "Enter" && manualDetectLocation()}
                 />
@@ -525,7 +527,7 @@ const CropIntelligenceHub = ({ user }) => {
               </div>
             </>
           ) : mode === "detecting" ? (
-            <span className="text-[13px] text-yellow-400 flex items-center gap-1.5"><Loader2 size={12} className="animate-spin" /> Detecting location...</span>
+            <span className="text-[13px] text-yellow-400 flex items-center gap-1.5"><Loader2 size={12} className="animate-spin" /> {t('cropHub.detecting')}</span>
           ) : null}
           {locationName && <span className="text-[13px] text-green-400 font-bold ml-1">✓ {locationName.split(",")[0]}</span>}
           {coords && <span className="text-[13px] text-stone-600">{coords.lat.toFixed(2)}, {coords.lon.toFixed(2)}</span>}
@@ -542,17 +544,17 @@ const CropIntelligenceHub = ({ user }) => {
       <header className="text-center pt-2 pb-6 max-w-6xl mx-auto relative z-10">
         <div className="flex items-center justify-center gap-2 mb-3">
           <Sprout size={16} className="text-[#84cc16]" />
-          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#84cc16]">Crop Intelligence Hub</span>
+          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#84cc16]">{t('cropHub.title')}</span>
         </div>
         <h1 className="font-serif text-4xl md:text-5xl font-black text-white mb-3">
-          Crop <span className="italic text-[#84cc16]">Intelligence Hub</span>
+          {t('cropHub.title')}
         </h1>
         <p className="text-stone-400 text-sm max-w-2xl mx-auto leading-relaxed">
-          Intelligent lifecycle management, predictive disease forecasting, and AI-powered crop advisory for Karnataka crops.
+          {t('cropHub.description')}
         </p>
         {locationName && (
           <div className="mt-3 inline-flex items-center gap-2 px-4 py-1.5 bg-[#84cc16]/10 border border-[#84cc16]/25 rounded-full text-[13px] text-[#84cc16]">
-            <MapPin size={11} /> Live data for <span className="font-bold">{locationName}</span>
+            <MapPin size={11} /> {t('cropHub.liveDataFor')} <span className="font-bold">{locationName}</span>
             {weatherData && <><span className="text-stone-600">•</span> {weatherData.temperature}°C <span className="text-stone-600">•</span> {weatherData.humidity}% RH</>}
           </div>
         )}
@@ -563,7 +565,7 @@ const CropIntelligenceHub = ({ user }) => {
         <div className="relative">
           <Search size={15} className="absolute left-4 top-1/2 -translate-y-1/2 text-stone-500" />
           <input value={searchTerm} onChange={e => setSearchTerm(e.target.value)}
-            placeholder="Search crops by name, variety, scientific name, or region..."
+            placeholder={t('cropHub.searchPlaceholder')}
             className="w-full bg-stone-900 border border-stone-700 rounded-xl pl-11 pr-4 py-3.5 text-sm text-white outline-none focus:border-[#84cc16]/50 placeholder:text-stone-600 transition-all"
           />
         </div>
@@ -579,8 +581,8 @@ const CropIntelligenceHub = ({ user }) => {
         {filteredCrops.length === 0 && (
           <div className="text-center py-20 text-stone-500">
             <Search size={48} className="mx-auto mb-4 opacity-20" />
-            <p className="text-base mb-1">No crops match "{searchTerm}"</p>
-            <p className="text-xs text-stone-600">Try searching by name, variety, or region</p>
+            <p className="text-base mb-1">{t('cropHub.noMatch')} "{searchTerm}"</p>
+            <p className="text-xs text-stone-600">{t('cropHub.trySearching')}</p>
           </div>
         )}
       </div>
@@ -663,7 +665,7 @@ const CropCard = ({ crop, index, onClick }) => {
             <p className="text-stone-500 text-[13px] italic truncate">{crop.scientific}</p>
           </div>
           <div className="text-right flex-shrink-0 ml-3">
-            <div className="text-[11px] text-stone-500 uppercase tracking-wider">Duration</div>
+            <div className="text-[11px] text-stone-500 uppercase tracking-wider">{t('cropHub.duration')}</div>
             <div className="text-sm font-bold text-[#84cc16]">{crop.duration?.split(" ")[0]}</div>
           </div>
         </div>
@@ -683,7 +685,7 @@ const CropCard = ({ crop, index, onClick }) => {
         <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between">
           <span className="text-[13px] text-stone-500 font-medium">{crop.msp}</span>
           <span className="text-[#84cc16] text-[13px] font-bold flex items-center gap-1 group-hover:gap-2 transition-all">
-            Access Intelligence <ChevronRight size={10} />
+            {t('cropHub.accessIntelligence')} <ChevronRight size={10} />
           </span>
         </div>
       </div>
@@ -714,6 +716,7 @@ const CropDetailPage = ({
   const [activeTab, setActiveTab] = useState("overview");
   const [manualCityLocal, setManualCityLocal] = useState("");
   const [showAlerts, setShowAlerts] = useState(false);
+  const { t } = useLanguage();
 
   const tp = useMemo(() => trackingProgress(tracking, crop), [tracking, crop]);
   const waterScore = useMemo(() => calcWaterScore(weatherData), [weatherData]);
@@ -724,11 +727,11 @@ const CropDetailPage = ({
   const alerts = useMemo(() => generateAlerts(crop, tracking, weatherData, forecastData, diseaseRisks), [crop, tracking, weatherData, forecastData, diseaseRisks]);
 
   const tabs = [
-    { id: "overview", label: "Overview", icon: Target },
-    { id: "lifecycle", label: "Lifecycle", icon: Layers },
-    { id: "tracking", label: "Tracking", icon: Activity },
-    { id: "disease", label: "Disease Forecast", icon: ShieldAlert },
-    { id: "environment", label: "Environment", icon: Globe },
+    { id: "overview", label: t('cropHub.overview'), icon: Target },
+    { id: "lifecycle", label: t('cropHub.lifecycle'), icon: Layers },
+    { id: "tracking", label: t('cropHub.tracking'), icon: Activity },
+    { id: "disease", label: t('cropHub.diseaseForecastTab'), icon: ShieldAlert },
+    { id: "environment", label: t('cropHub.environment'), icon: Globe },
   ];
 
   const handleStartTracking = async (e) => {
@@ -784,8 +787,8 @@ const CropDetailPage = ({
             <div className="bg-stone-900 border border-stone-700 rounded-xl p-3">
               <button onClick={() => setShowAlerts(!showAlerts)} className="flex items-center gap-2 w-full text-left">
                 <BellRing size={12} className="text-[#84cc16]" />
-                <span className="text-[12px] font-bold uppercase tracking-wider text-stone-300">{alerts.length} Alert{alerts.length > 1 ? 's' : ''}</span>
-                <span className="ml-auto text-[11px] text-stone-500">{showAlerts ? 'Collapse' : 'Expand'}</span>
+                <span className="text-[12px] font-bold uppercase tracking-wider text-stone-300">{alerts.length} {t('cropHub.alerts')}</span>
+                <span className="ml-auto text-[11px] text-stone-500">{showAlerts ? t('cropHub.collapse') : t('cropHub.expand')}</span>
               </button>
               <AnimatePresence>
                 {showAlerts && (
@@ -837,11 +840,11 @@ const CropDetailPage = ({
             {/* Stats reordered: Yield first for farmers */}
             <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
               {[
-                { label: "Avg Yield", value: crop.avgYield, icon: Target, color: "text-[#84cc16]" },
-                { label: "MSP", value: crop.msp, icon: TrendingUp, color: "text-white" },
-                { label: "Duration", value: crop.duration, icon: Clock, color: "text-white" },
-                { label: "Water Need", value: crop.waterReq.split(" ")[0], icon: Droplets, color: "text-white" },
-                { label: "Suitability", value: `${envScore.score}%`, icon: Gauge, color: "text-white" },
+                { label: t('cropHub.avgYield'), value: crop.avgYield, icon: Target, color: "text-[#84cc16]" },
+                { label: t('cropHub.msp'), value: crop.msp, icon: TrendingUp, color: "text-white" },
+                { label: t('cropHub.duration'), value: crop.duration, icon: Clock, color: "text-white" },
+                { label: t('cropHub.waterNeed'), value: crop.waterReq.split(" ")[0], icon: Droplets, color: "text-white" },
+                { label: t('cropHub.suitability'), value: `${envScore.score}%`, icon: Gauge, color: "text-white" },
               ].map(({ label, value, icon: Icon, color }) => (
                 <div key={label} className="bg-stone-900 border border-stone-700 rounded-xl p-3 text-center">
                   <Icon size={14} className={`mx-auto mb-1 ${color}`} />
@@ -876,15 +879,15 @@ const CropDetailPage = ({
               <div className="space-y-6">
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {[
-                    { label: "Water Requirement", value: crop.waterReq, icon: Droplets, color: "text-blue-400" },
-                    { label: "Irrigation Type", value: crop.irrigationType, icon: Droplet, color: "text-cyan-400" },
-                    { label: "Ideal Soil", value: crop.idealSoil, icon: Layers, color: "text-amber-400" },
-                    { label: "pH Range", value: crop.idealPh, icon: Dna, color: "text-green-400" },
-                    { label: "Temperature Range", value: crop.tempRange, icon: Thermometer, color: "text-orange-400" },
-                    { label: "Humidity Suitability", value: crop.humiditySuit, icon: Droplets, color: "text-blue-400" },
-                    { label: "Rainfall Requirement", value: crop.rainfallReq, icon: CloudRain, color: "text-cyan-400" },
-                    { label: "Karnataka Regions", value: crop.regions, icon: MapPin, color: "text-[#84cc16]" },
-                    { label: "Multi-Cropping", value: crop.multipleCropping, icon: RefreshCw, color: "text-yellow-400" },
+                    { label: t('cropHub.waterRequirement'), value: crop.waterReq, icon: Droplets, color: "text-blue-400" },
+                    { label: t('cropHub.irrigationType'), value: crop.irrigationType, icon: Droplet, color: "text-cyan-400" },
+                    { label: t('cropHub.idealSoil'), value: crop.idealSoil, icon: Layers, color: "text-amber-400" },
+                    { label: t('cropHub.phRange'), value: crop.idealPh, icon: Dna, color: "text-green-400" },
+                    { label: t('cropHub.tempRange'), value: crop.tempRange, icon: Thermometer, color: "text-orange-400" },
+                    { label: t('cropHub.humiditySuitability'), value: crop.humiditySuit, icon: Droplets, color: "text-blue-400" },
+                    { label: t('cropHub.rainfallRequirement'), value: crop.rainfallReq, icon: CloudRain, color: "text-cyan-400" },
+                    { label: t('cropHub.karnatakaRegions'), value: crop.regions, icon: MapPin, color: "text-[#84cc16]" },
+                    { label: t('cropHub.multiCropping'), value: crop.multipleCropping, icon: RefreshCw, color: "text-yellow-400" },
                   ].map((it, i) => (
                     <AnimatedCard key={it.label} delay={i * 0.04} glow>
                       <div className="flex items-start gap-3">
@@ -900,7 +903,7 @@ const CropDetailPage = ({
 
                 {/* Environmental Suitability */}
                 <AnimatedCard glow>
-                  <h3 className="text-xs font-bold text-stone-300 uppercase tracking-wider mb-4 flex items-center gap-2"><Gauge size={14} className="text-[#84cc16]" /> Environmental Suitability</h3>
+                  <h3 className="text-xs font-bold text-stone-300 uppercase tracking-wider mb-4 flex items-center gap-2"><Gauge size={14} className="text-[#84cc16]" /> {t('cropHub.envSuitability')}</h3>
                   <div className="flex flex-col md:flex-row items-start gap-6">
                     <div className="flex-shrink-0 text-center mx-auto md:mx-0">
                       <ProgressRing progress={envScore.score} size={100} strokeWidth={8} />
@@ -922,7 +925,7 @@ const CropDetailPage = ({
 
                 {/* Disease Quick Ref */}
                 <AnimatedCard>
-                  <h3 className="text-xs font-bold text-stone-300 uppercase tracking-wider mb-4 flex items-center gap-2"><ShieldAlert size={14} className="text-[#84cc16]" /> Key Disease Prevention</h3>
+                  <h3 className="text-xs font-bold text-stone-300 uppercase tracking-wider mb-4 flex items-center gap-2"><ShieldAlert size={14} className="text-[#84cc16]" /> {t('cropHub.diseasePrevention')}</h3>
                   <div className="grid md:grid-cols-2 gap-3">
                     {(crop.diseaseRules || []).slice(0, 4).map((d, i) => (
                         <div key={i} className="bg-stone-900 border border-stone-700 rounded-xl p-4 hover:border-stone-600 transition-all">
@@ -946,7 +949,7 @@ const CropDetailPage = ({
             {activeTab === "lifecycle" && (
               <div className="space-y-6">
                 <AnimatedCard>
-                  <h3 className="text-xs font-bold text-stone-300 uppercase tracking-wider mb-6 flex items-center gap-2"><Layers size={14} className="text-[#84cc16]" /> Crop Lifecycle Timeline</h3>
+                  <h3 className="text-xs font-bold text-stone-300 uppercase tracking-wider mb-6 flex items-center gap-2"><Layers size={14} className="text-[#84cc16]" /> {t('cropHub.lifecycle')}</h3>
                   <div className="relative">
                     <div className="absolute left-[18px] top-0 bottom-0 w-[3px] bg-gradient-to-b from-[#84cc16] via-[#84cc16]/40 to-white/5 rounded-full" />
                     <div className="space-y-6">
@@ -981,42 +984,42 @@ const CropDetailPage = ({
                                     {stage.stage}
                                     {isActive && (
                                       <span className="flex items-center gap-1.5 px-2.5 py-0.5 bg-[#84cc16] text-[#0c0a09] text-[12px] font-bold rounded-full uppercase tracking-wider">
-                                        <Activity size={10} /> Currently Active
+                                        <Activity size={10} /> {t('cropHub.currentlyActive')}
                                       </span>
                                     )}
-                                    {isPast && <span className="px-2 py-0.5 bg-green-500/20 text-green-300 text-[12px] font-bold rounded-full uppercase tracking-wider border border-green-500/30">Complete ✓</span>}
+                                    {isPast && <span className="px-2 py-0.5 bg-green-500/20 text-green-300 text-[12px] font-bold rounded-full uppercase tracking-wider border border-green-500/30">{t('cropHub.complete')}</span>}
                                   </h4>
                                   <div className="flex items-center gap-3 mt-1">
-                                    <span className="text-[13px] text-stone-500 font-medium">Duration: {stage.duration}</span>
+                                    <span className="text-[13px] text-stone-500 font-medium">{t('cropHub.durationLabel')} {stage.duration}</span>
                                     {isActive && tp && (
                                       <>
                                         <span className="text-[13px] text-[#84cc16] font-bold">•</span>
-                                        <span className="text-[13px] text-[#84cc16] font-bold">Day {tp.daysInStage + 1} of {tp.stageTotal}</span>
+                                        <span className="text-[13px] text-[#84cc16] font-bold">{t('cropHub.day')} {tp.daysInStage + 1} of {tp.stageTotal}</span>
                                         <span className="text-[13px] text-[#84cc16] font-bold">•</span>
-                                        <span className="text-[13px] text-yellow-400">{tp.stagePct}% complete</span>
+                                        <span className="text-[13px] text-yellow-400">{tp.stagePct}% {t('cropHub.complete')}</span>
                                       </>
                                     )}
                                   </div>
                                 </div>
-                                <span className="text-[13px] text-stone-500 bg-stone-900 border border-stone-700 px-2.5 py-1 rounded-lg">Stage {i + 1}/{crop.lifecycle.length}</span>
+                                <span className="text-[13px] text-stone-500 bg-stone-900 border border-stone-700 px-2.5 py-1 rounded-lg">{t('cropHub.stageXofY')} {i + 1}/{crop.lifecycle.length}</span>
                               </div>
 
                               {/* Stage detail grid */}
                               <div className="grid md:grid-cols-2 gap-2.5 mt-3">
                                 <div className="bg-stone-900/80 rounded-lg p-3 border border-white/10">
-                                  <div className="text-[13px] text-blue-300 uppercase tracking-wider mb-1.5 font-bold flex items-center gap-1.5"><Droplets size={10} /> Irrigation</div>
+                                  <div className="text-[13px] text-blue-300 uppercase tracking-wider mb-1.5 font-bold flex items-center gap-1.5"><Droplets size={10} /> {t('cropHub.irrigation')}</div>
                                   <p className="text-[13px] text-stone-300 leading-relaxed">{stage.irrigation}</p>
                                 </div>
                                 <div className="bg-stone-900/80 rounded-lg p-3 border border-white/10">
-                                  <div className="text-[13px] text-[#84cc16] uppercase tracking-wider mb-1.5 font-bold flex items-center gap-1.5"><Leaf size={10} /> Nutrition</div>
+                                  <div className="text-[13px] text-[#84cc16] uppercase tracking-wider mb-1.5 font-bold flex items-center gap-1.5"><Leaf size={10} /> {t('cropHub.nutrition')}</div>
                                   <p className="text-[13px] text-stone-300 leading-relaxed">{stage.nutrient}</p>
                                 </div>
                                 <div className="bg-stone-900/80 rounded-lg p-3 border border-white/10">
-                                  <div className="text-[13px] text-red-300 uppercase tracking-wider mb-1.5 font-bold flex items-center gap-1.5"><ShieldAlert size={10} /> Disease Prevention</div>
+                                  <div className="text-[13px] text-red-300 uppercase tracking-wider mb-1.5 font-bold flex items-center gap-1.5"><ShieldAlert size={10} /> {t('cropHub.diseasePrevention')}</div>
                                   <p className="text-[13px] text-stone-300 leading-relaxed">{stage.disease}</p>
                                 </div>
                                 <div className="bg-stone-900/80 rounded-lg p-3 border border-white/10">
-                                  <div className="text-[13px] text-yellow-300 uppercase tracking-wider mb-1.5 font-bold flex items-center gap-1.5"><Tractor size={10} /> Farmer Actions</div>
+                                  <div className="text-[13px] text-yellow-300 uppercase tracking-wider mb-1.5 font-bold flex items-center gap-1.5"><Tractor size={10} /> {t('cropHub.farmerActions')}</div>
                                   <p className="text-[13px] text-stone-300 leading-relaxed">{stage.actions}</p>
                                 </div>
                               </div>
@@ -1036,36 +1039,36 @@ const CropDetailPage = ({
                 {!tracking ? (
                   showTrackingForm ? (
                     <AnimatedCard>
-                      <h3 className="text-sm font-bold text-white mb-4 flex items-center gap-2"><Activity size={14} className="text-[#84cc16]" /> Start New Tracking Session</h3>
+                      <h3 className="text-sm font-bold text-white mb-4 flex items-center gap-2"><Activity size={14} className="text-[#84cc16]" /> {t('cropHub.startNewSession')}</h3>
                       <form onSubmit={handleStartTracking} className="space-y-4">
                         <div>
-                          <label className="text-[13px] font-bold text-stone-400 uppercase tracking-wider block mb-1.5">Cultivation Start Date</label>
+                          <label className="text-[13px] font-bold text-stone-400 uppercase tracking-wider block mb-1.5">{t('cropHub.startDate')}</label>
                           <input type="date" required value={trackForm.startDate} onChange={e => setTrackForm(p => ({ ...p, startDate: e.target.value }))}
                             className="w-full bg-stone-900 border border-stone-700 rounded-xl px-4 py-3.5 text-white text-sm outline-none focus:border-[#84cc16] transition-all" />
                         </div>
                         <div>
-                          <label className="text-[13px] font-bold text-stone-400 uppercase tracking-wider block mb-1.5">Farm Location / Village (optional)</label>
+                          <label className="text-[13px] font-bold text-stone-400 uppercase tracking-wider block mb-1.5">{t('cropHub.farmLocation')}</label>
                           <input type="text" placeholder="e.g., Mandya, Karnataka" value={trackForm.farmLocation} onChange={e => setTrackForm(p => ({ ...p, farmLocation: e.target.value }))}
                             className="w-full bg-stone-900 border border-stone-700 rounded-xl px-4 py-3.5 text-white text-sm outline-none focus:border-[#84cc16] transition-all" />
                         </div>
                         <div className="flex gap-3">
                           <button type="submit" className="flex-1 py-4 bg-[#84cc16] text-[#0c0a09] font-bold text-sm uppercase tracking-widest rounded-xl hover:bg-[#facc15] transition-all shadow-lg flex items-center justify-center gap-2">
-                            <Play size={16} /> Start Tracking
+                            <Play size={16} /> {t('cropHub.startTracking')}
                           </button>
-                          <button type="button" onClick={() => setShowTrackingForm(false)} className="px-6 py-4 bg-stone-900 text-stone-400 font-bold text-sm rounded-xl border border-stone-700 hover:bg-stone-800 transition-all">Cancel</button>
+                          <button type="button" onClick={() => setShowTrackingForm(false)} className="px-6 py-4 bg-stone-900 text-stone-400 font-bold text-sm rounded-xl border border-stone-700 hover:bg-stone-800 transition-all">{t('cropHub.cancel')}</button>
                         </div>
                       </form>
                     </AnimatedCard>
                   ) : (
                     <AnimatedCard className="text-center py-16">
                       <Activity size={48} className="mx-auto mb-4 text-[#84cc16] opacity-40" />
-                      <h3 className="text-xl font-bold text-white mb-2">Start Crop Tracking</h3>
+                      <h3 className="text-xl font-bold text-white mb-2">{t('cropHub.startTracking')}</h3>
                       <p className="text-stone-400 text-sm mb-8 max-w-md mx-auto leading-relaxed">
                         Track your <span className="text-[#84cc16] font-bold">{crop.name}</span> cultivation day-by-day. Get AI-powered daily guidance, disease warnings, and harvest alerts.
                       </p>
                       <button onClick={() => setShowTrackingForm(true)}
                         className="px-10 py-5 bg-[#84cc16] text-[#0c0a09] font-bold text-sm uppercase tracking-widest rounded-xl hover:bg-[#facc15] transition-all shadow-lg flex items-center gap-2 mx-auto">
-                        <Play size={18} /> Start Tracking {crop.name}
+                        <Play size={18} /> {t('cropHub.startTracking')} {crop.name}
                       </button>
                     </AnimatedCard>
                   )
@@ -1074,11 +1077,11 @@ const CropDetailPage = ({
                     {/* Dashboard KPIs */}
                     <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
                       {[
-                        { label: "Day", value: `${tp.daysElapsed}/${tp.totalDays}`, icon: Clock, color: "text-[#84cc16]" },
-                        { label: "Active Stage", value: tp.activeStage.stage, icon: Layers, color: "text-blue-400" },
-                        { label: "Stage Progress", value: `${tp.stagePct}%`, icon: Activity, color: "text-green-400" },
-                        { label: "Days to Harvest", value: `${tp.daysLeft} days`, icon: Calendar, color: "text-yellow-400" },
-                        { label: "Harvest By", value: tp.harvestDate.toLocaleDateString(), icon: Target, color: "text-orange-400" },
+                        { label: t('cropHub.day'), value: `${tp.daysElapsed}/${tp.totalDays}`, icon: Clock, color: "text-[#84cc16]" },
+                        { label: t('cropHub.activeStage'), value: tp.activeStage.stage, icon: Layers, color: "text-blue-400" },
+                        { label: t('cropHub.stageProgress'), value: `${tp.stagePct}%`, icon: Activity, color: "text-green-400" },
+                        { label: t('cropHub.daysToHarvest'), value: `${tp.daysLeft} days`, icon: Calendar, color: "text-yellow-400" },
+                        { label: t('cropHub.harvestBy'), value: tp.harvestDate.toLocaleDateString(), icon: Target, color: "text-orange-400" },
                       ].map(({ label, value, icon: Icon, color }) => (
                           <div key={label} className="bg-stone-900 border border-stone-700 rounded-xl p-4 text-center">
                           <Icon size={15} className={`mx-auto mb-1.5 ${color}`} />
@@ -1090,7 +1093,7 @@ const CropDetailPage = ({
 
                     {/* Stage Timeline Bar */}
                     <AnimatedCard>
-                      <h3 className="text-xs font-bold text-stone-300 uppercase tracking-wider mb-4">Growth Progress</h3>
+                      <h3 className="text-xs font-bold text-stone-300 uppercase tracking-wider mb-4">{t('cropHub.growthProgress')}</h3>
                       <div className="flex flex-wrap items-center gap-4 mb-4">
                         <div className="text-center flex-shrink-0 mx-auto md:mx-0">
                           <ProgressRing progress={tp.pct} size={85} strokeWidth={6} />
@@ -1133,7 +1136,7 @@ const CropDetailPage = ({
                     <AnimatedCard glow>
                       <h3 className="text-sm font-bold text-white mb-4 flex items-center gap-2">
                         <Zap size={16} className="text-[#84cc16]" />
-                        Today's Crop Guidance
+                        {t('cropHub.guidance')}
                         <span className="text-[13px] text-stone-500 font-medium normal-case ml-auto">
                           {new Date().toLocaleDateString("en-IN", { weekday: "long", day: "numeric", month: "short" })}
                         </span>
@@ -1145,15 +1148,15 @@ const CropDetailPage = ({
                           <div className="w-3 h-3 bg-[#84cc16] rounded-full animate-ping absolute opacity-50" />
                           <div className="w-3 h-3 bg-[#84cc16] rounded-full relative" />
                           <div>
-                            <div className="text-[13px] text-[#84cc16] uppercase tracking-wider font-bold">Current Stage</div>
-                            <h4 className="text-xl font-black text-white">{tp.activeStage.stage} <span className="text-sm font-bold text-[#84cc16]">• Day {tp.daysInStage + 1}/{tp.stageTotal}</span></h4>
+                            <div className="text-[13px] text-[#84cc16] uppercase tracking-wider font-bold">{t('cropHub.currentStage')}</div>
+                            <h4 className="text-xl font-black text-white">{tp.activeStage.stage} <span className="text-sm font-bold text-[#84cc16]">• {t('cropHub.day')} {tp.daysInStage + 1}/{tp.stageTotal}</span></h4>
                           </div>
                         </div>
 
                         {/* Stage progress bar */}
                         <div className="mb-4">
                           <div className="flex justify-between text-[13px] text-stone-500 mb-1">
-                            <span>Stage {tp.activeIdx + 1} of {crop.lifecycle.length}</span>
+                            <span>{t('cropHub.stageXofY')} {tp.activeIdx + 1} of {crop.lifecycle.length}</span>
                             <span>{tp.stagePct}%</span>
                           </div>
                           <div className="w-full bg-black/60 rounded-full h-2 overflow-hidden">
@@ -1165,21 +1168,21 @@ const CropDetailPage = ({
                         {/* What to do TODAY */}
                         <div className="grid md:grid-cols-2 gap-3 mb-3">
                           <div className="bg-stone-900/80 rounded-xl p-4 border border-white/10">
-                            <div className="text-[13px] text-blue-300 uppercase tracking-wider font-bold mb-2 flex items-center gap-1.5"><Droplets size={12} /> Irrigation Today</div>
+                            <div className="text-[13px] text-blue-300 uppercase tracking-wider font-bold mb-2 flex items-center gap-1.5"><Droplets size={12} /> {t('cropHub.irrigationToday')}</div>
                             <p className="text-[14px] text-stone-200 leading-relaxed">{tp.activeStage.irrigation}</p>
                           </div>
                           <div className="bg-stone-900/80 rounded-xl p-4 border border-white/10">
-                            <div className="text-[13px] text-[#84cc16] uppercase tracking-wider font-bold mb-2 flex items-center gap-1.5"><Leaf size={12} /> Nutrient Today</div>
+                            <div className="text-[13px] text-[#84cc16] uppercase tracking-wider font-bold mb-2 flex items-center gap-1.5"><Leaf size={12} /> {t('cropHub.nutrientToday')}</div>
                             <p className="text-[14px] text-stone-200 leading-relaxed">{tp.activeStage.nutrient}</p>
                           </div>
                         </div>
                         <div className="grid md:grid-cols-2 gap-3">
                           <div className="bg-stone-900/80 rounded-xl p-4 border border-white/10">
-                            <div className="text-[13px] text-red-300 uppercase tracking-wider font-bold mb-2 flex items-center gap-1.5"><ShieldAlert size={12} /> Disease Watch</div>
+                            <div className="text-[13px] text-red-300 uppercase tracking-wider font-bold mb-2 flex items-center gap-1.5"><ShieldAlert size={12} /> {t('cropHub.diseaseWatch')}</div>
                             <p className="text-[14px] text-stone-200 leading-relaxed">{tp.activeStage.disease}</p>
                           </div>
                           <div className="bg-stone-900/80 rounded-xl p-4 border border-white/10">
-                            <div className="text-[13px] text-yellow-300 uppercase tracking-wider font-bold mb-2 flex items-center gap-1.5"><Tractor size={12} /> Recommended Actions</div>
+                            <div className="text-[13px] text-yellow-300 uppercase tracking-wider font-bold mb-2 flex items-center gap-1.5"><Tractor size={12} /> {t('cropHub.recommendedActions')}</div>
                             <p className="text-[14px] text-stone-200 leading-relaxed">{tp.activeStage.actions}</p>
                           </div>
                         </div>
@@ -1196,7 +1199,7 @@ const CropDetailPage = ({
                       {/* AI Guidance Tips */}
                       {guidanceTips.length > 0 && (
                         <div>
-                          <div className="text-[13px] text-[#84cc16] uppercase tracking-wider font-bold mb-3 flex items-center gap-1.5"><Lightbulb size={12} /> Intelligent Recommendations</div>
+                          <div className="text-[13px] text-[#84cc16] uppercase tracking-wider font-bold mb-3 flex items-center gap-1.5"><Lightbulb size={12} /> {t('cropHub.intelligentRecs')}</div>
                           <div className="grid md:grid-cols-2 gap-2">
                             {guidanceTips.map((tip, i) => {
                               const borderColor = tip.type === "warning" ? "border-red-500/25 bg-red-500/10" :
@@ -1223,7 +1226,7 @@ const CropDetailPage = ({
                       {/* Weather Impact */}
                       {weatherData && (
                         <div className="mt-4 p-4 rounded-xl bg-blue-500/5 border border-blue-500/20">
-                          <div className="text-[13px] text-blue-400 uppercase tracking-wider font-bold mb-2 flex items-center gap-1.5"><Cloud size={12} /> Weather Impact on {tp.activeStage.stage}</div>
+                          <div className="text-[13px] text-blue-400 uppercase tracking-wider font-bold mb-2 flex items-center gap-1.5"><Cloud size={12} /> {t('cropHub.weatherImpact')} {tp.activeStage.stage}</div>
                           <div className="text-[13px] text-blue-200 leading-relaxed">
                             Current conditions: {weatherData.temperature}°C, {weatherData.humidity}% humidity, {weatherData.rainfall}mm rainfall.
                             {weatherData.humidity > 70 ? " High humidity increases disease risk during this stage." : ""}
@@ -1237,7 +1240,7 @@ const CropDetailPage = ({
                     {/* Reset */}
                     <button onClick={() => { setTracking(null); setShowTrackingForm(false); }}
                       className="text-[13px] text-stone-600 hover:text-red-400 transition-colors flex items-center gap-1.5 mx-auto mt-2">
-                      <RefreshCw size={12} /> Reset Crop Tracking
+                      <RefreshCw size={12} /> {t('cropHub.resetTracking')}
                     </button>
                   </>
                 ) : null}
@@ -1250,7 +1253,7 @@ const CropDetailPage = ({
 
                 {/* Current Conditions Summary */}
                 <AnimatedCard>
-                  <h3 className="text-xs font-bold text-stone-300 uppercase tracking-wider mb-4 flex items-center gap-2"><ShieldAlert size={14} className="text-[#84cc16]" /> Disease Forecast Center</h3>
+                  <h3 className="text-xs font-bold text-stone-300 uppercase tracking-wider mb-4 flex items-center gap-2"><ShieldAlert size={14} className="text-[#84cc16]" /> {t('cropHub.diseaseForecast')}</h3>
                   {locationName && weatherData ? (
                     <div className="text-[13px] text-stone-400 mb-4 leading-relaxed">
                       Analyzing <span className="text-white font-bold">{crop.name}</span> disease risk for <span className="text-[#84cc16]">{locationName}</span> using current conditions and 7-day forecast. Current: {weatherData.temperature}°C, {weatherData.humidity}% humidity.
@@ -1260,8 +1263,8 @@ const CropDetailPage = ({
                   {!weatherData ? (
                     <div className="text-center py-12 text-stone-500">
                       <Globe size={40} className="mx-auto mb-3 opacity-30" />
-                      <p className="text-sm mb-1">No weather data available</p>
-                      <p className="text-[13px] text-stone-600">Use the Environment tab or location bar above to detect weather data.</p>
+                      <p className="text-sm mb-1">{t('cropHub.noWeather')}</p>
+                      <p className="text-[13px] text-stone-600">{t('cropHub.useEnvTab')}</p>
                     </div>
                   ) : (
                     <>
@@ -1303,11 +1306,11 @@ const CropDetailPage = ({
 
                               <div className="grid md:grid-cols-2 gap-2.5">
                                 <div className="bg-green-500/10 rounded-xl p-3 border border-green-500/20">
-                                  <div className="text-[13px] text-green-400 uppercase tracking-wider font-bold mb-1.5">Prevention</div>
+                                  <div className="text-[13px] text-green-400 uppercase tracking-wider font-bold mb-1.5">{t('cropHub.prevention')}</div>
                                   <p className="text-[13px] text-green-200 leading-relaxed">{d.prevention}</p>
                                 </div>
                                 <div className="bg-blue-500/10 rounded-xl p-3 border border-blue-500/20">
-                                  <div className="text-[13px] text-blue-400 uppercase tracking-wider font-bold mb-1.5">Recommended Action</div>
+                                  <div className="text-[13px] text-blue-400 uppercase tracking-wider font-bold mb-1.5">{t('cropHub.recommendation')}</div>
                                   <p className="text-[13px] text-blue-200 leading-relaxed">{d.action}</p>
                                 </div>
                               </div>
@@ -1325,7 +1328,7 @@ const CropDetailPage = ({
                       {/* 7-Day Risk Timeline Chart */}
                       {diseaseRisks.length > 0 && (
                         <AnimatedCard>
-                          <h3 className="text-[13px] font-bold text-stone-400 uppercase tracking-wider mb-4 flex items-center gap-2"><TrendingUp size={13} className="text-[#84cc16]" /> 7-Day Risk Outlook</h3>
+                          <h3 className="text-[13px] font-bold text-stone-400 uppercase tracking-wider mb-4 flex items-center gap-2"><TrendingUp size={13} className="text-[#84cc16]" /> {t('cropHub.riskOutlook')}</h3>
                           {forecastData && forecastData.length > 0 ? (
                             <div className="h-48">
                               <ResponsiveContainer width="100%" height="100%">
@@ -1361,14 +1364,14 @@ const CropDetailPage = ({
                           )}
                           <div className="flex flex-wrap gap-4 mt-3 text-[13px] text-stone-600">
                             <span className="flex items-center gap-1.5"><span className="w-3 h-0.5 bg-red-500 rounded" /> Disease Risk</span>
-                            <span className="flex items-center gap-1.5"><span className="w-3 h-0.5 bg-blue-500 rounded" /> Humidity</span>
+                            <span className="flex items-center gap-1.5"><span className="w-3 h-0.5 bg-blue-500 rounded" /> {t('cropHub.humidity')}</span>
                           </div>
                         </AnimatedCard>
                       )}
 
                       {/* Disease Knowledge Base */}
                       <AnimatedCard>
-                        <h3 className="text-[13px] font-bold text-stone-300 uppercase tracking-wider mb-4 flex items-center gap-2"><Info size={13} className="text-[#84cc16]" /> Disease Knowledge Base — {crop.name}</h3>
+                        <h3 className="text-[13px] font-bold text-stone-300 uppercase tracking-wider mb-4 flex items-center gap-2"><Info size={13} className="text-[#84cc16]" /> {t('cropHub.diseaseKnowledge')} — {crop.name}</h3>
                         <div className="space-y-2 max-h-72 overflow-y-auto pr-1 scrollbar-hide">
                           {(crop.diseaseRules || []).map((d, i) => (
                               <div key={i} className="bg-stone-900 border border-stone-700 rounded-xl p-4">
@@ -1400,23 +1403,23 @@ const CropDetailPage = ({
               <div className="space-y-6">
 
                 <AnimatedCard>
-                  <h3 className="text-xs font-bold text-stone-300 uppercase tracking-wider mb-4 flex items-center gap-2"><Globe size={14} className="text-[#84cc16]" /> Environmental Intelligence</h3>
+                  <h3 className="text-xs font-bold text-stone-300 uppercase tracking-wider mb-4 flex items-center gap-2"><Globe size={14} className="text-[#84cc16]" /> {t('cropHub.environmental')}</h3>
 
                   <div className="flex flex-wrap items-center gap-3 mb-4">
                     <button onClick={autoDetectLocation} disabled={mode === "detecting"}
                       className="px-5 py-2.5 bg-[#84cc16]/20 text-[#84cc16] border border-[#84cc16]/30 rounded-xl text-[13px] font-bold flex items-center gap-2 hover:bg-[#84cc16]/30 transition-all disabled:opacity-50">
                       {mode === "detecting" ? <Loader2 size={13} className="animate-spin" /> : <Crosshair size={13} />}
-                      {mode === "detecting" ? "Detecting..." : "Auto-Detect"}
+                      {mode === "detecting" ? t('cropHub.detecting') : t('cropHub.autoDetect')}
                     </button>
                     <div className="flex items-center gap-1.5 flex-1 min-w-[200px]">
                       <input value={manualCityLocal || manualCity} onChange={e => setManualCityLocal(e.target.value)}
-                        placeholder="Enter city name (e.g. Bengaluru)..."
+                        placeholder={t('cropHub.cityPlaceholder')}
                         className="flex-1 bg-stone-900 border border-stone-700 rounded-xl px-3.5 py-2.5 text-[13px] text-white outline-none focus:border-[#84cc16] placeholder:text-stone-600"
                         onKeyDown={e => e.key === "Enter" && manualDetect()}
                       />
                       <button onClick={manualDetect} disabled={!manualCityLocal.trim()}
                         className="px-4 py-2.5 bg-stone-900 text-stone-400 rounded-xl border border-stone-700 text-[13px] font-bold hover:bg-stone-800 hover:text-white transition-all disabled:opacity-30 flex items-center gap-1.5">
-                        <Search size={12} /> Go
+                        <Search size={12} /> {t('cropHub.go')}
                       </button>
                     </div>
                   </div>
@@ -1424,23 +1427,23 @@ const CropDetailPage = ({
                   {envError && <div className="p-3 bg-red-500/10 border border-red-500/25 rounded-xl text-red-400 text-[13px] flex items-center gap-2 mb-4"><AlertTriangle size={14} />{envError}</div>}
 
                   <div className="flex flex-wrap gap-2 mb-4">
-                    <StatusBadge st={envStatuses.location} label="📍 Location" msgs={envMsgs.location} />
-                    <StatusBadge st={envStatuses.weather} label="🌤 Weather" msgs={envMsgs.weather} />
-                    <StatusBadge st={envStatuses.soil} label="🌱 Soil" msgs={envMsgs.soil} />
+                    <StatusBadge st={envStatuses.location} label={t('cropHub.location')} msgs={envMsgs.location} />
+                    <StatusBadge st={envStatuses.weather} label={t('cropHub.weather')} msgs={envMsgs.weather} />
+                    <StatusBadge st={envStatuses.soil} label={t('cropHub.soil')} msgs={envMsgs.soil} />
                   </div>
                 </AnimatedCard>
 
                 {/* Weather Cards */}
                 {weatherData && (
                   <AnimatedCard>
-                    <h3 className="text-xs font-bold text-stone-300 uppercase tracking-wider mb-3 flex items-center gap-2"><Thermometer size={14} className="text-[#84cc16]" /> Current Weather</h3>
+                    <h3 className="text-xs font-bold text-stone-300 uppercase tracking-wider mb-3 flex items-center gap-2"><Thermometer size={14} className="text-[#84cc16]" /> {t('cropHub.currentWeather')}</h3>
                     <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
                       {[
-                        { icon: Thermometer, label: "Temperature", value: `${weatherData.temperature}°C`, color: "text-orange-400" },
-                        { icon: Droplets, label: "Humidity", value: `${weatherData.humidity}%`, color: "text-blue-400" },
-                        { icon: CloudRain, label: "Rainfall", value: `${weatherData.rainfall}mm`, color: "text-cyan-400" },
-                        { icon: Wind, label: "Wind", value: `${weatherData.wind_speed || 0} km/h`, color: "text-stone-400" },
-                        { icon: Sun, label: "Condition", value: weatherData.condition || "Clear", color: "text-[#84cc16]" },
+                        { icon: Thermometer, label: t('cropHub.temperature'), value: `${weatherData.temperature}°C`, color: "text-orange-400" },
+                        { icon: Droplets, label: t('cropHub.humidity'), value: `${weatherData.humidity}%`, color: "text-blue-400" },
+                        { icon: CloudRain, label: t('cropHub.rainfall'), value: `${weatherData.rainfall}mm`, color: "text-cyan-400" },
+                        { icon: Wind, label: t('cropHub.wind'), value: `${weatherData.wind_speed || 0} km/h`, color: "text-stone-400" },
+                        { icon: Sun, label: t('cropHub.condition'), value: weatherData.condition || "Clear", color: "text-[#84cc16]" },
                       ].map(({ icon: Icon, label, value, color }) => (
                         <div key={label} className="bg-stone-900 border border-stone-700 rounded-xl p-3.5 text-center">
                           <Icon size={16} className={`mx-auto mb-1.5 ${color}`} />
@@ -1453,7 +1456,7 @@ const CropDetailPage = ({
                     {/* 7-Day Forecast */}
                     {forecastData && forecastData.length > 0 && (
                       <div className="mt-4 pt-4 border-t border-white/[0.06]">
-                        <h4 className="text-[13px] text-stone-500 uppercase tracking-wider font-bold mb-3 flex items-center gap-1.5"><Calendar size={11} /> 7-Day Forecast</h4>
+                        <h4 className="text-[13px] text-stone-500 uppercase tracking-wider font-bold mb-3 flex items-center gap-1.5"><Calendar size={11} /> {t('cropHub.forecast7Day')}</h4>
                         <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
                           {forecastData.map((d, i) => (
                             <div key={i} className="flex-shrink-0 w-20 bg-stone-900 border border-stone-700 rounded-xl p-2.5 text-center">
@@ -1481,13 +1484,13 @@ const CropDetailPage = ({
                 {/* Soil Intelligence */}
                 {soilData && (
                   <AnimatedCard>
-                    <h3 className="text-xs font-bold text-stone-300 uppercase tracking-wider mb-3 flex items-center gap-2"><Dna size={14} className="text-[#84cc16]" /> Soil Intelligence</h3>
+                    <h3 className="text-xs font-bold text-stone-300 uppercase tracking-wider mb-3 flex items-center gap-2"><Dna size={14} className="text-[#84cc16]" /> {t('cropHub.soilIntelligence')}</h3>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                       {[
-                        { label: "Soil pH", value: soilData.ph != null ? soilData.ph : "N/A", unit: "", color: (soilData.ph >= 5.5 && soilData.ph <= 7) ? "text-green-400" : "text-yellow-400" },
-                        { label: "Nitrogen (N)", value: soilData.nitrogen != null ? Math.round(soilData.nitrogen) : "N/A", unit: "mg/kg", color: "text-[#84cc16]" },
-                        { label: "Phosphorus (P)", value: soilData.phosphorus != null ? Math.round(soilData.phosphorus) : "N/A", unit: "mg/kg", color: "text-blue-400" },
-                        { label: "Potassium (K)", value: soilData.potassium != null ? Math.round(soilData.potassium) : "N/A", unit: "mg/kg", color: "text-orange-400" },
+                        { label: t('cropHub.soilPh'), value: soilData.ph != null ? soilData.ph : "N/A", unit: "", color: (soilData.ph >= 5.5 && soilData.ph <= 7) ? "text-green-400" : "text-yellow-400" },
+                        { label: t('cropHub.nitrogen'), value: soilData.nitrogen != null ? Math.round(soilData.nitrogen) : "N/A", unit: "mg/kg", color: "text-[#84cc16]" },
+                        { label: t('cropHub.phosphorus'), value: soilData.phosphorus != null ? Math.round(soilData.phosphorus) : "N/A", unit: "mg/kg", color: "text-blue-400" },
+                        { label: t('cropHub.potassium'), value: soilData.potassium != null ? Math.round(soilData.potassium) : "N/A", unit: "mg/kg", color: "text-orange-400" },
                       ].map(({ label, value, unit, color }) => (
                         <div key={label} className="bg-stone-900 border border-stone-700 rounded-xl p-3.5 text-center">
                           <div className="text-[13px] text-stone-500 uppercase tracking-wider font-medium">{label}</div>
@@ -1502,7 +1505,7 @@ const CropDetailPage = ({
                 {/* Water Availability */}
                 {waterScore && (
                   <AnimatedCard>
-                    <h3 className="text-xs font-bold text-stone-300 uppercase tracking-wider mb-3 flex items-center gap-2"><Droplets size={14} className="text-[#84cc16]" /> Water Availability Index</h3>
+                    <h3 className="text-xs font-bold text-stone-300 uppercase tracking-wider mb-3 flex items-center gap-2"><Droplets size={14} className="text-[#84cc16]" /> {t('cropHub.waterIndex')}</h3>
                     <div className="p-5 rounded-xl bg-stone-900 border border-stone-700">
                       <div className="flex items-center justify-between mb-3">
                         <div className="flex items-center gap-3">
@@ -1521,7 +1524,7 @@ const CropDetailPage = ({
                 {/* AI Analysis */}
                 {envScore.reasons.length > 0 && (
                   <AnimatedCard>
-                    <h3 className="text-xs font-bold text-stone-300 uppercase tracking-wider mb-3 flex items-center gap-2"><Target size={14} className="text-[#84cc16]" /> Environmental Analysis for {crop.name}</h3>
+                    <h3 className="text-xs font-bold text-stone-300 uppercase tracking-wider mb-3 flex items-center gap-2"><Target size={14} className="text-[#84cc16]" /> {t('cropHub.envAnalysis')} {crop.name}</h3>
                     <div className="grid md:grid-cols-2 gap-2">
                       {envScore.reasons.map((r, i) => (
                         <div key={i} className={`p-3 rounded-xl text-[13px] flex items-start gap-2 leading-relaxed ${r.type === "positive" ? "bg-green-500/10 text-green-300 border border-green-500/20" : "bg-yellow-500/10 text-yellow-300 border border-yellow-500/20"

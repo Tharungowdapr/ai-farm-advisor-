@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Sprout, Calendar, MapPin, Droplets, Thermometer, AlertTriangle, CheckCircle2, ChevronRight, Loader2, Plus } from 'lucide-react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const GrainOverlay = () => <div className="grain-overlay opacity-20" />;
 
@@ -10,6 +11,7 @@ export default function CropTracker() {
   const [farms, setFarms] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -45,11 +47,11 @@ export default function CropTracker() {
   };
 
   const getStage = (dap) => {
-    if (dap < 20) return "Seedling / Early Growth";
-    if (dap < 50) return "Vegetative Phase";
-    if (dap < 90) return "Flowering / Panicle Initiation";
-    if (dap < 120) return "Grain Filling / Maturity";
-    return "Ready for Harvest";
+    if (dap < 20) return t('cropTracker.stageSeedling');
+    if (dap < 50) return t('cropTracker.stageVegetative');
+    if (dap < 90) return t('cropTracker.stageFlowering');
+    if (dap < 120) return t('cropTracker.stageGrain');
+    return t('cropTracker.stageHarvest');
   };
 
   if (loading) return (
@@ -64,21 +66,21 @@ export default function CropTracker() {
       <div className="max-w-5xl mx-auto">
         <div className="flex items-center justify-between mb-10">
           <div>
-            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#84cc16] mb-2">Live Monitoring</p>
-            <h1 className="font-serif text-4xl font-black text-[#0c0a09]">Active <span className="italic text-[#84cc16]">Crops</span></h1>
+            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#84cc16] mb-2">{t('cropTracker.title')}</p>
+            <h1 className="font-serif text-4xl font-black text-[#0c0a09]">{t('cropTracker.activeCrops')}</h1>
           </div>
           <button onClick={() => navigate('/crops')} className="flex items-center gap-2 px-5 py-3 bg-[#0c0a09] text-white rounded-2xl font-black text-xs uppercase tracking-wider hover:bg-stone-800 transition-all">
-            <Plus size={14} /> Add Crop
+            <Plus size={14} /> {t('cropTracker.addCrop')}
           </button>
         </div>
 
         {farms.length === 0 ? (
           <div className="bg-white border-2 border-stone-200 rounded-[2rem] p-12 text-center shadow-xl">
             <Sprout size={48} className="mx-auto mb-4 text-stone-300" />
-            <h2 className="font-serif text-2xl font-black text-[#0c0a09] mb-2">No Active Crops</h2>
-            <p className="text-stone-500 mb-6">Start tracking your crops to get daily insights and alerts.</p>
+            <h2 className="font-serif text-2xl font-black text-[#0c0a09] mb-2">{t('cropTracker.noActiveCrops')}</h2>
+            <p className="text-stone-500 mb-6">{t('cropTracker.startTracking')}</p>
             <button onClick={() => navigate('/crops')} className="px-6 py-3 bg-[#84cc16] text-[#0c0a09] font-black text-xs uppercase tracking-widest rounded-xl hover:bg-[#facc15] transition-all">
-              Explore Intelligence Hub
+              {t('cropTracker.exploreHub')}
             </button>
           </div>
         ) : (
@@ -93,16 +95,16 @@ export default function CropTracker() {
                   <div className="flex justify-between items-start mb-6">
                     <div>
                       <h3 className="font-serif text-3xl font-black text-[#0c0a09] capitalize">{farm.crop_name}</h3>
-                      <p className="text-stone-500 text-sm font-medium mt-1">{farm.area_acres} Acres • {farm.variety || 'Standard'}</p>
+                      <p className="text-stone-500 text-sm font-medium mt-1">{farm.area_acres} {t('cropTracker.acres')} • {farm.variety || 'Standard'}</p>
                     </div>
                     <div className="bg-[#84cc16]/10 px-4 py-2 rounded-xl text-center border border-[#84cc16]/20">
-                      <p className="text-[10px] font-black uppercase text-[#84cc16] tracking-widest">Day</p>
+                      <p className="text-[10px] font-black uppercase text-[#84cc16] tracking-widest">{t('cropTracker.day')}</p>
                       <p className="font-black text-2xl text-[#0c0a09]">{dap}</p>
                     </div>
                   </div>
 
                   <div className="mb-6">
-                    <p className="text-[9px] font-black uppercase tracking-[0.2em] text-stone-400 mb-2">Current Stage</p>
+                    <p className="text-[9px] font-black uppercase tracking-[0.2em] text-stone-400 mb-2">{t('cropTracker.currentStage')}</p>
                     <div className="bg-stone-50 border border-stone-100 rounded-xl p-4 flex items-center justify-between">
                       <span className="font-bold text-[#0c0a09]">{stage}</span>
                       <div className="flex items-center gap-1">
@@ -115,17 +117,17 @@ export default function CropTracker() {
 
                   <div className="grid grid-cols-2 gap-3 mb-6">
                     <div className="bg-stone-50 rounded-xl p-3 border border-stone-100">
-                      <div className="flex items-center gap-1.5 mb-1"><Calendar size={12} className="text-[#84cc16]" /><span className="text-[8px] font-black uppercase text-stone-400">Planted</span></div>
+                      <div className="flex items-center gap-1.5 mb-1"><Calendar size={12} className="text-[#84cc16]" /><span className="text-[8px] font-black uppercase text-stone-400">{t('cropTracker.planted')}</span></div>
                       <p className="font-bold text-sm text-[#0c0a09]">{farm.planting_date}</p>
                     </div>
                     <div className="bg-stone-50 rounded-xl p-3 border border-stone-100">
-                      <div className="flex items-center gap-1.5 mb-1"><MapPin size={12} className="text-[#84cc16]" /><span className="text-[8px] font-black uppercase text-stone-400">Soil</span></div>
+                      <div className="flex items-center gap-1.5 mb-1"><MapPin size={12} className="text-[#84cc16]" /><span className="text-[8px] font-black uppercase text-stone-400">{t('cropTracker.soil')}</span></div>
                       <p className="font-bold text-sm text-[#0c0a09]">{farm.soil_type || 'Unknown'}</p>
                     </div>
                   </div>
 
                   <button onClick={() => navigate('/crops', { state: { selectedCropName: farm.crop_name, activeTab: 'tracking' } })} className="w-full py-4 bg-stone-50 text-stone-600 font-black text-xs uppercase tracking-widest rounded-xl hover:bg-[#0c0a09] hover:text-white transition-all flex items-center justify-center gap-2 group-hover:bg-[#0c0a09] group-hover:text-white">
-                    View Daily Plan <ChevronRight size={14} />
+                    {t('cropTracker.viewDailyPlan')} <ChevronRight size={14} />
                   </button>
                 </motion.div>
               );

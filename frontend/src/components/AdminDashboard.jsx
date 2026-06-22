@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { ShieldAlert, Users, Trash2, Shield, Search, Loader2 } from 'lucide-react';
 import axios from 'axios';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const AdminDashboard = ({ user }) => {
+  const { t } = useLanguage();
   const [usersList, setUsersList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -29,12 +31,12 @@ const AdminDashboard = ({ user }) => {
   }, [user]);
 
   const handleDelete = async (id, name) => {
-    if (window.confirm(`Are you sure you want to completely delete the user ${name}? This action is irreversible and deletes all associated farm data.`)) {
+    if (window.confirm(t('admin.deleteConfirm', { name }))) {
       try {
         await axios.delete(`/api/admin/users/${id}`);
         setUsersList(usersList.filter(u => u.id !== id));
       } catch (err) {
-        alert('Failed to delete user');
+        alert(t('admin.deleteFailed'));
       }
     }
   };
@@ -45,7 +47,7 @@ const AdminDashboard = ({ user }) => {
       await axios.put(`/api/admin/users/${id}/role`, { is_admin: newStatus });
       setUsersList(usersList.map(u => u.id === id ? { ...u, is_admin: newStatus } : u));
     } catch (err) {
-      alert('Failed to update role');
+      alert(t('admin.roleUpdateFailed'));
     }
   };
 
@@ -54,8 +56,8 @@ const AdminDashboard = ({ user }) => {
       <div className="pt-24 min-h-screen bg-[#fafaf9] px-6 flex items-center justify-center">
         <div className="text-center bg-white p-10 rounded-3xl shadow-xl border border-red-100 max-w-md">
           <ShieldAlert size={48} className="text-red-500 mx-auto mb-4" />
-          <h2 className="text-2xl font-black text-stone-900 mb-2">Access Denied</h2>
-          <p className="text-stone-500 font-medium">You must have administrator privileges to view this dashboard.</p>
+          <h2 className="text-2xl font-black text-stone-900 mb-2">{t('admin.denied')}</h2>
+          <p className="text-stone-500 font-medium">{t('admin.noAccess')}</p>
         </div>
       </div>
     );
@@ -73,17 +75,17 @@ const AdminDashboard = ({ user }) => {
           <div>
             <div className="flex items-center gap-2 mb-4 opacity-60">
               <Shield size={16} className="text-[#84cc16]" />
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#0c0a09]">SYSTEM COMMAND</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#0c0a09]">{t('admin.command')}</span>
             </div>
-            <h1 className="font-serif text-5xl font-black text-[#0c0a09] mb-2">Admin <span className="italic text-[#84cc16]">Dashboard.</span></h1>
-            <p className="text-stone-500 font-medium">Manage platform users, roles, and administrative data.</p>
+            <h1 className="font-serif text-5xl font-black text-[#0c0a09] mb-2">{t('admin.title')}</h1>
+            <p className="text-stone-500 font-medium">{t('admin.description')}</p>
           </div>
 
           <div className="flex items-center bg-white border border-stone-200 rounded-2xl p-2 shadow-sm w-full md:w-80">
             <Search size={18} className="text-stone-400 mx-2" />
             <input 
               type="text" 
-              placeholder="Search users by name or email..."
+              placeholder={t('admin.searchPlaceholder')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="flex-1 bg-transparent border-none outline-none text-sm font-medium"
@@ -101,12 +103,12 @@ const AdminDashboard = ({ user }) => {
               <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="bg-stone-50 border-b-2 border-stone-200 text-[10px] uppercase tracking-widest font-black text-stone-500">
-                    <th className="p-4 pl-6">User</th>
-                    <th className="p-4">Contact</th>
-                    <th className="p-4">Location</th>
-                    <th className="p-4">Joined</th>
-                    <th className="p-4 text-center">Role</th>
-                    <th className="p-4 text-right pr-6">Actions</th>
+                    <th className="p-4 pl-6">{t('admin.user')}</th>
+                    <th className="p-4">{t('admin.contact')}</th>
+                    <th className="p-4">{t('admin.location')}</th>
+                    <th className="p-4">{t('admin.joined')}</th>
+                    <th className="p-4 text-center">{t('admin.role')}</th>
+                    <th className="p-4 text-right pr-6">{t('admin.actions')}</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-stone-100">
@@ -138,14 +140,14 @@ const AdminDashboard = ({ user }) => {
                           onClick={() => handleToggleRole(u.id, u.is_admin)}
                           className={`px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider border transition-colors ${u.is_admin ? 'bg-stone-900 text-white border-stone-800 hover:bg-stone-800' : 'bg-stone-100 text-stone-500 border-stone-200 hover:bg-stone-200'}`}
                         >
-                          {u.is_admin ? 'Admin' : 'User'}
+                          {u.is_admin ? t('admin.roleAdmin') : t('admin.roleUser')}
                         </button>
                       </td>
                       <td className="p-4 text-right pr-6">
                         <button 
                           onClick={() => handleDelete(u.id, u.name)}
                           className="p-2 text-stone-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
-                          title="Delete User"
+                          title={t('admin.deleteUser')}
                         >
                           <Trash2 size={16} />
                         </button>
@@ -155,7 +157,7 @@ const AdminDashboard = ({ user }) => {
                   {filteredUsers.length === 0 && (
                     <tr>
                       <td colSpan="6" className="p-10 text-center text-stone-400 font-medium">
-                        No users found matching your search.
+                        {t('admin.noMatch')}
                       </td>
                     </tr>
                   )}

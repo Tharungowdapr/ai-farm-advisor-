@@ -1,95 +1,115 @@
-# 🌾 KrishiSync AI: Multi-Agent Agricultural Intelligence Hub
+# KrishiVigyan — AI-Powered Farming Intelligence
 
+[![Live](https://img.shields.io/badge/Live-krishivigyan.vercel.app-84cc16)](https://krishivigyan.vercel.app)
 [![Python 3.12+](https://img.shields.io/badge/Python-3.12+-blue.svg)](https://www.python.org/downloads/)
 [![React 18](https://img.shields.io/badge/React-18-61DAFB.svg)](https://reactjs.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**KrishiSync AI** is a state-of-the-art agricultural intelligence platform designed to empower farmers with data-driven decision-making. By combining **Multi-Agent RAG (Retrieval-Augmented Generation)** with real-time market logistics and environmental diagnostics, it transforms raw agricultural data into actionable economic strategies.
+**KrishiVigyan** is a full-stack agricultural intelligence platform that delivers AI-powered crop recommendations, land analysis, weather forecasts, market prices, and disease detection — built for Karnataka farmers.
+
+**Live**: [krishivigyan.vercel.app](https://krishivigyan.vercel.app)
 
 ---
 
-## 🚀 Core Features
+## Features
 
-### 🤖 Vani AI: The Expert Advisory Scientist
-Powered by a **Supervisor-specialist architecture**, Vani AI handles complex queries using context-aware routing:
-- **Autonomous Routing:** A Supervisor Agent classifies queries and activates specialized models for Soil, Weather, Pests, or Market trends.
-- **RAG-Powered Knowledge:** Deeply integrated with ICAR (Indian Council of Agricultural Research) databases to provide scientifically verified advice.
-- **Linguistic Versatility:** Native support for Kannada, Hindi, Telugu, and Tamil with culturally situated metaphors.
+### Vani AI Chat
+Multi-agent AI assistant (Supervisor + specialist agents) for farming questions, disease diagnosis, and government scheme info. Supports Kannada language.
 
-### 💰 Smart Selling & AI Negotiator
-Move beyond simple price checking with our strategic bargaining engine:
-- ** APMC Mandi Database:** Hardcoded logic for the top 12 Karnataka Mandis ensuring 100% location accuracy without LLM hallucinations.
-- **Logistics Modeling:** Real-time transport cost estimation using Haversine distance and vehicle-specific overheads.
-- **Bargaining Bot:** A conversational negotiator that utilizes bargaining history to help farmers counter low-ball offers and maximize net profit.
+### Land Analyser
+GPS-powered soil analysis, water availability scoring, and crop suitability assessment with animated step-by-step processing.
 
-### 📊 Market Intelligence Hub
-- **Universal Pricing:** Live MSP data for government-regulated crops and regional benchmark fallbacks for non-MSP fruits/vegetables.
-- **Profit Analytics:** Clear visualization of "Gross vs. Net" profit after deducting labor, seeds, and transportation.
+### Crop Intelligence Hub
+AI-powered lifecycle management, predictive disease forecasting, and stage-by-stage guidance for 30+ Karnataka crops.
 
-### 🌍 Environmental Diagnostics
-- **Hyper-Local Weather:** Integration with OpenWeatherMap and OpenMeteo for real-time field conditions.
-- **Soil Suitability:** NPK-based analysis that maps land data to the most profitable crop varieties.
+### Market Hub
+Real-time market prices, MSP forecasts, logistics cost modeling, and profit analysis with a bargaining bot.
+
+### Smart Scan
+AI-powered disease detection from crop photos.
+
+### Environmental Diagnostics
+Real-time weather data, 7-day forecasts, NPK soil analysis, and water availability index.
 
 ---
 
-## 🛠️ Technical Implementation
+## Tech Stack
 
-### The Multi-Agent Pipeline
-The platform utilizes a **Directed Acyclic Graph (DAG)** flow for query resolution:
-1. **Input:** User query + GPS context + Soil data.
-2. **Supervision:** LLM determines which expert sub-agents (SoilAgent, MarketAgent, etc.) to query.
-3. **Retrieval:** RAG service fetches technical ICAR documentation relevant to the specific crop and problem.
-4. **Synthesis:** All outputs are unified into a final, highly actionable report for the farmer.
-
-### Technology Stack
-- **Frontend:** React 18, Tailwind CSS, Vite.
-- **Backend:** Flask, Python Dotenv, Requests.
-- **AI/LLM:** OpenRouter Gateway (Gemini 1.5 Pro / GPT-4o-mini).
-- **Search:** Custom Geocoding Resolver (OpenWeather + OpenMeteo).
+| Layer | Technology |
+|---|---|
+| **Frontend** | React 18, Vite, Tailwind CSS, Framer Motion, Recharts |
+| **Backend** | Flask, PostgreSQL, SQLAlchemy |
+| **AI/LLM** | OpenRouter gateway (multi-model), RAG with ICAR knowledge base |
+| **Maps** | OpenStreetMap / Nominatim geocoding |
+| **Weather** | OpenWeatherMap, Open-Meteo |
+| **Deployment** | Frontend on Vercel, Backend on Render, Neon PostgreSQL |
 
 ---
 
-## 📥 Installation & Setup
+## Architecture
 
-### 1. Clone & Setup Backend
+```
+User → krishivigyan.vercel.app (Vercel SPA)
+                ↓
+         Vercel Rewrite (/api/*)
+                ↓
+    ai-farm-advisor.onrender.com (Flask)
+                ↓
+        ┌───────┴───────┐
+     PostgreSQL     LLM Service
+     (Neon)      (OpenRouter)
+```
+
+- Frontend serves as a static SPA with API calls proxied through Vercel rewrites
+- Backend is a Flask REST API on Render (free tier, cold-starts after inactivity)
+- LLMService/RAGService use a singleton pattern shared across agents
+- Persistent storage via Neon PostgreSQL (survives Render restarts)
+
+---
+
+## Setup
+
+### Backend
+
 ```bash
 git clone https://github.com/Tharungowdapr/ai-farm-advisor-.git
 cd ai-farm-advisor-/backend
 python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
+source venv/bin/activate
 pip install -r requirements.txt
-```
-
-### 2. Configure Environment
-Create a `.env` file in the `backend/` directory:
-```env
-OPENROUTER_API_KEY=your_api_key_here
-```
-
-### 3. Run the Platform
-**Terminal 1 (Backend):**
-```bash
+cp .env.example .env   # add your API keys
 python app.py
 ```
 
-**Terminal 2 (Frontend):**
+### Frontend
+
 ```bash
-cd frontend
+cd ../frontend
 npm install
 npm run dev
 ```
 
 ---
 
-## 🛡️ Security & Privacy
-- **Zero-Secret Commits:** All API keys are managed via `.env` and excluded from Git history.
-- **Local Sovereignty:** Soil and farm data are processed via local-first endpoints to ensure farmer data privacy.
+## Environment Variables
+
+| Variable | Required | Description |
+|---|---|---|
+| `OPENROUTER_API_KEY` | Yes | OpenRouter API key for LLM access |
+| `SECRET_KEY` | No | Fernet key for API key encryption at rest |
+| `DATABASE_URL` | No | PostgreSQL URL (uses SQLite file if not set) |
+| `CORS_ORIGINS` | No | Comma-separated allowed origins for CORS |
 
 ---
 
-## 🗺️ Future Roadmap
-- [ ] Integration with satellite imagery for crop health monitoring.
-- [ ] Voice-to-Action commands for hands-free field use.
-- [ ] Offline-first sync for remote areas with poor connectivity.
+## Deployment
 
-**Developed with ❤️ for the Indian Farming Community.**
+- **Frontend**: Auto-deploys to Vercel from `frontend/` directory on push to `main`
+- **Backend**: Auto-deploys to Render from `backend/` directory on push to `main`
+- **Database**: Neon PostgreSQL (free tier, serverless)
+
+---
+
+## License
+
+MIT

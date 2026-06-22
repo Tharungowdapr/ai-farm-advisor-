@@ -46,7 +46,53 @@ Real-time weather data, 7-day forecasts, NPK soil analysis, and water availabili
 
 ---
 
-## Architecture
+## Methodology
+
+```mermaid
+flowchart TD
+    User["👤 Farmer / User"] --> UI["🌐 React SPA<br/>krishivigyan.vercel.app"]
+
+    UI -->|GPS / City| Geo["📍 Geocoding<br/>OpenStreetMap"]
+    UI -->|Crop selection| CropDB["💾 Crop Database<br/>30+ Karnataka crops"]
+
+    Geo --> Weather["🌤 Weather API<br/>OpenWeatherMap"]
+    Geo --> Soil["🌱 Soil Grids<br/>NPK + pH data"]
+    Geo --> Forecast["📅 7-Day Forecast<br/>Open-Meteo"]
+
+    Weather --> EnvScore["📊 Environmental<br/>Suitability Score"]
+    Soil --> EnvScore
+    Forecast --> DiseaseRisk["🦠 Disease Risk<br/>Forecast Engine"]
+
+    EnvScore --> Recs["🤖 AI Recommendations<br/>LLM + RAG"]
+    DiseaseRisk --> Recs
+    CropDB --> Recs
+    MarketDB["💰 Market Prices<br/>MSP + APMC Data"] --> Recs
+
+    Recs --> Output["📋 Actionable Insights"]
+    Output --> StageGuide["🌱 Stage-by-Stage<br/>Crop Guidance"]
+    Output --> Alerts["🔔 Alerts &<br/>Preventions"]
+    Output --> Profit["📈 Profit Analysis<br/>& Bargaining"]
+
+    User --> Chat["💬 Vani AI Chat"]
+    Chat --> Supervisor["🧠 Supervisor Agent"]
+    Supervisor --> SoilAgent["Soil Expert"]
+    Supervisor --> WeatherAgent["Weather Expert"]
+    Supervisor --> PestAgent["Pest/Disease Expert"]
+    Supervisor --> MarketAgent["Market Expert"]
+    SoilAgent --> RAG["📚 RAG Knowledge Base<br/>ICAR Documents"]
+    WeatherAgent --> RAG
+    PestAgent --> RAG
+    MarketAgent --> RAG
+    RAG --> Response["✅ Unified Response"]
+
+    style User fill:#84cc16,color:#0c0a09,font-weight:bold
+    style UI fill:#1e293b,color:#fff
+    style Supervisor fill:#f59e0b,color:#0c0a09,font-weight:bold
+    style Recs fill:#84cc16,color:#0c0a09
+    style Output fill:#3b82f6,color:#fff
+```
+
+### Architecture
 
 ```
 User → krishivigyan.vercel.app (Vercel SPA)

@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { User, Mail, Phone, MapPin, Ruler, Sprout, Loader2, Save, LogOut, CheckCircle2, MessageSquare, History, Trash2, Clock, Search, ChevronRight, Eye } from 'lucide-react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const GrainOverlay = () => <div className="grain-overlay opacity-20" />;
 
@@ -18,6 +19,7 @@ export default function ProfilePage({ user: propUser, onLogout }) {
   const [showDropdown, setShowDropdown] = useState(false);
   const cityRef = React.useRef(null);
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   // Chat history
   const [sessions, setSessions] = useState([]);
@@ -164,19 +166,19 @@ export default function ProfilePage({ user: propUser, onLogout }) {
       <div className="max-w-5xl mx-auto">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h1 className="font-serif text-4xl font-black text-[#0c0a09]">Farmer <span className="italic text-[#84cc16]">Profile</span></h1>
+            <h1 className="font-serif text-4xl font-black text-[#0c0a09]">Farmer <span className="italic text-[#84cc16]">{t('profile.title')}</span></h1>
             <p className="text-stone-500 text-sm font-medium">{profile.email}</p>
           </div>
           <button onClick={handleLogout}
             className="flex items-center gap-2 px-5 py-3 bg-red-50 text-red-600 rounded-2xl font-black text-xs uppercase tracking-wider hover:bg-red-100 transition-all border border-red-200">
-            <LogOut size={14} /> Sign Out
+            <LogOut size={14} /> {t('profile.logout')}
           </button>
         </div>
 
         {/* Tabs */}
         <div className="flex gap-1 bg-white border-2 border-stone-200 rounded-2xl p-1.5 mb-8 shadow-sm">
           {[
-            { id: 'profile', label: 'Profile', icon: User },
+            { id: 'profile', label: t('profile.title'), icon: User },
             { id: 'chats', label: 'Chat History', icon: MessageSquare },
             { id: 'analyses', label: 'Land Analyses', icon: History },
           ].map(t => (
@@ -214,7 +216,7 @@ export default function ProfilePage({ user: propUser, onLogout }) {
             <div className="grid lg:grid-cols-[2fr_1fr] gap-8">
               <div className="space-y-6">
                 <div className="bg-white border-2 border-stone-200 rounded-[2rem] p-8 shadow-xl">
-                  <h2 className="text-[8px] font-black uppercase tracking-widest text-stone-400 mb-6">Personal Info</h2>
+                  <h2 className="text-[8px] font-black uppercase tracking-widest text-stone-400 mb-6">{t('profile.personalInfo')}</h2>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <label className="block font-black text-xs text-stone-500 mb-1">Name</label>
@@ -228,14 +230,14 @@ export default function ProfilePage({ user: propUser, onLogout }) {
                 </div>
 
                 <div className="bg-white border-2 border-stone-200 rounded-[2rem] p-8 shadow-xl">
-                  <h2 className="text-[8px] font-black uppercase tracking-widest text-stone-400 mb-6">Land & Location</h2>
+                  <h2 className="text-[8px] font-black uppercase tracking-widest text-stone-400 mb-6">{t('profile.farmDetails')}</h2>
                   <div className="grid md:grid-cols-3 gap-4">
                     <div>
-                      <label className="block font-black text-xs text-stone-500 mb-1">State</label>
+                      <label className="block font-black text-xs text-stone-500 mb-1">{t('profile.state')}</label>
                       <input type="text" value={profile.state || ''} onChange={e => setProfile(p => ({ ...p, state: e.target.value }))} className={inputClass} />
                     </div>
                     <div className="relative" ref={cityRef}>
-                      <label className="block font-black text-xs text-stone-500 mb-1">District</label>
+                      <label className="block font-black text-xs text-stone-500 mb-1">{t('profile.district')}</label>
                       <input type="text" value={profile.district || ''} onChange={e => { setProfile(p => ({ ...p, district: e.target.value })); setShowDropdown(true); }}
                         className={inputClass} onFocus={() => citySuggestions.length > 0 && setShowDropdown(true)} />
                       {showDropdown && citySuggestions.length > 0 && (
@@ -254,13 +256,13 @@ export default function ProfilePage({ user: propUser, onLogout }) {
                       <input type="text" value={profile.village || ''} onChange={e => setProfile(p => ({ ...p, village: e.target.value }))} className={inputClass} />
                     </div>
                     <div>
-                      <label className="block font-black text-xs text-stone-500 mb-1">Land (acres)</label>
+                      <label className="block font-black text-xs text-stone-500 mb-1">{t('profile.landSize')}</label>
                       <input type="number" step="0.01" value={profile.land_size_acres || ''} onChange={e => setProfile(p => ({ ...p, land_size_acres: e.target.value }))} className={inputClass} />
                     </div>
                     <div>
-                      <label className="block font-black text-xs text-stone-500 mb-1">Soil Type</label>
+                      <label className="block font-black text-xs text-stone-500 mb-1">{t('profile.soilType')}</label>
                       <select value={profile.soil_type || ''} onChange={e => setProfile(p => ({ ...p, soil_type: e.target.value }))} className={inputClass}>
-                        <option value="">Not set</option>
+                        <option value="">{t('profile.selectSoilType')}</option>
                         <option>Black Cotton</option><option>Red Loamy</option><option>Alluvial</option>
                         <option>Sandy</option><option>Clay</option><option>Laterite</option>
                       </select>
@@ -281,7 +283,7 @@ export default function ProfilePage({ user: propUser, onLogout }) {
                 <button onClick={handleSave} disabled={saving}
                   className="w-full py-4 bg-[#84cc16] text-[#0c0a09] font-black text-sm rounded-2xl hover:bg-[#facc15] shadow-lg disabled:opacity-50 transition-all flex items-center justify-center gap-3">
                   {saving ? <Loader2 size={16} className="animate-spin" /> : saved ? <CheckCircle2 size={16} /> : <Save size={16} />}
-                  {saving ? 'Saving...' : saved ? 'Saved!' : 'Save Profile'}
+                  {saving ? t('profile.saving') : saved ? t('profile.updated') : t('profile.update')}
                 </button>
               </div>
 

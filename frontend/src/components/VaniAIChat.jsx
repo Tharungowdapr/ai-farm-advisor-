@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Send, Mic, Volume2, Loader2, Sprout, MessageSquare, Plus, Trash2, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const GrainOverlay = () => <div className="grain-overlay opacity-20" />;
 
@@ -15,14 +16,14 @@ const SUGGESTIONS = [
   "How to control tomato leaf curl?",
 ];
 
-const WELCOME_MSG = { role: 'model', content: '🤖 **Vani AI** — Agricultural Intelligence Assistant\n\nI can help with crop recommendations, land analysis, market prices, disease diagnosis, government schemes, and more. How can I assist you today?' };
+
 
 export default function VaniAIChat({ user }) {
   const loc = useLocation();
   const cropContext = loc.state?.cropContext;
   const cropName = loc.state?.cropName;
 
-  const [messages, setMessages] = useState([WELCOME_MSG]);
+  const [messages, setMessages] = useState([{ role: 'model', content: '' }]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [listening, setListening] = useState(false);
@@ -38,6 +39,14 @@ export default function VaniAIChat({ user }) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const endRef = useRef(null);
   const recRef = useRef(null);
+
+  const { t } = useLanguage();
+
+  useEffect(() => {
+    if (messages.length === 1 && !messages[0].content) {
+      setMessages([{ role: 'model', content: t('chat.welcomeMsg') }]);
+    }
+  }, [t]);
 
   const token = localStorage.getItem('token');
 
@@ -76,7 +85,7 @@ export default function VaniAIChat({ user }) {
       const r = await axios.get(`/api/chat/sessions/${sid}`, { headers: { Authorization: `Bearer ${token}` } });
       if (r.data?.success) {
         const msgs = (r.data.messages || []).map(m => ({ role: m.role, content: m.content }));
-        setMessages([WELCOME_MSG, ...msgs]);
+        setMessages([{ role: 'model', content: t('chat.welcomeMsg') }, ...msgs]);
         setSessionId(sid);
       }
     } catch {} finally {
@@ -86,7 +95,7 @@ export default function VaniAIChat({ user }) {
 
   const newSession = () => {
     setSessionId(null);
-    setMessages([WELCOME_MSG]);
+    setMessages([{ role: 'model', content: t('chat.welcomeMsg') }]);
   };
 
   const deleteSession = async (sid, e) => {
@@ -97,7 +106,7 @@ export default function VaniAIChat({ user }) {
       await refreshSessions();
       if (sid === sessionId) {
         setSessionId(null);
-        setMessages([WELCOME_MSG]);
+        setMessages([{ role: 'model', content: t('chat.welcomeMsg') }]);
       }
     } catch {}
   };
@@ -220,12 +229,12 @@ export default function VaniAIChat({ user }) {
                 <button onClick={newSession}
                   className="w-full flex items-center gap-2 px-4 py-3 bg-[#84cc16]/10 border border-[#84cc16]/20 rounded-xl text-[#84cc16] hover:bg-[#84cc16]/20 transition-all font-bold text-sm">
                   <Plus size={16} />
-                  New Chat
+                  {t('chat.newChat')}
                 </button>
               </div>
               <div className="flex-1 overflow-y-auto px-3 pb-4 space-y-1 scrollbar-hide">
                 {sessions.length === 0 ? (
-                  <p className="text-[11px] text-stone-600 text-center py-8 font-medium">No conversations yet</p>
+                  <p className="text-[11px] text-stone-600 text-center py-8 font-medium">{t('chat.noConversations')}</p>
                 ) : (
                   sessions.map(s => (
                     <div key={s.id}
@@ -264,25 +273,25 @@ export default function VaniAIChat({ user }) {
           <div className="max-w-3xl mx-auto flex items-center gap-3">
             <div className="w-8 h-8 bg-[#84cc16] rounded-lg flex items-center justify-center"><Sprout size={18} className="text-[#0c0a09]" /></div>
             <div className="flex-1">
-              <p className="font-black text-sm text-white">Vani AI <span className="text-[#84cc16]">RAG</span></p>
-              <p className="text-[8px] text-stone-500 font-bold uppercase tracking-wider">Multi-Agent Agricultural Intelligence</p>
+              <p className="font-black text-sm text-white">{t('chat.title')} <span className="text-[#84cc16]">RAG</span></p>
+              <p className="text-[8px] text-stone-500 font-bold uppercase tracking-wider">{t('chat.subtitle')}</p>
             </div>
             <div className="flex items-center gap-2">
               {!user && (
                 <Link to="/login"
                   className="px-4 py-1.5 bg-[#84cc16] rounded-xl text-[#0c0a09] text-xs font-black hover:bg-[#facc15] transition-all">
-                  Sign in
+                  {t('nav.login')}
                 </Link>
               )}
               {needsOnboarding && (
                 <span className="px-3 py-1 bg-stone-800 rounded-lg text-[8px] font-black text-stone-500 uppercase tracking-wider">
-                  Guest Mode
+                  {t('chat.guestMode')}
                 </span>
               )}
               {isAgentThinking && (
                 <div className="flex items-center gap-2 px-3 py-1.5 bg-[#84cc16]/10 rounded-full border border-[#84cc16]/20">
                   <div className="w-1.5 h-1.5 bg-[#84cc16] rounded-full animate-pulse"></div>
-                  <span className="text-[8px] font-black text-[#84cc16] uppercase tracking-wider">Agents Working</span>
+                  <span className="text-[8px] font-black text-[#84cc16] uppercase tracking-wider">{t('chat.agentsWorking')}</span>
                 </div>
               )}
             </div>
@@ -295,7 +304,7 @@ export default function VaniAIChat({ user }) {
             <div className="max-w-3xl mx-auto flex items-center gap-3">
               <ExternalLink size={14} className="text-amber-400 flex-shrink-0" />
               <p className="text-[11px] text-amber-200/90 font-medium flex-1">
-                No API key configured. AI agents are disabled. Set your key in <Link to="/settings" className="text-amber-400 font-black underline hover:text-amber-300">Settings</Link>.
+                {t('chat.noApiKey')} <Link to="/settings" className="text-amber-400 font-black underline hover:text-amber-300">Settings</Link>.
               </p>
             </div>
           </div>
@@ -305,7 +314,7 @@ export default function VaniAIChat({ user }) {
             <div className="max-w-3xl mx-auto flex items-center gap-3">
               <ExternalLink size={14} className="text-red-400 flex-shrink-0" />
               <p className="text-[11px] text-red-200/90 font-medium flex-1">
-                API key is invalid: {llmError || 'LLM call failed'}. Update in <Link to="/settings" className="text-red-400 font-black underline hover:text-red-300">Settings</Link>.
+                {t('chat.invalidKey')}: {llmError || 'LLM call failed'}. {t('chat.updateIn')} <Link to="/settings" className="text-red-400 font-black underline hover:text-red-300">Settings</Link>.
               </p>
             </div>
           </div>
@@ -316,7 +325,7 @@ export default function VaniAIChat({ user }) {
           <div className="max-w-3xl mx-auto space-y-6">
             {messages.length === 1 && !loading && (
               <div className="mb-8">
-                <p className="text-[8px] font-black uppercase text-stone-500 tracking-widest mb-3">Suggested Questions</p>
+                <p className="text-[8px] font-black uppercase text-stone-500 tracking-widest mb-3">{t('chat.suggestedQuestions')}</p>
                 <div className="grid grid-cols-2 gap-2">
                   {SUGGESTIONS.map((s, i) => (
                     <button key={i} onClick={() => sendMessage(s)}
@@ -335,7 +344,7 @@ export default function VaniAIChat({ user }) {
                   {m.role === 'model' && (
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-5 h-5 bg-[#84cc16] rounded flex items-center justify-center"><Sprout size={10} className="text-[#0c0a09]" /></div>
-                      <span className="text-[8px] font-black text-[#84cc16] uppercase tracking-wider">Vani AI</span>
+                      <span className="text-[8px] font-black text-[#84cc16] uppercase tracking-wider">{t('chat.title')}</span>
                     </div>
                   )}
                   <div className="space-y-1">{formatMsg(m.content)}</div>
@@ -345,7 +354,7 @@ export default function VaniAIChat({ user }) {
                         className={`p-1.5 rounded-lg transition-all ${playingIdx === i ? 'bg-[#84cc16] text-[#0c0a09]' : 'bg-stone-800 hover:bg-[#84cc16]/20 text-stone-400 hover:text-[#84cc16]'}`}>
                         <Volume2 size={12} />
                       </button>
-                      <span className="text-[7px] text-stone-600 font-bold uppercase">{playingIdx === i ? 'Playing...' : 'Listen'}</span>
+                      <span className="text-[7px] text-stone-600 font-bold uppercase">{playingIdx === i ? t('chat.playing') : t('chat.listen')}</span>
                     </div>
                   )}
                 </div>
@@ -357,7 +366,7 @@ export default function VaniAIChat({ user }) {
                 <div className="bg-stone-900 border border-stone-800 p-5 rounded-2xl">
                   <div className="flex items-center gap-3">
                     <Loader2 size={14} className="animate-spin text-[#84cc16]" />
-                    <span className="text-[8px] font-black text-[#84cc16] uppercase tracking-widest">Loading conversation...</span>
+                    <span className="text-[8px] font-black text-[#84cc16] uppercase tracking-widest">{t('chat.loadingConversation')}</span>
                   </div>
                 </div>
               </div>
@@ -367,7 +376,7 @@ export default function VaniAIChat({ user }) {
                 <div className="bg-stone-900 border border-stone-800 p-5 rounded-2xl">
                   <div className="flex items-center gap-3 mb-2">
                     <div className="flex gap-1">{Array.from({length:3}).map((_, i) => <div key={i} className="w-1.5 h-1.5 bg-[#84cc16] rounded-full animate-bounce" style={{animationDelay:`${i*150}ms`}}></div>)}</div>
-                    <span className="text-[8px] font-black text-[#84cc16] uppercase tracking-widest">Running 6 agents...</span>
+                    <span className="text-[8px] font-black text-[#84cc16] uppercase tracking-widest">{t('chat.runningAgents')}</span>
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {['Supervisor','Soil','Weather','Market','Pest','Scheme','Synthesis','RAG'].map((a,i) => (
@@ -390,7 +399,7 @@ export default function VaniAIChat({ user }) {
             </button>
             <input value={input} onChange={e => setInput(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && sendMessage()}
-              placeholder={listening ? '🎤 Listening...' : 'Ask about crops, markets, schemes, diseases...'}
+              placeholder={listening ? `🎤 ${t('chat.listening')}` : t('chat.placeholder')}
               className="flex-1 bg-transparent border-none outline-none text-white text-sm placeholder:text-stone-600 font-medium" />
             <button onClick={() => sendMessage()} disabled={loading || !input.trim()}
               className="p-2.5 bg-[#84cc16] rounded-xl text-[#0c0a09] hover:bg-[#facc15] transition-all disabled:opacity-30">
@@ -398,7 +407,7 @@ export default function VaniAIChat({ user }) {
             </button>
           </div>
           <p className="text-center text-[7px] text-stone-600 mt-2 font-bold uppercase tracking-wider">
-            Powered by Groq · RAG over 256 knowledge chunks · 6 specialist agents
+            {t('chat.poweredBy')}
           </p>
         </div>
       </div>

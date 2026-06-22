@@ -18,6 +18,7 @@ import VaniAIChat from './components/VaniAIChat';
 import SmartEnvironmentScanner from './components/SmartEnvironmentScanner';
 import AdminDashboard from './components/AdminDashboard';
 import { GrainOverlay } from './components/GrainOverlay';
+import { LanguageProvider } from './i18n/LanguageContext';
 
 const App = () => {
   const [user, setUser] = useState(() => {
@@ -38,6 +39,7 @@ const App = () => {
     <Router>
       <div className="min-h-screen font-sans">
         <ErrorBoundary>
+          <LanguageProvider>
           <GrainOverlay />
           <Navbar user={user} onLogout={handleLogout} />
           <Routes>
@@ -60,6 +62,7 @@ const App = () => {
             <Route path="/settings" element={<ProtectedRoute user={user}><SettingsTerminal /></ProtectedRoute>} />
             <Route path="/profile" element={<ProtectedRoute user={user}><ProfilePage user={user} onLogout={handleLogout} /></ProtectedRoute>} />
           </Routes>
+          </LanguageProvider>
         </ErrorBoundary>
       </div>
     </Router>

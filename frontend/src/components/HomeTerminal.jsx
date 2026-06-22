@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLanguage } from '../i18n/LanguageContext';
 import { Link } from 'react-router-dom';
 import { Sprout, TrendingUp, Settings, MessageSquare, User, DollarSign, BookOpen, MapPin, Thermometer, Droplets, CloudRain, ChevronRight } from 'lucide-react';
 import axios from 'axios';
@@ -7,6 +8,7 @@ import { GrainOverlay } from './GrainOverlay';
 const HomeTerminal = ({ user: propUser }) => {
   const [weather, setWeather] = useState(null);
   const user = propUser || (() => { try { return JSON.parse(localStorage.getItem('user')); } catch { return null; } })();
+  const { t } = useLanguage();
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -32,7 +34,7 @@ const HomeTerminal = ({ user: propUser }) => {
               <span className="text-white text-[9px] font-black tracking-[0.2em] uppercase">KrishiVigyan v2.0</span>
             </div>
             <h1 className="font-serif text-white text-6xl lg:text-7xl leading-[0.85] font-black mb-6 tracking-tight">
-              {user ? `Welcome, ${user.name?.split(' ')[0]}` : 'Smart'} <br /><span className="text-[#84cc16] italic">Agriculture.</span>
+              {user ? `${t('home.welcome')}, ${user.name?.split(' ')[0]}` : 'Smart'} <br /><span className="text-[#84cc16] italic">Agriculture.</span>
             </h1>
             <p className="text-white/70 text-lg max-w-xl mb-8 border-l-4 border-[#84cc16] pl-6">
               AI-powered agricultural intelligence — land analysis, crop advisory, market forecasts, and expert guidance.
@@ -54,7 +56,7 @@ const HomeTerminal = ({ user: propUser }) => {
 
             <div className="flex flex-wrap gap-3">
               <Link to="/land-analyser" className="bg-[#84cc16] text-[#0c0a09] px-8 py-4 rounded-2xl font-black text-sm shadow-2xl hover:bg-[#facc15] transition-all hover:scale-105 flex items-center gap-2">
-                <MapPin size={16} /> Analyse Land
+                <MapPin size={16} /> {t('home.analyzeLand')}
               </Link>
               <Link to="/crops" className="bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-2xl font-black text-sm hover:bg-white/20 transition-all flex items-center gap-2">
                 <Sprout size={16} /> Crop Advisor
@@ -77,7 +79,7 @@ const HomeTerminal = ({ user: propUser }) => {
       </section>
 
       <section className="max-w-6xl mx-auto px-6 py-12">
-        <p className="text-[8px] font-black uppercase tracking-[0.2em] text-stone-400 mb-4">Quick Actions</p>
+        <p className="text-[8px] font-black uppercase tracking-[0.2em] text-stone-400 mb-4">{t('home.quickActions')}</p>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
           {[
             { to: '/land-analyser', icon: <MapPin size={18} />, label: 'Land Analyser', desc: 'GPS + soil + weather analysis', color: '#84cc16' },
@@ -103,9 +105,9 @@ const HomeTerminal = ({ user: propUser }) => {
         <p className="text-[8px] font-black uppercase tracking-[0.2em] text-stone-400 mb-6">Platform Guide</p>
         <div className="grid md:grid-cols-4 gap-6">
           {[
-            { step: "01", title: "Analyze Land", desc: "Run GPS diagnostics to understand your soil and local climate.", link: "/land-analyser", icon: <MapPin size={18} /> },
+            { step: "01", title: t('home.analyzeLand'), desc: "Run GPS diagnostics to understand your soil and local climate.", link: "/land-analyser", icon: <MapPin size={18} /> },
             { step: "02", title: "Select Crop", desc: "Browse the Intelligence Hub to find the most suitable crop for your land.", link: "/crops", icon: <Sprout size={18} /> },
-            { step: "03", title: "Chat with Vani", desc: "Ask Vani AI for a 7-day action plan or specific cultivation advice.", link: "/vaniai", icon: <MessageSquare size={18} /> },
+            { step: "03", title: t('home.chatWithVani'), desc: "Ask Vani AI for a 7-day action plan or specific cultivation advice.", link: "/vaniai", icon: <MessageSquare size={18} /> },
             { step: "04", title: "Scan Environment", desc: "Use AI-powered environmental scanning for pest and disease detection.", link: "/scan", icon: <DollarSign size={18} /> },
           ].map((g, i) => (
             <div key={i} className="relative p-8 bg-white rounded-3xl border border-stone-100 shadow-sm hover:shadow-lg transition-all group">

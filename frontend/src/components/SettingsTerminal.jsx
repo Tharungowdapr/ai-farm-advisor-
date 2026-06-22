@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLanguage } from '../i18n/LanguageContext';
 import { Settings, AlertTriangle, Loader2, CheckCircle, XCircle, Eye, EyeOff, Zap } from 'lucide-react';
 import axios from 'axios';
 import { GrainOverlay, SectionLabel } from './GrainOverlay';
@@ -39,6 +40,8 @@ const SettingsTerminal = () => {
   const [cacheSize, setCacheSize] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const { lang, setLang, t } = useLanguage();
 
   useEffect(() => {
     const loadSettings = async () => {
@@ -152,12 +155,12 @@ const SettingsTerminal = () => {
       }
       const response = await axios.post('/api/settings/test-llm', body);
       if (response.data.success) {
-        setTestResult({ success: true, message: 'Connection successful! LLM responded correctly.' });
+        setTestResult({ success: true, message: t('settings.testSuccess') });
       } else {
-        setTestResult({ success: false, message: response.data.error || 'Test failed' });
+        setTestResult({ success: false, message: response.data.error || t('settings.testFailed') });
       }
     } catch (err) {
-      setTestResult({ success: false, message: err.response?.data?.error || 'Connection failed' });
+      setTestResult({ success: false, message: err.response?.data?.error || t('settings.testFailed') });
     } finally {
       setTesting(false);
     }
@@ -217,7 +220,7 @@ const SettingsTerminal = () => {
       <GrainOverlay />
       <div className="max-w-5xl mx-auto">
         <header className="mb-12">
-          <SectionLabel text="Settings" icon={Settings} />
+          <SectionLabel text={t('settings.title')} icon={Settings} />
           <h1 className="font-serif text-5xl font-black text-[#0c0a09] mb-4">Control <span className="italic text-[#84cc16]">Panel.</span></h1>
           <p className="text-stone-500 text-base font-medium max-w-2xl">Configure your AI provider, language, and system preferences.</p>
         </header>
@@ -249,7 +252,7 @@ const SettingsTerminal = () => {
                   ))}
                 </div>
                 <div>
-                  <label className="block font-black text-xs uppercase tracking-widest text-stone-500 mb-3">Model</label>
+                  <label className="block font-black text-xs uppercase tracking-widest text-stone-500 mb-3">{t('settings.model')}</label>
                   <select value={llmModel} onChange={(e) => setLlmModel(e.target.value)}
                     className="w-full bg-stone-50 border-2 border-stone-200 rounded-2xl p-5 font-bold text-stone-700 outline-none focus:ring-4 focus:ring-[#84cc16]/10 focus:border-[#84cc16] transition-all"
                   >
@@ -259,7 +262,7 @@ const SettingsTerminal = () => {
                   </select>
                 </div>
                 <div>
-                  <label className="block font-black text-xs uppercase tracking-widest text-stone-500 mb-3">API Key</label>
+                  <label className="block font-black text-xs uppercase tracking-widest text-stone-500 mb-3">{t('settings.apiKey')}</label>
                   <div className="flex gap-2">
                     <div className="relative flex-1">
                       <input type={showKey ? 'text' : 'password'}
@@ -277,7 +280,7 @@ const SettingsTerminal = () => {
                     <button onClick={handleSaveApiKey} disabled={!apiKey || apiKey === '••••••••'}
                       className="px-6 rounded-2xl font-black text-sm uppercase tracking-wider bg-[#84cc16] text-[#0c0a09] hover:bg-[#facc15] transition-all disabled:opacity-50"
                     >
-                      Save
+                      {t('settings.save')}
                     </button>
                   </div>
                 </div>
@@ -286,7 +289,7 @@ const SettingsTerminal = () => {
                     className="flex-1 flex items-center justify-center gap-2 py-4 rounded-2xl font-black text-sm uppercase tracking-wider bg-stone-900 text-white hover:bg-stone-800 transition-all disabled:opacity-50"
                   >
                     {testing ? <Loader2 className="w-4 h-4 animate-spin" /> : <Zap className="w-4 h-4" />}
-                    {testing ? 'Testing...' : 'Test Connection'}
+                    {testing ? t('settings.testing') : t('settings.test')}
                   </button>
                 </div>
                 {testResult && (
@@ -306,11 +309,11 @@ const SettingsTerminal = () => {
               </div>
               <div className="space-y-6">
                 <div>
-                  <label className="block font-black text-xs uppercase tracking-widest text-stone-500 mb-3">Primary Language</label>
-                  <select value={localLang} onChange={(e) => setLocalLang(e.target.value)}
+                  <label className="block font-black text-xs uppercase tracking-widest text-stone-500 mb-3">{t('settings.language')}</label>
+                  <select value={localLang} onChange={(e) => { setLocalLang(e.target.value); setLang(e.target.value); }}
                     className="w-full bg-stone-50 border-2 border-stone-200 rounded-2xl p-5 font-bold text-stone-700 outline-none focus:ring-4 focus:ring-[#84cc16]/10 focus:border-[#84cc16] transition-all">
-                    <option value="EN">English (Default)</option>
-                    <option value="KN">ಕನ್ನಡ (Kannada)</option>
+                    <option value="EN">{t('settings.english')}</option>
+                    <option value="KN">{t('settings.kannada')}</option>
                     <option value="TE">తెలుగు (Telugu)</option>
                     <option value="TA">தமிழ் (Tamil)</option>
                     <option value="HI">हिन्दी (Hindi)</option>
@@ -347,7 +350,7 @@ const SettingsTerminal = () => {
               <button onClick={handleSave} disabled={saved || saving}
                 className={`w-full py-6 rounded-3xl font-black text-lg uppercase tracking-wider shadow-2xl transition-all flex items-center justify-center gap-2 ${saved ? 'bg-[#10b981] text-white' : saving ? 'bg-[#84cc16]/50 text-[#0c0a09] cursor-wait' : 'bg-[#84cc16] text-[#0c0a09] hover:bg-[#facc15] hover:scale-[1.02]'}`}>
                 {saving && <Loader2 size={18} className="animate-spin" />}
-                {saved ? '✓ Configuration Saved' : 'Save Configuration'}
+                {saved ? t('settings.saved') : t('settings.save')}
               </button>
               <button onClick={handleResetSettings} disabled={saving}
                 className="w-full py-4 rounded-2xl font-bold text-sm uppercase tracking-wider bg-stone-100 text-stone-700 hover:bg-stone-200 transition-all border-2 border-stone-300">

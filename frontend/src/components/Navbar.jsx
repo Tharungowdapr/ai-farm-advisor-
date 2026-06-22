@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Sprout, Settings, Globe, User, Menu, X, LayoutDashboard, MessageSquare, TrendingUp, MapPin } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const Navbar = ({ user, onLogout }) => {
-  const [lang, setLang] = useState(localStorage.getItem('lang') || 'EN');
+  const { lang, setLang, t } = useLanguage();
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
 
@@ -12,12 +13,12 @@ const Navbar = ({ user, onLogout }) => {
   if (location.pathname === '/' && !user) return null;
 
   const navLinks = [
-    { path: '/dashboard', label: 'Dashboard' },
-    { path: '/land-analyser', label: 'Land Analyser' },
-    { path: '/crops', label: 'Crop Intelligence' },
-    { path: '/market', label: 'Market' },
-    { path: '/vaniai', label: 'Vani AI' },
-    { path: '/settings', label: 'Settings' },
+    { path: '/dashboard', label: t('nav.dashboard') },
+    { path: '/land-analyser', label: t('nav.landAnalyser') },
+    { path: '/crops', label: t('nav.crops') },
+    { path: '/market', label: t('nav.market') },
+    { path: '/vaniai', label: t('nav.vaniAI') },
+    { path: '/settings', label: t('nav.settings') },
   ];
 
   const closeMobile = () => setMobileOpen(false);
@@ -51,7 +52,7 @@ const Navbar = ({ user, onLogout }) => {
           {user?.is_admin && (
             <Link to="/admin" className="group relative">
               <div className={`text-[9px] font-black tracking-[0.15em] uppercase ${location.pathname === '/admin' ? 'text-[#84cc16]' : 'text-stone-400 group-hover:text-[#0c0a09]'}`}>
-                Admin
+                {t('nav.admin')}
               </div>
               {location.pathname === '/admin' && (
                 <motion.div layoutId="navline" className="absolute -bottom-1 w-0.5 h-0.5 bg-[#84cc16] rounded-full" />
@@ -70,7 +71,7 @@ const Navbar = ({ user, onLogout }) => {
             </Link>
           ) : (
             <Link to="/login" className="hidden md:inline-flex px-4 py-1.5 bg-[#0c0a09] text-white rounded-xl font-black text-[9px] uppercase tracking-wider hover:bg-stone-800 transition-all">
-              Sign In
+              {t('nav.login')}
             </Link>
           )}
           <Link to="/settings" className="p-1.5 md:p-2 hover:bg-stone-100 rounded-lg transition-colors opacity-40 hover:opacity-100"><Settings size={15} /></Link>
@@ -123,7 +124,7 @@ const Navbar = ({ user, onLogout }) => {
                   <Link to="/admin" onClick={closeMobile}
                     className={`block px-4 py-3 rounded-xl text-[13px] font-bold tracking-wider transition-all ${location.pathname === '/admin' ? 'bg-[#84cc16]/10 text-[#84cc16] border border-[#84cc16]/20' : 'text-stone-600 hover:bg-stone-50 border border-transparent'}`}
                   >
-                    Admin
+                    {t('nav.admin')}
                   </Link>
                 )}
               </div>
@@ -132,7 +133,7 @@ const Navbar = ({ user, onLogout }) => {
                   onClick={() => setLang(lang === 'EN' ? 'KN' : 'EN')}
                   className="w-full flex items-center justify-center gap-2 bg-[#0c0a09] text-white px-4 py-2.5 rounded-xl font-black text-[11px] tracking-wider uppercase hover:bg-[#84cc16] hover:text-[#0c0a09] transition-all"
                 >
-                  <Globe className="w-3.5 h-3.5" /> Switch to {lang === 'EN' ? 'ಕನ್ನಡ' : 'English'}
+                  <Globe className="w-3.5 h-3.5" /> {lang === 'EN' ? 'ಕನ್ನಡ' : 'English'}
                 </button>
                 {user ? (
                   <Link to="/profile" onClick={closeMobile}
@@ -144,7 +145,7 @@ const Navbar = ({ user, onLogout }) => {
                   <Link to="/login" onClick={closeMobile}
                     className="w-full flex items-center justify-center gap-2 bg-[#0c0a09] text-white px-4 py-2.5 rounded-xl font-black text-[11px] tracking-wider uppercase hover:bg-stone-800 transition-all"
                   >
-                    Sign In
+                    {t('nav.login')}
                   </Link>
                 )}
               </div>
@@ -157,11 +158,11 @@ const Navbar = ({ user, onLogout }) => {
       <nav className="fixed bottom-0 left-0 right-0 z-[150] lg:hidden bg-white/95 backdrop-blur-[30px] border-t border-stone-200 safe-area-bottom">
         <div className="flex items-center justify-around py-1.5 px-1">
           {[
-            { path: '/dashboard', icon: LayoutDashboard, label: 'Home' },
-            { path: '/land-analyser', icon: MapPin, label: 'Analyse' },
-            { path: '/vaniai', icon: MessageSquare, label: 'Vani AI' },
-            { path: '/market', icon: TrendingUp, label: 'Market' },
-            { path: '/profile', icon: User, label: 'Profile' },
+            { path: '/dashboard', icon: LayoutDashboard, label: t('nav.dashboard') },
+            { path: '/land-analyser', icon: MapPin, label: t('nav.landAnalyser') },
+            { path: '/vaniai', icon: MessageSquare, label: t('nav.vaniAI') },
+            { path: '/market', icon: TrendingUp, label: t('nav.market') },
+            { path: '/profile', icon: User, label: t('nav.profile') },
           ].map(({ path, icon: Icon, label }) => {
             const active = location.pathname === path;
             return (

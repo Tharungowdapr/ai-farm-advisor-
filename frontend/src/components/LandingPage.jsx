@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Sprout, CloudSun, Landmark, ShoppingBag, Brain, BarChart3, ShieldCheck, ArrowRight, Star, Leaf, Droplets } from 'lucide-react';
 import { GrainOverlay } from './GrainOverlay';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const FeatureCard = ({ icon: Icon, title, desc }) => (
   <div className="group bg-white/80 backdrop-blur-sm border-2 border-stone-200 rounded-[2rem] p-8 hover:border-[#84cc16]/30 hover:shadow-2xl hover:shadow-[#84cc16]/5 transition-all duration-300">
@@ -13,6 +14,7 @@ const FeatureCard = ({ icon: Icon, title, desc }) => (
 );
 
 const LandingPage = () => {
+  const { t } = useLanguage();
   return (
     <div className="min-h-screen bg-[#fafaf9]">
       <GrainOverlay />
@@ -29,10 +31,10 @@ const LandingPage = () => {
         </Link>
         <div className="flex items-center gap-3">
           <Link to="/login" className="px-5 py-2 text-sm font-black text-stone-600 hover:text-[#0c0a09] transition-colors">
-            Sign In
+            {t('auth.login')}
           </Link>
           <Link to="/signup" className="px-5 py-2 bg-[#0c0a09] text-white rounded-xl font-black text-sm hover:bg-stone-800 transition-all">
-            Get Started
+            {t('landing.getStarted')}
           </Link>
         </div>
       </nav>
@@ -45,20 +47,19 @@ const LandingPage = () => {
         </div>
 
         <h1 className="font-serif text-6xl md:text-8xl font-black text-[#0c0a09] leading-[0.9] mb-6">
-          Farm Smarter<br />
-          <span className="italic text-[#84cc16]">Grow Better</span>
+          {t('landing.heroTitle')}<br />
+          <span className="italic text-[#84cc16]">{t('landing.heroTitleAccent')}</span>
         </h1>
         <p className="text-stone-500 text-lg max-w-2xl mx-auto mb-10 font-medium leading-relaxed">
-          KrishiVigyan combines AI, real-time weather data, soil analysis, and market intelligence
-          to help Indian farmers make data-driven decisions.
+          {t('landing.heroSub')}
         </p>
 
         <div className="flex items-center justify-center gap-4">
           <Link to="/signup" className="inline-flex items-center gap-2 bg-[#0c0a09] text-white px-8 py-4 rounded-2xl font-black text-sm uppercase tracking-wider hover:bg-stone-800 transition-all shadow-2xl shadow-black/10">
-            Start Free <ArrowRight className="w-4 h-4" />
+            {t('landing.getStarted')} <ArrowRight className="w-4 h-4" />
           </Link>
           <Link to="/login" className="inline-flex items-center gap-2 bg-white border-2 border-stone-200 px-8 py-4 rounded-2xl font-black text-sm uppercase tracking-wider text-stone-700 hover:border-[#84cc16]/30 transition-all">
-            Sign In
+            {t('auth.login')}
           </Link>
         </div>
 
@@ -81,19 +82,19 @@ const LandingPage = () => {
       <section className="py-24 px-6 max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="font-serif text-4xl md:text-5xl font-black text-[#0c0a09] mb-4">
-            Everything You Need to <span className="italic text-[#84cc16]">Thrive</span>
+            {t('landing.features')}
           </h2>
           <p className="text-stone-500 max-w-xl mx-auto font-medium">
             Intelligent tools designed for the modern Indian farmer.
           </p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <FeatureCard icon={CloudSun} title="Weather Intelligence" desc="Hyper-local 7-day forecasts and disease risk predictions based on your exact location." />
-          <FeatureCard icon={Landmark} title="Soil Analysis" desc="NPK levels, pH, and nutrient recommendations with actionable soil improvement plans." />
-          <FeatureCard icon={ShoppingBag} title="Market Rates" desc="Real-time mandi prices, MSP data, and price forecasts to maximize your profits." />
-          <FeatureCard icon={Brain} title="Vani AI Assistant" desc="Your personal AI agriculture expert. Ask anything in English, Kannada, Telugu, Tamil, or Hindi." />
-          <FeatureCard icon={BarChart3} title="Crop Intelligence" desc="Comprehensive crop database with cultivation guides, pest management, and best practices." />
-          <FeatureCard icon={ShieldCheck} title="Smart Alerts" desc="Get notified about disease outbreaks, price changes, and weather warnings before they affect you." />
+          <FeatureCard icon={CloudSun} title={t('landing.featureWeatherTitle')} desc={t('landing.featureWeatherDesc')} />
+          <FeatureCard icon={Landmark} title={t('landing.featureSoilTitle')} desc={t('landing.featureSoilDesc')} />
+          <FeatureCard icon={ShoppingBag} title={t('landing.featureMarketTitle')} desc={t('landing.featureMarketDesc')} />
+          <FeatureCard icon={Brain} title={t('landing.featureVaniTitle')} desc={t('landing.featureVaniDesc')} />
+          <FeatureCard icon={BarChart3} title={t('landing.featureCropTitle')} desc={t('landing.featureCropDesc')} />
+          <FeatureCard icon={ShieldCheck} title={t('landing.featureAlertsTitle')} desc={t('landing.featureAlertsDesc')} />
         </div>
       </section>
 
@@ -126,8 +127,7 @@ const LandingPage = () => {
             </span>
           </div>
           <div className="flex items-center gap-6 text-xs font-bold text-stone-400 uppercase tracking-wider">
-            <span>© 2026 KrishiVigyan</span>
-            <span>Made with <Droplets className="w-3 h-3 inline text-[#84cc16]" /> for Indian Farmers</span>
+            <span>{t('landing.footer')}</span>
           </div>
         </div>
       </footer>

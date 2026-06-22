@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Sprout, Mail, Lock, User, Phone, MapPin, Ruler, Loader2, Eye, EyeOff } from 'lucide-react';
 import axios from 'axios';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const GrainOverlay = () => <div className="grain-overlay opacity-20" />;
 
@@ -18,6 +19,7 @@ export default function SignupPage({ onLogin }) {
   const [showDropdown, setShowDropdown] = useState(false);
   const cityRef = React.useRef(null);
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   React.useEffect(() => {
     if (form.district.length < 2) { setCitySuggestions([]); return; }
@@ -52,7 +54,7 @@ export default function SignupPage({ onLogin }) {
         navigate('/profile');
       }
     } catch (err) {
-      setError(err.response?.data?.error || 'Registration failed');
+      setError(err.response?.data?.error || t('auth.signupError'));
     } finally {
       setLoading(false);
     }
@@ -69,7 +71,7 @@ export default function SignupPage({ onLogin }) {
             <Sprout className="text-[#84cc16] w-8 h-8" />
           </div>
           <h1 className="font-serif text-4xl font-black text-[#0c0a09]">
-            Create <span className="italic text-[#84cc16]">Account</span>
+            {t('auth.signup')}
           </h1>
           <p className="text-stone-500 text-sm mt-2 font-medium">Register your farm for personalized insights</p>
         </div>
@@ -84,7 +86,7 @@ export default function SignupPage({ onLogin }) {
 
             <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label className="block font-black text-xs uppercase tracking-widest text-stone-500 mb-2">Full Name *</label>
+                <label className="block font-black text-xs uppercase tracking-widest text-stone-500 mb-2">{t('auth.name')} *</label>
                 <div className="relative">
                   <User size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-stone-400" />
                   <input type="text" value={form.name} onChange={e => update('name', e.target.value)} required
@@ -103,7 +105,7 @@ export default function SignupPage({ onLogin }) {
 
             <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label className="block font-black text-xs uppercase tracking-widest text-stone-500 mb-2">Email *</label>
+                <label className="block font-black text-xs uppercase tracking-widest text-stone-500 mb-2">{t('auth.email')} *</label>
                 <div className="relative">
                   <Mail size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-stone-400" />
                   <input type="email" value={form.email} onChange={e => update('email', e.target.value)} required
@@ -111,7 +113,7 @@ export default function SignupPage({ onLogin }) {
                 </div>
               </div>
               <div>
-                <label className="block font-black text-xs uppercase tracking-widest text-stone-500 mb-2">Password *</label>
+                <label className="block font-black text-xs uppercase tracking-widest text-stone-500 mb-2">{t('auth.password')} *</label>
                 <div className="relative">
                   <Lock size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-stone-400" />
                   <input type={showPwd ? 'text' : 'password'} value={form.password} onChange={e => update('password', e.target.value)}
@@ -187,14 +189,14 @@ export default function SignupPage({ onLogin }) {
             <button type="submit" disabled={loading || !form.name || !form.email || !form.password}
               className="w-full py-5 bg-[#84cc16] text-[#0c0a09] font-black text-base rounded-2xl hover:bg-[#facc15] shadow-lg disabled:opacity-50 transition-all flex items-center justify-center gap-3 mt-2">
               {loading ? <Loader2 size={18} className="animate-spin" /> : null}
-              {loading ? 'Creating account...' : 'Create Account'}
+              {loading ? t('auth.signingUp') : t('auth.signupButton')}
             </button>
           </form>
 
           <div className="mt-8 text-center">
             <p className="text-stone-500 text-sm font-medium">
-              Already registered?{' '}
-              <Link to="/login" className="text-[#84cc16] font-black hover:underline">Sign in</Link>
+              {t('auth.haveAccount')}{' '}
+              <Link to="/login" className="text-[#84cc16] font-black hover:underline">{t('auth.login')}</Link>
             </p>
           </div>
         </div>

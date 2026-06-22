@@ -10,10 +10,11 @@ const wdg = (val, label, icon, color) => (
   </div>
 );
 
-const LocationStep = ({ onGpsDetect, onCitySearch, detecting }) => (
+const LocationStep = ({ onGpsDetect, onCitySearch, detecting, error }) => (
   <div className="min-h-screen pt-24 flex items-center justify-center bg-[#fafaf9] px-6">
     <GrainOverlay />
     <div className="max-w-lg w-full">
+      {error && <div className="mb-4 bg-red-50 border-2 border-red-200 rounded-2xl p-4 flex gap-3 items-start"><AlertTriangle size={20} className="text-red-600 flex-shrink-0 mt-0.5" /><p className="text-red-700 font-bold text-sm">{error}</p></div>}
       <div className="text-center mb-10">
         <div className="w-16 h-16 bg-[#84cc16]/10 rounded-3xl flex items-center justify-center mx-auto mb-6">
           <MapPin className="w-8 h-8 text-[#84cc16]" />
@@ -151,16 +152,25 @@ export default function LandAnalyser({ user }) {
   const handleGpsDetect = () => {
     if (!navigator.geolocation) { setError('GPS not available on this device. Please search for a city instead.'); return; }
     setDetecting(true);
+    setError(null);
     navigator.geolocation.getCurrentPosition(
       (pos) => { runAnalysis(pos.coords.latitude, pos.coords.longitude, null); setDetecting(false); },
-      () => { setError('Could not get location. Please search for a city.'); setDetecting(false); },
-      { timeout: 10000, enableHighAccuracy: true }
+      (err) => {
+        const msgs = {
+          1: 'Location access denied. Grant permission in your browser settings and try again.',
+          2: 'Location unavailable. Try searching for a city instead.',
+          3: 'GPS request timed out. Try again or search for a city.',
+        };
+        setError(msgs[err.code] || 'Could not get location. Please search for a city.');
+        setDetecting(false);
+      },
+      { timeout: 15000, enableHighAccuracy: false }
     );
   };
 
   const handleCitySelect = (city, lat, lon) => runAnalysis(lat, lon, city);
 
-  if (step === 'choose') return <LocationStep onGpsDetect={handleGpsDetect} onCitySearch={() => setStep('city-search')} detecting={detecting} />;
+  if (step === 'choose') return <LocationStep onGpsDetect={handleGpsDetect} onCitySearch={() => setStep('city-search')} detecting={detecting} error={error} />;
   if (step === 'city-search') return <CitySearchStep onBack={() => setStep('choose')} onSelect={handleCitySelect} loading={loading} />;
 
   if (!result) return (

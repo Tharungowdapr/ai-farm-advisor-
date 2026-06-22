@@ -547,8 +547,6 @@ def test_llm():
 
     try:
         test_llm = LLMService()
-        old_key = test_llm.api_key
-        old_provider = test_llm.provider
 
         if api_key:
             test_llm.api_key = api_key
@@ -562,10 +560,6 @@ def test_llm():
             "Reply with exactly and only: OK. Do not add anything else.",
             max_tokens=10
         )
-
-        test_llm.api_key = old_key
-        test_llm.provider = old_provider
-        test_llm.model = model
 
         if resp and "OK" in resp.strip().upper():
             return jsonify({"success": True, "message": "LLM connection successful!", "response": resp.strip()})

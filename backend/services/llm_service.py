@@ -51,8 +51,10 @@ class LLMService:
     def _decrypt_key(self, encrypted_key):
         if not CRYPTO_AVAILABLE or not encrypted_key:
             return encrypted_key
+        secret = os.getenv("SECRET_KEY", "")
+        if not secret:
+            return encrypted_key
         try:
-            secret = os.getenv("SECRET_KEY") or os.urandom(32).hex()
             key_bytes = secret.encode() if len(secret.encode()) >= 32 else secret.encode().ljust(32, b'x')[:32]
             kdf = PBKDF2HMAC(algorithm=hashes.SHA256(), length=32, salt=b'kv_salt_2024', iterations=100000)
             fernet_key = base64.urlsafe_b64encode(kdf.derive(key_bytes))

@@ -59,15 +59,16 @@ SETTINGS_DIR = Path(os.getenv("SETTINGS_DIR", Path(__file__).parent / "settings"
 SETTINGS_DIR.mkdir(exist_ok=True)
 SETTINGS_FILE = SETTINGS_DIR / "user_settings.json"
 
+_SECRET_KEY = os.getenv("SECRET_KEY") or ""
+
 def _get_cipher():
-    secret = os.getenv("SECRET_KEY") or os.urandom(32).hex()
-    key_bytes = secret.encode() if len(secret.encode()) >= 32 else secret.encode().ljust(32, b'x')[:32]
+    key_bytes = _SECRET_KEY.encode() if len(_SECRET_KEY.encode()) >= 32 else _SECRET_KEY.encode().ljust(32, b'x')[:32]
     kdf = PBKDF2HMAC(algorithm=hashes.SHA256(), length=32, salt=b'kv_salt_2024', iterations=100000)
     fernet_key = base64.urlsafe_b64encode(kdf.derive(key_bytes))
     return Fernet(fernet_key)
 
 def encrypt_value(plaintext):
-    if not CRYPTO_AVAILABLE or not plaintext:
+    if not CRYPTO_AVAILABLE or not plaintext or not _SECRET_KEY:
         return plaintext
     try:
         return _get_cipher().encrypt(plaintext.encode()).decode()
@@ -75,7 +76,7 @@ def encrypt_value(plaintext):
         return plaintext
 
 def decrypt_value(ciphertext):
-    if not CRYPTO_AVAILABLE or not ciphertext:
+    if not CRYPTO_AVAILABLE or not ciphertext or not _SECRET_KEY:
         return ciphertext
     try:
         return _get_cipher().decrypt(ciphertext.encode()).decode()

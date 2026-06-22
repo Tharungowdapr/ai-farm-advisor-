@@ -105,7 +105,8 @@ from database import (
     create_chat_session, get_chat_sessions, get_chat_session, update_chat_session_title,
     touch_chat_session, delete_chat_session,
     add_chat_message, get_chat_messages,
-    save_land_analysis, get_land_analyses, get_land_analysis, delete_land_analysis
+    save_land_analysis, get_land_analyses, get_land_analysis, delete_land_analysis,
+    save_app_settings, load_app_settings,
 )
 
 app = Flask(__name__)
@@ -132,6 +133,9 @@ def call_llm(prompt, system_prompt=None, json_mode=False, max_tokens=1500, use_r
     return llm.call(prompt=prompt, system_prompt=system_prompt, json_mode=json_mode, max_tokens=max_tokens)
 
 def load_settings():
+    db_settings = load_app_settings()
+    if db_settings:
+        return {**DEFAULT_SETTINGS, **db_settings}
     try:
         if SETTINGS_FILE.exists():
             with open(SETTINGS_FILE, 'r') as f:
@@ -145,9 +149,10 @@ def save_settings(settings):
         settings_to_save = {k: v for k, v in settings.items() if k != 'last_updated'}
         if settings_to_save.get("api_key"):
             settings_to_save["api_key"] = encrypt_value(settings_to_save["api_key"])
+        db_ok = save_app_settings(settings_to_save)
         with open(SETTINGS_FILE, 'w') as f:
             json.dump(settings_to_save, f, indent=2)
-        logger.info("Settings saved successfully")
+        logger.info(f"Settings saved successfully (db={db_ok})")
         return True
     except Exception as e:
         logger.error(f"Error saving settings: {str(e)}")

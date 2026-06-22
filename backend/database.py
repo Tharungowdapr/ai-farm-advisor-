@@ -114,6 +114,9 @@ def init_db():
             created_at TIMESTAMPTZ DEFAULT {_NOW},
             FOREIGN KEY(user_id) REFERENCES users(id)
         )""")
+        c.execute(f"""CREATE TABLE IF NOT EXISTS app_settings (
+            key TEXT PRIMARY KEY, value TEXT NOT NULL
+        )""")
     else:
         c.execute("""CREATE TABLE IF NOT EXISTS users (
             id TEXT PRIMARY KEY, email TEXT UNIQUE, password_hash TEXT,
@@ -161,6 +164,9 @@ def init_db():
             token TEXT PRIMARY KEY, user_id TEXT NOT NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY(user_id) REFERENCES users(id)
+        )""")
+        c.execute("""CREATE TABLE IF NOT EXISTS app_settings (
+            key TEXT PRIMARY KEY, value TEXT NOT NULL
         )""")
 
     conn.commit()
@@ -425,5 +431,46 @@ def delete_land_analysis(analysis_id):
     c.execute(f"DELETE FROM land_analyses WHERE id={_PLACEHOLDER}", (analysis_id,))
     conn.commit()
     conn.close()
+
+def save_app_settings(settings_dict):
+    if not _DATABASE_URL:
+        return False
+    try:
+        conn = get_db()
+        c = conn.cursor()
+        for key, value in settings_dict.items():
+            c.execute(f"INSERT INTO app_settings (key, value) VALUES ({_PLACEHOLDER}, {_PLACEHOLDER}) "
+                      f"ON CONFLICT (key) DO UPDATE SET value={_PLACEHOLDER}",
+                      (key, str(value), str(value)))
+        conn.commit()
+        conn.close()
+        return True
+    except Exception as e:
+        print(f"DB save_settings error: {e}")
+        return False
+
+def load_app_settings():
+    if not _DATABASE_URL:
+        return None
+    try:
+        conn = get_db()
+        c = conn.cursor()
+        c.execute("SELECT key, value FROM app_settings")
+        rows = _fetchall(c)
+        conn.close()
+        if not rows:
+            return None
+        result = {}
+        for r in rows:
+            val = r["value"]
+            if val in ("True", "False"):
+                val = val == "True"
+            elif val == "None":
+                val = None
+            result[r["key"]] = val
+        return result
+    except Exception as e:
+        print(f"DB load_settings error: {e}")
+        return None
 
 init_db()

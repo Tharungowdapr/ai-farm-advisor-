@@ -118,6 +118,49 @@ const CitySearchStep = ({ onBack, onSelect, loading }) => {
   );
 };
 
+const PROGRESS_STEPS = [
+  { label: 'Fetching weather data', icon: '🌤' },
+  { label: 'Analysing soil composition', icon: '🧪' },
+  { label: 'Evaluating water availability', icon: '💧' },
+  { label: 'Scoring crop suitability', icon: '🌾' },
+  { label: 'Generating recommendations', icon: '📋' },
+];
+
+function ProcessingStep({ location }) {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setProgress(p => Math.min(p + 1, PROGRESS_STEPS.length - 1));
+    }, 1200);
+    return () => clearInterval(t);
+  }, []);
+
+  return (
+    <div className="min-h-screen pt-24 flex items-center justify-center bg-[#fafaf9] px-6">
+      <GrainOverlay />
+      <div className="max-w-md w-full text-center">
+        <div className="w-20 h-20 bg-[#84cc16]/10 rounded-[2rem] flex items-center justify-center mx-auto mb-6">
+          <Loader2 className="w-10 h-10 animate-spin text-[#84cc16]" />
+        </div>
+        <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#84cc16] mb-2">VaniAI Geospatial Intelligence</p>
+        <h2 className="font-serif text-3xl font-black text-[#0c0a09] mb-2">Analysing <span className="italic text-[#84cc16]">{location}</span></h2>
+        <p className="text-stone-500 text-sm font-medium mb-8">Running precision diagnostics...</p>
+        <div className="space-y-3 text-left">
+          {PROGRESS_STEPS.map((s, i) => (
+            <div key={i} className={`flex items-center gap-3 p-3 rounded-xl transition-all duration-500 ${i <= progress ? 'opacity-100' : 'opacity-30'}`}>
+              <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm ${i < progress ? 'bg-[#84cc16]' : i === progress ? 'bg-[#84cc16]/20 animate-pulse' : 'bg-stone-100'}`}>
+                {i < progress ? '✓' : s.icon}
+              </div>
+              <span className={`font-bold text-sm ${i <= progress ? 'text-stone-800' : 'text-stone-400'}`}>{s.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function LandAnalyser({ user }) {
   const [step, setStep] = useState('choose');
   const [result, setResult] = useState(null);
@@ -125,10 +168,13 @@ export default function LandAnalyser({ user }) {
   const [detecting, setDetecting] = useState(false);
   const [error, setError] = useState(null);
   const [expandedCrop, setExpandedCrop] = useState(null);
+  const [processLocation, setProcessLocation] = useState('');
 
   const runAnalysis = useCallback(async (lat, lon, city) => {
     try {
       setLoading(true); setError(null);
+      setProcessLocation(city || `${lat?.toFixed(4)}, ${lon?.toFixed(4)}`);
+      setStep('processing');
       const payload = city ? { city } : { lat, lon };
       const res = await axios.post('/api/diagnostics/location', payload);
       setResult(res.data);
@@ -144,6 +190,7 @@ export default function LandAnalyser({ user }) {
       }
     } catch (err) {
       setError(err.response?.data?.error || 'Analysis failed. Check the city name or try GPS.');
+      setStep(city ? 'city-search' : 'choose');
     } finally {
       setLoading(false);
     }
@@ -154,7 +201,7 @@ export default function LandAnalyser({ user }) {
     setDetecting(true);
     setError(null);
     navigator.geolocation.getCurrentPosition(
-      (pos) => { runAnalysis(pos.coords.latitude, pos.coords.longitude, null); setDetecting(false); },
+      (pos) => { setDetecting(false); runAnalysis(pos.coords.latitude, pos.coords.longitude, null); },
       (err) => {
         const msgs = {
           1: 'Location access denied. Grant permission in your browser settings and try again.',
@@ -172,12 +219,7 @@ export default function LandAnalyser({ user }) {
 
   if (step === 'choose') return <LocationStep onGpsDetect={handleGpsDetect} onCitySearch={() => setStep('city-search')} detecting={detecting} error={error} />;
   if (step === 'city-search') return <CitySearchStep onBack={() => setStep('choose')} onSelect={handleCitySelect} loading={loading} />;
-
-  if (!result) return (
-    <div className="pt-24 min-h-screen bg-[#fafaf9] px-6 pb-20 flex items-center justify-center">
-      <div className="text-center"><Loader2 className="w-8 h-8 animate-spin text-[#84cc16] mx-auto mb-4" /><p className="text-stone-600 font-bold">Analysing your land...</p></div>
-    </div>
-  );
+  if (step === 'processing') return <ProcessingStep location={processLocation} />;
 
   const r = result; const c = r?.climate; const s = r?.soil; const w = r?.water; const cr = r?.crop_suitability; const recs = r?.recommendations; const llmCrops = cr?.llm_suggestions || []; const mostGrown = cr?.most_grown_crops || [];
 
